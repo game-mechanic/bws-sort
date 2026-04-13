@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu]
-public class ColorType : ScriptableObject
+public class BubbleType : ScriptableObject
 {
     [SerializeField] Material material;
 
