@@ -12,26 +12,39 @@ public class InputHandler : Singleton<InputHandler>
     private void Start()
     {
         mainCamera = Camera.main;
+        ParticlePool.Init();
     }
     private void Update()
     {
         if (!isDragging
             && Input.GetMouseButtonDown(0)
-            && TryRaycast2D(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit2D hit)
-            && hit.collider.TryGetComponent(out Bubble d))
+            && TryRaycast2D(mainCamera.ScreenPointToRay(HandUI.Instance.MousePosition), out RaycastHit2D hit)
+            && hit.collider.TryGetComponent(out Bubble d) && d.Category == CategoryManager.Instance.CurrentCategory)
         {
             draggable = d;
-            isDragging = true;
-            startScale = draggable.transform.localScale;
-            draggable.StartDrag();
-            draggable.transform.DOScale(startScale * 1.1f, 0.1f).SetEase(Ease.OutQuad);
-            draggable.Bounce(GameSettings.Instance.MaxBounceAmplitude, GameSettings.Instance.BounceTime);
+            //isDragging = true;
+            //startScale = draggable.transform.localScale;
+            //draggable.StartDrag();
+            //draggable.transform.DOScale(startScale * 1.1f, 0.1f).SetEase(Ease.OutQuad);
+            //draggable.Bounce(GameSettings.Instance.MaxBounceAmplitude, GameSettings.Instance.BounceTime);
+            Vector3 pos = draggable.transform.position;
+            //draggable.StartDrag();
+            //draggable.OnBubbleBlasted.AddListener(OnBlast);
+            OnBlast();
+            highlightedBubble = null;
+            void OnBlast()
+            {
+                CategoryManager.Instance.ReduceCount(d.Category);
+                ParticlePool.PlayRevealFx(pos);
+                Destroy(draggable.gameObject);
+                draggable.OnBubbleBlasted.RemoveListener(OnBlast);
+            }
         }
 
-        if (Input.GetMouseButtonUp(0) && draggable != null)
-        {
-            ReleaseDrag();
-        }
+        //if (Input.GetMouseButtonUp(0) && draggable != null)
+        //{
+        //    ReleaseDrag();
+        //}
     }
     public bool TryRaycast2D(Ray ray, out RaycastHit2D hit)
     {
@@ -40,32 +53,30 @@ public class InputHandler : Singleton<InputHandler>
     }
     private void FixedUpdate()
     {
-        if (draggable != null && isDragging)
+        //if (draggable != null && isDragging)
+        //{
+        Plane plane = new(Vector3.back, new Vector3(0, 0, 0));
+        Ray ray = mainCamera.ScreenPointToRay(HandUI.Instance.MousePosition);
+
+        plane.Raycast(ray, out float enter);
+
+        Vector3 hitPoint = ray.origin + ray.direction * enter;
+
+        if (TryRaycast2D(mainCamera.ScreenPointToRay(HandUI.Instance.MousePosition), out RaycastHit2D hit))
         {
-            Plane plane = new(Vector3.back, new Vector3(0, 0, 0));
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-            plane.Raycast(ray, out float enter);
-
-            Vector3 hitPoint = ray.origin + ray.direction * enter;
-
-            draggable.transform.position = Vector3.Lerp(draggable.transform.position, hitPoint, GameSettings.Instance.DragSpeed * Time.fixedDeltaTime);
-
-            if (GetOverlap(hitPoint, draggable.Radius, out Collider2D hit))
+            if (hit.collider.TryGetComponent(out Bubble d))
             {
-                if (hit.TryGetComponent(out Bubble d))
-                {
-                    if (d != highlightedBubble && d != draggable)
-                        Highlight(d);
-                }
-                else
-                    Highlight(null);
+                if (d != highlightedBubble)
+                    Highlight(d);
             }
             else
-            {
                 Highlight(null);
-            }
         }
+        else
+        {
+            Highlight(null);
+        }
+        //} 
     }
 
     private bool GetOverlap(Vector3 center, float radius, out Collider2D hit)

@@ -1,7 +1,10 @@
 using DG.Tweening;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 
 public class Bubble : MonoBehaviour
@@ -23,6 +26,8 @@ public class Bubble : MonoBehaviour
     float time = 0f;
     Vector3 startScale;
     [SerializeField] private BubbleType category;
+    public UnityEvent OnBubbleBlasted = new();
+
 
     public RigidbodyType2D IsKinematic { get => rb.bodyType; set => rb.bodyType = value; }
     public float Radius => col.radius;
@@ -33,11 +38,26 @@ public class Bubble : MonoBehaviour
 
     private void Start()
     {
+        if (Category != null)
+            CategoryManager.Instance.RegisterCategory(Category);
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<CircleCollider2D>();
         sortingGroup = GetComponent<SortingGroup>();
         startScale = viusal.transform.localScale;
         randomPhaseDiff = Random.Range(0, 90) * Mathf.Deg2Rad;
+        RedrawNames();
+    }
+
+    private void RedrawNames()
+    {
+        for (int i = 0; i < Names.Count; i++)
+        {
+            textUIs[i].text = Names[i];
+        }
+    }
+    private void OnValidate()
+    {
+        RedrawNames();
     }
     private void Update()
     {
@@ -66,7 +86,8 @@ public class Bubble : MonoBehaviour
         {
             isBouncing = false;
             time = 0;
-            viusal.transform.DOScale(startScale, 0.05f);
+            //viusal.transform.DOScale(startScale, 0.05f);
+            OnBubbleBlasted?.Invoke();
         }
     }
     public void Bounce()
