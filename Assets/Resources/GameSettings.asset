@@ -16,3 +16,11 @@ MonoBehaviour:
   bounceTime: 1
   maxBounces: 3
   lerpSpeeed: 15
+  bubbles:
+  - {fileID: 7926608256317659342, guid: 896906e380ce552479913031cb6e131f, type: 3}
+  - {fileID: 7926608256317659342, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+  - {fileID: 7926608256317659342, guid: a4dcc0ed25d8f53439369dd1a5c9ee2e, type: 3}
+  - {fileID: 7926608256317659342, guid: 5b0c3306492039f40ae479b779f1c6c1, type: 3}
+  dragSpeed: 10
+  breathingSpeed: 5
+  breathingAplitude: 0.05

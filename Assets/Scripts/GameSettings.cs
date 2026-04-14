@@ -25,6 +25,8 @@ public class GameSettings : ScriptableObject
     [SerializeField]
     Bubble[] bubbles;
     [SerializeField] private int dragSpeed = 10;
+    [SerializeField] float breathingSpeed = 2;
+    [SerializeField] float breathingAplitude = .05f;
 
     public float MaxBounceAmplitude { get => maxBounceAmplitude; }
     public float BounceTime { get => bounceTime; }
@@ -32,6 +34,8 @@ public class GameSettings : ScriptableObject
     public float LerpSpeeed { get => lerpSpeeed; }
     public Bubble[] Bubbles { get => bubbles; }
     public int DragSpeed { get => dragSpeed; }
+    public float BreathingSpeed { get => breathingSpeed; }
+    public float BreathingAplitude { get => breathingAplitude; }
 
     internal static IEnumerator Init()
     {
