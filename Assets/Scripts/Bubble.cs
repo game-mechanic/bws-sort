@@ -1,18 +1,18 @@
-using DG.Tweening;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
 
+[SelectionBase]
 public class Bubble : MonoBehaviour
 {
     const float PhaseDiff = 90 * Mathf.Deg2Rad;
     [SerializeField] byte index;
     [SerializeField] Transform viusal;
     [SerializeField] GameObject highlightImage;
+    [SerializeField] SpriteRenderer bg;
+    [SerializeField] Color bgColor;
     [SerializeField] List<TextMeshPro> textUIs;
 
     [SerializeField] List<string> names;
@@ -57,6 +57,8 @@ public class Bubble : MonoBehaviour
     }
     private void OnValidate()
     {
+        if (bg != null)
+            bg.color = bgColor;
         RedrawNames();
     }
     private void Update()
