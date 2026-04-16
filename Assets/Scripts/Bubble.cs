@@ -183,7 +183,7 @@ public class Bubble : MonoBehaviour
         }
         blastSequence.AppendCallback(() =>
         {
-            //TODO: particle effect
+            ParticlePool.PlayRevealFx(transform.position);
             Destroy(gameObject);
         });
     }

@@ -12,6 +12,7 @@ public class InputHandler : Singleton<InputHandler>
     private void Start()
     {
         mainCamera = Camera.main;
+        ParticlePool.Init();
     }
     private void Update()
     {
@@ -66,11 +67,29 @@ public class InputHandler : Singleton<InputHandler>
             }
         }
     }
-
+    Collider2D[] results = new Collider2D[10];
     private bool GetOverlap(Vector3 center, float radius, out Collider2D hit)
     {
-        hit = Physics2D.OverlapCircle(center, radius);
-        return hit != null;
+        int count = Physics2D.OverlapCircle(center, radius, new ContactFilter2D() { layerMask = ~0 }, results);
+        Collider2D overlappingBubble = null;
+
+        for (int i = 0; i < count; i++)
+        {
+            if (results[i].TryGetComponent(out Bubble b))
+            {
+                if (overlappingBubble == null)
+                {
+                    overlappingBubble = results[i];
+                }
+                if (b.Category == draggable.Category && b != draggable)
+                {
+                    hit = results[i];
+                    return true;
+                }
+            }
+        }
+        hit = overlappingBubble;
+        return overlappingBubble != null;
     }
 
     public void ReleaseDrag()

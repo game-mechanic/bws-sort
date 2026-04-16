@@ -8,7 +8,7 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] TextMeshPro text;
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
-    
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -30,9 +30,9 @@ public class CategoryManager : Singleton<CategoryManager>
     public int ReduceCount(BubbleType category)
     {
         if (!categoryCounts.ContainsKey(category)) return 0;
-        categoryCounts[category]--;
+        categoryCounts[category] -= 2;
 
-        if (categoryCounts[category] <= 1)
+        if (categoryCounts[category] <= 0)
         {
             categoryCounts.Remove(category);
             return 0;
