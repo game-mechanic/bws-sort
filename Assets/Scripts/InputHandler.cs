@@ -24,7 +24,6 @@ public class InputHandler : Singleton<InputHandler>
             isDragging = true;
             startScale = draggable.transform.localScale;
             draggable.StartDrag();
-            draggable.transform.DOScale(startScale * 1.1f, 0.1f).SetEase(Ease.OutQuad);
             draggable.Bounce(GameSettings.Instance.MaxBounceAmplitude, GameSettings.Instance.BounceTime);
         }
 
@@ -85,7 +84,6 @@ public class InputHandler : Singleton<InputHandler>
         draggable.EndDrag();
         if (highlightedBubble == null || !TryMerge(draggable, highlightedBubble))
         {
-            draggable.transform.DOScale(startScale, 0.1f).SetEase(Ease.OutQuad);
             Highlight(null);
         }
     }
@@ -95,18 +93,24 @@ public class InputHandler : Singleton<InputHandler>
         if (a.Category != b.Category) return false;
 
         byte maxIndex = Math.Max(a.Index, b.Index);
-
+        int nextIndex = maxIndex + 1;
         var bigBubble = a.Index == maxIndex ? a : b;
-        var newBubble = Instantiate(GameSettings.Instance.Bubbles[maxIndex + 1]);
+        var newBubble = Instantiate(GameSettings.Instance.Bubbles[nextIndex]);
         newBubble.transform.SetPositionAndRotation(bigBubble.transform.position, bigBubble.transform.rotation);
         var names = a.Names;
         names.AddRange(b.Names);
         newBubble.Category = a.Category;
         newBubble.SetName(names);
+        newBubble.Bounce();
         a.transform.DOKill();
         b.transform.DOKill();
         Destroy(a.gameObject);
         Destroy(b.gameObject);
+
+        if (CategoryManager.Instance.ReduceCount(a.Category) <= 0)
+        {
+            newBubble.Blast();
+        }
         return true;
     }
 

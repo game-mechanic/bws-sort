@@ -24,3 +24,4 @@ MonoBehaviour:
   dragSpeed: 10
   breathingSpeed: 5
   breathingAplitude: 0.05
+  textBreathingSpeed: 1
