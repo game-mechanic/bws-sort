@@ -5,12 +5,23 @@ using UnityEngine;
 
 public class CategoryManager : Singleton<CategoryManager>
 {
+    [System.Serializable]
+    public class CategoryNames
+    {
+        [SerializeField] BubbleType category;
+        [SerializeField] public string[] names;
+    }
+
     [SerializeField] BubbleType[] allCategories;
     [SerializeField] Transform ui;
     [SerializeField] TextMeshPro text;
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
     public BubbleType CurrentCategory => allCategories[currentIndex % allCategories.Length];
+
+    [SerializeField] List<CategoryNames> bubbleNames;
+    [SerializeField] private float spacing;
+    [SerializeField] HorizontalAlignment horizontalAlignment;
     private void Start()
     {
         Redraw();
@@ -39,11 +50,27 @@ public class CategoryManager : Singleton<CategoryManager>
             categoryCounts[category] = 1;
         }
     }
+
+    public void SpawnNewBubbles()
+    {
+        Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
+        int i = 0;
+        foreach (var name in bubbleNames[currentIndex % bubbleNames.Count].names)
+        {
+            Vector3 pos = horizontalAlignment.GetSlotPosition(i);
+            DOVirtual.DelayedCall(Random.Range(0.01f, 0.2f), () =>
+            {
+                var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
+                bubble.SetName(new() { name });
+            });
+            i++;
+        }
+    }
     public void ReduceCount(BubbleType category)
     {
         if (!categoryCounts.ContainsKey(category)) return;
         categoryCounts[category]--;
-        if(categoryCounts[category] <= 0)
+        if (categoryCounts[category] <= 0)
         {
             categoryCounts.Remove(category);
             ChangeCategory();
@@ -52,6 +79,10 @@ public class CategoryManager : Singleton<CategoryManager>
 
     void ChangeCategory()
     {
+        currentIndex++;
+        SpawnNewBubbles();
+
+
         Vector3 squishedScale = new Vector3(1.2f, 0.8f, 1);
         Vector3 originalScale = new Vector3(.8f, 1.2f, 1);
         Vector3 startPosition = transform.position;
@@ -67,7 +98,6 @@ public class CategoryManager : Singleton<CategoryManager>
 
         moveOutSequence.AppendCallback(() =>
         {
-            currentIndex++;
             Redraw();
         });
         moveOutSequence.Append(transform.DOMove(startPosition, .5f).SetEase(Ease.InExpo));

@@ -25,6 +25,8 @@ public class Bubble : MonoBehaviour
     float randomPhaseDiff;
     float time = 0f;
     Vector3 startScale;
+    private float randomTextPhaseDiff;
+    public Vector3[] textPositions;
     [SerializeField] private BubbleType category;
     public UnityEvent OnBubbleBlasted = new();
 
@@ -44,7 +46,13 @@ public class Bubble : MonoBehaviour
         col = GetComponent<CircleCollider2D>();
         sortingGroup = GetComponent<SortingGroup>();
         startScale = viusal.transform.localScale;
+        randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
         randomPhaseDiff = Random.Range(0, 90) * Mathf.Deg2Rad;
+        textPositions = new Vector3[textUIs.Count];
+        for (int i = 0; i < textUIs.Count; i++)
+        {
+            textPositions[i] = textUIs[i].transform.localPosition;
+        }
         RedrawNames();
     }
 
@@ -61,6 +69,15 @@ public class Bubble : MonoBehaviour
             bg.color = bgColor;
         RedrawNames();
     }
+    private void TextBreathing()
+    {
+        for (int i = 0; i < textUIs.Count; i++)
+        {
+            var x = Mathf.Sin((Time.time * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff) * 0.05f;
+            var y = Mathf.Sin((Time.time * .5f * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff) * 0.1f;
+            textUIs[i].transform.localPosition = textPositions[i] + new Vector3(x, y, 0);
+        }
+    }
     private void Update()
     {
         if (!isBouncing)
@@ -70,7 +87,7 @@ public class Bubble : MonoBehaviour
             Vector3 t = startScale + new Vector3(x, y: y, 0);
 
             viusal.transform.localScale = Vector3.Lerp(viusal.transform.localScale, t, GameSettings.Instance.LerpSpeeed * Time.deltaTime);
-
+            TextBreathing();
             return;
         }
 

@@ -202,9 +202,10 @@ MonoBehaviour:
   viusal: {fileID: 6210052580329281552}
   highlightImage: {fileID: 4936370047291090609}
   bg: {fileID: 6904026035258751567}
-  bgColor: {r: 0, g: 0, b: 0, a: 0}
+  bgColor: {r: 0, g: 0.40378952, b: 1, a: 0.7490196}
   textUIs: []
   names: []
+  textPositions: []
   category: {fileID: 0}
   OnBubbleBlasted:
     m_PersistentCalls:
@@ -421,7 +422,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 4536b855e3fc35b4189cb4f225a3d6f1, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0.40378952, b: 1, a: 0.7490196}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
