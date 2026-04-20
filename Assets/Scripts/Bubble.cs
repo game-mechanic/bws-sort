@@ -6,15 +6,27 @@ using UnityEngine.Rendering;
 
 public class Bubble : MonoBehaviour
 {
+    [System.Serializable]
+    public class visuals
+    {
+        public SpriteRenderer bg;
+        public TextMeshPro textUIs;
+    }
+    [System.Serializable]
+    public class Data
+    {
+        public string name;
+        public Sprite icon;
+    }
     const float PhaseDiff = 90 * Mathf.Deg2Rad;
     [SerializeField] byte index;
     [SerializeField] Transform viusal;
     [SerializeField] SpriteRenderer bg;
     [SerializeField] Color bgColor = Color.white;
     [SerializeField] GameObject highlightImage;
-    [SerializeField] List<TextMeshPro> textUIs;
+    [SerializeField] List<visuals> textUIs;
     [SerializeField] TextMeshPro categoryText;
-    [SerializeField] List<string> names;
+    [SerializeField] List<Data> names;
     Rigidbody2D rb;
     CircleCollider2D col;
     SortingGroup sortingGroup;
@@ -32,8 +44,8 @@ public class Bubble : MonoBehaviour
 
     public byte Index { get => index; }
     public BubbleType Category { get => category; set => category = value; }
-    public List<string> Names { get => names; }
-    public Vector3[] textPositions;
+    public List<Data> Names { get => names; }
+    Vector3[] textPositions;
 
     private void Start()
     {
@@ -47,11 +59,12 @@ public class Bubble : MonoBehaviour
         textPositions = new Vector3[textUIs.Count];
         for (int i = 0; i < textUIs.Count; i++)
         {
-            textPositions[i] = textUIs[i].transform.localPosition;
+            textPositions[i] = names[i].icon == null ? textUIs[i].textUIs.transform.localPosition : textUIs[i].bg.transform.localPosition;
         }
         Redraw();
     }
-    private void OnValidate()
+    [EditorButton]
+    public void Refresh()
     {
         if (bg != null)
             bg.color = bgColor;
@@ -62,7 +75,18 @@ public class Bubble : MonoBehaviour
     {
         for (int i = 0; i < Names.Count; i++)
         {
-            textUIs[i].text = Names[i];
+            if (Names[i].icon == null)
+            {
+                textUIs[i].textUIs.text = Names[i].name;
+                textUIs[i].bg.gameObject.SetActive(false);
+                textUIs[i].textUIs.gameObject.SetActive(true);
+            }
+            else
+            {
+                textUIs[i].bg.sprite = Names[i].icon;
+                textUIs[i].textUIs.gameObject.SetActive(false);
+                textUIs[i].bg.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -116,14 +140,14 @@ public class Bubble : MonoBehaviour
         col.enabled = active;
     }
 
-    public void SetName(List<string> name)
+    public void SetName(List<Data> name)
     {
         Names.Clear();
         for (int i = 0; i < name.Count; i++)
         {
             Names.Add(name[i]);
-            textUIs[i].text = name[i];
         }
+        Redraw();
     }
     public void StartDrag()
     {
@@ -139,11 +163,23 @@ public class Bubble : MonoBehaviour
     }
     private void TextBreathing()
     {
+        Vector3 scaleModifier = viusal.localScale;
+
         for (int i = 0; i < textUIs.Count; i++)
         {
-            var x = Mathf.Sin((Time.time * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff) * 0.05f;
-            var y = Mathf.Sin((Time.time * .5f * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff) * 0.1f;
-            textUIs[i].transform.localPosition = textPositions[i] + new Vector3(x, y, 0);
+            if (textUIs[i] == null) continue;
+
+            var x = (Mathf.Sin((Time.time * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff)) * 0.05f;
+            var y = (Mathf.Sin((Time.time * .5f * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff)) * 0.1f;
+
+
+            Vector3 offset = new Vector3(x / scaleModifier.x, y / scaleModifier.y, 0);
+
+            if (textUIs[i].bg != null)
+                textUIs[i].bg.transform.localPosition = Vector3.Lerp(textUIs[i].bg.transform.localPosition, textPositions[i] + offset, GameSettings.Instance.LerpSpeeed * Time.deltaTime);
+
+            if (textUIs[i].textUIs != null)
+                textUIs[i].textUIs.transform.localPosition = Vector3.Lerp(textUIs[i].textUIs.transform.localPosition, textPositions[i] + offset, GameSettings.Instance.LerpSpeeed * Time.deltaTime);
         }
     }
     public void Highlight(bool v)
@@ -154,18 +190,26 @@ public class Bubble : MonoBehaviour
     {
         if (col == null)
             col = GetComponent<CircleCollider2D>();
-        Gizmos.DrawSphere(transform.position, radius: Radius);
+        //Gizmos.DrawSphere(transform.position, radius: Radius);
+        if (textPositions == null) return;
+        for (int i = 0; i < textPositions.Length; i++)
+        {
+            Gizmos.DrawWireSphere(textPositions[i], radius: 0.1f);
+        }
     }
 
     public void Blast()
     {
         if (categoryText != null)
             categoryText.text = Category.name;
+        CategoryManager.Instance.hide();
         Sequence blastSequence = DOTween.Sequence();
         foreach (var text in textUIs)
         {
-            text.transform.DOKill();
-            blastSequence.Join(text.transform.DOScale(0, 0.3f).SetEase(Ease.InBack));
+            text.bg.transform.DOKill();
+            text.textUIs.transform.DOKill();
+            blastSequence.Join(text.bg.transform.DOScale(0, 0.5f).SetEase(Ease.OutSine));
+            blastSequence.Join(text.textUIs.transform.DOScale(0, 0.5f).SetEase(Ease.OutSine));
         }
         blastSequence.AppendCallback(() =>
         {
@@ -177,9 +221,10 @@ public class Bubble : MonoBehaviour
         });
         if (categoryText != null)
         {
-            blastSequence.Append(categoryText.transform.DOScale(.1f, 0.2f).SetEase(Ease.OutBounce));
-            blastSequence.AppendInterval(0.5f);
-            blastSequence.Append(categoryText.transform.DOScale(0, 0.2f).SetEase(Ease.InBounce));
+            blastSequence.AppendInterval(0.2f);
+            blastSequence.Append(categoryText.transform.DOScale(.1f, 0.5f).SetEase(Ease.OutBounce));
+            blastSequence.AppendInterval(1);
+            blastSequence.Append(categoryText.transform.DOScale(0, 0.3f).SetEase(Ease.InSine));
         }
         blastSequence.AppendCallback(() =>
         {

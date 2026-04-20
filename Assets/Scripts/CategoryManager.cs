@@ -7,6 +7,7 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] Transform ui;
     [SerializeField] TextMeshPro text;
     int currentIndex = 0;
+    [SerializeField] GameObject afa;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
 
     private void Update()
@@ -26,6 +27,10 @@ public class CategoryManager : Singleton<CategoryManager>
         {
             categoryCounts[category] = 1;
         }
+    }
+    public void hide()
+    {
+        afa.SetActive(false);
     }
     public int ReduceCount(BubbleType category)
     {
