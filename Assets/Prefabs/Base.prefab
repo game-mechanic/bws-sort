@@ -175,7 +175,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e0bf689aee601b642977c78f59d0e194, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -334,8 +334,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: f28612b85f178d94881f8710989fd358, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.031424284, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b1742afb084750146b1708622e7285cc, type: 3}
+  m_Color: {r: 0, g: 0.9700117, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

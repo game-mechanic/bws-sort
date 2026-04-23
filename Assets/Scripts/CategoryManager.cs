@@ -1,14 +1,43 @@
+using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class CategoryManager : Singleton<CategoryManager>
 {
-    [SerializeField] Transform ui;
-    [SerializeField] TextMeshPro text;
+    [System.Serializable]
+    public class Data
+    {
+        public BubbleType name;
+        public Bubble.Data data;
+    }
+    [SerializeField] HorizontalAlignment horizontalAlignment;
+    [SerializeField] List<Data> datas = new();
+    [SerializeField] int initialSpawns = 15;
     int currentIndex = 0;
-    [SerializeField] GameObject afa;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
+
+    IEnumerator Start()
+    {
+        WaitForSeconds _waitForSeconds0_1 = new(0.1f);
+        Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
+        for (int j = 0; j < Mathf.Min(initialSpawns, datas.Count); j++)
+        {
+            Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
+            BubbleType category = datas[j].name;
+            Bubble.Data data = datas[j].data;
+
+            DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
+            {
+                var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
+                bubble.Category = category;
+                bubble.SetName(new() { data });
+            });
+            if (j % 4 == 0)
+                yield return _waitForSeconds0_1;
+        }
+        currentIndex = initialSpawns;
+    }
 
     private void Update()
     {
@@ -28,10 +57,7 @@ public class CategoryManager : Singleton<CategoryManager>
             categoryCounts[category] = 1;
         }
     }
-    public void hide()
-    {
-        afa.SetActive(false);
-    }
+
     public int ReduceCount(BubbleType category)
     {
         if (!categoryCounts.ContainsKey(category)) return 0;
@@ -48,9 +74,31 @@ public class CategoryManager : Singleton<CategoryManager>
         }
     }
 
+
+    public void SpawnNewCategories()
+    {
+        Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
+
+        int end = Mathf.Min(currentIndex + 4, datas.Count);
+        for (int j = currentIndex; j < end; j++)
+        {
+            Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
+            BubbleType category = datas[j].name;
+            Bubble.Data data = datas[j].data;
+
+            DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
+            {
+                var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
+                bubble.Category = category;
+                bubble.SetName(new() { data });
+            });
+        }
+        currentIndex += 4;
+    }
+
     void ChangeCategory()
     {
-        currentIndex++;
+        //currentIndex++;
         //Vector3 squishedScale = new Vector3(1.2f, 0.8f, 1);
         //Vector3 originalScale = new Vector3(.8f, 1.2f, 1);
         //Vector3 startPosition = transform.position;

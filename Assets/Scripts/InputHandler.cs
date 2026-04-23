@@ -112,7 +112,7 @@ public class InputHandler : Singleton<InputHandler>
         if (a.Category != b.Category) return false;
 
         byte maxIndex = Math.Max(a.Index, b.Index);
-        int nextIndex = maxIndex + 1;
+        int nextIndex = a.Index + b.Index + 1;
         var bigBubble = a.Index == maxIndex ? a : b;
         var newBubble = Instantiate(GameSettings.Instance.Bubbles[nextIndex]);
         newBubble.transform.SetPositionAndRotation(bigBubble.transform.position, bigBubble.transform.rotation);

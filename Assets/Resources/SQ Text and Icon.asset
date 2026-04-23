@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
+  m_Name: SQ Text and Icon
+  m_EditorClassIdentifier: 
+  bubbles:
+  - {fileID: 7751774973077701707, guid: 3fe6de72afc45eb42838a7f2c087802e, type: 3}
+  - {fileID: 7751774973077701707, guid: d0ab83291c779c3458aee961359d3f82, type: 3}
+  - {fileID: 7751774973077701707, guid: 78d1dfac94840914eae64ecb1496859a, type: 3}
+  - {fileID: 7751774973077701707, guid: 47b180f8d975a1d42afaa2c5babcdd14, type: 3}

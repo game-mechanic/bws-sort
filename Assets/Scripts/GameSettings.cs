@@ -22,8 +22,10 @@ public class GameSettings : ScriptableObject
     [SerializeField] private float lerpSpeeed;
 
     [Header("Prefabs")]
+
     [SerializeField]
-    Bubble[] bubbles;
+    BubbleProfile bubbleProfile;
+    //Bubble[] bubbles;
     [SerializeField] private int dragSpeed = 10;
     [SerializeField] float breathingSpeed = 2;
     [SerializeField] float breathingAplitude = .05f;
@@ -34,7 +36,7 @@ public class GameSettings : ScriptableObject
     public float BounceTime { get => bounceTime; }
     public int MaxBounces { get => maxBounces; }
     public float LerpSpeeed { get => lerpSpeeed; }
-    public Bubble[] Bubbles { get => bubbles; }
+    public Bubble[] Bubbles { get => bubbleProfile.Bubbles; }
     public int DragSpeed { get => dragSpeed; }
     public float BreathingSpeed { get => breathingSpeed; }
     public float BreathingAplitude { get => breathingAplitude; }

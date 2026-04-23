@@ -28,7 +28,8 @@ public class Bubble : MonoBehaviour
     [SerializeField] TextMeshPro categoryText;
     [SerializeField] List<Data> names;
     Rigidbody2D rb;
-    CircleCollider2D col;
+    Collider2D col;
+    [SerializeField] float radius=0.5f;
     SortingGroup sortingGroup;
     float bounceAmplitude;
     float bounceDuration;
@@ -40,7 +41,7 @@ public class Bubble : MonoBehaviour
     [SerializeField] private BubbleType category;
 
     public RigidbodyType2D IsKinematic { get => rb.bodyType; set => rb.bodyType = value; }
-    public float Radius => col.radius;
+    public float Radius => radius;
 
     public byte Index { get => index; }
     public BubbleType Category { get => category; set => category = value; }
@@ -51,18 +52,27 @@ public class Bubble : MonoBehaviour
     {
         CategoryManager.Instance.RegisterCategory(Category);
         rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<CircleCollider2D>();
+        col = GetComponent<Collider2D>();
         sortingGroup = GetComponent<SortingGroup>();
-        startScale = viusal.transform.localScale;
+        startScale = viusal.localScale;
         randomPhaseDiff = Random.Range(0, 90) * Mathf.Deg2Rad;
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
+        RestorePositions();
+        Redraw();
+    }
+    private void OnDisable()
+    {
+        viusal.DOKill();
+    }
+    public void RestorePositions()
+    {
         textPositions = new Vector3[textUIs.Count];
         for (int i = 0; i < textUIs.Count; i++)
         {
             textPositions[i] = names[i].icon == null ? textUIs[i].textUIs.transform.localPosition : textUIs[i].bg.transform.localPosition;
         }
-        Redraw();
     }
+
     [EditorButton]
     public void Refresh()
     {
@@ -98,7 +108,7 @@ public class Bubble : MonoBehaviour
             float y = (Mathf.Cos((Time.time + PhaseDiff + randomPhaseDiff) * GameSettings.Instance.BreathingSpeed) + 0.5f) * GameSettings.Instance.BreathingAplitude;
             Vector3 t = startScale + new Vector3(x, y: y, 0);
 
-            viusal.transform.localScale = Vector3.Lerp(viusal.transform.localScale, t, GameSettings.Instance.LerpSpeeed * Time.deltaTime);
+            viusal.localScale = Vector3.Lerp(viusal.localScale, t, GameSettings.Instance.LerpSpeeed * Time.deltaTime);
             TextBreathing();
             return;
         }
@@ -112,13 +122,13 @@ public class Bubble : MonoBehaviour
         float sin = (Mathf.Sin(rad) + 0.5f) * bounceAmplitude;
         float cos = (Mathf.Cos(rad + PhaseDiff) + 0.5f) * bounceAmplitude;
         Vector3 targetScale = startScale + new Vector3(cos, y: sin, 0) * bounceIntensity;
-        viusal.transform.localScale = Vector3.Lerp(viusal.transform.localScale, targetScale, GameSettings.Instance.LerpSpeeed * Time.deltaTime);
+        viusal.transform.localScale = Vector3.Lerp(viusal.localScale, targetScale, GameSettings.Instance.LerpSpeeed * Time.deltaTime);
         if (tt >= 1)
         {
             isBouncing = false;
             time = 0;
-            viusal.transform.DOKill();
-            viusal.transform.DOScale(startScale, 0.05f);
+            viusal.DOKill();
+            viusal.DOScale(startScale, 0.05f).SetTarget(viusal);
         }
     }
     public void Bounce()
@@ -190,26 +200,56 @@ public class Bubble : MonoBehaviour
     {
         if (col == null)
             col = GetComponent<CircleCollider2D>();
-        //Gizmos.DrawSphere(transform.position, radius: Radius);
-        if (textPositions == null) return;
-        for (int i = 0; i < textPositions.Length; i++)
-        {
-            Gizmos.DrawWireSphere(textPositions[i], radius: 0.1f);
-        }
+        Gizmos.DrawSphere(transform.position, radius: Radius);
     }
 
     public void Blast()
     {
         if (categoryText != null)
             categoryText.text = Category.name;
-        CategoryManager.Instance.hide();
         Sequence blastSequence = DOTween.Sequence();
+        float delayStep = 0.08f;
+        int index = 0;
+
         foreach (var text in textUIs)
         {
-            text.bg.transform.DOKill();
-            text.textUIs.transform.DOKill();
-            blastSequence.Join(text.bg.transform.DOScale(0, 0.5f).SetEase(Ease.OutSine));
-            blastSequence.Join(text.textUIs.transform.DOScale(0, 0.5f).SetEase(Ease.OutSine));
+            Transform bg = text.bg.transform;
+            Transform txt = text.textUIs.transform;
+
+            bg.DOKill();
+            txt.DOKill();
+
+            // Store initial scale
+            Vector3 bgStartScale = bg.localScale;
+            Vector3 txtStartScale = txt.localScale;
+
+            float delay = index * delayStep;
+
+            Sequence textSeq = DOTween.Sequence();
+
+            textSeq.AppendInterval(delay);
+
+            // Optional tiny anticipation (feels nicer than instant shrink)
+            textSeq.Append(
+                bg.DOScale(bgStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
+            );
+
+            textSeq.Join(
+                txt.DOScale(txtStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
+            );
+
+            // Main disappear (shrink)
+            textSeq.Append(
+                bg.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InBack)
+            );
+
+            textSeq.Join(
+                txt.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack)
+            );
+
+            blastSequence.Join(textSeq);
+
+            index++;
         }
         blastSequence.AppendCallback(() =>
         {
@@ -221,14 +261,52 @@ public class Bubble : MonoBehaviour
         });
         if (categoryText != null)
         {
-            blastSequence.AppendInterval(0.2f);
-            blastSequence.Append(categoryText.transform.DOScale(.1f, 0.5f).SetEase(Ease.OutBounce));
-            blastSequence.AppendInterval(1);
-            blastSequence.Append(categoryText.transform.DOScale(0, 0.3f).SetEase(Ease.InSine));
-        }
+            Transform t = categoryText.transform;
+
+            t.DOKill();
+
+            // Store original scale
+            Vector3 startScale = t.localScale;
+
+            Sequence seq = DOTween.Sequence();
+
+            // Start slightly smaller for pop-in
+            t.localScale = startScale * 0.7f;
+
+            seq.AppendInterval(0.15f);
+
+            // Pop in with overshoot
+            seq.Append(
+                t.DOScale(startScale * 1.1f, 0.35f)
+                .SetEase(Ease.OutBack)
+            );
+
+            // Settle to normal
+            seq.Append(
+                t.DOScale(startScale, 0.15f)
+                .SetEase(Ease.OutSine)
+            );
+
+            // Short, snappy pause (not too long)
+            seq.AppendInterval(0.4f);
+
+            // Exit with slight anticipation
+            seq.Append(
+                t.DOScale(startScale * 1.05f, 0.1f)
+                .SetEase(Ease.OutSine)
+            );
+
+            seq.Append(
+                t.DOScale(Vector3.zero, 0.25f)
+                .SetEase(Ease.InBack)
+            );
+
+            blastSequence.Append(seq);
+        }   
         blastSequence.AppendCallback(() =>
         {
             ParticlePool.PlayRevealFx(transform.position);
+            CategoryManager.Instance.SpawnNewCategories();
             Destroy(gameObject);
         });
     }
