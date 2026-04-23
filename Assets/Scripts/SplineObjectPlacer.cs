@@ -12,7 +12,7 @@ public class SplineObjectPlacer : MonoBehaviour
         public Bubble.Data data;
     }
     public static SplineObjectPlacer instance;
-
+    [SerializeField] BubbleContainer bubbleContainerPrefab;
     public SplineComputer splineComputer;
     public int objectCount = 10;
     public float offsetDistance = 1.0f;
@@ -25,7 +25,7 @@ public class SplineObjectPlacer : MonoBehaviour
     [SerializeField] private int stackCount = 1;
     [SerializeField] List<Data> colorTypes = new();
     //public List<ColorType> colorTypes = new List<ColorType>();
-    public List<Bubble> placedStacks = new List<Bubble>();
+    public List<BubbleContainer> placedBubbles = new();
 
     [Header("Rearrange Animation Settings")]
     public float rearrangeAnimationDuration = 0.5f;
@@ -50,6 +50,10 @@ public class SplineObjectPlacer : MonoBehaviour
         }
 
     }
+    private void Start()
+    {
+        PlaceObjects();
+    }
     private void Update()
     {
         const float moveSpeed = 0.003f;
@@ -57,9 +61,9 @@ public class SplineObjectPlacer : MonoBehaviour
         {
             splineSlots[i] = Mathf.Clamp01(splineSlots[i] + Time.deltaTime * moveSpeed);
         }
-        for (int i = 0; i < placedStacks.Count; i++)
+        for (int i = 0; i < placedBubbles.Count; i++)
         {
-            placedStacks[i].UpdatePosition(splineComputer, splineSlots[i]);
+            placedBubbles[i].UpdatePosition(splineComputer, splineSlots[i]);
         }
     }
 
@@ -68,7 +72,7 @@ public class SplineObjectPlacer : MonoBehaviour
     {
         ClearObjects();
 
-        if (splineComputer == null )
+        if (splineComputer == null)
         {
             Debug.LogError("Spline Computer or Prefab is not assigned!");
             return;
@@ -137,30 +141,35 @@ public class SplineObjectPlacer : MonoBehaviour
     private void CreateObjectAtSample(SplineSample sample, int index)
     {
         Data data = colorTypes[index % colorTypes.Count];
-        var hexaStack = CategoryManager.CreateBubble(Vector3.zero, data.name, data.data);
+        var bubble = CategoryManager.CreateBubble(Vector3.zero, data.name, data.data);
 
-        hexaStack.UpdatePosition(splineComputer, splineSlots[index]);
+        var container = Instantiate(bubbleContainerPrefab, Vector3.zero, Quaternion.identity);
+        bubble.transform.SetParent(container.transform);
+        bubble.transform.localPosition = Vector3.zero;
+        bubble.Container = container;
+        container.Bubble = bubble;
+
+        container.UpdatePosition(splineComputer, splineSlots[index]);
 
         // Apply rotation if needed (this won't be overridden by the follower)
         if (alignToSpline)
         {
-            hexaStack.transform.rotation = sample.rotation;
+            bubble.transform.rotation = sample.rotation;
         }
 
-        hexaStack.transform.parent = containerObject.transform;
 
         //EditorUtility.SetDirty(hexaStack.splineFollower);
 
-        placedStacks.Add(hexaStack);
+        placedBubbles.Add(container);
     }
 
-    public void RearrangePlacedStacks(Bubble stackToRemove)
+    public void RearrangePlacedStacks(BubbleContainer stackToRemove)
     {
-        int removedIndex = placedStacks.IndexOf(stackToRemove);
+        int removedIndex = placedBubbles.IndexOf(stackToRemove);
         //RemovePlacedStack(stackToRemove);
 
         // Only rearrange if there are remaining stacks and the removed index is valid
-        if (placedStacks.Count == 0 || removedIndex == -1) return;
+        if (placedBubbles.Count == 0 || removedIndex == -1) return;
 
         // Only rearrange stacks that were after the removed stack
         if (useDistanceMode)
@@ -225,7 +234,7 @@ public class SplineObjectPlacer : MonoBehaviour
 
     private void RearrangeByDistanceSmooth(int startFromIndex)
     {
-        if (placedStacks.Count == 0) return;
+        if (placedBubbles.Count == 0) return;
 
         //double splineLength = splineComputer.CalculateLength();
 
@@ -234,66 +243,66 @@ public class SplineObjectPlacer : MonoBehaviour
 
         //Debug.Log($"Rearranging from index {startFromIndex}, total stacks: {placedStacks.Count}");
 
-       // for (int i = startFromIndex + 1; i < placedStacks.Count; i++)
+        // for (int i = startFromIndex + 1; i < placedStacks.Count; i++)
         //{
-          //  Bubble stack = placedStacks[i];
+        //  Bubble stack = placedStacks[i];
 
-            // Calculate where this stack should be positioned
-            // Since we removed one stack, each remaining stack should move to fill the gap
-           /// float targetDistance = i * offsetDistance;
-        
-            //double currentPercent = stack.splineFollower.result.percent;
+        // Calculate where this stack should be positioned
+        // Since we removed one stack, each remaining stack should move to fill the gap
+        /// float targetDistance = i * offsetDistance;
 
-            //// Calculate target percent
-            //float moved = 0.0f;
-            //double targetPercent = splineComputer.Travel(0.0, targetDistance, out moved, Spline.Direction.Forward);
+        //double currentPercent = stack.splineFollower.result.percent;
 
-            //targetPercent = placedStacks[i - 1].splineFollower.result.percent;
+        //// Calculate target percent
+        //float moved = 0.0f;
+        //double targetPercent = splineComputer.Travel(0.0, targetDistance, out moved, Spline.Direction.Forward);
 
-            //// Ensure we don't exceed the spline length
-            //if (targetDistance > splineLength)
-            //{
-            //    Debug.LogWarning($"Target distance {targetDistance} exceeds spline length {splineLength}");
-            //    break;
-            //}
+        //targetPercent = placedStacks[i - 1].splineFollower.result.percent;
 
-
-            ////Debug.Log($"Stack {i} moving from percent {currentPercent:F3} to percent {targetPercent:F3} (distance {targetDistance})");
-
-            ////if (!setSpeed)
-            ////    stack.splineFollower.followSpeed *= 2f;
-
-            //// Create a tween for smooth movement along the spline
-            //var moveTween = DOTween.To(
-            //    () => currentPercent,
-            //    (value) =>
-            //    {
-            //        stack.splineFollower.SetPercent(value);
-
-            //        // Update rotation if alignment is enabled
-            //        if (alignToSpline)
-            //        {
-            //            SplineSample currentSample = splineComputer.Evaluate(value);
-            //            stack.transform.rotation = currentSample.rotation;
-            //        }
-            //    },
-            //    targetPercent,
-            //    rearrangeAnimationDuration
-            //).SetEase(rearrangeAnimationEase);
-
-            //// Update the object name to reflect new index
-            //moveTween.OnComplete(() =>
-            //{
-            //    stack.gameObject.name = prefabToPlace.name + "_" + i;
-            //    EditorUtility.SetDirty(stack.splineFollower);
-            //});
-
-            //rearrangeSequence.Join(moveTween);
-
-            //setSpeed = true;
+        //// Ensure we don't exceed the spline length
+        //if (targetDistance > splineLength)
+        //{
+        //    Debug.LogWarning($"Target distance {targetDistance} exceeds spline length {splineLength}");
+        //    break;
         //}
 
-        RemovePlacedStack(placedStacks[startFromIndex]);
+
+        ////Debug.Log($"Stack {i} moving from percent {currentPercent:F3} to percent {targetPercent:F3} (distance {targetDistance})");
+
+        ////if (!setSpeed)
+        ////    stack.splineFollower.followSpeed *= 2f;
+
+        //// Create a tween for smooth movement along the spline
+        //var moveTween = DOTween.To(
+        //    () => currentPercent,
+        //    (value) =>
+        //    {
+        //        stack.splineFollower.SetPercent(value);
+
+        //        // Update rotation if alignment is enabled
+        //        if (alignToSpline)
+        //        {
+        //            SplineSample currentSample = splineComputer.Evaluate(value);
+        //            stack.transform.rotation = currentSample.rotation;
+        //        }
+        //    },
+        //    targetPercent,
+        //    rearrangeAnimationDuration
+        //).SetEase(rearrangeAnimationEase);
+
+        //// Update the object name to reflect new index
+        //moveTween.OnComplete(() =>
+        //{
+        //    stack.gameObject.name = prefabToPlace.name + "_" + i;
+        //    EditorUtility.SetDirty(stack.splineFollower);
+        //});
+
+        //rearrangeSequence.Join(moveTween);
+
+        //setSpeed = true;
+        //}
+
+        RemovePlacedStack(placedBubbles[startFromIndex]);
 
         //for (int i = 0; i < startFromIndex; i++)
         //{
@@ -302,23 +311,23 @@ public class SplineObjectPlacer : MonoBehaviour
         //}
     }
 
-    public void RemovePlacedStack(Bubble stack)
+    public void RemovePlacedStack(BubbleContainer stack)
     {
-        if (placedStacks.Contains(stack))
+        if (placedBubbles.Contains(stack))
         {
-            placedStacks.Remove(stack);
+            placedBubbles.Remove(stack);
         }
     }
 
     [EditorButton("Clear Objects")]
     public void ClearObjects()
     {
-        foreach (var placedStack in placedStacks)
+        foreach (var placedStack in placedBubbles)
         {
             DestroyImmediate(placedStack.gameObject);
         }
 
-        placedStacks.Clear();
+        placedBubbles.Clear();
     }
 
     private void OnDrawGizmos()

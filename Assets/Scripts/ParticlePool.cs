@@ -45,9 +45,11 @@ public class ParticlePool
         }
         #endregion
     }
-
+    
     public static void PlayRevealFx(Vector3 midPoint)
     {
+        if (!InputHandler.Instance)
+            return;
         var fx = revealFxPool.Get();
         fx.transform.position = midPoint;
         fx.Play();

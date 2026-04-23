@@ -12,6 +12,9 @@ public class InputHandler : Singleton<InputHandler>
     Vector3 offset;
     private void Start()
     {
+        draggable = null;
+        isDragging = false;
+        highlightedBubble = null;
         mainCamera = Camera.main;
         ParticlePool.Init();
     }
@@ -84,7 +87,7 @@ public class InputHandler : Singleton<InputHandler>
                 {
                     overlappingBubble = results[i];
                 }
-                if((b.transform.position-draggable.transform.position).sqrMagnitude<closest)
+                if ((b.transform.position - draggable.transform.position).sqrMagnitude < closest)
                 {
                     closest = (b.transform.position - draggable.transform.position).sqrMagnitude;
                     overlappingBubble = results[i];
@@ -108,9 +111,28 @@ public class InputHandler : Singleton<InputHandler>
             return;
         }
         isDragging = false;
-        draggable.EndDrag();
         if (highlightedBubble == null || !TryMerge(draggable, highlightedBubble))
         {
+            Plane plane = new(Vector3.back, new Vector3(0, 0, 0));
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+            plane.Raycast(ray, out float enter);
+
+            Vector3 hitPoint = ray.origin + ray.direction * enter * 0.9f;
+            RaycastHit2D hit = Physics2D.Raycast(hitPoint, Vector3.forward);
+            if (hit.transform.CompareTag("MergePlace") && draggable.Category == CategoryManager.Instance.CurrentType)
+            {
+                draggable.EndDrag(false);
+                draggable.transform.DOMove(hit.transform.position, 0.3f);
+                SplineObjectPlacer.instance.RemovePlacedStack(draggable.Container);
+                CategoryManager.Instance.HideText();
+                draggable = null;
+            }
+            else
+            {
+                draggable.EndDrag(true);
+            }
+
             Highlight(null);
         }
     }
@@ -123,7 +145,7 @@ public class InputHandler : Singleton<InputHandler>
         int nextIndex = a.Index + b.Index + 1;
         var bigBubble = a.Index == maxIndex ? a : b;
         var newBubble = Instantiate(GameSettings.Instance.Bubbles[nextIndex]);
-        newBubble.transform.SetPositionAndRotation(bigBubble.transform.position, bigBubble.transform.rotation);
+        newBubble.transform.SetPositionAndRotation(b.transform.position, bigBubble.transform.rotation);
         var names = a.Names;
         names.AddRange(b.Names);
         newBubble.Category = a.Category;
@@ -133,7 +155,8 @@ public class InputHandler : Singleton<InputHandler>
         b.transform.DOKill();
         Destroy(a.gameObject);
         Destroy(b.gameObject);
-
+        Destroy(draggable.Container.gameObject);
+        SplineObjectPlacer.instance.RemovePlacedStack(draggable.Container);
         if (CategoryManager.Instance.ReduceCount(a.Category) <= 0)
         {
             newBubble.Blast();

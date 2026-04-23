@@ -1,5 +1,4 @@
 using DG.Tweening;
-using Dreamteck.Splines;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -30,7 +29,7 @@ public class Bubble : MonoBehaviour
     [SerializeField] List<Data> names;
     Rigidbody2D rb;
     Collider2D col;
-    [SerializeField] float radius=0.5f;
+    [SerializeField] float radius = 0.5f;
     SortingGroup sortingGroup;
     float bounceAmplitude;
     float bounceDuration;
@@ -38,7 +37,9 @@ public class Bubble : MonoBehaviour
     float randomPhaseDiff;
     float randomTextPhaseDiff;
     float time = 0f;
+    float moveTime;
     Vector3 startScale;
+    BubbleContainer container;
     [SerializeField] private BubbleType category;
 
     public RigidbodyType2D IsKinematic { get => rb.bodyType; set => rb.bodyType = value; }
@@ -47,6 +48,8 @@ public class Bubble : MonoBehaviour
     public byte Index { get => index; }
     public BubbleType Category { get => category; set => category = value; }
     public List<Data> Names { get => names; }
+    public BubbleContainer Container { get => container; set => container = value; }
+
     Vector3[] textPositions;
 
     private void Start()
@@ -162,14 +165,31 @@ public class Bubble : MonoBehaviour
     }
     public void StartDrag()
     {
-        IsKinematic = RigidbodyType2D.Kinematic;
+        //IsKinematic = RigidbodyType2D.Kinematic;
         SetCollider(false);
+        container.PickBubble(true);
+        container.SetGhost(true);
         sortingGroup.sortingOrder = 100;
     }
-    public void EndDrag()
+    public void EndDrag(bool goBack)
     {
-        IsKinematic = RigidbodyType2D.Dynamic;
+        //IsKinematic = RigidbodyType2D.Dynamic;
         SetCollider(true);
+        container.PickBubble(!goBack);
+        if (goBack)
+        {
+            transform.DOLocalMove(Vector3.zero, 0.2f)
+                .SetEase(Ease.OutBack)
+                .SetTarget(transform)
+                .OnComplete(() =>
+                {
+                    container.SetGhost(false);
+                });
+        }
+        else
+        {
+            Destroy(Container.gameObject);
+        }
         sortingGroup.sortingOrder = 2;
     }
     private void TextBreathing()
@@ -303,17 +323,13 @@ public class Bubble : MonoBehaviour
             );
 
             blastSequence.Append(seq);
-        }   
+        }
         blastSequence.AppendCallback(() =>
         {
             ParticlePool.PlayRevealFx(transform.position);
-            //CategoryManager.Instance.SpawnNewCategories();
+            CategoryManager.Instance.ChangeCategory();
             Destroy(gameObject);
         });
     }
 
-    public void UpdatePosition(SplineComputer splineComputer, float v)
-    {
-
-    }
 }
