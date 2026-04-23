@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Dreamteck.Splines;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -306,8 +307,13 @@ public class Bubble : MonoBehaviour
         blastSequence.AppendCallback(() =>
         {
             ParticlePool.PlayRevealFx(transform.position);
-            CategoryManager.Instance.SpawnNewCategories();
+            //CategoryManager.Instance.SpawnNewCategories();
             Destroy(gameObject);
         });
+    }
+
+    public void UpdatePosition(SplineComputer splineComputer, float v)
+    {
+
     }
 }
