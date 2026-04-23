@@ -454,6 +454,10 @@ MonoBehaviour:
     data:
       name: OXYGEN
       icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
+    data:
+      name: PUMPKIN
+      icon: {fileID: 21300000, guid: 13a79f058b1eacb4899f906b55a9b49b, type: 3}
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     data:
       name: TOMATO
@@ -466,10 +470,6 @@ MonoBehaviour:
     data:
       name: Bulgaria
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
-    data:
-      name: PUMPKIN
-      icon: {fileID: 21300000, guid: 13a79f058b1eacb4899f906b55a9b49b, type: 3}
   - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
     data:
       name: serbia
@@ -502,7 +502,7 @@ MonoBehaviour:
     data:
       name: WOODEN
       icon: {fileID: 0}
-  initialSpawns: 19
+  initialSpawns: 20
 --- !u!1001 &423203395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1000,7 +1000,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1922.8042, y: -925.9927}
+  m_AnchoredPosition: {x: -19, y: -1558}
   m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0.23598285, y: 0.91602844}
 --- !u!114 &799683888

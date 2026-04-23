@@ -9,6 +9,7 @@ public class InputHandler : Singleton<InputHandler>
     Camera mainCamera;
     bool isDragging;
     Vector3 startScale;
+    Vector3 offset;
     private void Start()
     {
         mainCamera = Camera.main;
@@ -24,6 +25,7 @@ public class InputHandler : Singleton<InputHandler>
             draggable = d;
             isDragging = true;
             startScale = draggable.transform.localScale;
+            offset = new Vector2(draggable.transform.position.x, draggable.transform.position.y) - hit.point;
             draggable.StartDrag();
             draggable.Bounce(GameSettings.Instance.MaxBounceAmplitude, GameSettings.Instance.BounceTime);
         }
@@ -48,6 +50,7 @@ public class InputHandler : Singleton<InputHandler>
             plane.Raycast(ray, out float enter);
 
             Vector3 hitPoint = ray.origin + ray.direction * enter;
+            hitPoint += offset;
 
             draggable.transform.position = Vector3.Lerp(draggable.transform.position, hitPoint, GameSettings.Instance.DragSpeed * Time.fixedDeltaTime);
 
@@ -72,13 +75,18 @@ public class InputHandler : Singleton<InputHandler>
     {
         int count = Physics2D.OverlapCircle(center, radius, new ContactFilter2D() { layerMask = ~0 }, results);
         Collider2D overlappingBubble = null;
-
+        float closest = float.MaxValue;
         for (int i = 0; i < count; i++)
         {
             if (results[i].TryGetComponent(out Bubble b))
             {
                 if (overlappingBubble == null)
                 {
+                    overlappingBubble = results[i];
+                }
+                if((b.transform.position-draggable.transform.position).sqrMagnitude<closest)
+                {
+                    closest = (b.transform.position - draggable.transform.position).sqrMagnitude;
                     overlappingBubble = results[i];
                 }
                 if (b.Category == draggable.Category && b != draggable)
