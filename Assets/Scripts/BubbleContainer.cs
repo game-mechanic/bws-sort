@@ -8,6 +8,7 @@ public class BubbleContainer : MonoBehaviour
     float moveTime;
 
     public Bubble Bubble { get => bubble; set => bubble = value; }
+    public float MoveTime { get => moveTime; set => moveTime = value; }
 
     private void OnDestroy()
     {
@@ -25,8 +26,14 @@ public class BubbleContainer : MonoBehaviour
 
     public void UpdatePosition(SplineComputer splineComputer, float moveTime)
     {
-        this.moveTime = Mathf.Lerp(this.moveTime, moveTime, Time.deltaTime * 5);
-        var point = splineComputer.Evaluate(this.moveTime);
+        this.MoveTime = Mathf.Lerp(this.MoveTime, moveTime, Time.deltaTime * 5);
+        var point = splineComputer.Evaluate(this.MoveTime);
+        transform.position = point.position;
+    }
+    public void UpdatePositionImmediate(SplineComputer splineComputer, float moveTime)
+    {
+        this.MoveTime = this.MoveTime;
+        var point = splineComputer.Evaluate(this.MoveTime);
         transform.position = point.position;
     }
 }

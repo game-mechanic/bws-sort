@@ -23,6 +23,8 @@ public class SplineObjectPlacer : MonoBehaviour
 
     public bool randomStackGeneration = false;
     [SerializeField] private int stackCount = 1;
+    [SerializeField]
+    float moveSpeed = 0.001f;
     [SerializeField] List<Data> colorTypes = new();
     //public List<ColorType> colorTypes = new List<ColorType>();
     public List<BubbleContainer> placedBubbles = new();
@@ -41,7 +43,9 @@ public class SplineObjectPlacer : MonoBehaviour
 
     [SerializeField] private GameObject containerObject;
     public List<float> splineSlots = new List<float>();
-
+    bool isAnimating = false;
+    float animationTimer = 0f;
+    [SerializeField] float animationDuration = 1f;
     private void Awake()
     {
         if (instance == null)
@@ -53,10 +57,34 @@ public class SplineObjectPlacer : MonoBehaviour
     private void Start()
     {
         PlaceObjects();
+        placedBubbles.Reverse();
+        isAnimating = true;
+        for (int i = 0; i < placedBubbles.Count; i++)
+        {
+            placedBubbles[i].MoveTime = 0;
+            placedBubbles[i].UpdatePosition(splineComputer, 0);
+        }
     }
     private void Update()
     {
-        const float moveSpeed = 0.003f;
+        float moveSpeed = this.moveSpeed;
+
+        if (isAnimating)
+        {
+            moveSpeed = moveSpeed * 0.001f;
+            animationTimer += Time.deltaTime;
+            if (animationTimer >= animationDuration)
+            {
+                isAnimating = false;
+                moveSpeed = this.moveSpeed;
+            }
+
+            for (int i = 0; i < placedBubbles.Count; i++)
+            {
+                placedBubbles[i].UpdatePosition(splineComputer, Mathf.Lerp(placedBubbles[i].MoveTime, splineSlots[i], 8f * Time.deltaTime));
+            }
+            return;
+        }
         for (int i = 0; i < splineSlots.Count; i++)
         {
             splineSlots[i] = Mathf.Clamp01(splineSlots[i] + Time.deltaTime * moveSpeed);
@@ -140,7 +168,15 @@ public class SplineObjectPlacer : MonoBehaviour
 
     private void CreateObjectAtSample(SplineSample sample, int index)
     {
-        Data data = colorTypes[index % colorTypes.Count];
+        Data data = null;
+        if (index < colorTypes.Count)
+        {
+            data = colorTypes[index];
+        }
+        else
+        {
+            data = colorTypes[Random.Range(30, colorTypes.Count)];
+        }
         var bubble = CategoryManager.CreateBubble(Vector3.zero, data.name, data.data);
 
         var container = Instantiate(bubbleContainerPrefab, Vector3.zero, Quaternion.identity);
