@@ -167,7 +167,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419304661806920004}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -208,6 +208,7 @@ MonoBehaviour:
     textUIs: {fileID: 6820046140131779249}
   categoryText: {fileID: 2160764346120262512}
   names: []
+  radius: 0.5
   category: {fileID: 0}
 --- !u!210 &4082417489320193375
 SortingGroup:

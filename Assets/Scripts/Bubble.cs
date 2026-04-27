@@ -161,15 +161,11 @@ public class Bubble : MonoBehaviour
     }
     public void StartDrag()
     {
-        IsKinematic = RigidbodyType2D.Kinematic;
-        SetCollider(false);
-        sortingGroup.sortingOrder = 100;
+        Highlight(true);
     }
     public void EndDrag()
     {
-        IsKinematic = RigidbodyType2D.Dynamic;
-        SetCollider(true);
-        sortingGroup.sortingOrder = 2;
+        Highlight(false);
     }
     private void TextBreathing()
     {
@@ -306,7 +302,7 @@ public class Bubble : MonoBehaviour
         blastSequence.AppendCallback(() =>
         {
             ParticlePool.PlayRevealFx(transform.position);
-            CategoryManager.Instance.SpawnNewCategories();
+            //CategoryManager.Instance.SpawnNewCategories();
             Destroy(gameObject);
         });
     }

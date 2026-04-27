@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class InputHandler : Singleton<InputHandler>
@@ -8,8 +9,10 @@ public class InputHandler : Singleton<InputHandler>
     Bubble highlightedBubble;
     Camera mainCamera;
     bool isDragging;
-    Vector3 startScale;
     Vector3 offset;
+    LineRenderer lineRenderer;
+    List<Bubble> hoveredBubbles = new List<Bubble>();  // Track hovered bubbles
+
     private void Start()
     {
         mainCamera = Camera.main;
@@ -24,10 +27,13 @@ public class InputHandler : Singleton<InputHandler>
         {
             draggable = d;
             isDragging = true;
-            startScale = draggable.transform.localScale;
             offset = new Vector2(draggable.transform.position.x, draggable.transform.position.y) - hit.point;
             draggable.StartDrag();
             draggable.Bounce(GameSettings.Instance.MaxBounceAmplitude, GameSettings.Instance.BounceTime);
+            lineRenderer = Instantiate(GameSettings.Instance.LineRendererPrefab);
+            hoveredBubbles.Clear();
+            hoveredBubbles.Add(draggable);  // Start with the dragged bubble
+            UpdateLineRenderer();
         }
 
         if (Input.GetMouseButtonUp(0) && draggable != null)
@@ -52,24 +58,66 @@ public class InputHandler : Singleton<InputHandler>
             Vector3 hitPoint = ray.origin + ray.direction * enter;
             hitPoint += offset;
 
-            draggable.transform.position = Vector3.Lerp(draggable.transform.position, hitPoint, GameSettings.Instance.DragSpeed * Time.fixedDeltaTime);
-
-            if (GetOverlap(hitPoint, draggable.Radius, out Collider2D hit))
+            // Check if mouse moved backwards - continuously remove bubbles while moving back
+            while (hoveredBubbles.Count >= 2)
             {
-                if (hit.TryGetComponent(out Bubble d))
+                Vector3 secondLastPos = hoveredBubbles[hoveredBubbles.Count - 2].transform.position;
+                Vector3 lastPos = hoveredBubbles[hoveredBubbles.Count - 1].transform.position;
+                Vector3 direction = (lastPos - secondLastPos).normalized;
+                Vector3 toMouse = (hitPoint - lastPos).normalized;
+
+                // If dot product is negative, mouse moved backwards
+                if (Vector3.Dot(direction, toMouse) < -0.98f)
                 {
-                    if (d != highlightedBubble && d != draggable)
-                        Highlight(d);
+                    // Remove the last bubble from the path
+                    hoveredBubbles.RemoveAt(hoveredBubbles.Count - 1);
+                    // Highlight the new last bubble
+                    Highlight(hoveredBubbles[hoveredBubbles.Count - 1]);
                 }
                 else
+                {
+                    break;  // Stop if mouse is no longer moving backwards
+                }
+            }
+
+            // Update the line renderer with current positions
+            UpdateLineRenderer(hitPoint);
+
+            //draggable.transform.position = Vector3.Lerp(draggable.transform.position, hitPoint, GameSettings.Instance.DragSpeed * Time.fixedDeltaTime);
+
+            if (TryRaycast2D(ray, out var hit))
+            {
+                if (hit.collider.TryGetComponent(out Bubble d))
+                {
+                    // Only highlight if not already in the hovered list and not the dragged bubble
+                    if (!hoveredBubbles.Contains(d) && d != draggable)
+                    {
+                        Highlight(d);
+                    }
+                }
+                else if (highlightedBubble != null)
                     Highlight(null);
             }
-            else
+            else if (highlightedBubble != null)
             {
                 Highlight(null);
             }
         }
     }
+
+    private void UpdateLineRenderer(Vector3 currentMousePosition = default)
+    {
+        int positionCount = hoveredBubbles.Count + 1;  // +1 for current mouse position
+        lineRenderer.positionCount = positionCount;
+
+        for (int i = 0; i < hoveredBubbles.Count; i++)
+        {
+            lineRenderer.SetPosition(i, hoveredBubbles[i].transform.position);
+        }
+        // Last position is the current mouse position (or last bubble if not dragging)
+        lineRenderer.SetPosition(positionCount - 1, currentMousePosition);
+    }
+
     Collider2D[] results = new Collider2D[10];
     private bool GetOverlap(Vector3 center, float radius, out Collider2D hit)
     {
@@ -84,7 +132,7 @@ public class InputHandler : Singleton<InputHandler>
                 {
                     overlappingBubble = results[i];
                 }
-                if((b.transform.position-draggable.transform.position).sqrMagnitude<closest)
+                if ((b.transform.position - draggable.transform.position).sqrMagnitude < closest)
                 {
                     closest = (b.transform.position - draggable.transform.position).sqrMagnitude;
                     overlappingBubble = results[i];
@@ -109,11 +157,36 @@ public class InputHandler : Singleton<InputHandler>
         }
         isDragging = false;
         draggable.EndDrag();
-        if (highlightedBubble == null || !TryMerge(draggable, highlightedBubble))
+        Highlight(null);
+
+        if (lineRenderer != null)
+            Destroy(lineRenderer.gameObject);
+
+        if (hoveredBubbles.Count < 2)
         {
-            Highlight(null);
+            hoveredBubbles.Clear();  // Clear bubbles when releasing
+            return;
         }
+
+        BubbleType bubbleType = hoveredBubbles[0].Category;
+
+        Vector3[] positions = new Vector3[hoveredBubbles.Count];
+        positions[0] = hoveredBubbles[0].transform.position;
+
+        for (int i = 1; i < hoveredBubbles.Count; i++)
+        {
+            if (hoveredBubbles[i].Category != bubbleType)
+            {
+                return; // If any bubble is of a different category, do not merge
+            }
+            positions[i] = hoveredBubbles[i].transform.position;
+        }
+        
+        CategoryManager.Instance.MergeBubbles(hoveredBubbles, positions);
+       
+        hoveredBubbles.Clear();  // Clear bubbles when releasing
     }
+
 
     public bool TryMerge(Bubble a, Bubble b)
     {
@@ -143,10 +216,18 @@ public class InputHandler : Singleton<InputHandler>
 
     void Highlight(Bubble newBubble)
     {
+        if (newBubble == highlightedBubble) return;
         if (highlightedBubble != null)
         {
             highlightedBubble.Highlight(false);
         }
+
+        if (newBubble != null && !hoveredBubbles.Contains(newBubble))
+        {
+            // Add a new bubble to the hovered list when hovering over a new bubble
+            hoveredBubbles.Add(newBubble);
+        }
+
         highlightedBubble = newBubble;
         if (highlightedBubble != null)
         {

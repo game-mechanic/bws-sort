@@ -31,6 +31,7 @@ public class GameSettings : ScriptableObject
     [SerializeField] float breathingAplitude = .05f;
     [SerializeField] private float textBreathingSpeed;
     [SerializeField] ParticleSystem bubbleFXPrefab;
+    [SerializeField] private LineRenderer lineRendererPrefab;
 
     public float MaxBounceAmplitude { get => maxBounceAmplitude; }
     public float BounceTime { get => bounceTime; }
@@ -41,7 +42,8 @@ public class GameSettings : ScriptableObject
     public float BreathingSpeed { get => breathingSpeed; }
     public float BreathingAplitude { get => breathingAplitude; }
     public float TextBreathingSpeed { get => textBreathingSpeed; }
-    public ParticleSystem BubbleFXPrefab { get => bubbleFXPrefab; internal set => bubbleFXPrefab = value; }
+    public ParticleSystem BubbleFXPrefab { get => bubbleFXPrefab; }
+    public LineRenderer LineRendererPrefab { get => lineRendererPrefab; }
 
     internal static IEnumerator Init()
     {

@@ -1,5 +1,4 @@
 using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,31 +11,48 @@ public class CategoryManager : Singleton<CategoryManager>
         public Bubble.Data data;
     }
     [SerializeField] HorizontalAlignment horizontalAlignment;
+
     [SerializeField] List<Data> datas = new();
+    [SerializeField] private Transform spawnPosition;
+    [SerializeField] float radius = 1f;
     [SerializeField] int initialSpawns = 15;
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
 
-    IEnumerator Start()
-    {
-        WaitForSeconds _waitForSeconds0_1 = new(0.1f);
-        Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
-        for (int j = 0; j < Mathf.Min(initialSpawns, datas.Count); j++)
-        {
-            Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
-            BubbleType category = datas[j].name;
-            Bubble.Data data = datas[j].data;
+    //IEnumerator Start()
+    //{
+    //    WaitForSeconds _waitForSeconds0_1 = new(0.1f);
+    //    Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
+    //    for (int j = 0; j < Mathf.Min(initialSpawns, datas.Count); j++)
+    //    {
+    //        Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
+    //        BubbleType category = datas[j].name;
+    //        Bubble.Data data = datas[j].data;
 
-            DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
-            {
-                var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
-                bubble.Category = category;
-                bubble.SetName(new() { data });
-            });
-            if (j % 4 == 0)
-                yield return _waitForSeconds0_1;
+    //        DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
+    //        {
+    //            var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
+    //            bubble.Category = category;
+    //            bubble.SetName(new() { data });
+    //        });
+    //        if (j % 4 == 0)
+    //            yield return _waitForSeconds0_1;
+    //    }
+    //    currentIndex = initialSpawns;
+    //}
+    private void Start()
+    {
+        float angleOffset = 360f / initialSpawns;
+        angleOffset *= Mathf.Deg2Rad;
+        Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
+
+        for (int i = 0; i < initialSpawns; i++)
+        {
+            GenerateBubble(bubblePrefab: bubblePrefab,
+                pos: spawnPosition.position + new Vector3(Mathf.Sin(angleOffset * i) * radius, Mathf.Cos(angleOffset * i) * radius, 0),
+                category: datas[i].name,
+                data: datas[i].data);
         }
-        currentIndex = initialSpawns;
     }
 
     private void Update()
@@ -75,25 +91,32 @@ public class CategoryManager : Singleton<CategoryManager>
     }
 
 
-    public void SpawnNewCategories()
+    public void SpawnNewCategories(Vector3[] positions)
     {
         Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
 
-        int end = Mathf.Min(currentIndex + 4, datas.Count);
+        int end = Mathf.Min(currentIndex + positions.Length, datas.Count);
         for (int j = currentIndex; j < end; j++)
         {
-            Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
+            Vector3 pos = positions[j - currentIndex];
             BubbleType category = datas[j].name;
             Bubble.Data data = datas[j].data;
 
-            DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
+            DOVirtual.DelayedCall(Random.Range(0.1f, 0.5f), () =>
             {
-                var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
-                bubble.Category = category;
-                bubble.SetName(new() { data });
+                GenerateBubble(bubblePrefab, pos, category, data);
             });
         }
-        currentIndex += 4;
+        currentIndex += positions.Length;
+    }
+
+    private static Bubble GenerateBubble(Bubble bubblePrefab, Vector3 pos, BubbleType category, Bubble.Data data)
+    {
+        var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
+        bubble.transform.DOScale(1, 0.3f).From(0).SetEase(Ease.OutBack);
+        bubble.Category = category;
+        bubble.SetName(new() { data });
+        return bubble;
     }
 
     void ChangeCategory()
@@ -126,5 +149,50 @@ public class CategoryManager : Singleton<CategoryManager>
     {
         if (!categoryCounts.ContainsKey(category)) return -1;
         return categoryCounts[category];
+    }
+
+    public void MergeBubbles(List<Bubble> a, Vector3[] positions)
+    {
+        List<Bubble> hoveredBubbles = new();
+        hoveredBubbles.AddRange(a);
+        int i = 0;
+        Sequence moveUpSeq = DOTween.Sequence();
+        Sequence mergeSequence = DOTween.Sequence();
+
+        foreach (var bubble in hoveredBubbles)
+        {
+            bubble.transform.DOKill();
+            moveUpSeq.Join(bubble.transform.DOMove(horizontalAlignment.GetSlotPosition(i), 01f).SetEase(Ease.InBack));
+            mergeSequence.Join(bubble.transform.DOMove(horizontalAlignment.transform.position, 0.5f).SetEase(Ease.InSine));
+
+            ParticlePool.PlayRevealFx(bubble.transform.position);
+            i++;
+        }
+        moveUpSeq.Append(mergeSequence);
+        moveUpSeq.AppendCallback(() =>
+        {
+            List<Bubble.Data> data = new();
+            foreach (var bubble in hoveredBubbles)
+            {
+                data.AddRange(bubble.Names);
+                Destroy(bubble.gameObject);
+            }
+            var newBubble = Instantiate(GameSettings.Instance.Bubbles[3]);
+            newBubble.transform.SetPositionAndRotation(horizontalAlignment.transform.position, Quaternion.identity);
+
+            newBubble.Category = hoveredBubbles[0].Category;
+            newBubble.SetName(data);
+            newBubble.Blast();
+            DOVirtual.DelayedCall(0.2f, () =>
+            {
+                SpawnNewCategories(positions);
+            });
+            ChangeCategory();
+        });
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(spawnPosition.position, radius);
     }
 }
