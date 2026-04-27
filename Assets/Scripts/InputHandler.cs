@@ -69,10 +69,12 @@ public class InputHandler : Singleton<InputHandler>
                 // If dot product is negative, mouse moved backwards
                 if (Vector3.Dot(direction, toMouse) < -0.98f)
                 {
-                    // Remove the last bubble from the path
-                    hoveredBubbles.RemoveAt(hoveredBubbles.Count - 1);
-                    // Highlight the new last bubble
-                    Highlight(hoveredBubbles[hoveredBubbles.Count - 1]);
+                    if (hoveredBubbles.Count > 0)
+                    {
+                        hoveredBubbles[^1].Highlight(false);
+                        hoveredBubbles.RemoveAt(hoveredBubbles.Count - 1);
+                        RefreshHighlights();   // update visuals once
+                    }
                 }
                 else
                 {
@@ -92,6 +94,7 @@ public class InputHandler : Singleton<InputHandler>
                     // Only highlight if not already in the hovered list and not the dragged bubble
                     if (!hoveredBubbles.Contains(d) && d != draggable)
                     {
+                        TryAddBubble(d);
                         Highlight(d);
                     }
                 }
@@ -103,6 +106,18 @@ public class InputHandler : Singleton<InputHandler>
                 Highlight(null);
             }
         }
+    }
+    void TryAddBubble(Bubble b)
+    {
+        if (b == null || hoveredBubbles.Contains(b) || b == draggable)
+            return;
+
+        if (hoveredBubbles.Count > 0 && b.Category != hoveredBubbles[0].Category)
+            return;
+
+        hoveredBubbles.Add(b);
+
+        RefreshHighlights();   // update visuals once
     }
 
     private void UpdateLineRenderer(Vector3 currentMousePosition = default)
@@ -117,7 +132,20 @@ public class InputHandler : Singleton<InputHandler>
         // Last position is the current mouse position (or last bubble if not dragging)
         lineRenderer.SetPosition(positionCount - 1, currentMousePosition);
     }
+    void RefreshHighlights()
+    {
+        // First clear all
+        foreach (var bubble in hoveredBubbles)
+        {
+            bubble.Highlight(false);
+        }
 
+        // Then apply highlight
+        foreach (var bubble in hoveredBubbles)
+        {
+            bubble.Highlight(true);
+        }
+    }
     Collider2D[] results = new Collider2D[10];
     private bool GetOverlap(Vector3 center, float radius, out Collider2D hit)
     {
@@ -162,7 +190,11 @@ public class InputHandler : Singleton<InputHandler>
         if (lineRenderer != null)
             Destroy(lineRenderer.gameObject);
 
-        if (hoveredBubbles.Count < 2)
+        foreach (var item in hoveredBubbles)
+        {
+            item.Highlight(false);
+        }
+        if (hoveredBubbles.Count < 4)
         {
             hoveredBubbles.Clear();  // Clear bubbles when releasing
             return;
@@ -181,16 +213,20 @@ public class InputHandler : Singleton<InputHandler>
             }
             positions[i] = hoveredBubbles[i].transform.position;
         }
-        
+
         CategoryManager.Instance.MergeBubbles(hoveredBubbles, positions);
-       
+
         hoveredBubbles.Clear();  // Clear bubbles when releasing
     }
 
 
-    public bool TryMerge(Bubble a, Bubble b)
+    public bool TryMerge(Bubble a, Bubble b, out Bubble bubble)
     {
-        if (a.Category != b.Category) return false;
+        if (a.Category != b.Category)
+        {
+            bubble = null;
+            return false;
+        }
 
         byte maxIndex = Math.Max(a.Index, b.Index);
         int nextIndex = a.Index + b.Index + 1;
@@ -211,24 +247,19 @@ public class InputHandler : Singleton<InputHandler>
         {
             newBubble.Blast();
         }
+        bubble = newBubble;
         return true;
     }
 
     void Highlight(Bubble newBubble)
     {
-        if (newBubble == highlightedBubble) return;
-        if (highlightedBubble != null)
-        {
-            highlightedBubble.Highlight(false);
-        }
+        if (highlightedBubble == newBubble) return;
 
-        if (newBubble != null && !hoveredBubbles.Contains(newBubble))
-        {
-            // Add a new bubble to the hovered list when hovering over a new bubble
-            hoveredBubbles.Add(newBubble);
-        }
+        if (highlightedBubble != null && !hoveredBubbles.Contains(highlightedBubble))
+            highlightedBubble.Highlight(false);
 
         highlightedBubble = newBubble;
+
         if (highlightedBubble != null)
         {
             highlightedBubble.Highlight(true);

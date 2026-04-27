@@ -1,5 +1,7 @@
 using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Recorder.Encoder;
 using UnityEngine;
 
 public class CategoryManager : Singleton<CategoryManager>
@@ -10,6 +12,7 @@ public class CategoryManager : Singleton<CategoryManager>
         public BubbleType name;
         public Bubble.Data data;
     }
+
     [SerializeField] HorizontalAlignment horizontalAlignment;
 
     [SerializeField] List<Data> datas = new();
@@ -53,6 +56,7 @@ public class CategoryManager : Singleton<CategoryManager>
                 category: datas[i].name,
                 data: datas[i].data);
         }
+        currentIndex = initialSpawns;
     }
 
     private void Update()
@@ -151,38 +155,28 @@ public class CategoryManager : Singleton<CategoryManager>
         return categoryCounts[category];
     }
 
-    public void MergeBubbles(List<Bubble> a, Vector3[] positions)
+    public void MergeBubbles(List<Bubble> list, Vector3[] positions)
     {
         List<Bubble> hoveredBubbles = new();
-        hoveredBubbles.AddRange(a);
+        hoveredBubbles.AddRange(list);
         int i = 0;
         Sequence moveUpSeq = DOTween.Sequence();
-        Sequence mergeSequence = DOTween.Sequence();
 
         foreach (var bubble in hoveredBubbles)
         {
             bubble.transform.DOKill();
             moveUpSeq.Join(bubble.transform.DOMove(horizontalAlignment.GetSlotPosition(i), 01f).SetEase(Ease.InBack));
-            mergeSequence.Join(bubble.transform.DOMove(horizontalAlignment.transform.position, 0.5f).SetEase(Ease.InSine));
 
             ParticlePool.PlayRevealFx(bubble.transform.position);
             i++;
         }
-        moveUpSeq.Append(mergeSequence);
+
+        StartCoroutine(MergeOneByOne(hoveredBubbles));
+
+
+        moveUpSeq.AppendInterval(01f);
         moveUpSeq.AppendCallback(() =>
         {
-            List<Bubble.Data> data = new();
-            foreach (var bubble in hoveredBubbles)
-            {
-                data.AddRange(bubble.Names);
-                Destroy(bubble.gameObject);
-            }
-            var newBubble = Instantiate(GameSettings.Instance.Bubbles[3]);
-            newBubble.transform.SetPositionAndRotation(horizontalAlignment.transform.position, Quaternion.identity);
-
-            newBubble.Category = hoveredBubbles[0].Category;
-            newBubble.SetName(data);
-            newBubble.Blast();
             DOVirtual.DelayedCall(0.2f, () =>
             {
                 SpawnNewCategories(positions);
@@ -190,6 +184,91 @@ public class CategoryManager : Singleton<CategoryManager>
             ChangeCategory();
         });
     }
+
+    IEnumerator MergeOneByOne(List<Bubble> hoveredBubbles)
+    {
+        const float Duration = 0.35f;
+
+        yield return new WaitForSeconds(1.1f);
+
+        Bubble a = hoveredBubbles[1];
+        const Ease outBack = Ease.InBack;
+        a.transform.DOMove(horizontalAlignment.transform.position, Duration)
+            .SetEase(outBack);
+        Bubble b = hoveredBubbles[2];
+        b.transform.DOMove(horizontalAlignment.transform.position, Duration)
+            .SetEase(outBack);
+        yield return new WaitForSeconds(Duration);
+        // IMPORTANT: TryMerge must RETURN the new bubble
+        InputHandler.Instance.TryMerge(a, b, out Bubble current);
+        //yield return new WaitForSeconds(0.1f);
+        a = current;
+        b = hoveredBubbles[3];
+        b.transform.DOMove(horizontalAlignment.transform.position, Duration * 0.8f)
+           .SetEase(outBack);
+        yield return new WaitForSeconds(Duration * 0.8f);
+        InputHandler.Instance.TryMerge(a, b, out current);
+        //yield return new WaitForSeconds(0.1f);
+        a = current;
+        b = hoveredBubbles[0];
+        b.transform.DOMove(horizontalAlignment.transform.position, Duration * 0.75f)
+           .SetEase(outBack);
+        yield return new WaitForSeconds(Duration * 0.75f);
+        InputHandler.Instance.TryMerge(a, b, out current);
+    }
+    //IEnumerator MergeOneByOne(List<Bubble> hoveredBubbles)
+    //{
+    //    const float duration = 0.25f;
+
+    //    yield return new WaitForSeconds(1.1f);
+
+    //    Vector3 targetPos = horizontalAlignment.transform.position;
+
+    //    Bubble current = hoveredBubbles[1];
+
+    //    for (int i = 2; i < hoveredBubbles.Count + 1; i++)
+    //    {
+    //        Bubble next = hoveredBubbles[i % hoveredBubbles.Count];
+
+    //        // Small random offset for natural feel
+    //        Vector3 offset = Random.insideUnitSphere * 0.15f;
+    //        offset.z = 0;
+
+    //        Sequence seq = DOTween.Sequence();
+
+    //        // 🔹 Anticipation (shrink slightly before move)
+    //        seq.Join(current.transform.DOScale(0.9f, 0.1f));
+    //        seq.Join(next.transform.DOScale(0.9f, 0.1f));
+
+    //        // 🔹 Move with slight delay overlap
+    //        seq.Append(current.transform.DOMove(targetPos + offset, duration)
+    //            .SetEase(Ease.OutQuad));
+
+    //        seq.Join(next.transform.DOMove(targetPos, duration)
+    //            .SetEase(Ease.OutBack));
+
+    //        yield return seq.WaitForCompletion();
+
+    //        // 🔹 Merge
+    //        InputHandler.Instance.TryMerge(current, next, out Bubble merged);
+
+    //        // 🔹 Impact feedback
+    //        merged.transform.localScale = Vector3.one * 0.8f;
+    //        merged.transform.DOScale(1.2f, 0.15f)
+    //            .SetEase(Ease.OutBack)
+    //            .OnComplete(() =>
+    //            {
+    //                merged.transform.DOScale(1f, 0.1f);
+    //            });
+
+    //        current = merged;
+
+    //        // Small breathing gap (feels better than instant chaining)
+    //        yield return new WaitForSeconds(0.05f);
+    //    }
+    //}
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
