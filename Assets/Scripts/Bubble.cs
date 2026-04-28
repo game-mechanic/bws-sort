@@ -301,7 +301,7 @@ public class Bubble : MonoBehaviour
         }   
         blastSequence.AppendCallback(() =>
         {
-            ParticlePool.PlayRevealFx(transform.position);
+            //ParticlePool.PlayRevealFx(transform.position);
             //CategoryManager.Instance.SpawnNewCategories();
             Destroy(gameObject);
         });

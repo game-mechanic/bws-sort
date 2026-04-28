@@ -165,9 +165,9 @@ public class CategoryManager : Singleton<CategoryManager>
         foreach (var bubble in hoveredBubbles)
         {
             bubble.transform.DOKill();
-            moveUpSeq.Join(bubble.transform.DOMove(horizontalAlignment.GetSlotPosition(i), 01f).SetEase(Ease.InBack));
+            moveUpSeq.Join(bubble.transform.DOMove(horizontalAlignment.GetSlotPosition(i), .8f).SetEase(Ease.OutCirc));
 
-            ParticlePool.PlayRevealFx(bubble.transform.position);
+            //ParticlePool.PlayRevealFx(bubble.transform.position);
             i++;
         }
 
@@ -187,33 +187,38 @@ public class CategoryManager : Singleton<CategoryManager>
 
     IEnumerator MergeOneByOne(List<Bubble> hoveredBubbles)
     {
-        const float Duration = 0.35f;
+        const float Duration = 0.5f;
+        const float Interval = 0.2f;
 
         yield return new WaitForSeconds(1.1f);
 
         Bubble a = hoveredBubbles[1];
-        const Ease outBack = Ease.InBack;
+        const Ease outBack = Ease.InSine;
         a.transform.DOMove(horizontalAlignment.transform.position, Duration)
             .SetEase(outBack);
         Bubble b = hoveredBubbles[2];
         b.transform.DOMove(horizontalAlignment.transform.position, Duration)
             .SetEase(outBack);
+        hoveredBubbles[3].transform.DOMove(horizontalAlignment.transform.position, Duration)
+           .SetDelay(Interval)
+           .SetEase(outBack);
+        hoveredBubbles[0].transform.DOMove(horizontalAlignment.transform.position, Duration)
+            .SetDelay(Interval * 2)
+            .SetEase(outBack);
+
         yield return new WaitForSeconds(Duration);
         // IMPORTANT: TryMerge must RETURN the new bubble
         InputHandler.Instance.TryMerge(a, b, out Bubble current);
         //yield return new WaitForSeconds(0.1f);
         a = current;
         b = hoveredBubbles[3];
-        b.transform.DOMove(horizontalAlignment.transform.position, Duration * 0.8f)
-           .SetEase(outBack);
-        yield return new WaitForSeconds(Duration * 0.8f);
+        yield return new WaitForSeconds(Interval);
         InputHandler.Instance.TryMerge(a, b, out current);
         //yield return new WaitForSeconds(0.1f);
         a = current;
         b = hoveredBubbles[0];
-        b.transform.DOMove(horizontalAlignment.transform.position, Duration * 0.75f)
-           .SetEase(outBack);
-        yield return new WaitForSeconds(Duration * 0.75f);
+
+        yield return new WaitForSeconds(Interval);
         InputHandler.Instance.TryMerge(a, b, out current);
     }
     //IEnumerator MergeOneByOne(List<Bubble> hoveredBubbles)

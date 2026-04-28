@@ -31,9 +31,12 @@ public class InputHandler : Singleton<InputHandler>
             draggable.StartDrag();
             draggable.Bounce(GameSettings.Instance.MaxBounceAmplitude, GameSettings.Instance.BounceTime);
             lineRenderer = Instantiate(GameSettings.Instance.LineRendererPrefab);
+            lineRenderer.gameObject.SetActive(false);
             hoveredBubbles.Clear();
             hoveredBubbles.Add(draggable);  // Start with the dragged bubble
-            UpdateLineRenderer();
+
+            UpdateLineRenderer(draggable.transform.position);
+            lineRenderer.gameObject.SetActive(true);
         }
 
         if (Input.GetMouseButtonUp(0) && draggable != null)
@@ -112,8 +115,6 @@ public class InputHandler : Singleton<InputHandler>
         if (b == null || hoveredBubbles.Contains(b) || b == draggable)
             return;
 
-        if (hoveredBubbles.Count > 0 && b.Category != hoveredBubbles[0].Category)
-            return;
 
         hoveredBubbles.Add(b);
 
@@ -131,6 +132,12 @@ public class InputHandler : Singleton<InputHandler>
         }
         // Last position is the current mouse position (or last bubble if not dragging)
         lineRenderer.SetPosition(positionCount - 1, currentMousePosition);
+
+    }
+    public void PerformClickEffect(Transform cube)
+    {
+        cube.DOKill();
+        cube.DOShakePosition(0.2f, strength: new Vector3(0.051f, 0.051f, 0), vibrato: 10);
     }
     void RefreshHighlights()
     {
@@ -196,6 +203,8 @@ public class InputHandler : Singleton<InputHandler>
         }
         if (hoveredBubbles.Count < 4)
         {
+            WrondClick(hoveredBubbles);
+
             hoveredBubbles.Clear();  // Clear bubbles when releasing
             return;
         }
@@ -209,6 +218,8 @@ public class InputHandler : Singleton<InputHandler>
         {
             if (hoveredBubbles[i].Category != bubbleType)
             {
+                WrondClick(hoveredBubbles);
+                hoveredBubbles.Clear();
                 return; // If any bubble is of a different category, do not merge
             }
             positions[i] = hoveredBubbles[i].transform.position;
@@ -218,7 +229,13 @@ public class InputHandler : Singleton<InputHandler>
 
         hoveredBubbles.Clear();  // Clear bubbles when releasing
     }
-
+    void WrondClick(List<Bubble> bubbles)
+    {
+        foreach (var bubble in bubbles)
+        {
+            PerformClickEffect(bubble.transform);
+        }
+    }
 
     public bool TryMerge(Bubble a, Bubble b, out Bubble bubble)
     {
