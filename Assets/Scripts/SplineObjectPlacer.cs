@@ -23,6 +23,7 @@ public class SplineObjectPlacer : MonoBehaviour
 
     public bool randomStackGeneration = false;
     [SerializeField] private int stackCount = 1;
+    [SerializeField] private float offsetLength = 2f;
     [SerializeField]
     float moveSpeed = 0.001f;
     [SerializeField] List<Data> colorTypes = new();
@@ -46,13 +47,13 @@ public class SplineObjectPlacer : MonoBehaviour
     bool isAnimating = false;
     float animationTimer = 0f;
     [SerializeField] float animationDuration = 1f;
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
-
     }
     private void Start()
     {
@@ -62,7 +63,7 @@ public class SplineObjectPlacer : MonoBehaviour
         for (int i = 0; i < placedBubbles.Count; i++)
         {
             placedBubbles[i].MoveTime = 0;
-            placedBubbles[i].UpdatePosition(splineComputer, 0);
+            placedBubbles[i].UpdatePositionImmediate(splineComputer, 0);
         }
     }
     private void Update()
@@ -73,15 +74,15 @@ public class SplineObjectPlacer : MonoBehaviour
         {
             moveSpeed = moveSpeed * 0.001f;
             animationTimer += Time.deltaTime;
+
+            for (int i = 0; i < placedBubbles.Count; i++)
+            {
+                placedBubbles[i].UpdatePositionImmediate(splineComputer, Mathf.Lerp(placedBubbles[i].MoveTime, splineSlots[i], animationDuration * Time.deltaTime));
+            }
             if (animationTimer >= animationDuration)
             {
                 isAnimating = false;
                 moveSpeed = this.moveSpeed;
-            }
-
-            for (int i = 0; i < placedBubbles.Count; i++)
-            {
-                placedBubbles[i].UpdatePosition(splineComputer, Mathf.Lerp(placedBubbles[i].MoveTime, splineSlots[i], 8f * Time.deltaTime));
             }
             return;
         }
@@ -123,7 +124,7 @@ public class SplineObjectPlacer : MonoBehaviour
         splineSlots.Clear();
         ClearObjects();
 
-        double step = 1.0 / (objectCount - 1);
+        double step = .9f / (objectCount - 1);
 
         for (int i = 0; i < objectCount; i++)
         {
@@ -141,7 +142,7 @@ public class SplineObjectPlacer : MonoBehaviour
         splineSlots.Clear();
         ClearObjects();
 
-        double splineLength = splineComputer.CalculateLength();
+        double splineLength = splineComputer.CalculateLength() - offsetLength;
         float currentDistance = 0f;
         int index = 0;
 
