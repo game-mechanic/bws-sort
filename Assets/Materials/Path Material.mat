@@ -109,7 +109,7 @@ Material:
     - _DistortionEnabled: 0
     - _DistortionStrength: 50
     - _DistortionStrengthScaled: 5
-    - _DstBlend: 10
+    - _DstBlend: 0
     - _EmissionChannel: 4
     - _EmissionEnabled: 0
     - _FlipbookMode: 0
@@ -163,7 +163,7 @@ Material:
     - _SpecularToonSize: 0.25
     - _SpecularToonSmoothness: 0.05
     - _SpecularType: 0
-    - _SrcBlend: 5
+    - _SrcBlend: 1
     - _UVSec: 0
     - _UseAlphaTest: 0
     - _UseEmission: 0
@@ -181,7 +181,7 @@ Material:
     - _UseSpecular: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.2845319, g: 0.29062048, b: 0.4339623, a: 1}
+    - _BaseColor: {r: 0.20965083, g: 0.16660734, b: 0.3018868, a: 1}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
@@ -191,7 +191,7 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0.6285331, g: 0.6285331, b: 0.6285331, a: 0.5}
-    - _SColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+    - _SColor: {r: 0.61415774, g: 0.3890174, b: 0.8867924, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
   m_BuildTextureStacks: []
