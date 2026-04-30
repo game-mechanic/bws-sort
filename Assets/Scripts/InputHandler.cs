@@ -35,6 +35,9 @@ public class InputHandler : Singleton<InputHandler>
             ReleaseDrag();
         }
     }
+
+    
+
     public bool TryRaycast2D(Ray ray, out RaycastHit2D hit)
     {
         hit = Physics2D.Raycast(ray.origin, ray.direction, 100);
@@ -84,7 +87,7 @@ public class InputHandler : Singleton<InputHandler>
                 {
                     overlappingBubble = results[i];
                 }
-                if((b.transform.position-draggable.transform.position).sqrMagnitude<closest)
+                if ((b.transform.position - draggable.transform.position).sqrMagnitude < closest)
                 {
                     closest = (b.transform.position - draggable.transform.position).sqrMagnitude;
                     overlappingBubble = results[i];
@@ -153,5 +156,5 @@ public class InputHandler : Singleton<InputHandler>
             highlightedBubble.Highlight(true);
             highlightedBubble.Bounce(0.2f, 0.5f);
         }
-    }
+    }    
 }
