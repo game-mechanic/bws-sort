@@ -20,6 +20,15 @@ public class InputHandler : Singleton<InputHandler>
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Time.timeScale =3f;
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Time.timeScale = 1f;
+        }
+    
         if (!isDragging
             && Input.GetMouseButtonDown(0)
             && TryRaycast2D(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit2D hit)

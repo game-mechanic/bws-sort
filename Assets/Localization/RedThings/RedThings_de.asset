@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: RedThings_de
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: b27c41fadcfb01c49a4481fef917db1b, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 11684483072
+    m_Localized: Fische
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83004428288
+    m_Localized: Stier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731028590592
+    m_Localized: Kokosnuss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 801245433856
+    m_Localized: Rose
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819100585984
+    m_Localized: Gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 848775286784
+    m_Localized: Eisen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 876545773568
+    m_Localized: Puppe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 916739788800
+    m_Localized: Blut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1153806045184
+    m_Localized: Sonnenblume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1195107356672
+    m_Localized: Avocado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1213918810112
+    m_Localized: Jungfrau
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1253823418368
+    m_Localized: Geppetto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1273591173120
+    m_Localized: Fee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1304859709440
+    m_Localized: Peter Pan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1335465545728
+    m_Localized: Olive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1382659854336
+    m_Localized: Kirsche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1401043488768
+    m_Localized: Sauerstoff
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1419712335872
+    m_Localized: Tomate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1437252915200
+    m_Localized: Helium
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1454889963520
+    m_Localized: Bulgarien
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1473504284672
+    m_Localized: "K\xFCrbis"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1500406550528
+    m_Localized: Serbien
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1518857293824
+    m_Localized: Hausschuh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1536418844672
+    m_Localized: Rapunzel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1553841983488
+    m_Localized: Kroatien
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1571571306496
+    m_Localized: "Rum\xE4nien"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1602940506112
+    m_Localized: Nase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1623626813440
+    m_Localized: Prinz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1646427049984
+    m_Localized: Holz
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

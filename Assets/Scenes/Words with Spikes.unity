@@ -665,7 +665,7 @@ MonoBehaviour:
     data:
       name: Van Gogh
       icon: {fileID: 0}
-  initialSpawns: 31
+  initialSpawns: 19
 --- !u!1 &429325393
 GameObject:
   m_ObjectHideFlags: 0

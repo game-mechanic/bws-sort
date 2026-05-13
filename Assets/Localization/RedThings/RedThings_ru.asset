@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: RedThings_ru
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: ru
+  m_SharedData: {fileID: 11400000, guid: b27c41fadcfb01c49a4481fef917db1b, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 11684483072
+    m_Localized: "\u0420\u044B\u0431\u044B"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83004428288
+    m_Localized: "\u0422\u0435\u043B\u0435\u0446"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731028590592
+    m_Localized: "\u041A\u043E\u043A\u043E\u0441"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 801245433856
+    m_Localized: "\u0420\u043E\u0437\u0430"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819100585984
+    m_Localized: "\u0417\u043E\u043B\u043E\u0442\u043E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 848775286784
+    m_Localized: "\u0416\u0435\u043B\u0435\u0437\u043E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 876545773568
+    m_Localized: "\u041C\u0430\u0440\u0438\u043E\u043D\u0435\u0442\u043A\u0430"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 916739788800
+    m_Localized: "\u041A\u0440\u043E\u0432\u044C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1153806045184
+    m_Localized: "\u041F\u043E\u0434\u0441\u043E\u043B\u043D\u0443\u0445"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1195107356672
+    m_Localized: "\u0410\u0432\u043E\u043A\u0430\u0434\u043E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1213918810112
+    m_Localized: "\u0414\u0435\u0432\u0430"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1253823418368
+    m_Localized: "\u0414\u0436\u0435\u043F\u043F\u0435\u0442\u0442\u043E"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1273591173120
+    m_Localized: "\u0424\u0435\u044F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1304859709440
+    m_Localized: "\u041F\u0438\u0442\u0435\u0440 \u041F\u044D\u043D"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1335465545728
+    m_Localized: "\u041E\u043B\u0438\u0432\u043A\u0430"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1382659854336
+    m_Localized: "\u0412\u0438\u0448\u043D\u044F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1401043488768
+    m_Localized: "\u041A\u0438\u0441\u043B\u043E\u0440\u043E\u0434"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1419712335872
+    m_Localized: "\u041F\u043E\u043C\u0438\u0434\u043E\u0440"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1437252915200
+    m_Localized: "\u0413\u0435\u043B\u0438\u0439"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1454889963520
+    m_Localized: "\u0411\u043E\u043B\u0433\u0430\u0440\u0438\u044F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1473504284672
+    m_Localized: "\u0422\u044B\u043A\u0432\u0430"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1500406550528
+    m_Localized: "\u0421\u0435\u0440\u0431\u0438\u044F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1518857293824
+    m_Localized: "\u0422\u0430\u043F\u043E\u0447\u043A\u0430"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1536418844672
+    m_Localized: "\u0420\u0430\u043F\u0443\u043D\u0446\u0435\u043B\u044C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1553841983488
+    m_Localized: "\u0425\u043E\u0440\u0432\u0430\u0442\u0438\u044F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1571571306496
+    m_Localized: "\u0420\u0443\u043C\u044B\u043D\u0438\u044F"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1602940506112
+    m_Localized: "\u041D\u043E\u0441"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1623626813440
+    m_Localized: "\u041F\u0440\u0438\u043D\u0446"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1646427049984
+    m_Localized: "\u0414\u0435\u0440\u0435\u0432\u044F\u043D\u043D\u044B\u0439"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
