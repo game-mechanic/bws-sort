@@ -20,9 +20,13 @@ public class HandUI : MonoBehaviour
     {
         mainCamera = Camera.main;
         handTransform = transform.GetChild(0);
+
         hand = handTransform.GetComponent<Image>();
-        lineRenderer.positionCount = pointsCount;
-        UpdateLineRenderer();
+        if (lineRenderer != null)
+        {
+            lineRenderer.positionCount = pointsCount;
+            UpdateLineRenderer();
+        }
     }
 
     // Update is called once per frame
@@ -82,6 +86,6 @@ public class HandUI : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawSphere(hand.transform.position + handJoinOffset,2f);
+        Gizmos.DrawSphere(hand.transform.position + handJoinOffset, 2f);
     }
 }

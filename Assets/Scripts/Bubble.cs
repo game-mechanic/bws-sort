@@ -27,9 +27,10 @@ public class Bubble : MonoBehaviour
     [SerializeField] List<visuals> textUIs;
     [SerializeField] TextMeshPro categoryText;
     [SerializeField] List<Data> names;
+    [SerializeField] bool canChangeColor = true;
     Rigidbody2D rb;
     Collider2D col;
-    [SerializeField] float radius=0.5f;
+    [SerializeField] float radius = 0.5f;
     SortingGroup sortingGroup;
     float bounceAmplitude;
     float bounceDuration;
@@ -46,6 +47,8 @@ public class Bubble : MonoBehaviour
     public byte Index { get => index; }
     public BubbleType Category { get => category; set => category = value; }
     public List<Data> Names { get => names; }
+    public bool CanChangeColor { get => canChangeColor; }
+
     Vector3[] textPositions;
 
     private void Start()
@@ -203,7 +206,7 @@ public class Bubble : MonoBehaviour
         Gizmos.DrawSphere(transform.position, radius: Radius);
     }
 
-    public void Blast()
+    public void Blast(System.Action OnBlastComplete = null)
     {
         if (categoryText != null)
             categoryText.text = Category.name;
@@ -302,12 +305,20 @@ public class Bubble : MonoBehaviour
             );
 
             blastSequence.Append(seq);
-        }   
+        }
         blastSequence.AppendCallback(() =>
         {
             ParticlePool.PlayRevealFx(transform.position);
             CategoryManager.Instance.SpawnNewCategories();
             Destroy(gameObject);
+            OnBlastComplete?.Invoke();
         });
+    }
+
+    internal void SetColor(Color bubbleColor)
+    {
+        bgColor = bubbleColor;
+        if (bg != null)
+            bg.color = bgColor;
     }
 }

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
+  m_Name: Tentacles
+  m_EditorClassIdentifier: 
+  bubbles:
+  - {fileID: 7926608256317659342, guid: f4726219ba286a641bd821d85f3795ab, type: 3}
+  - {fileID: 7926608256317659342, guid: dfd0aabdba01d5f4584e51cb0c4cd864, type: 3}
+  - {fileID: 7926608256317659342, guid: cf0d193e5f14eea40b57033c80f1ead9, type: 3}
+  - {fileID: 7926608256317659342, guid: f473291504864e042bb460dd7c3aec2f, type: 3}

@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InputHandler : Singleton<InputHandler>
 {
@@ -10,6 +11,8 @@ public class InputHandler : Singleton<InputHandler>
     bool isDragging;
     Vector3 startScale;
     Vector3 offset;
+    public UnityEvent OnSuccessfullMerge;
+
     private void Start()
     {
         mainCamera = Camera.main;
@@ -74,6 +77,7 @@ public class InputHandler : Singleton<InputHandler>
         }
     }
     Collider2D[] results = new Collider2D[10];
+
     private bool GetOverlap(Vector3 center, float radius, out Collider2D hit)
     {
         int count = Physics2D.OverlapCircle(center, radius, new ContactFilter2D() { layerMask = ~0 }, results);
@@ -139,7 +143,7 @@ public class InputHandler : Singleton<InputHandler>
 
         if (CategoryManager.Instance.ReduceCount(a.Category) <= 0)
         {
-            newBubble.Blast();
+            newBubble.Blast(/*()=> OnSuccessfullMerge?.Invoke()*/);
         }
         return true;
     }
