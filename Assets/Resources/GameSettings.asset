@@ -29,5 +29,5 @@ MonoBehaviour:
   textBreathingSpeed: 1
   tableReference:
     m_TableCollectionName: Pop
-  selectedLanguage: 1
+  selectedLanguage: 3
   englishLocale: {fileID: 11400000, guid: 8453d8e5bb2028f40a88d83511917e13, type: 2}

@@ -1,12 +1,13 @@
 using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Tables;
 using UnityEngine.Rendering;
-using static UnityEditor.Progress;
 
 
 [SelectionBase]
@@ -43,7 +44,7 @@ public class Bubble : MonoBehaviour
     public BubbleType Category { get => category; set => category = value; }
     public List<string> Names { get => names; }
 
-    private void Start()
+    private IEnumerator Start()
     {
         if (Category != null)
             CategoryManager.Instance.RegisterCategory(Category);
@@ -59,6 +60,7 @@ public class Bubble : MonoBehaviour
             textPositions[i] = textUIs[i].transform.localPosition;
         }
         RedrawNames();
+        yield return null;
         foreach (var name in textUIs)
         {
 #if UNITY_EDITOR
@@ -182,17 +184,29 @@ public class Bubble : MonoBehaviour
             col = GetComponent<CircleCollider2D>();
         Gizmos.DrawSphere(transform.position, radius: Radius);
     }
+    public bool TranslationExists(TableReference tableReference, string key)
+    {
+        StringTable table = LocalizationSettings.StringDatabase.GetTable(tableReference);
+
+        if (table == null)
+            return false;
+
+        return table.GetEntry(key) != null;
+    }
     private void OnDrawGizmos()
     {
         //Gizmos.color = Color.white;
         //Gizmos.DrawSphere(transform.position, radius: Radius);
         if (Names.Count == 1)
         {
+            if (!TranslationExists(GameSettings.Instance.TableReference,
+                Names[0].ToLower())) return;
+
             string name = LocalizationSettings.StringDatabase.GetLocalizedString(
-                           GameSettings.Instance.TableReference,
-                            Names[0],
-                            GameSettings.Instance.EnglishLocale
-                        );
+               GameSettings.Instance.TableReference,
+                Names[0].ToLower(),
+                GameSettings.Instance.EnglishLocale
+            );
 
             GUIStyle style = null;
 #if UNITY_EDITOR

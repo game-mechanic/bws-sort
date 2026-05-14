@@ -23,9 +23,18 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] List<CategoryNames> bubbleNames;
     [SerializeField] private float spacing;
     [SerializeField] HorizontalAlignment horizontalAlignment;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[(int)GameSettings.Instance.SelectedLanguage];
+        if (!LocalizationSettings.StringDatabase.IsTableLoaded(GameSettings.Instance.TableReference))
+        {
+            LocalizationSettings.StringDatabase.DefaultTable = GameSettings.Instance.TableReference;
+        }
+    }
     private void Start()
     {
-        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[(int)GameSettings.Instance.SelectedLanguage];
         Redraw();
     }
 

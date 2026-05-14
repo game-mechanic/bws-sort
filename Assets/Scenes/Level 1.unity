@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: 63c7948bcd7d63042a34fd1cdd1130ee, type: 3}
       propertyPath: m_text
-      value: cappuccino
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: 63c7948bcd7d63042a34fd1cdd1130ee, type: 3}
       propertyPath: m_fontSize
@@ -646,7 +646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: 63c7948bcd7d63042a34fd1cdd1130ee, type: 3}
       propertyPath: m_text
-      value: London
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: 63c7948bcd7d63042a34fd1cdd1130ee, type: 3}
       propertyPath: m_Color.a
@@ -797,7 +797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: ca19560564bbd0d46b93e0473b6d2bfd, type: 3}
       propertyPath: m_text
-      value: Chicago
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: ca19560564bbd0d46b93e0473b6d2bfd, type: 3}
       propertyPath: m_Color.a
@@ -889,7 +889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: 896906e380ce552479913031cb6e131f, type: 3}
       propertyPath: m_text
-      value: Teacher
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: 896906e380ce552479913031cb6e131f, type: 3}
       propertyPath: m_Color.a
@@ -1032,7 +1032,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: 896906e380ce552479913031cb6e131f, type: 3}
       propertyPath: m_text
-      value: Chef
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: 896906e380ce552479913031cb6e131f, type: 3}
       propertyPath: m_Color.a
@@ -1180,7 +1180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: ca19560564bbd0d46b93e0473b6d2bfd, type: 3}
       propertyPath: m_text
-      value: Doctor
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: ca19560564bbd0d46b93e0473b6d2bfd, type: 3}
       propertyPath: m_Color.a
@@ -1457,7 +1457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: ca19560564bbd0d46b93e0473b6d2bfd, type: 3}
       propertyPath: m_text
-      value: Cortado
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: ca19560564bbd0d46b93e0473b6d2bfd, type: 3}
       propertyPath: m_Color.a
@@ -1549,7 +1549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: acf54008e498c2245850ca1ee1aa3e0a, type: 3}
       propertyPath: m_text
-      value: Fries
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: acf54008e498c2245850ca1ee1aa3e0a, type: 3}
       propertyPath: m_Color.a
@@ -1830,7 +1830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: 896906e380ce552479913031cb6e131f, type: 3}
       propertyPath: m_text
-      value: Violin
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: 896906e380ce552479913031cb6e131f, type: 3}
       propertyPath: m_Color.a
@@ -1927,7 +1927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: 896906e380ce552479913031cb6e131f, type: 3}
       propertyPath: m_text
-      value: Parents
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: 896906e380ce552479913031cb6e131f, type: 3}
       propertyPath: m_Color.a
@@ -2354,7 +2354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: acf54008e498c2245850ca1ee1aa3e0a, type: 3}
       propertyPath: m_text
-      value: Clarinet
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: acf54008e498c2245850ca1ee1aa3e0a, type: 3}
       propertyPath: m_Color.a
@@ -2451,7 +2451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: ca19560564bbd0d46b93e0473b6d2bfd, type: 3}
       propertyPath: m_text
-      value: Americano
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: ca19560564bbd0d46b93e0473b6d2bfd, type: 3}
       propertyPath: m_Color.a
@@ -2713,15 +2713,15 @@ RectTransform:
   m_GameObject: {fileID: 1093650000}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.11049725, y: 0.10752689, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1841987853}
+  m_Father: {fileID: 1117296423}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.049}
-  m_SizeDelta: {x: 22.553, y: 6.4725}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 21.627, y: 9.797}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1093650002
 MonoBehaviour:
@@ -2781,6 +2781,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -2891,7 +2892,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.24, z: 0}
   m_LocalScale: {x: 0.905, y: 0.93, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 1093650001}
   m_Father: {fileID: 1841987853}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1117296424
@@ -3113,7 +3115,7 @@ Transform:
   m_GameObject: {fileID: 1285070222}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.7, y: 3.4, z: 0}
+  m_LocalPosition: {x: -7.66, y: 2.75, z: 0}
   m_LocalScale: {x: 0.32, y: 0.32, z: 0.32}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -3308,7 +3310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: 06054e415969ef44bad70da4c7939758, type: 3}
       propertyPath: m_text
-      value: Macchiato
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: 06054e415969ef44bad70da4c7939758, type: 3}
       propertyPath: m_Color.a
@@ -3400,7 +3402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: acf54008e498c2245850ca1ee1aa3e0a, type: 3}
       propertyPath: m_text
-      value: ' '
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: acf54008e498c2245850ca1ee1aa3e0a, type: 3}
       propertyPath: m_Color.a
@@ -3625,7 +3627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: 06054e415969ef44bad70da4c7939758, type: 3}
       propertyPath: m_text
-      value: Drums
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: 06054e415969ef44bad70da4c7939758, type: 3}
       propertyPath: m_Color.a
@@ -3722,7 +3724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: ca19560564bbd0d46b93e0473b6d2bfd, type: 3}
       propertyPath: m_text
-      value: Corn Dog
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: ca19560564bbd0d46b93e0473b6d2bfd, type: 3}
       propertyPath: m_Color.a
@@ -3819,7 +3821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: acf54008e498c2245850ca1ee1aa3e0a, type: 3}
       propertyPath: m_text
-      value: Guitar
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: acf54008e498c2245850ca1ee1aa3e0a, type: 3}
       propertyPath: m_Color.a
@@ -3957,6 +3959,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4128,7 +4131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: 63c7948bcd7d63042a34fd1cdd1130ee, type: 3}
       propertyPath: m_text
-      value: Beijing
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: 63c7948bcd7d63042a34fd1cdd1130ee, type: 3}
       propertyPath: m_Color.a
@@ -4225,7 +4228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: 63c7948bcd7d63042a34fd1cdd1130ee, type: 3}
       propertyPath: m_text
-      value: Aunt
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: 63c7948bcd7d63042a34fd1cdd1130ee, type: 3}
       propertyPath: m_Color.a
@@ -4293,7 +4296,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1117296423}
-  - {fileID: 1093650001}
   - {fileID: 468494980}
   m_Father: {fileID: 1285070223}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4485,7 +4487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: 896906e380ce552479913031cb6e131f, type: 3}
       propertyPath: m_text
-      value: Child
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: 896906e380ce552479913031cb6e131f, type: 3}
       propertyPath: m_Color.a
@@ -4577,7 +4579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: 63c7948bcd7d63042a34fd1cdd1130ee, type: 3}
       propertyPath: m_text
-      value: Brother
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: 63c7948bcd7d63042a34fd1cdd1130ee, type: 3}
       propertyPath: m_Color.a
@@ -4845,7 +4847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6119163483510671203, guid: 896906e380ce552479913031cb6e131f, type: 3}
       propertyPath: m_text
-      value: Toronto
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6169383973052178333, guid: 896906e380ce552479913031cb6e131f, type: 3}
       propertyPath: m_Color.a
