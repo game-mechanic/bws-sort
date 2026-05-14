@@ -1,8 +1,13 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering;
+using static UnityEditor.Progress;
+
 
 [SelectionBase]
 public class Bubble : MonoBehaviour
@@ -54,13 +59,32 @@ public class Bubble : MonoBehaviour
             textPositions[i] = textUIs[i].transform.localPosition;
         }
         RedrawNames();
+        foreach (var name in textUIs)
+        {
+#if UNITY_EDITOR
+            SceneVisibilityManager.instance.Hide(name.gameObject, true);
+#endif
+        }
     }
 
     private void RedrawNames()
     {
         for (int i = 0; i < Names.Count; i++)
         {
-            textUIs[i].text = Names[i];
+            //textUIs[i].text = Names[i];
+            if (GameSettings.Instance.SelectedLanguage.ToString() == "en")
+            {
+                textUIs[i].text = Names[i];
+            }
+            else
+            {
+                textUIs[i].text =
+                    LocalizationSettings.StringDatabase.GetLocalizedString(
+                       GameSettings.Instance.TableReference,
+                        Names[i].ToLower()
+                    );
+            }
+
         }
     }
     private void OnValidate()
@@ -157,5 +181,36 @@ public class Bubble : MonoBehaviour
         if (col == null)
             col = GetComponent<CircleCollider2D>();
         Gizmos.DrawSphere(transform.position, radius: Radius);
+    }
+    private void OnDrawGizmos()
+    {
+        //Gizmos.color = Color.white;
+        //Gizmos.DrawSphere(transform.position, radius: Radius);
+        if (Names.Count == 1)
+        {
+            string name = LocalizationSettings.StringDatabase.GetLocalizedString(
+                           GameSettings.Instance.TableReference,
+                            Names[0],
+                            GameSettings.Instance.EnglishLocale
+                        );
+
+            GUIStyle style = null;
+#if UNITY_EDITOR
+            if (style == null)
+            {
+                style = new GUIStyle();
+                style.normal.textColor = Color.white;
+                style.fontSize = 10;
+                style.fontStyle = FontStyle.Bold;
+                style.alignment = TextAnchor.MiddleCenter;
+            }
+
+            Handles.Label(
+                transform.position + Vector3.back,
+                name,
+                style
+            );
+#endif
+        }
     }
 }

@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Pop_pt
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pt
+  m_SharedData: {fileID: 11400000, guid: 53adf0b7842060743bd7b96e9e6023c3, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 19540900777984
+    m_Localized: Tia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19814969184256
+    m_Localized: Bateria
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19832102916096
+    m_Localized: Macchiato
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19882723971072
+    m_Localized: Londres
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19901887746048
+    m_Localized: Toronto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19921538060288
+    m_Localized: Professor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19939527430144
+    m_Localized: Pais
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19960037576704
+    m_Localized: Cortado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19989162823680
+    m_Localized: Americano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20009589084160
+    m_Localized: Cappuccino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20031646928896
+    m_Localized: Chicago
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20054967259136
+    m_Localized: "Crian\xE7a"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20280511762432
+    m_Localized: Guitarra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20301567168512
+    m_Localized: "Irm\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20327076925440
+    m_Localized: Chef
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20367514210304
+    m_Localized: Cachorro-quente no palito
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20421578788864
+    m_Localized: Batatas fritas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20444563574784
+    m_Localized: Violino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20468815040512
+    m_Localized: "M\xE9dico"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20507130007552
+    m_Localized: Pequim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20585555103744
+    m_Localized: Clarinete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20619780624384
+    m_Localized: "Ver\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20632225124352
+    m_Localized: Notebook
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20652571693056
+    m_Localized: Oceano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20671513169920
+    m_Localized: Bateria
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20689053749248
+    m_Localized: Primavera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21272011673600
+    m_Localized: Rio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21333219151872
+    m_Localized: Fones de ouvido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21357361565696
+    m_Localized: Lagoa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21370682675200
+    m_Localized: Telefone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21397949845504
+    m_Localized: Inverno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21424222965760
+    m_Localized: Outono
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21444926050304
+    m_Localized: Lago
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

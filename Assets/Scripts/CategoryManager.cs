@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 public class CategoryManager : Singleton<CategoryManager>
 {
@@ -24,6 +25,7 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] HorizontalAlignment horizontalAlignment;
     private void Start()
     {
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[(int)GameSettings.Instance.SelectedLanguage];
         Redraw();
     }
 
