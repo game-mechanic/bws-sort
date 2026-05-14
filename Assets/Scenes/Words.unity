@@ -457,12 +457,6 @@ MonoBehaviour:
     data:
       name: VIRGO
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    data:
-      name: GEPPETTO
-      icon: {fileID: 0}
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
@@ -499,6 +493,12 @@ MonoBehaviour:
     data:
       name: TOMATO
       icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: PUMPKIN
+      icon: {fileID: 0}
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
@@ -511,17 +511,17 @@ MonoBehaviour:
     data:
       name: Bulgaria
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    data:
-      name: PUMPKIN
-      icon: {fileID: 0}
   - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: serbia
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: GEPPETTO
       icon: {fileID: 0}
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     overrideColor: 0
@@ -565,7 +565,7 @@ MonoBehaviour:
     data:
       name: WOODEN
       icon: {fileID: 0}
-  initialSpawns: 19
+  initialSpawns: 20
 --- !u!1 &429325393
 GameObject:
   m_ObjectHideFlags: 0

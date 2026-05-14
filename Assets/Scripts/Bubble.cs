@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
@@ -54,7 +55,7 @@ public class Bubble : MonoBehaviour
 
     Vector3[] textPositions;
 
-    private void Start()
+    private IEnumerator Start()
     {
         CategoryManager.Instance.RegisterCategory(Category);
         rb = GetComponent<Rigidbody2D>();
@@ -65,6 +66,7 @@ public class Bubble : MonoBehaviour
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
         RestorePositions();
         Redraw();
+        yield return null;
         foreach (var name in textUIs)
         {
 #if UNITY_EDITOR
