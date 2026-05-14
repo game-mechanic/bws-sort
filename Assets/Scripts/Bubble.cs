@@ -1,8 +1,11 @@
 using DG.Tweening;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering;
+using static UnityEditor.Progress;
 
 public class Bubble : MonoBehaviour
 {
@@ -62,6 +65,12 @@ public class Bubble : MonoBehaviour
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
         RestorePositions();
         Redraw();
+        foreach (var name in textUIs)
+        {
+#if UNITY_EDITOR
+            SceneVisibilityManager.instance.Hide(name.textUIs.gameObject, true);
+#endif
+        }
     }
     private void OnDisable()
     {
@@ -90,7 +99,20 @@ public class Bubble : MonoBehaviour
         {
             if (Names[i].icon == null)
             {
-                textUIs[i].textUIs.text = Names[i].name;
+                if (GameSettings.Instance.SelectedLanguage.ToString() == "en")
+                {
+                    textUIs[i].textUIs.text = Names[i].name;
+                }
+                else
+                {
+                    textUIs[i].textUIs.text =
+                        LocalizationSettings.StringDatabase.GetLocalizedString(
+                           GameSettings.Instance.TableReference,
+                            Names[i].name
+                        );
+                }
+
+
                 textUIs[i].bg.gameObject.SetActive(false);
                 textUIs[i].textUIs.gameObject.SetActive(true);
             }
@@ -320,5 +342,36 @@ public class Bubble : MonoBehaviour
         bgColor = bubbleColor;
         if (bg != null)
             bg.color = bgColor;
+    }
+    private void OnDrawGizmos()
+    {
+        //Gizmos.color = Color.white;
+        //Gizmos.DrawSphere(transform.position, radius: Radius);
+        if (Names.Count == 1)
+        {
+            string name = LocalizationSettings.StringDatabase.GetLocalizedString(
+                           GameSettings.Instance.TableReference,
+                            Names[0].name,
+                            GameSettings.Instance.EnglishLocale
+                        );
+
+            GUIStyle style = null;
+#if UNITY_EDITOR
+            if (style == null)
+            {
+                style = new GUIStyle();
+                style.normal.textColor = Color.white;
+                style.fontSize = 10;
+                style.fontStyle = FontStyle.Bold;
+                style.alignment = TextAnchor.MiddleCenter;
+            }
+
+            Handles.Label(
+                transform.position + Vector3.back,
+                name,
+                style
+            );
+#endif
+        }
     }
 }

@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Localization-String-Tables-French (fr)
+  m_Name: Localization-String-Tables-English (en) 1
   m_EditorClassIdentifier: 
-  m_GroupName: Localization-String-Tables-French (fr)
-  m_GUID: 07d1f7f635f545e47ae8398ae2480297
+  m_GroupName: Localization-String-Tables-English (en) 1
+  m_GUID: 702286939d03a394bb03d94180f9b145
   m_SerializeEntries:
-  - m_GUID: 1a52089eebd47db4091f9a0b7849d0bb
-    m_Address: RedThings_fr
+  - m_GUID: 43b458403d7238a4392367bde41e4476
+    m_Address: RedThings_en
     m_ReadOnly: 1
     m_SerializedLabels:
-    - Locale-fr
+    - Locale-en
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: a4d2e5faaa94ecd4f9f89bc9ccb524d9, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 55b278a1a2c335a46b25e91b79046bb4, type: 2}
-    - {fileID: 11400000, guid: b27be4fb673440444947b6987b351506, type: 2}
+    - {fileID: 11400000, guid: 0c70b1f11368ff54ab1ee90da2251fdb, type: 2}
+    - {fileID: 11400000, guid: f2228ba91922b7a43a0478619767e8b6, type: 2}

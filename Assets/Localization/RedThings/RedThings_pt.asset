@@ -134,6 +134,10 @@ MonoBehaviour:
     m_Localized: Madeira
     m_Metadata:
       m_Items: []
+  - m_Id: 262284659331072
+    m_Localized: "Le\xE3o"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

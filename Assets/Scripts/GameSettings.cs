@@ -1,9 +1,22 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Tables;
 
 [CreateAssetMenu(fileName = "GameSettings")]
 public class GameSettings : ScriptableObject
 {
+
+    public enum Locale
+    {
+        en = 0,
+        fr = 1,
+        de = 2,
+        pt = 3,
+        ru = 4,
+        es = 5,
+    }
+
     public static GameSettings Instance
     {
         get
@@ -33,6 +46,10 @@ public class GameSettings : ScriptableObject
     [SerializeField] ParticleSystem bubbleFXPrefab;
     [SerializeField] bool canChangeColor;
     [SerializeField] Color[] bubbleColors;
+    [SerializeField] private TableReference tableReference;
+    [SerializeField] private Locale selectedLanguage;
+    [SerializeField] private UnityEngine.Localization.Locale englishLocale;
+
     public float MaxBounceAmplitude { get => maxBounceAmplitude; }
     public float BounceTime { get => bounceTime; }
     public int MaxBounces { get => maxBounces; }
@@ -45,6 +62,9 @@ public class GameSettings : ScriptableObject
     public ParticleSystem BubbleFXPrefab { get => bubbleFXPrefab; internal set => bubbleFXPrefab = value; }
     public bool CanChangeColor { get => canChangeColor; }
     public Color[] BubbleColors { get => bubbleColors; }
+    public Locale SelectedLanguage { get => selectedLanguage; }
+    public TableReference TableReference { get => tableReference; }
+    public UnityEngine.Localization.Locale EnglishLocale { get => englishLocale; }
 
     internal static IEnumerator Init()
     {

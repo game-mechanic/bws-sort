@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 public class CategoryManager : Singleton<CategoryManager>
 {
@@ -21,6 +22,7 @@ public class CategoryManager : Singleton<CategoryManager>
 
     IEnumerator Start()
     {
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[(int)GameSettings.Instance.SelectedLanguage];
         Shuffle();
 
 
