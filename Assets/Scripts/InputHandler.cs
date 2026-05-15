@@ -105,11 +105,11 @@ public class InputHandler : Singleton<InputHandler>
                     closest = (b.transform.position - draggable.transform.position).sqrMagnitude;
                     overlappingBubble = results[i];
                 }
-                if (b.Category == draggable.Category && b != draggable)
-                {
-                    hit = results[i];
-                    return true;
-                }
+                //if (b.Category == draggable.Category && b != draggable)
+                //{
+                //    hit = results[i];
+                //    return true;
+                //}
             }
         }
         hit = overlappingBubble;

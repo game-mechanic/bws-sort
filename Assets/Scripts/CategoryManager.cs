@@ -1,4 +1,3 @@
-using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,8 +14,10 @@ public class CategoryManager : Singleton<CategoryManager>
         public Bubble.Data data;
     }
     [SerializeField] HorizontalAlignment horizontalAlignment;
+    [SerializeField] int pipeCount = 3;
     [SerializeField] List<Data> datas = new();
     [SerializeField] int initialSpawns = 15;
+    [SerializeField] ParticleSystem[] particleSystems;
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
 
@@ -25,30 +26,39 @@ public class CategoryManager : Singleton<CategoryManager>
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[(int)GameSettings.Instance.SelectedLanguage];
         Shuffle();
 
-
+        var fx = particleSystems[1];
+        fx.Play();
         WaitForSeconds _waitForSeconds0_1 = new(0.1f);
         Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
         for (int j = 0; j < Mathf.Min(initialSpawns, datas.Count); j++)
         {
-            Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
-            BubbleType category = datas[j].name;
-            Bubble.Data data = datas[j].data;
-            Color bubbleColor = datas[j].overrideColor ?
-                datas[j].bubbleColor :
-                GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
-
-            DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
-            {
-                var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
-                bubble.Category = category;
-                if (GameSettings.Instance.CanChangeColor)
-                    bubble.SetColor(bubbleColor);
-                bubble.SetName(new() { data });
-            });
-            if (j % 4 == 0)
-                yield return _waitForSeconds0_1;
+            CreateBubble(bubblePrefab, j, 1);
+            yield return _waitForSeconds0_1;
         }
+
+        fx.Stop();
+
         currentIndex = initialSpawns;
+    }
+
+    private void CreateBubble(Bubble bubblePrefab, int j, int entry)
+    {
+        Vector3 pos = horizontalAlignment.GetSlotPosition(entry % pipeCount);
+        pos += Vector3.right * Random.Range(-0.005f, 0.005f);
+
+        BubbleType category = datas[j].name;
+
+        Bubble.Data data = datas[j].data;
+
+        Color bubbleColor = datas[j].overrideColor ?
+            datas[j].bubbleColor :
+            GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
+
+        var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
+        bubble.Category = category;
+        if (GameSettings.Instance.CanChangeColor)
+            bubble.SetColor(bubbleColor);
+        bubble.SetName(new() { data });
     }
 
     private void Shuffle()
@@ -101,25 +111,22 @@ public class CategoryManager : Singleton<CategoryManager>
     {
         Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
 
+        StartCoroutine(SpawnNewBubbles(bubblePrefab));
+    }
+    IEnumerator SpawnNewBubbles(Bubble bubblePrefab)
+    {
         int end = Mathf.Min(currentIndex + 4, datas.Count);
+        int pipeIndex = Random.Range(0, pipeCount);
+        var fx = particleSystems[pipeIndex];
+        fx.Play();
+
+        WaitForSeconds waitForSeconds = new(0.1f);
         for (int j = currentIndex; j < end; j++)
         {
-            Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
-            BubbleType category = datas[j].name;
-            Bubble.Data data = datas[j].data;
-            Color bubbleColor = datas[j].overrideColor ?
-                        datas[j].bubbleColor :
-                        GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
-
-            DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
-            {
-                var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
-                bubble.Category = category;
-                if (GameSettings.Instance.CanChangeColor)
-                    bubble.SetColor(bubbleColor);
-                bubble.SetName(new() { data });
-            });
+            CreateBubble(bubblePrefab, j, pipeIndex);
+            yield return waitForSeconds;
         }
+        fx.Stop();
         currentIndex += 4;
     }
 

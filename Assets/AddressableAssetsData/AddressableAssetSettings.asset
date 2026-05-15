@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 06394d54d76d4b94ab5b885306049671
   m_currentHash:
     serializedVersion: 2
-    Hash: 59f495b87786c4b8a8e7a7e44370a32a
+    Hash: 39fbfbc3b66640fe7f84e8c71a77969e
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -42,7 +42,6 @@ MonoBehaviour:
   m_BundleRedirectLimit: -1
   m_SharedBundleSettings: 0
   m_SharedBundleSettingsCustomGroupIndex: 0
-  m_simulatedLoadDelay: 0.1
   m_ContiguousBundles: 1
   m_StripUnityVersionFromBundleBuild: 0
   m_DisableVisibleSubAssetRepresentations: 0
@@ -117,6 +116,7 @@ MonoBehaviour:
     - Locale-es-ES
     - Preload
     - Locale-en
+    - Locale-es-ES
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 996d99ed22923b1499e9fb1579b613af, type: 2}
