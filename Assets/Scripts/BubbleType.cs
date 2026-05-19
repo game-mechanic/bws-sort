@@ -1,9 +1,9 @@
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "GameData/Bubble Type", fileName = "NewBubbleType")]
 public class BubbleType : ScriptableObject
 {
-    [SerializeField] Material material;
+    [SerializeField] private Color color = Color.white;
 
-    public Material Material { get => material; }
+    public Color Color => color;
 }

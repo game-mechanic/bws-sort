@@ -1,5 +1,4 @@
 using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
@@ -19,36 +18,39 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] int initialSpawns = 15;
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
+    [SerializeField] HexGrid hexGrid;
 
-    IEnumerator Start()
+    public HexGrid HexGrid { get => hexGrid; }
+
+    void Start()
     {
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[(int)GameSettings.Instance.SelectedLanguage];
-        Shuffle();
+        //Shuffle();
 
 
-        WaitForSeconds _waitForSeconds0_1 = new(0.1f);
-        Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
-        for (int j = 0; j < Mathf.Min(initialSpawns, datas.Count); j++)
-        {
-            Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
-            BubbleType category = datas[j].name;
-            Bubble.Data data = datas[j].data;
-            Color bubbleColor = datas[j].overrideColor ?
-                datas[j].bubbleColor :
-                GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
+        //WaitForSeconds _waitForSeconds0_1 = new(0.1f);
+        //Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
+        //for (int j = 0; j < Mathf.Min(initialSpawns, datas.Count); j++)
+        //{
+        //    Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
+        //    BubbleType category = datas[j].name;
+        //    Bubble.Data data = datas[j].data;
+        //    Color bubbleColor = datas[j].overrideColor ?
+        //        datas[j].bubbleColor :
+        //        GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
 
-            DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
-            {
-                var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
-                bubble.Category = category;
-                if (GameSettings.Instance.CanChangeColor)
-                    bubble.SetColor(bubbleColor);
-                bubble.SetName(new() { data });
-            });
-            if (j % 4 == 0)
-                yield return _waitForSeconds0_1;
-        }
-        currentIndex = initialSpawns;
+        //    DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
+        //    {
+        //        var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
+        //        bubble.Category = category;
+        //        if (GameSettings.Instance.CanChangeColor)
+        //            bubble.SetColor(bubbleColor);
+        //        bubble.SetName(new() { data });
+        //    });
+        //    if (j % 4 == 0)
+        //        yield return _waitForSeconds0_1;
+        //}
+        //currentIndex = initialSpawns;
     }
 
     private void Shuffle()
@@ -61,13 +63,7 @@ public class CategoryManager : Singleton<CategoryManager>
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ChangeCategory();
-        }
-    }
+
     public void RegisterCategory(BubbleType category)
     {
         if (categoryCounts.ContainsKey(category))
@@ -153,5 +149,25 @@ public class CategoryManager : Singleton<CategoryManager>
     {
         if (!categoryCounts.ContainsKey(category)) return -1;
         return categoryCounts[category];
+    }
+
+    internal Bubble SpawnNewBubble(Vector3 position)
+    {
+        Vector3 pos = position;
+        int j = currentIndex++;
+        BubbleType category = datas[j].name;
+        Bubble.Data data = datas[j].data;
+        Color bubbleColor = datas[j].overrideColor ?
+                    datas[j].bubbleColor :
+                    GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
+
+
+        var bubble = Instantiate(GameSettings.Instance.Bubbles[0], pos, Quaternion.identity);
+        bubble.Category = category;
+        if (GameSettings.Instance.CanChangeColor)
+            bubble.SetColor(bubbleColor);
+        bubble.SetName(new() { data });
+        bubble.RestorePositions();
+        return bubble;
     }
 }

@@ -57,24 +57,26 @@ public class Bubble : MonoBehaviour
     Vector3[] textPositions;
     private GameObject ghostInstance;
 
-    private IEnumerator Start()
+    private void Start()
     {
-        CategoryManager.Instance.RegisterCategory(Category);
+        RestorePositions();
+        //yield return null;
+        if (category != null)
+            CategoryManager.Instance.RegisterCategory(Category);
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         sortingGroup = GetComponent<SortingGroup>();
         startScale = viusal.localScale;
         randomPhaseDiff = Random.Range(0, 90) * Mathf.Deg2Rad;
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
-        RestorePositions();
         Redraw();
-        yield return null;
-        foreach (var name in textUIs)
-        {
-#if UNITY_EDITOR
-            SceneVisibilityManager.instance.Hide(name.textUIs.gameObject, true);
-#endif
-        }
+        //yield return null;
+//        foreach (var name in textUIs)
+//        {
+//#if UNITY_EDITOR
+//            SceneVisibilityManager.instance.Hide(name.textUIs.gameObject, true);
+//#endif
+//        }
     }
     private void OnDisable()
     {
@@ -82,6 +84,7 @@ public class Bubble : MonoBehaviour
     }
     public void RestorePositions()
     {
+        if (names.Count == 0) return;
         textPositions = new Vector3[textUIs.Count];
         for (int i = 0; i < textUIs.Count; i++)
         {
@@ -99,6 +102,7 @@ public class Bubble : MonoBehaviour
 
     private void Redraw()
     {
+        if (Names.Count == 0) return;
         for (int i = 0; i < Names.Count; i++)
         {
             if (Names[i].icon == null)
@@ -203,6 +207,8 @@ public class Bubble : MonoBehaviour
     }
     private void TextBreathing()
     {
+        if (textPositions == null || textPositions.Length <= 0) return;
+
         Vector3 scaleModifier = viusal.localScale;
 
         for (int i = 0; i < textUIs.Count; i++)
@@ -351,7 +357,7 @@ public class Bubble : MonoBehaviour
         blastSequence.AppendCallback(() =>
         {
             ParticlePool.PlayRevealFx(transform.position);
-            CategoryManager.Instance.SpawnNewCategories();
+            //CategoryManager.Instance.SpawnNewCategories();
             Destroy(gameObject);
             OnBlastComplete?.Invoke();
         });

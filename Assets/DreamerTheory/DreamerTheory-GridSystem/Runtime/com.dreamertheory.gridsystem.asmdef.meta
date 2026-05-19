@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: aa43d9a84488cfb41ab666d9a11011f9
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 335448
+  packageName: DreamerTheory-GridSystem (Free)
+  packageVersion: 1.1.0
+  assetPath: Assets/DreamerTheory/DreamerTheory-GridSystem/Runtime/com.dreamertheory.gridsystem.asmdef
+  uploadId: 842156
