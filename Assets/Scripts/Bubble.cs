@@ -32,6 +32,7 @@ public class Bubble : MonoBehaviour
     [SerializeField] TextMeshPro categoryText;
     [SerializeField] List<Data> names;
     [SerializeField] bool canChangeColor = true;
+    [SerializeField] GameObject ghost;
     Rigidbody2D rb;
     Collider2D col;
     [SerializeField] float radius = 0.5f;
@@ -54,6 +55,7 @@ public class Bubble : MonoBehaviour
     public bool CanChangeColor { get => canChangeColor; }
 
     Vector3[] textPositions;
+    private GameObject ghostInstance;
 
     private IEnumerator Start()
     {
@@ -191,6 +193,7 @@ public class Bubble : MonoBehaviour
         IsKinematic = RigidbodyType2D.Kinematic;
         SetCollider(false);
         sortingGroup.sortingOrder = 100;
+        this.ghostInstance = Instantiate(ghost, transform.position, Quaternion.identity);
     }
     public void EndDrag()
     {
@@ -233,7 +236,22 @@ public class Bubble : MonoBehaviour
     public void Blast(System.Action OnBlastComplete = null)
     {
         if (categoryText != null)
+        {
             categoryText.text = Category.name;
+            if (GameSettings.Instance.SelectedLanguage.ToString() == "en")
+            {
+                categoryText.text = Category.name;
+            }
+            else
+            {
+                categoryText.text =
+                    LocalizationSettings.StringDatabase.GetLocalizedString(
+                       GameSettings.Instance.TableReference,
+                        Category.name
+                    );
+            }
+        }
+
         Sequence blastSequence = DOTween.Sequence();
         float delayStep = 0.08f;
         int index = 0;
@@ -375,5 +393,20 @@ public class Bubble : MonoBehaviour
             );
 #endif
         }
+    }
+
+    internal void BlastGhost()
+    {
+        Destroy(ghostInstance);
+        ParticlePool.PlayRevealFx(ghostInstance.transform.position);
+    }
+
+    internal void ReturnBack()
+    {
+        transform.DOMove(ghostInstance.transform.position, 0.2f).OnComplete(() =>
+        {
+            EndDrag();
+            Destroy(ghostInstance);
+        });
     }
 }

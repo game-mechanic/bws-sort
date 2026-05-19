@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -22,13 +23,13 @@ public class InputHandler : Singleton<InputHandler>
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Time.timeScale =3f;
+            Time.timeScale = 3f;
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
             Time.timeScale = 1f;
         }
-    
+
         if (!isDragging
             && Input.GetMouseButtonDown(0)
             && TryRaycast2D(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit2D hit)
@@ -48,7 +49,7 @@ public class InputHandler : Singleton<InputHandler>
         }
     }
 
-    
+
 
     public bool TryRaycast2D(Ray ray, out RaycastHit2D hit)
     {
@@ -105,11 +106,11 @@ public class InputHandler : Singleton<InputHandler>
                     closest = (b.transform.position - draggable.transform.position).sqrMagnitude;
                     overlappingBubble = results[i];
                 }
-                if (b.Category == draggable.Category && b != draggable)
-                {
-                    hit = results[i];
-                    return true;
-                }
+                //if (b.Category == draggable.Category && b != draggable)
+                //{
+                //    hit = results[i];
+                //    return true;
+                //}
             }
         }
         hit = overlappingBubble;
@@ -124,11 +125,40 @@ public class InputHandler : Singleton<InputHandler>
             return;
         }
         isDragging = false;
-        draggable.EndDrag();
-        if (highlightedBubble == null || !TryMerge(draggable, highlightedBubble))
+        //draggable.EndDrag();
+        if (highlightedBubble == null)
         {
             Highlight(null);
         }
+        else if (!TryMerge(draggable, highlightedBubble))
+        {
+            draggable.ReturnBack();
+            Highlight(null);
+        }
+        else
+        {
+            draggable.EndDrag();
+            draggable.BlastGhost();
+        }
+
+        //if (!TryMerge(draggable, highlightedBubble))
+        //{
+        //    if (highlightedBubble == null)
+        //    {
+        //        draggable.ReturnBack();
+        //    }
+        //    else
+        //    {
+        //        draggable.ReturnBack();
+        //        Highlight(null);
+        //    }
+        //}
+        //else
+        //{
+        //    draggable.EndDrag();
+        //    draggable.BlastGhost();
+        //}
+        //Highlight(null);
     }
 
     public bool TryMerge(Bubble a, Bubble b)
@@ -169,5 +199,5 @@ public class InputHandler : Singleton<InputHandler>
             highlightedBubble.Highlight(true);
             highlightedBubble.Bounce(0.2f, 0.5f);
         }
-    }    
+    }
 }

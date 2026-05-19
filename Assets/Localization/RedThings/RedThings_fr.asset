@@ -138,6 +138,22 @@ MonoBehaviour:
     m_Localized: Lion
     m_Metadata:
       m_Items: []
+  - m_Id: 1712980936036352
+    m_Localized: Choses rouges
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1713023583719424
+    m_Localized: "\xC9l\xE9ments"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1713064868253696
+    m_Localized: "Europe de l\u2019Est"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1713103627816960
+    m_Localized: Cendrillon
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
