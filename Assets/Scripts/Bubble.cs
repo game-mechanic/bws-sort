@@ -1,12 +1,10 @@
 using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering;
-using static UnityEditor.Progress;
 
 public class Bubble : MonoBehaviour
 {
@@ -56,6 +54,22 @@ public class Bubble : MonoBehaviour
 
     Vector3[] textPositions;
     private GameObject ghostInstance;
+    public int SortingOrder
+    {
+        get
+        {
+            if (sortingGroup == null)
+                sortingGroup = GetComponent<SortingGroup>();
+            return sortingGroup.sortingOrder;
+        }
+
+        set
+        {
+            if (sortingGroup == null)
+                sortingGroup = GetComponent<SortingGroup>();
+            sortingGroup.sortingOrder = value;
+        }
+    }
 
     private void Start()
     {
@@ -71,12 +85,12 @@ public class Bubble : MonoBehaviour
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
         Redraw();
         //yield return null;
-//        foreach (var name in textUIs)
-//        {
-//#if UNITY_EDITOR
-//            SceneVisibilityManager.instance.Hide(name.textUIs.gameObject, true);
-//#endif
-//        }
+        //        foreach (var name in textUIs)
+        //        {
+        //#if UNITY_EDITOR
+        //            SceneVisibilityManager.instance.Hide(name.textUIs.gameObject, true);
+        //#endif
+        //        }
     }
     private void OnDisable()
     {
@@ -169,6 +183,13 @@ public class Bubble : MonoBehaviour
         isBouncing = true;
         time = 0;
         this.bounceAmplitude = GameSettings.Instance.MaxBounceAmplitude;
+        this.bounceDuration = GameSettings.Instance.BounceTime;
+    }
+    public void Bounce(float bounceAmplitude)
+    {
+        isBouncing = true;
+        time = 0;
+        this.bounceAmplitude = bounceAmplitude;
         this.bounceDuration = GameSettings.Instance.BounceTime;
     }
     public void Bounce(float bounceAmplitude, float duration)

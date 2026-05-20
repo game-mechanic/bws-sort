@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Newtonsoft.Json.Serialization;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,7 @@ public class InputHandler : Singleton<InputHandler>
     private Vector3 screenCenter;
 
     [SerializeField] Transform spawnPosition;
-
+    RaycastHit2D hit;
     public UnityEvent OnSuccessfullMerge;
 
     private void Start()
@@ -47,8 +48,17 @@ public class InputHandler : Singleton<InputHandler>
         {
             isDragging = false;
             draggerVisual.gameObject.SetActive(false);
-            Vector3 position = highlightedBubble.transform.position + (activeStack.transform.position - highlightedBubble.transform.position).normalized * activeStack.Radius * 2;
-            ReleaseStack(activeStack, position);
+            if (highlightedBubble != null && activeStack != null)
+            {
+                Vector3 direction = (new Vector3(hit.point.x, hit.point.y, 0) - highlightedBubble.transform.position).normalized;
+                Vector3 position = highlightedBubble.transform.position + 2 * activeStack.Radius * direction;
+                Debug.DrawLine(hit.point, hit.point + Vector2.up * -.1f, Color.red, 3);
+                Debug.DrawRay(hit.point, direction, Color.green, 3);
+
+
+
+                ReleaseStack(activeStack, position);
+            }
         }
 
         if (isDragging)
@@ -75,9 +85,13 @@ public class InputHandler : Singleton<InputHandler>
             draggerVisual.up = direction;
 
             // Get the base
-            var bubble = Physics2D.Raycast(activeStack.transform.position + direction, direction);
+            var hit = Physics2D.Raycast(activeStack.transform.position + direction, direction, 100);
 
-            if (bubble.collider && bubble.collider.TryGetComponent(out Bubble b))
+            //Debug.DrawRay(activeStack.transform.position, direction, Color.red, 2f);
+            this.hit = hit;
+
+            Debug.DrawRay(hit.point, direction, Color.red, 2f);
+            if (hit.collider && hit.collider.TryGetComponent(out Bubble b))
             {
                 if (b != highlightedBubble)
                 {
@@ -293,22 +307,35 @@ public class InputHandler : Singleton<InputHandler>
             return;
 
         Bubble targetBubble = highlightedBubble;
+        Highlight(null);
         var hexGrid = CategoryManager.Instance?.HexGrid;
 
         if (hexGrid == null || targetBubble == null)
             return;
+        activeStack.Bounce();
 
         activeStack.transform
-            .DOMove(position, 0.5f)
-            .SetEase(Ease.OutQuad)
+            .DOMove(position, (activeStack.transform.position - position).magnitude * shootDuration)
+            .SetEase(shootEase)
             .OnComplete(() =>
             {
                 // Target might have been destroyed while animating
                 if (targetBubble == null || activeStack == null)
                     return;
 
+                activeStack.Bounce();
+                targetBubble.Bounce();
+
+                //CascadeBounceEffect(targetBubble);
+
                 if (activeStack.Category != targetBubble.Category)
+                {
+                    var targetGridPos = hexGrid.GetGridPosition(position);
+                    hexGrid.AddGridObject(position, activeStack);
+                    activeStack.transform.DOMove(hexGrid.GetWorldPosition(targetGridPos), 0.1f);
                     return;
+                }
+
                 Vector2Int rootPos = hexGrid.GetGridPosition(targetBubble.transform.position);
 
                 List<Bubble> connected =
@@ -318,16 +345,84 @@ public class InputHandler : Singleton<InputHandler>
                 connected.Insert(0, activeStack);
 
                 // Need at least 2 to merge
-                if (connected.Count > 1)
+                if (connected.Count == 4)
                 {
                     MergeBubbles(connected);
                 }
+                else
+                {
+                    var targetGridPos = hexGrid.GetGridPosition(position);
+                    hexGrid.AddGridObject(position, activeStack);
+                    activeStack.transform.DOMove(hexGrid.GetWorldPosition(targetGridPos), 0.1f);
+                }
             });
 
-        highlightedBubble = null;
         this.activeStack = null;
         isDragging = false;
+        //DOVirtual.DelayedCall(1f, () =>
+        //{
         SpawnNewBubble();
+        //});
+    }
+    private void CascadeBounceEffect(Bubble originBubble)
+    {
+        if (originBubble == null)
+            return;
+
+        var hexGrid = CategoryManager.Instance?.HexGrid;
+
+        if (hexGrid == null)
+            return;
+
+        float maxAmplitude = GameSettings.Instance.MaxBounceAmplitude;
+
+        Vector2Int originPos = hexGrid.GetGridPosition(originBubble.transform.position);
+
+        HashSet<Bubble> visited = new HashSet<Bubble>();
+
+        // Start recursive propagation
+        PropagateBounce(originPos, 0, maxAmplitude, visited);
+    }
+    int maxDepth = 5;
+    private void PropagateBounce(
+        Vector2Int gridPos,
+        int depth,
+        float amplitude,
+        HashSet<Bubble> visited)
+    {
+        if (depth == maxDepth) return;
+
+        var hexGrid = CategoryManager.Instance?.HexGrid;
+
+        if (hexGrid == null)
+            return;
+
+        Bubble currentBubble = hexGrid.GetGridObject(gridPos) as Bubble;
+
+        if (currentBubble == null)
+            return;
+
+        if (visited.Contains(currentBubble))
+            return;
+
+        visited.Add(currentBubble);
+
+        // Apply bounce with current amplitude
+        currentBubble.Bounce(amplitude);
+
+        // Fade amplitude as depth increases
+        float nextAmplitude = Mathf.Lerp(GameSettings.Instance.MaxBounceAmplitude, 0, ((float)depth) / maxDepth);
+        // Get neighbours and continue recursion
+        List<Vector2Int> neighbours = hexGrid.GetNeighbors(gridPos);
+
+        foreach (var neighbourPos in neighbours)
+        {
+            PropagateBounce(
+                neighbourPos,
+                depth + 1,
+                nextAmplitude,
+                visited);
+        }
     }
 
     /// <summary>
@@ -380,6 +475,9 @@ public class InputHandler : Singleton<InputHandler>
     #region BullSHit
     [Tooltip("How many seconds before the last bubble finishes converging to spawn bubbleOnPointMerge. Clamped to [0, bubbleMergeMoveDuration].")]
     [SerializeField] private float mergeSpawnEarlyOffset = 0.15f;
+    [SerializeField] private float shootDuration;
+    [SerializeField] private Ease shootEase;
+    [SerializeField] private float staggerInterval = 0.1f;
 
     #endregion
     public void MergeBubbles(List<Bubble> bubbles)
@@ -479,6 +577,21 @@ public class InputHandler : Singleton<InputHandler>
 
     private IEnumerator MergeSequentially(List<Bubble> bubbles, Vector3 mergePosition)
     {
+        yield return new WaitForSeconds(mergeStartDelay);
+
+
+        foreach (var bubble in bubbles)
+        {
+            bubble.Bounce();
+            bubble.Highlight(true);
+            yield return new WaitForSeconds(staggerInterval);
+        }
+
+
+        yield return new WaitForSeconds(.3f);
+
+
+
         // Remove destroyed/null bubbles
         bubbles.RemoveAll(b => b == null);
 
@@ -487,10 +600,15 @@ public class InputHandler : Singleton<InputHandler>
 
         // First bubble stays in place
         Bubble current = bubbles[1];
+
+        var hexGrid = CategoryManager.Instance.HexGrid;
+        var rGP = hexGrid.GetGridPosition(bubbles[1].transform.position);
+        hexGrid.RemoveGridObject(rGP.x, rGP.y);
+
         TryMerge(bubbles[0], bubbles[1], out current);
-
+        current.SortingOrder = 100;
         current.transform.DOKill();
-
+        Dictionary<Bubble, Vector3> originalPositions = new();
         for (int i = 2; i < bubbles.Count; i++)
         {
             Bubble next = bubbles[i];
@@ -505,10 +623,29 @@ public class InputHandler : Singleton<InputHandler>
                 .DOMove(next.transform.position, mergeMoveDuration)
                 .SetEase(mergeEase);
 
+            foreach (var b in hexGrid.GetNeighbors(hexGrid.GetGridPosition(next.transform.position)))
+            {
+                if (hexGrid.TryGetGridObject(b, out Bubble n) && n != null)
+                {
+                    if (!originalPositions.ContainsKey(n))
+                    {
+                        originalPositions.Add(n, n.transform.position);
+                    }
+                    Vector3 direction = (n.transform.position - next.transform.position).normalized;
+                    n.transform.DOKill();
+                    n.transform.DOMove(n.transform.position + direction * 0.3f, mergeMoveDuration)
+                    .SetEase(mergeEase).SetTarget(n.transform);
+                }
+            }
+
             yield return moveTween.WaitForCompletion();
+
+            rGP = hexGrid.GetGridPosition(current.transform.position);
+            hexGrid.RemoveGridObject(rGP.x, rGP.y);
 
             // Merge when reached
             TryMerge(current, next, out Bubble mergedResult);
+            mergedResult.SortingOrder = 100;
 
             // Use merged bubble if created
             if (mergedResult != null)
@@ -519,12 +656,22 @@ public class InputHandler : Singleton<InputHandler>
             // Small delay between merges
             yield return new WaitForSeconds(mergeInterval);
         }
+        yield return new WaitForSeconds(2);
+        foreach (var item in originalPositions)
+        {
+            if (item.Key != null && item.Key != null)
+            {
+                item.Key.transform.DOKill();
+                item.Key.transform.DOMove(item.Value, mergeMoveDuration).SetEase(Ease.OutBack);
+            }
+        }
     }
 
 
     public void SpawnNewBubble()
     {
         activeStack = CategoryManager.Instance.SpawnNewBubble(spawnPosition.position);
+        activeStack.transform.DOScale(1, 0.5f).From(0).SetEase(Ease.OutBack);
     }
 
 }

@@ -155,6 +155,7 @@ public class CategoryManager : Singleton<CategoryManager>
     {
         Vector3 pos = position;
         int j = currentIndex++;
+        if (j >= datas.Count) return null;
         BubbleType category = datas[j].name;
         Bubble.Data data = datas[j].data;
         Color bubbleColor = datas[j].overrideColor ?

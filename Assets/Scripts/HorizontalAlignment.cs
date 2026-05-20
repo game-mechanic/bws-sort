@@ -10,6 +10,7 @@ public class HorizontalAlignment : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		slotsHalfLength = (transform.childCount - 1) * spacing * offset / 2f;
 		Align();
 	}
 #if UNITY_EDITOR

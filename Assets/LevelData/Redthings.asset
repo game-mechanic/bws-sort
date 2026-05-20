@@ -137,10 +137,10 @@ MonoBehaviour:
     name: 
     text: anubis
   - position: {x: 2, y: 4}
-    category: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
+    category: {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
     sprite: {fileID: 0}
     name: 
-    text: Taurus
+    text: Brazil
   - position: {x: 2, y: 5}
     category: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     sprite: {fileID: 0}
@@ -187,20 +187,20 @@ MonoBehaviour:
     name: 
     text: van gough
   - position: {x: 3, y: 4}
+    category: {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
+    sprite: {fileID: 0}
+    name: 
+    text: Japan
+  - position: {x: 3, y: 5}
+    category: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
+    sprite: {fileID: 0}
+    name: 
+    text: newton
+  - position: {x: 3, y: 6}
     category: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     sprite: {fileID: 0}
     name: 
-    text: Pisces
-  - position: {x: 3, y: 5}
-    category: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
-    sprite: {fileID: 0}
-    name: 
-    text: Serbia
-  - position: {x: 3, y: 6}
-    category: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
-    sprite: {fileID: 0}
-    name: 
-    text: helium
+    text: Virgo
   - position: {x: 3, y: 7}
     category: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     sprite: {fileID: 0}
@@ -242,10 +242,10 @@ MonoBehaviour:
     name: 
     text: Cat
   - position: {x: 4, y: 5}
-    category: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
+    category: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
     sprite: {fileID: 0}
     name: 
-    text: Bulgaria
+    text: Tesla
   - position: {x: 4, y: 6}
     category: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
     sprite: {fileID: 0}
@@ -302,10 +302,10 @@ MonoBehaviour:
     name: 
     text: Slippers
   - position: {x: 5, y: 7}
-    category: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
+    category: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
     sprite: {fileID: 0}
     name: 
-    text: Pumpkin
+    text: Sunflower
   - position: {x: 5, y: 8}
     category: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     sprite: {fileID: 0}
@@ -337,10 +337,10 @@ MonoBehaviour:
     name: 
     text: hibiscus
   - position: {x: 6, y: 4}
-    category: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
+    category: {fileID: 11400000, guid: 3647eb6dd435dac4a987742651d7650e, type: 2}
     sprite: {fileID: 0}
     name: 
-    text: Sunflower
+    text: Neptune
   - position: {x: 6, y: 5}
     category: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
     sprite: {fileID: 0}

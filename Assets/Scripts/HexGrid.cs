@@ -7,7 +7,7 @@ public class HexGrid : HexGridSystem3D<Bubble>
 
     private void Start()
     {
-        SetUpGrid(new(levelData.gridWidth, levelData.gridHeight), 1);
+        SetUpGrid(new(levelData.gridWidth, levelData.gridHeight), CellSize);
         hexOrientation = levelData.hexOrientation == global::HexOrientation.PointyTop ? HexOrientation.PointyTop : HexOrientation.FlatTop;
         for (int i = 0; i < levelData.cells.Count; i++)
         {
@@ -16,7 +16,7 @@ public class HexGrid : HexGridSystem3D<Bubble>
 
             if (bubblePrefab != null && levelData.cells[i].category != null)
             {
-                Vector3 worldPos = GetWorldPosition(gridPos);                
+                Vector3 worldPos = GetWorldPosition(gridPos);
                 Bubble.Data data = new()
                 {
                     name = levelData.cells[i].text,
@@ -27,6 +27,8 @@ public class HexGrid : HexGridSystem3D<Bubble>
                 var bubble = Instantiate(bubblePrefab, worldPos, Quaternion.identity);
                 bubble.Category = levelData.cells[i].category;
                 bubble.SetName(new() { data });
+                if (GameSettings.Instance.CanChangeColor)
+                    bubble.SetColor(GameSettings.Instance.BubbleColors[i % GameSettings.Instance.BubbleColors.Length]);
                 bubble.RestorePositions();
 
                 AddGridObject(worldPos, bubble);
