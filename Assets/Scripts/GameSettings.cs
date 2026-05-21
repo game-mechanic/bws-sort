@@ -51,7 +51,7 @@ public class GameSettings : ScriptableObject
     [SerializeField] private UnityEngine.Localization.Locale englishLocale;
     [SerializeField] bool canCreateGhost;
     [SerializeField] private bool canMerge;
-
+    [SerializeField] private BubbleType[] order;
     public float MaxBounceAmplitude { get => maxBounceAmplitude; }
     public float BounceTime { get => bounceTime; }
     public int MaxBounces { get => maxBounces; }
@@ -69,6 +69,7 @@ public class GameSettings : ScriptableObject
     public UnityEngine.Localization.Locale EnglishLocale { get => englishLocale; }
     public bool CanCreateGhost { get => canCreateGhost; }
     public bool CanMerge { get => canMerge; internal set => canMerge = value; }
+    public BubbleType[] Order { get => order; set => order = value; }
 
     internal static IEnumerator Init()
     {

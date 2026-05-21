@@ -366,40 +366,42 @@ public class Bubble : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        //Gizmos.color = Color.white;
-        //Gizmos.DrawSphere(transform.position, radius: Radius);
-        if (Names.Count == 1)
-        {
-            string name = LocalizationSettings.StringDatabase.GetLocalizedString(
-                           GameSettings.Instance.TableReference,
-                            Names[0].name,
-                            GameSettings.Instance.EnglishLocale
-                        );
+        Color color = category.Color;
+        color.a = 1f;
+        Gizmos.color = color;
+        Gizmos.DrawSphere(transform.position, radius: Radius);
+        //        if (Names.Count == 1)
+        //        {
+        //            string name = LocalizationSettings.StringDatabase.GetLocalizedString(
+        //                           GameSettings.Instance.TableReference,
+        //                            Names[0].name,
+        //                            GameSettings.Instance.EnglishLocale
+        //                        );
 
-            GUIStyle style = null;
-#if UNITY_EDITOR
-            if (style == null)
-            {
-                style = new GUIStyle();
-                style.normal.textColor = Color.white;
-                style.fontSize = 10;
-                style.fontStyle = FontStyle.Bold;
-                style.alignment = TextAnchor.MiddleCenter;
-            }
+        //            GUIStyle style = null;
+        //#if UNITY_EDITOR
+        //            if (style == null)
+        //            {
+        //                style = new GUIStyle();
+        //                style.normal.textColor = Color.white;
+        //                style.fontSize = 10;
+        //                style.fontStyle = FontStyle.Bold;
+        //                style.alignment = TextAnchor.MiddleCenter;
+        //            }
 
-            Handles.Label(
-                transform.position + Vector3.back,
-                name,
-                style
-            );
-#endif
-        }
+        //            Handles.Label(
+        //                transform.position + Vector3.back,
+        //                name,
+        //                style
+        //            );
+        //#endif
+        //        }
     }
 
     internal void BlastGhost()
     {
         Destroy(ghostInstance);
-        ParticlePool.PlayRevealFx(ghostInstance.transform.position);
+        //ParticlePool.PlayRevealFx(ghostInstance.transform.position);
     }
 
     internal void ReturnBack()

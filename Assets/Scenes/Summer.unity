@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &29039205
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -199,8 +199,8 @@ Transform:
   m_GameObject: {fileID: 29039203}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.5657, y: -1, z: 2.0107}
+  m_LocalPosition: {x: 0, y: -3.2163, z: 15}
+  m_LocalScale: {x: 1.4246267, y: -0.67296, z: 0.80363935}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -232,93 +232,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &77378508
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 77378510}
-  - component: {fileID: 77378509}
-  m_Layer: 0
-  m_Name: seamless-abstract-snowflakes-background-vector-illustration-horizontally-vertically-repeatable_8130-3372
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &77378509
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77378508}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f260781b62673d247a46b7240dba93e7, type: 3}
-  m_Color: {r: 0.6745098, g: 0.76862746, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 14.8, y: 10.46}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &77378510
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77378508}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.71, z: 0}
-  m_LocalScale: {x: 1.221, y: 1.221, z: 1.221}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -385,7 +298,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a7d2c317a1949f24282ffd51e35be7f6, type: 3}
-  m_Color: {r: 0.35782307, g: 0.36111015, b: 0.4056604, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -470,224 +383,196 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf384fb6eec2be54b8bcacde80477751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOnStart: 0
+  spawnOnStart: 1
   horizontalAlignment: {fileID: 1345279678}
   datas:
-  - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
+  - name: {fileID: 11400000, guid: 1fbc509c10ec17a439e4e509a6641948, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: PISCES
+      name: Ball
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
+  - name: {fileID: 11400000, guid: 1fbc509c10ec17a439e4e509a6641948, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: TAURUS
+      name: Sand
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
+  - name: {fileID: 11400000, guid: 1fbc509c10ec17a439e4e509a6641948, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: COCONUT
+      name: BUcket
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
+  - name: {fileID: 11400000, guid: 1fbc509c10ec17a439e4e509a6641948, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: ROSE
+      name: Bikini
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
+  - name: {fileID: 11400000, guid: af0e4fd4f70bcf8408234ca938af7395, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: GOLD
+      name: float
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
+  - name: {fileID: 11400000, guid: af0e4fd4f70bcf8408234ca938af7395, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: IRON
+      name: goggles
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
+  - name: {fileID: 11400000, guid: af0e4fd4f70bcf8408234ca938af7395, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: PUPPET
+      name: slide
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
+  - name: {fileID: 11400000, guid: af0e4fd4f70bcf8408234ca938af7395, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: BLOOD
+      name: towel
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
+  - name: {fileID: 11400000, guid: bc1f8c3c98bb154498cac7738e30070a, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: SUNFLOWER
+      name: cone
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
+  - name: {fileID: 11400000, guid: bc1f8c3c98bb154498cac7738e30070a, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: AVOCADO
+      name: scoop
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
+  - name: {fileID: 11400000, guid: bc1f8c3c98bb154498cac7738e30070a, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: LEO
+      name: candy
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
+  - name: {fileID: 11400000, guid: bc1f8c3c98bb154498cac7738e30070a, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: VIRGO
+      name: cherry
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
+  - name: {fileID: 11400000, guid: 0b4bcae7c0ff879418f5f688efac891e, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Fairy
+      name: basket
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 2578237c5a8d42f41859e009e92a26c9, type: 2}
+  - name: {fileID: 11400000, guid: 0b4bcae7c0ff879418f5f688efac891e, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: PETER PAN
+      name: juice
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
+  - name: {fileID: 11400000, guid: 0b4bcae7c0ff879418f5f688efac891e, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Olive
+      name: apple
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
+  - name: {fileID: 11400000, guid: 0b4bcae7c0ff879418f5f688efac891e, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: CHERRY
+      name: blanket
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
+  - name: {fileID: 11400000, guid: 10c01c35eace1fd4ca65a7270366507e, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: OXYGEN
+      name: Coconut
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
+  - name: {fileID: 11400000, guid: 10c01c35eace1fd4ca65a7270366507e, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: TOMATO
+      name: palm
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
+  - name: {fileID: 11400000, guid: 10c01c35eace1fd4ca65a7270366507e, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: PUMPKIN
+      name: pineapple
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
+  - name: {fileID: 11400000, guid: 10c01c35eace1fd4ca65a7270366507e, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: HELIUM
+      name: parrot
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
+  - name: {fileID: 11400000, guid: 4b6aa07ef2571964dbdf4f1cb703a43d, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Bulgaria
+      name: Tent
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
+  - name: {fileID: 11400000, guid: 4b6aa07ef2571964dbdf4f1cb703a43d, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: serbia
+      name: Fire
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
+  - name: {fileID: 11400000, guid: 4b6aa07ef2571964dbdf4f1cb703a43d, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: GEPPETTO
+      name: Stick
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
+  - name: {fileID: 11400000, guid: 4b6aa07ef2571964dbdf4f1cb703a43d, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: SLIPPER
+      name: lantern
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 2578237c5a8d42f41859e009e92a26c9, type: 2}
+  - name: {fileID: 11400000, guid: 3f94bd056e1e53843b844e2e32042c05, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: RAPUNZEL
+      name: Apple
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
+  - name: {fileID: 11400000, guid: 3f94bd056e1e53843b844e2e32042c05, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Croatia
+      name: Mango
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
+  - name: {fileID: 11400000, guid: 3f94bd056e1e53843b844e2e32042c05, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Romania
+      name: Strawberry
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
+  - name: {fileID: 11400000, guid: 3f94bd056e1e53843b844e2e32042c05, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: NOSE
+      name: Litchi
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
+  - name: {fileID: 11400000, guid: 38bb36d15195522409ec5379b5374020, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Prince
+      name: Piano
       icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
+  - name: {fileID: 11400000, guid: 38bb36d15195522409ec5379b5374020, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: WOODEN
+      name: Violin
       icon: {fileID: 0}
-  initialSpawns: 0
---- !u!1 &408859957
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 408859958}
-  m_Layer: 0
-  m_Name: Spawnner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &408859958
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 408859957}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 647980496}
-  - {fileID: 1700328910}
-  - {fileID: 2027278377}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  - name: {fileID: 11400000, guid: 38bb36d15195522409ec5379b5374020, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Flute
+      icon: {fileID: 0}
+  initialSpawns: 20
 --- !u!1 &429325393
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,7 +752,7 @@ Transform:
   m_GameObject: {fileID: 631648310}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: -2.66, z: 0}
+  m_LocalPosition: {x: -2.75, y: -2.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -919,116 +804,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 15}
   m_EdgeRadius: 0
---- !u!1 &647980495
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 647980496}
-  - component: {fileID: 647980498}
-  - component: {fileID: 647980497}
-  m_Layer: 0
-  m_Name: A
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &647980496
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647980495}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 408859958}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &647980497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647980495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 320fdffd72b28d143b59cbfc2e896708, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalAlignment: {fileID: 647980498}
-  datas:
-  - name: {fileID: 11400000, guid: 421c06c4ff94d8847829d4b98abaa5db, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    data:
-      name: COFFEE
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 421c06c4ff94d8847829d4b98abaa5db, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    data:
-      name: MILK
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 421c06c4ff94d8847829d4b98abaa5db, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    data:
-      name: Tea
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 421c06c4ff94d8847829d4b98abaa5db, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    data:
-      name: JUICE
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 3f94bd056e1e53843b844e2e32042c05, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    data:
-      name: ORANGE
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 3f94bd056e1e53843b844e2e32042c05, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    data:
-      name: Grape
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 3f94bd056e1e53843b844e2e32042c05, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    data:
-      name: Apple
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 3f94bd056e1e53843b844e2e32042c05, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    data:
-      name: Peach
-      icon: {fileID: 0}
---- !u!114 &647980498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647980495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e546e3a4350fff439d7a4d13975c025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: {x: 1, y: 0, z: 0}
-  eulerRotation: {x: 0, y: 0, z: 0}
-  spacing: 0.8
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,7 +927,7 @@ Transform:
   m_GameObject: {fileID: 706578156}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -9.152, z: 0}
+  m_LocalPosition: {x: 0, y: -6.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1238,7 +1013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9, y: -1211}
+  m_AnchoredPosition: {x: 255, y: -1237}
   m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0.23598285, y: 0.91602844}
 --- !u!114 &799683888
@@ -1350,7 +1125,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.43867922, g: 0.6569706, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1375,7 +1150,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.5
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1400,7 +1175,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.47, z: -15.99}
+  m_LocalPosition: {x: 0, y: -3.21, z: -15.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1590,7 +1365,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 32767
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3d93b77bdee161f4bbd3bd7e1289ed1c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1905,116 +1680,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1700328909
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1700328910}
-  - component: {fileID: 1700328912}
-  - component: {fileID: 1700328911}
-  m_Layer: 0
-  m_Name: A (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1700328910
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700328909}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 408859958}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1700328911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700328909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 320fdffd72b28d143b59cbfc2e896708, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalAlignment: {fileID: 1700328912}
-  datas:
-  - name: {fileID: 11400000, guid: 2486d2eb0f134114d943f8b43b5ccd15, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: TOUCAN
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 2486d2eb0f134114d943f8b43b5ccd15, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Owl
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 2486d2eb0f134114d943f8b43b5ccd15, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Dove
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 2486d2eb0f134114d943f8b43b5ccd15, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: DUCK
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 38bb36d15195522409ec5379b5374020, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: VIOLIN
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 38bb36d15195522409ec5379b5374020, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Piano
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 38bb36d15195522409ec5379b5374020, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Flute
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 38bb36d15195522409ec5379b5374020, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Guitar
-      icon: {fileID: 0}
---- !u!114 &1700328912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700328909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e546e3a4350fff439d7a4d13975c025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: {x: 1, y: 0, z: 0}
-  eulerRotation: {x: 0, y: 0, z: 0}
-  spacing: 0.8
 --- !u!1 &1793024767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,7 +1720,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793024767}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: df4ea4a5ea5155a4183d3d6b0692889a, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: c6acfba26a0cde84ab225a480b672328, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -2069,12 +1734,14 @@ VideoPlayer:
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
-  m_TargetAudioSources: []
-  m_DirectAudioVolumes: []
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
   m_Url: 
-  m_EnabledAudioTracks: 
-  m_DirectAudioMutes: 
-  m_ControlledAudioTrackCount: 0
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 01
+  m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 1
@@ -2107,7 +1774,7 @@ Transform:
   m_GameObject: {fileID: 1994293659}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: -2.6, z: 0}
+  m_LocalPosition: {x: 2.75, y: -2.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2159,146 +1826,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 15}
   m_EdgeRadius: 0
---- !u!1 &2027278376
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2027278377}
-  - component: {fileID: 2027278379}
-  - component: {fileID: 2027278378}
-  m_Layer: 0
-  m_Name: A (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2027278377
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2027278376}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 408859958}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2027278378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2027278376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 320fdffd72b28d143b59cbfc2e896708, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalAlignment: {fileID: 2027278379}
-  datas:
-  - name: {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Brazil
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 0.14199996, b: 0.14199996, a: 1}
-    data:
-      name: Canada
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 0.3160377, b: 0.7601107, a: 1}
-    data:
-      name: Japan
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Spartans
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 0.7353099, b: 0, a: 1}
-    data:
-      name: Egypt
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: ec1fa4016a8007c489dbb546ed8a23e8, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 0.7353099, b: 0, a: 1}
-    data:
-      name: Comedy
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: ec1fa4016a8007c489dbb546ed8a23e8, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 0.7353099, b: 0, a: 1}
-    data:
-      name: Drama
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: ec1fa4016a8007c489dbb546ed8a23e8, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 0.7353099, b: 0, a: 1}
-    data:
-      name: SCI-Fi
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: ec1fa4016a8007c489dbb546ed8a23e8, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 0.7353099, b: 0, a: 1}
-    data:
-      name: Action
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: b8d1de56817b49a40b167e219f035818, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 0.7353099, b: 0, a: 1}
-    data:
-      name: VOWS
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: b8d1de56817b49a40b167e219f035818, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 0.7353099, b: 0, a: 1}
-    data:
-      name: Bride
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: b8d1de56817b49a40b167e219f035818, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 0.7353099, b: 0, a: 1}
-    data:
-      name: Groom
-      icon: {fileID: 0}
-  - name: {fileID: 11400000, guid: b8d1de56817b49a40b167e219f035818, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 0.7353099, b: 0, a: 1}
-    data:
-      name: CEREMONY
-      icon: {fileID: 0}
---- !u!114 &2027278379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2027278376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e546e3a4350fff439d7a4d13975c025, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: {x: 1, y: 0, z: 0}
-  eulerRotation: {x: 0, y: 0, z: 0}
-  spacing: 0.8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2316,5 +1843,3 @@ SceneRoots:
   - {fileID: 1345279677}
   - {fileID: 1484017449}
   - {fileID: 1494818129}
-  - {fileID: 408859958}
-  - {fileID: 77378510}

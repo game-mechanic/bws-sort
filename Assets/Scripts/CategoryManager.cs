@@ -14,6 +14,7 @@ public class CategoryManager : Singleton<CategoryManager>
         [ColorUsage(false)] public Color bubbleColor = Color.white;
         public Bubble.Data data;
     }
+    [SerializeField] bool spawnOnStart = true;
     [SerializeField] HorizontalAlignment horizontalAlignment;
     [SerializeField] List<Data> datas = new();
     [SerializeField] int initialSpawns = 15;
@@ -23,6 +24,12 @@ public class CategoryManager : Singleton<CategoryManager>
     IEnumerator Start()
     {
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[(int)GameSettings.Instance.SelectedLanguage];
+
+        if (!spawnOnStart)
+        {
+            yield break;
+        }
+
         Shuffle();
 
 

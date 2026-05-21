@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class BubbleType : ScriptableObject
 {
-    [SerializeField] Material material;
+    [SerializeField,ColorUsage(false)] Color color;
 
-    public Material Material { get => material; }
+    public Color Color { get => color; }
 }

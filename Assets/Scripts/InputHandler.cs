@@ -212,4 +212,31 @@ public class InputHandler : Singleton<InputHandler>
             highlightedBubble.Bounce(0.2f, 0.5f);
         }
     }
+    private void OnDrawGizmos()
+    {
+        if (Camera.main == null) return;
+
+        // Distance from camera to world z=0 plane
+        float distance = Mathf.Abs(Camera.main.transform.position.z);
+
+        Vector3 screenTopLeft =
+            Camera.main.ScreenToWorldPoint(
+                new Vector3(0, Screen.height*2, distance));
+
+        screenTopLeft.z = 0;
+
+        float offset = 1f;
+
+        for (int i = 0; i < GameSettings.Instance.Order.Length; i++)
+        {
+            Color color = GameSettings.Instance.Order[i % GameSettings.Instance.Order.Length].Color;
+            color.a = 1;
+            Gizmos.color =
+                color;
+
+            Gizmos.DrawSphere(
+                screenTopLeft + Vector3.down * offset * i,
+                0.5f);
+        }
+    }
 }

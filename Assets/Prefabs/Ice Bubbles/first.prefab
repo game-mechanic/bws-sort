@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: first
       objectReference: {fileID: 0}
+    - target: {fileID: 2816874508231451658, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 05718a8797701d24c85fa501f6721449, type: 2}
     - target: {fileID: 3894895754638207601, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.8
@@ -104,6 +108,10 @@ PrefabInstance:
       propertyPath: m_fontSizeMax
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 6820046140131779249, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 05718a8797701d24c85fa501f6721449, type: 2}
     - target: {fileID: 6904026035258751567, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_Sprite
       value: 
