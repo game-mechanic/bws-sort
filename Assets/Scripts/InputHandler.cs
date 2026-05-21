@@ -125,10 +125,22 @@ public class InputHandler : Singleton<InputHandler>
             return;
         }
         isDragging = false;
+
+        if (!GameSettings.Instance.CanMerge)
+        {
+            Highlight(null);
+            draggable.EndDrag();
+            draggable = null;
+            isDragging = false;
+            return;
+        }
+
+
         //draggable.EndDrag();
         if (highlightedBubble == null)
         {
             Highlight(null);
+            draggable.ReturnBack();
         }
         else if (!TryMerge(draggable, highlightedBubble))
         {
@@ -138,7 +150,8 @@ public class InputHandler : Singleton<InputHandler>
         else
         {
             draggable.EndDrag();
-            draggable.BlastGhost();
+            if (GameSettings.Instance.CanCreateGhost)
+                draggable.BlastGhost();
         }
 
         //if (!TryMerge(draggable, highlightedBubble))

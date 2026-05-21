@@ -49,6 +49,8 @@ public class GameSettings : ScriptableObject
     [SerializeField] private TableReference tableReference;
     [SerializeField] private Locale selectedLanguage;
     [SerializeField] private UnityEngine.Localization.Locale englishLocale;
+    [SerializeField] bool canCreateGhost;
+    [SerializeField] private bool canMerge;
 
     public float MaxBounceAmplitude { get => maxBounceAmplitude; }
     public float BounceTime { get => bounceTime; }
@@ -65,6 +67,8 @@ public class GameSettings : ScriptableObject
     public Locale SelectedLanguage { get => selectedLanguage; }
     public TableReference TableReference { get => tableReference; }
     public UnityEngine.Localization.Locale EnglishLocale { get => englishLocale; }
+    public bool CanCreateGhost { get => canCreateGhost; }
+    public bool CanMerge { get => canMerge; internal set => canMerge = value; }
 
     internal static IEnumerator Init()
     {

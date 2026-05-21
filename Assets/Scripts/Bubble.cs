@@ -193,7 +193,8 @@ public class Bubble : MonoBehaviour
         IsKinematic = RigidbodyType2D.Kinematic;
         SetCollider(false);
         sortingGroup.sortingOrder = 100;
-        this.ghostInstance = Instantiate(ghost, transform.position, Quaternion.identity);
+        if (GameSettings.Instance.CanCreateGhost)
+            this.ghostInstance = Instantiate(ghost, transform.position, Quaternion.identity);
     }
     public void EndDrag()
     {
@@ -403,10 +404,17 @@ public class Bubble : MonoBehaviour
 
     internal void ReturnBack()
     {
-        transform.DOMove(ghostInstance.transform.position, 0.2f).OnComplete(() =>
+        if (GameSettings.Instance.CanCreateGhost)
+        {
+            transform.DOMove(ghostInstance.transform.position, 0.2f).OnComplete(() =>
+            {
+                EndDrag();
+                Destroy(ghostInstance);
+            });
+        }
+        else
         {
             EndDrag();
-            Destroy(ghostInstance);
-        });
+        }
     }
 }

@@ -53,6 +53,7 @@ public class CategoryManager : Singleton<CategoryManager>
 
     private void Shuffle()
     {
+        if (datas.Count == 0) return;
         for (int i = 0; i < 5; i++)
         {
             int a = Random.Range(0, initialSpawns);
