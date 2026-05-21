@@ -1,5 +1,4 @@
 using DG.Tweening;
-using Newtonsoft.Json.Serialization;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +15,7 @@ public class InputHandler : Singleton<InputHandler>
     private Vector3 screenCenter;
 
     [SerializeField] Transform spawnPosition;
+    [SerializeField] Dragger dragger;
     RaycastHit2D hit;
     public UnityEvent OnSuccessfullMerge;
 
@@ -43,6 +43,7 @@ public class InputHandler : Singleton<InputHandler>
             //}
             isDragging = true;
             draggerVisual.gameObject.SetActive(true);
+            dragger.WarmUp();
         }
         else if (Input.GetMouseButtonUp(0))
         {
@@ -56,7 +57,7 @@ public class InputHandler : Singleton<InputHandler>
                 Debug.DrawRay(hit.point, direction, Color.green, 3);
 
 
-
+                dragger.Shoot();
                 ReleaseStack(activeStack, position);
             }
         }
@@ -657,14 +658,41 @@ public class InputHandler : Singleton<InputHandler>
             yield return new WaitForSeconds(mergeInterval);
         }
         yield return new WaitForSeconds(2);
+
         foreach (var item in originalPositions)
         {
             if (item.Key != null && item.Key != null)
             {
-                item.Key.transform.DOKill();
-                item.Key.transform.DOMove(item.Value, mergeMoveDuration).SetEase(Ease.OutBack);
+                if (HasNeighbour(item.Key))
+                {
+                    item.Key.transform.DOKill();
+                    item.Key.transform.DOMove(item.Value, mergeMoveDuration).SetEase(Ease.OutBack);
+                }
+                else
+                {
+                    item.Key.Bounce();
+                    item.Key.OnBounce.AddListener(() =>
+                    {
+                        ParticlePool.PlayRevealFx(item.Key.transform.position);
+                        Destroy(item.Key.gameObject);
+                    });
+                }
             }
         }
+    }
+
+    bool HasNeighbour(Bubble b)
+    {
+        var grid = CategoryManager.Instance.HexGrid;
+        Vector2Int gridPos = grid.GetGridPosition(b.transform.position);
+        foreach (var neibour in grid.GetNeighbors(gridPos))
+        {
+            if (grid.TryGetGridObject(neibour, out _))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 

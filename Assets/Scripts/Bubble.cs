@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering;
 
@@ -43,7 +44,7 @@ public class Bubble : MonoBehaviour
     float time = 0f;
     Vector3 startScale;
     [SerializeField] private BubbleType category;
-
+    public UnityEvent OnBounce = new();
     public RigidbodyType2D IsKinematic { get => rb.bodyType; set => rb.bodyType = value; }
     public float Radius => radius;
 
@@ -174,6 +175,7 @@ public class Bubble : MonoBehaviour
         {
             isBouncing = false;
             time = 0;
+            OnBounce?.Invoke();
             viusal.DOKill();
             viusal.DOScale(startScale, 0.05f).SetTarget(viusal);
         }
