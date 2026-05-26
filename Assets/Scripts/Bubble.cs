@@ -6,7 +6,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering;
-using static UnityEditor.Progress;
 
 public class Bubble : MonoBehaviour
 {
@@ -33,6 +32,7 @@ public class Bubble : MonoBehaviour
     [SerializeField] List<Data> names;
     [SerializeField] bool canChangeColor = true;
     [SerializeField] GameObject ghost;
+    BubbleSlot bubbleSlot;
     Rigidbody2D rb;
     Collider2D col;
     [SerializeField] float radius = 0.5f;
@@ -53,6 +53,7 @@ public class Bubble : MonoBehaviour
     public BubbleType Category { get => category; set => category = value; }
     public List<Data> Names { get => names; }
     public bool CanChangeColor { get => canChangeColor; }
+    public BubbleSlot BubbleSlot { get => bubbleSlot; set => bubbleSlot = value; }
 
     Vector3[] textPositions;
     private GameObject ghostInstance;
@@ -352,7 +353,8 @@ public class Bubble : MonoBehaviour
         blastSequence.AppendCallback(() =>
         {
             ParticlePool.PlayRevealFx(transform.position);
-            CategoryManager.Instance.SpawnNewCategories();
+            //CategoryManager.Instance.SpawnNewCategories();
+            CategoryManager.Instance.SpawnNewCategory(bubbleSlot);
             Destroy(gameObject);
             OnBlastComplete?.Invoke();
         });

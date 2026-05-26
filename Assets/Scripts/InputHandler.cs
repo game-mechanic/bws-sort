@@ -181,16 +181,24 @@ public class InputHandler : Singleton<InputHandler>
         int nextIndex = a.Index + b.Index + 1;
         var bigBubble = a.Index == maxIndex ? a : b;
         var newBubble = Instantiate(GameSettings.Instance.Bubbles[nextIndex]);
+        var smallBubble = bigBubble == b ? b : a;
         newBubble.transform.SetPositionAndRotation(bigBubble.transform.position, bigBubble.transform.rotation);
         var names = a.Names;
         names.AddRange(b.Names);
+
         newBubble.Category = a.Category;
         newBubble.SetName(names);
         newBubble.Bounce();
         a.transform.DOKill();
         b.transform.DOKill();
+
+        newBubble.BubbleSlot = bigBubble.BubbleSlot;
+        CategoryManager.Instance.SpawnNewCategory(smallBubble.BubbleSlot);
+
+
         Destroy(a.gameObject);
         Destroy(b.gameObject);
+
 
         if (CategoryManager.Instance.ReduceCount(a.Category) <= 0)
         {
@@ -221,7 +229,7 @@ public class InputHandler : Singleton<InputHandler>
 
         Vector3 screenTopLeft =
             Camera.main.ScreenToWorldPoint(
-                new Vector3(0, Screen.height*2, distance));
+                new Vector3(0, Screen.height * 2, distance));
 
         screenTopLeft.z = 0;
 

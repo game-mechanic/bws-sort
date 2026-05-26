@@ -20,10 +20,15 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] int initialSpawns = 15;
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
+    BubbleSlot[] bubbleSlots;
+
+
 
     IEnumerator Start()
     {
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[(int)GameSettings.Instance.SelectedLanguage];
+
+        bubbleSlots = FindObjectsByType<BubbleSlot>(sortMode: FindObjectsSortMode.None);
 
         if (!spawnOnStart)
         {
@@ -35,27 +40,35 @@ public class CategoryManager : Singleton<CategoryManager>
 
         WaitForSeconds _waitForSeconds0_1 = new(0.1f);
         Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
-        for (int j = 0; j < Mathf.Min(initialSpawns, datas.Count); j++)
+        for (int j = 0; j < bubbleSlots.Length; j++)
         {
-            Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
+            Vector3 pos = bubbleSlots[j].transform.position;
             BubbleType category = datas[j].name;
             Bubble.Data data = datas[j].data;
             Color bubbleColor = datas[j].overrideColor ?
                 datas[j].bubbleColor :
                 GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
 
-            DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
-            {
-                var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
-                bubble.Category = category;
-                if (GameSettings.Instance.CanChangeColor)
-                    bubble.SetColor(bubbleColor);
-                bubble.SetName(new() { data });
-            });
-            if (j % 4 == 0)
-                yield return _waitForSeconds0_1;
+            /*DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
+            {*/
+            Bubble bubble = CreateBubble(bubblePrefab, pos, category, data, bubbleColor);
+
+            bubble.BubbleSlot = bubbleSlots[j];
+            /*});*/
+            /*if (j % 4 == 0)
+                yield return _waitForSeconds0_1;*/
         }
         currentIndex = initialSpawns;
+    }
+
+    private static Bubble CreateBubble(Bubble bubblePrefab, Vector3 pos, BubbleType category, Bubble.Data data, Color bubbleColor)
+    {
+        var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
+        bubble.Category = category;
+        if (GameSettings.Instance.CanChangeColor)
+            bubble.SetColor(bubbleColor);
+        bubble.SetName(new() { data });
+        return bubble;
     }
 
     private void Shuffle()
@@ -161,5 +174,17 @@ public class CategoryManager : Singleton<CategoryManager>
     {
         if (!categoryCounts.ContainsKey(category)) return -1;
         return categoryCounts[category];
+    }
+
+    internal void SpawnNewCategory(BubbleSlot bubbleSlot)
+    {
+        var bubble = CreateBubble(bubblePrefab: GameSettings.Instance.Bubbles[0],
+            pos: bubbleSlot.transform.position,
+            category: datas[currentIndex].name,
+            data: datas[currentIndex].data,
+            bubbleColor: datas[currentIndex].overrideColor ?
+            datas[currentIndex].bubbleColor :
+            GameSettings.Instance.BubbleColors[currentIndex % GameSettings.Instance.BubbleColors.Length]);
+        bubble.BubbleSlot = bubbleSlot;
     }
 }
