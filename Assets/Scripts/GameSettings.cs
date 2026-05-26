@@ -52,6 +52,8 @@ public class GameSettings : ScriptableObject
     [SerializeField] bool canCreateGhost;
     [SerializeField] private bool canMerge;
     [SerializeField] private BubbleType[] order;
+    [SerializeField] private bool canTextBreathe;
+
     public float MaxBounceAmplitude { get => maxBounceAmplitude; }
     public float BounceTime { get => bounceTime; }
     public int MaxBounces { get => maxBounces; }
@@ -70,6 +72,7 @@ public class GameSettings : ScriptableObject
     public bool CanCreateGhost { get => canCreateGhost; }
     public bool CanMerge { get => canMerge; internal set => canMerge = value; }
     public BubbleType[] Order { get => order; set => order = value; }
+    public bool CanTextBreathe { get => canTextBreathe; internal set => canTextBreathe = value; }
 
     internal static IEnumerator Init()
     {

@@ -451,7 +451,7 @@ MonoBehaviour:
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
-      icon: {fileID: 21300000, guid: 08103021a367b5e4f92806acf84d72ee, type: 3}
+      icon: {fileID: 21300000, guid: f99391e3595dabd4fb770b311736de19, type: 3}
   - name: {fileID: 11400000, guid: fdb6c3ec8fb3c144b9da36badde5da48, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
