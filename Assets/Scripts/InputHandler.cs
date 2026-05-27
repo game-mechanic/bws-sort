@@ -84,6 +84,23 @@ public class InputHandler : Singleton<InputHandler>
                 Highlight(null);
             }
         }
+        else
+        {
+            if (TryRaycast2D(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit2D hit))
+            {
+                if (hit.collider != null && hit.collider.TryGetComponent(out Bubble d))
+                {
+                    if (d != highlightedBubble && d != draggable)
+                        Highlight(d);
+                }
+                else
+                    Highlight(null);
+            }
+            else
+            {
+                Highlight(null);
+            }
+        }
     }
     Collider2D[] results = new Collider2D[10];
 
