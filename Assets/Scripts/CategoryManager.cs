@@ -35,11 +35,12 @@ public class CategoryManager : Singleton<CategoryManager>
             yield break;
         }
 
-        Shuffle();
+        Shuffle(bubbleSlots.Length);
 
 
         WaitForSeconds _waitForSeconds0_1 = new(0.1f);
         Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
+
         for (int j = 0; j < bubbleSlots.Length; j++)
         {
             Vector3 pos = bubbleSlots[j].transform.position;
@@ -58,7 +59,7 @@ public class CategoryManager : Singleton<CategoryManager>
             /*if (j % 4 == 0)
                 yield return _waitForSeconds0_1;*/
         }
-        currentIndex = initialSpawns;
+        currentIndex = bubbleSlots.Length;
     }
 
     private static Bubble CreateBubble(Bubble bubblePrefab, Vector3 pos, BubbleType category, Bubble.Data data, Color bubbleColor)
@@ -71,13 +72,13 @@ public class CategoryManager : Singleton<CategoryManager>
         return bubble;
     }
 
-    private void Shuffle()
+    private void Shuffle(int length)
     {
         if (datas.Count == 0) return;
         for (int i = 0; i < 5; i++)
         {
-            int a = Random.Range(0, initialSpawns);
-            int b = Random.Range(0, initialSpawns);
+            int a = Random.Range(0, length);
+            int b = Random.Range(0, length);
             (datas[b], datas[a]) = (datas[a], datas[b]);
         }
     }
@@ -186,5 +187,9 @@ public class CategoryManager : Singleton<CategoryManager>
             datas[currentIndex].bubbleColor :
             GameSettings.Instance.BubbleColors[currentIndex % GameSettings.Instance.BubbleColors.Length]);
         bubble.BubbleSlot = bubbleSlot;
+        currentIndex++;
+        bubble.transform.DOScale(1, 0.3f)
+            .From(0)
+            .SetEase(Ease.InSine);
     }
 }

@@ -182,7 +182,7 @@ public class InputHandler : Singleton<InputHandler>
         var bigBubble = a.Index == maxIndex ? a : b;
         var newBubble = Instantiate(GameSettings.Instance.Bubbles[nextIndex]);
         var smallBubble = bigBubble == b ? b : a;
-        newBubble.transform.SetPositionAndRotation(bigBubble.transform.position, bigBubble.transform.rotation);
+        newBubble.transform.SetPositionAndRotation(b.BubbleSlot.transform.position, bigBubble.transform.rotation);
         var names = a.Names;
         names.AddRange(b.Names);
 
@@ -191,9 +191,10 @@ public class InputHandler : Singleton<InputHandler>
         newBubble.Bounce();
         a.transform.DOKill();
         b.transform.DOKill();
+        newBubble.SetOrder(5);
+        newBubble.BubbleSlot = b.BubbleSlot;
 
-        newBubble.BubbleSlot = bigBubble.BubbleSlot;
-        CategoryManager.Instance.SpawnNewCategory(smallBubble.BubbleSlot);
+        CategoryManager.Instance.SpawnNewCategory(a.BubbleSlot);
 
 
         Destroy(a.gameObject);

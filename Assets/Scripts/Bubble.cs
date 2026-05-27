@@ -54,6 +54,15 @@ public class Bubble : MonoBehaviour
     public List<Data> Names { get => names; }
     public bool CanChangeColor { get => canChangeColor; }
     public BubbleSlot BubbleSlot { get => bubbleSlot; set => bubbleSlot = value; }
+    public SortingGroup SortingGroup
+    {
+        get
+        {
+            if(sortingGroup == null)
+                sortingGroup = GetComponent<SortingGroup>();
+            return sortingGroup;
+        }
+    }
 
     Vector3[] textPositions;
     private GameObject ghostInstance;
@@ -63,7 +72,7 @@ public class Bubble : MonoBehaviour
         CategoryManager.Instance.RegisterCategory(Category);
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
-        sortingGroup = GetComponent<SortingGroup>();
+        sortingGroup ??= GetComponent<SortingGroup>();
         startScale = viusal.localScale;
         randomPhaseDiff = Random.Range(0, 90) * Mathf.Deg2Rad;
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
@@ -193,15 +202,22 @@ public class Bubble : MonoBehaviour
     {
         IsKinematic = RigidbodyType2D.Kinematic;
         SetCollider(false);
-        sortingGroup.sortingOrder = 100;
+        SetOrder(100);
         if (GameSettings.Instance.CanCreateGhost)
             this.ghostInstance = Instantiate(ghost, transform.position, Quaternion.identity);
     }
+
+    public void SetOrder(int order)
+    {
+        SortingGroup.sortingOrder = order;
+    }
+
     public void EndDrag()
     {
-        IsKinematic = RigidbodyType2D.Dynamic;
+        //IsKinematic = RigidbodyType2D.Dynamic;
         SetCollider(true);
-        sortingGroup.sortingOrder = 2;
+        //sortingGroup.sortingOrder = 2;
+        SetOrder(2);
     }
     private void TextBreathing()
     {
