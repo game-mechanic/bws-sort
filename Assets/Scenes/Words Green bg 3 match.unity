@@ -475,7 +475,7 @@ MonoBehaviour:
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
-      icon: {fileID: 21300000, guid: 6eeeb648e7028df4dbfdd5c72e118077, type: 3}
+      icon: {fileID: 21300000, guid: e9ac161efdcc3114d9788b1276dddb35, type: 3}
   initialSpawns: 10
 --- !u!1 &429325393
 GameObject:
