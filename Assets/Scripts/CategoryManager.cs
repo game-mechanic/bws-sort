@@ -18,6 +18,7 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] HorizontalAlignment horizontalAlignment;
     [SerializeField] List<Data> datas = new();
     [SerializeField] int initialSpawns = 15;
+    [SerializeField] int numberOfSuffles = 5;
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
 
@@ -61,7 +62,7 @@ public class CategoryManager : Singleton<CategoryManager>
     private void Shuffle()
     {
         if (datas.Count == 0) return;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < numberOfSuffles; i++)
         {
             int a = Random.Range(0, initialSpawns);
             int b = Random.Range(0, initialSpawns);
