@@ -179,6 +179,7 @@ public class CategoryManager : Singleton<CategoryManager>
 
     internal void SpawnNewCategory(BubbleSlot bubbleSlot)
     {
+        if (currentIndex >= datas.Count) return;
         var bubble = CreateBubble(bubblePrefab: GameSettings.Instance.Bubbles[0],
             pos: bubbleSlot.transform.position,
             category: datas[currentIndex].name,

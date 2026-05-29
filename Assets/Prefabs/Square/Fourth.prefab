@@ -1170,6 +1170,14 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9118234158138449018, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 7.6879
+      objectReference: {fileID: 0}
+    - target: {fileID: 9118234158138449018, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 4.351
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3868589361669517127, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
     m_RemovedGameObjects: []
