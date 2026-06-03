@@ -194,6 +194,7 @@ public class Bubble : MonoBehaviour
     }
     private void TextBreathing()
     {
+        if (!GameSettings.Instance.CanBreath) return;
         Vector3 scaleModifier = viusal.localScale;
 
         for (int i = 0; i < textUIs.Count; i++)

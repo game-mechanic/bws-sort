@@ -157,7 +157,7 @@ public class InputHandler : Singleton<InputHandler>
         Destroy(b.gameObject);
         Destroy(draggable.Container.gameObject);
         SplineObjectPlacer.instance.RemovePlacedStack(draggable.Container);
-        if (CategoryManager.Instance.ReduceCount(a.Category) <= 0)
+        if (nextIndex == 3)
         {
             newBubble.Blast();
         }

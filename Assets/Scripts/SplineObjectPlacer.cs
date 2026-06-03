@@ -26,6 +26,9 @@ public class SplineObjectPlacer : MonoBehaviour
     [SerializeField] private float offsetLength = 2f;
     [SerializeField]
     float moveSpeed = 0.001f;
+    [SerializeField] bool canShuffle = true;
+    [SerializeField] int shuffleCount = 10;
+    [SerializeField] Vector2Int shuffleRange;
     [SerializeField] List<Data> colorTypes = new();
     //public List<ColorType> colorTypes = new List<ColorType>();
     public List<BubbleContainer> placedBubbles = new();
@@ -57,6 +60,8 @@ public class SplineObjectPlacer : MonoBehaviour
     }
     private void Start()
     {
+        if (canShuffle)
+            Shuffle();
         PlaceObjects();
         placedBubbles.Reverse();
         isAnimating = true;
@@ -64,6 +69,17 @@ public class SplineObjectPlacer : MonoBehaviour
         {
             placedBubbles[i].MoveTime = 0;
             placedBubbles[i].UpdatePositionImmediate(splineComputer, 0);
+        }
+    }
+    private void Shuffle()
+    {
+        if (colorTypes.Count == 0) return;
+        for (int i = 0; i < shuffleCount; i++)
+        {
+            int maxExclusive = Mathf.Min(shuffleRange.y, colorTypes.Count);
+            int a = Random.Range(shuffleRange.x, maxExclusive);
+            int b = Random.Range(shuffleRange.x, maxExclusive);
+            (colorTypes[b], colorTypes[a]) = (colorTypes[a], colorTypes[b]);
         }
     }
     private void Update()
@@ -176,7 +192,7 @@ public class SplineObjectPlacer : MonoBehaviour
         }
         else
         {
-            data = colorTypes[Random.Range(30, colorTypes.Count)];
+            data = colorTypes[Random.Range(shuffleRange.y, colorTypes.Count)];
         }
         var bubble = CategoryManager.CreateBubble(Vector3.zero, data.name, data.data);
 

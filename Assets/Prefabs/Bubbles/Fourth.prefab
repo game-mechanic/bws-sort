@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6975400700661612206
 RectTransform:
   m_ObjectHideFlags: 0
@@ -140,6 +140,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -252,7 +253,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: e5378d6305a57c149a25d32439c8781f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2c43c5203d672c2458f1856ec76d2f1c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -339,12 +340,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: bc4a0333face5d94dadb750f284fc171, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4c69907c52ffdbf4ba1d2e2b6682598c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.625, y: 0.625}
+  m_Size: {x: 0.96, y: 0.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -367,7 +368,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8918673779577158133
 RectTransform:
   m_ObjectHideFlags: 0
@@ -490,6 +491,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -552,7 +554,7 @@ Transform:
   m_GameObject: {fileID: 5302596122779364398}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.249, y: 0.145, z: 0}
+  m_LocalPosition: {x: 0.249, y: 0.094, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -602,7 +604,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: d1921b77272d95f43958c35e4ee4683a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2c43c5203d672c2458f1856ec76d2f1c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -630,7 +632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8269109223937868475
 RectTransform:
   m_ObjectHideFlags: 0
@@ -753,6 +755,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -936,7 +939,7 @@ PrefabInstance:
     - target: {fileID: 5525147108675986294, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d1921b77272d95f43958c35e4ee4683a, type: 3}
+      objectReference: {fileID: 21300000, guid: e15015f8c95c13743a24dae622da8287, type: 3}
     - target: {fileID: 5525147108675986294, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -991,7 +994,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6904026035258751567, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_Color.g
-      value: 0.6117647
+      value: 0.6131785
       objectReference: {fileID: 0}
     - target: {fileID: 6904026035258751567, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_Color.r
@@ -1044,7 +1047,7 @@ PrefabInstance:
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: names.Array.data[0].icon
       value: 
-      objectReference: {fileID: 21300000, guid: d1921b77272d95f43958c35e4ee4683a, type: 3}
+      objectReference: {fileID: 21300000, guid: e15015f8c95c13743a24dae622da8287, type: 3}
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: names.Array.data[0].name
       value: adsasd
@@ -1052,7 +1055,7 @@ PrefabInstance:
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: names.Array.data[1].icon
       value: 
-      objectReference: {fileID: 21300000, guid: bc4a0333face5d94dadb750f284fc171, type: 3}
+      objectReference: {fileID: 21300000, guid: 4c69907c52ffdbf4ba1d2e2b6682598c, type: 3}
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: names.Array.data[1].name
       value: asdada
@@ -1060,7 +1063,7 @@ PrefabInstance:
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: names.Array.data[2].icon
       value: 
-      objectReference: {fileID: 21300000, guid: d1921b77272d95f43958c35e4ee4683a, type: 3}
+      objectReference: {fileID: 21300000, guid: 2c43c5203d672c2458f1856ec76d2f1c, type: 3}
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: names.Array.data[2].name
       value: adasdasdasd
@@ -1068,7 +1071,7 @@ PrefabInstance:
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: names.Array.data[3].icon
       value: 
-      objectReference: {fileID: 21300000, guid: e5378d6305a57c149a25d32439c8781f, type: 3}
+      objectReference: {fileID: 21300000, guid: 2c43c5203d672c2458f1856ec76d2f1c, type: 3}
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: names.Array.data[3].name
       value: adasdasdasd
@@ -1099,7 +1102,7 @@ PrefabInstance:
       objectReference: {fileID: 4879941612786899101}
     - target: {fileID: 7705078822252295963, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8638449955711332242, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_Spacing
