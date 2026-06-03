@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering;
 using static UnityEditor.Progress;
@@ -44,6 +45,7 @@ public class Bubble : MonoBehaviour
     float randomTextPhaseDiff;
     float time = 0f;
     Vector3 startScale;
+    public UnityEvent OnBubbleBlasted = new();
     [SerializeField] private BubbleType category;
 
     public RigidbodyType2D IsKinematic { get => rb.bodyType; set => rb.bodyType = value; }
@@ -357,6 +359,7 @@ public class Bubble : MonoBehaviour
             CategoryManager.Instance.SpawnNewCategories();
             Destroy(gameObject);
             OnBlastComplete?.Invoke();
+            OnBubbleBlasted?.Invoke();
         });
     }
 

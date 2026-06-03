@@ -17,9 +17,13 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] bool spawnOnStart = true;
     [SerializeField] HorizontalAlignment horizontalAlignment;
     [SerializeField] List<Data> datas = new();
+    [SerializeField] BubbleType[] categories;
     [SerializeField] int initialSpawns = 15;
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
+    int currentCategory;
+
+    public BubbleType CurrentCategory { get => categories[currentCategory % categories.Length]; }
 
     IEnumerator Start()
     {
@@ -56,6 +60,7 @@ public class CategoryManager : Singleton<CategoryManager>
                 yield return _waitForSeconds0_1;
         }
         currentIndex = initialSpawns;
+        currentCategory = 0;
     }
 
     private void Shuffle()
@@ -91,11 +96,13 @@ public class CategoryManager : Singleton<CategoryManager>
     public int ReduceCount(BubbleType category)
     {
         if (!categoryCounts.ContainsKey(category)) return 0;
-        categoryCounts[category] -= 2;
+        categoryCounts[category] -= 1;
 
         if (categoryCounts[category] <= 0)
         {
             categoryCounts.Remove(category);
+            currentCategory++;
+            CategoryManager.Instance.SpawnNewCategories();
             return 0;
         }
         else
