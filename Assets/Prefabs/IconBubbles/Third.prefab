@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.085, y: 0.294, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.44, y: 0.44, z: 0.44}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5613983943758364048}
@@ -227,6 +227,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -290,7 +291,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.249, y: -0.01, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.44, y: 0.44, z: 0.44}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5613983943758364048}
@@ -490,6 +491,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -584,15 +586,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3894895754638207601, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.44
       objectReference: {fileID: 0}
     - target: {fileID: 3894895754638207601, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.44
       objectReference: {fileID: 0}
     - target: {fileID: 3894895754638207601, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.44
       objectReference: {fileID: 0}
     - target: {fileID: 3894895754638207601, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -722,6 +724,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.5895795
       objectReference: {fileID: 0}
+    - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: ghost
+      value: 
+      objectReference: {fileID: 7902040083857548360, guid: 4810d28b57debc0419187f6d02a4a25e, type: 3}
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: index
       value: 2
