@@ -13,6 +13,9 @@ public class InputHandler : Singleton<InputHandler>
     Vector3 offset;
     public UnityEvent OnSuccessfullMerge;
 
+    public bool overrideMergeWithHNum = false;
+    public int hNum = -1; // hardcoded merge number, for testing purposes
+
     private void Start()
     {
         mainCamera = Camera.main;
@@ -192,7 +195,11 @@ public class InputHandler : Singleton<InputHandler>
         Destroy(a.gameObject);
         Destroy(b.gameObject);
 
-        if (CategoryManager.Instance.ReduceCount(a.Category) <= 0)
+        if(overrideMergeWithHNum && nextIndex == hNum)
+        {
+            newBubble.Blast();
+        }
+        else if (CategoryManager.Instance.ReduceCount(a.Category) <= 0)
         {
             newBubble.Blast(/*()=> OnSuccessfullMerge?.Invoke()*/);
         }
