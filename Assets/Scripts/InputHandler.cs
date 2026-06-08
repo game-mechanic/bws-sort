@@ -11,6 +11,7 @@ public class InputHandler : Singleton<InputHandler>
     bool isDragging;
     Vector3 startScale;
     Vector3 offset;
+    [SerializeField] Transform endPoint;
     public UnityEvent OnSuccessfullMerge;
 
     private void Start()
@@ -194,7 +195,7 @@ public class InputHandler : Singleton<InputHandler>
 
         if (CategoryManager.Instance.ReduceCount(a.Category) <= 0)
         {
-            newBubble.Blast(/*()=> OnSuccessfullMerge?.Invoke()*/);
+            newBubble.Blast(() => OnSuccessfullMerge?.Invoke());
         }
         return true;
     }
@@ -221,7 +222,7 @@ public class InputHandler : Singleton<InputHandler>
 
         Vector3 screenTopLeft =
             Camera.main.ScreenToWorldPoint(
-                new Vector3(0, Screen.height*2, distance));
+                new Vector3(0, Screen.height * 2, distance));
 
         screenTopLeft.z = 0;
 
@@ -238,5 +239,9 @@ public class InputHandler : Singleton<InputHandler>
                 screenTopLeft + Vector3.down * offset * i,
                 0.5f);
         }
+    }
+    public void PanCamera()
+    {
+        DOVirtual.DelayedCall(0.2f, () => { mainCamera.transform.DOMove(endPoint.position, 2f).SetEase(Ease.InSine); });
     }
 }
