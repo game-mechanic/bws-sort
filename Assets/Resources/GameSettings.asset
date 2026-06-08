@@ -16,10 +16,10 @@ MonoBehaviour:
   bounceTime: 1
   maxBounces: 3
   lerpSpeeed: 15
-  bubbleProfile: {fileID: 11400000, guid: 0dcfe33b7f4ccdd42bcadddfd88787d5, type: 2}
+  bubbleProfile: {fileID: 11400000, guid: 064aeeb6c6d9aed42ba1b76cdf5ae2a3, type: 2}
   dragSpeed: 10
   breathingSpeed: 5
-  breathingAplitude: 0.05
+  breathingAplitude: 0.01
   textBreathingSpeed: 1
   bubbleFXPrefab: {fileID: 5856000662369290909, guid: 63c0ec1246ae2f64a93bdc22bdd22cc1, type: 3}
   canChangeColor: 0
