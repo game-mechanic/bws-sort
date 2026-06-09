@@ -19,6 +19,10 @@ public class InputHandler : Singleton<InputHandler>
         mainCamera = Camera.main;
         ParticlePool.Init();
     }
+    private void OnDestroy()
+    {
+        ParticlePool.ReleasePool();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

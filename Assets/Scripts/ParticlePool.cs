@@ -60,4 +60,8 @@ public class ParticlePool
         yield return new WaitUntil(() => !ps.IsAlive(true));
         pool?.Release(ps);
     }
+    public static void ReleasePool()
+    {
+       revealFxPool.Clear();
+    }
 }
