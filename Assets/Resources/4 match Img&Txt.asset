@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
-  m_Name: 3 match Img&Txt
+  m_Name: 4 match Img&Txt
   m_EditorClassIdentifier: 
   bubbles:
   - {fileID: 7926608256317659342, guid: 7f1a136cb068602448124b130470c2d3, type: 3}
   - {fileID: 7926608256317659342, guid: 79e5a65bc39211047bbdbf2c5bc0892e, type: 3}
   - {fileID: 7926608256317659342, guid: ae89140937f4a4f4ea4f49bb642a7942, type: 3}
+  - {fileID: 7926608256317659342, guid: cbe1d2b67b4a7a744a51fe54799621ee, type: 3}

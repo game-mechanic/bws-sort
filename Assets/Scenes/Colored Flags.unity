@@ -402,196 +402,196 @@ MonoBehaviour:
     data:
       name: China
       icon: {fileID: 21300000, guid: 49efa364aa0b58d4e90a58179981b8b0, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: a1b6ebc674c780a45ba6c3e1f3748a0d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Turkey
       icon: {fileID: 21300000, guid: 165b148f9912b5d46b90a4c712bd9022, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: a1b6ebc674c780a45ba6c3e1f3748a0d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Peru
       icon: {fileID: 21300000, guid: daef5291efe5e4e4cacb1f57d4c6a298, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: a1b6ebc674c780a45ba6c3e1f3748a0d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: T&T
+      name: Trinidad & Tobago
       icon: {fileID: 21300000, guid: 9ce117ab46dfb9f419b9e99654d15f11, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: a1b6ebc674c780a45ba6c3e1f3748a0d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Swizerland
       icon: {fileID: 21300000, guid: ca44c7f22b7a73e4ba537e409651e717, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: a1b6ebc674c780a45ba6c3e1f3748a0d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Vietnam
       icon: {fileID: 21300000, guid: fa33f0bccd637c54182e095a8f7973b7, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: a1b6ebc674c780a45ba6c3e1f3748a0d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Morocco
       icon: {fileID: 21300000, guid: 757fdd9874e67af418eb06ecd56526d8, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: a1b6ebc674c780a45ba6c3e1f3748a0d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Tunisia
       icon: {fileID: 21300000, guid: f9e8a5835af326b46b226de2e1d53f0d, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: b7f3b9fd255784e41be241359f3f546c, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Korea
       icon: {fileID: 21300000, guid: 628fcf3c08770ea4f8dc84fa1c000741, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: b7f3b9fd255784e41be241359f3f546c, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Japan
       icon: {fileID: 21300000, guid: 653cb1863c1145043844181b0964a348, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: b7f3b9fd255784e41be241359f3f546c, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Israel
       icon: {fileID: 21300000, guid: 21bd0d6c840183644b690d60d6138c9c, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: b7f3b9fd255784e41be241359f3f546c, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Cyprus
       icon: {fileID: 21300000, guid: 50efc309f6a484a428563075512ab216, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: c4b5b4679c58c01469f16bfecbc4f927, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Brazil
       icon: {fileID: 21300000, guid: b90e5509aeaebc147a1f3f7a7b23bfd8, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: c4b5b4679c58c01469f16bfecbc4f927, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Nijeria
       icon: {fileID: 21300000, guid: b477341653914904c8004ebf738d135b, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: c4b5b4679c58c01469f16bfecbc4f927, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Saudi Arabia
       icon: {fileID: 21300000, guid: 51858293062e99844a77afacf4c26caa, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: c4b5b4679c58c01469f16bfecbc4f927, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Zambia
       icon: {fileID: 21300000, guid: 9a477af1d9274f74898517709135ea61, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: a1b6ebc674c780a45ba6c3e1f3748a0d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: Danneborg
+      name: Dannebrog
       icon: {fileID: 21300000, guid: 4378725d9bdf8084e87cf3aa4871f991, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: a1b6ebc674c780a45ba6c3e1f3748a0d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Austria
       icon: {fileID: 21300000, guid: 826b5cdc742f57b44b234b1c05283ef9, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: a1b6ebc674c780a45ba6c3e1f3748a0d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Canada
       icon: {fileID: 21300000, guid: fbbb89acbcf42fd4ebe7073027681bb4, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: a1b6ebc674c780a45ba6c3e1f3748a0d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Bahrain
       icon: {fileID: 21300000, guid: e157c7774080b9340befe12b1139a134, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: c4b5b4679c58c01469f16bfecbc4f927, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Norfloak island
       icon: {fileID: 21300000, guid: dd2ba4ff44842394bb148f99316d551c, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: c4b5b4679c58c01469f16bfecbc4f927, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Cocos Island
       icon: {fileID: 21300000, guid: d51c9cfa5ece4e041bc2028a46a11a1e, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: c4b5b4679c58c01469f16bfecbc4f927, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Macau
       icon: {fileID: 21300000, guid: b76288ba70d7c4f46974550e70182bb6, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: c4b5b4679c58c01469f16bfecbc4f927, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Dominica
       icon: {fileID: 21300000, guid: 32d3d68e3a03ba0418d85a79ac0ecf37, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: a1b6ebc674c780a45ba6c3e1f3748a0d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Albania
       icon: {fileID: 21300000, guid: 9cf1be61aabfd5b4088af22ddf8936a4, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: a1b6ebc674c780a45ba6c3e1f3748a0d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Isle of Man
       icon: {fileID: 21300000, guid: e5f938dfeeb8d8c42ae6fdbbf05e2e4a, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: a1b6ebc674c780a45ba6c3e1f3748a0d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Tonga
       icon: {fileID: 21300000, guid: c19d7732311e4bc46bc27a9000d387c6, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   - name: {fileID: 11400000, guid: a1b6ebc674c780a45ba6c3e1f3748a0d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Timor Letse
       icon: {fileID: 21300000, guid: 3089ea8ea8f59bc4facaeed3fde5068e, type: 3}
-      showBothTxtAndImg: 0
+      showBothTxtAndImg: 1
   initialSpawns: 20
   enableRandomSize: 1
   minMultiplier: 1
