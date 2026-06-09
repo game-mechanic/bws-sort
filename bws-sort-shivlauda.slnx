@@ -24,8 +24,8 @@
   <Project Path="Unity.Services.Core.Environments.Editor.csproj" />
   <Project Path="Unity.Services.Analytics.csproj" />
   <Project Path="Unity.Recorder.Editor.csproj" />
-  <Project Path="Unity.VisualStudio.Editor.csproj" />
   <Project Path="Unity.2D.SpriteShape.Editor.csproj" />
+  <Project Path="Unity.VisualStudio.Editor.csproj" />
   <Project Path="Unity.2D.Animation.Editor.csproj" />
   <Project Path="ToonyColorsPro2.Demo.csproj" />
   <Project Path="Unity.ResourceManager.csproj" />
