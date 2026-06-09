@@ -19,8 +19,8 @@ MonoBehaviour:
   bubbleProfile: {fileID: 11400000, guid: bf5c9c5f3f9b75943a31d581df79354a, type: 2}
   dragSpeed: 10
   breathingSpeed: 5
-  breathingAplitude: 0.02
-  textBreathingSpeed: 0.8
+  breathingAplitude: 0.01
+  textBreathingSpeed: 1
   bubbleFXPrefab: {fileID: 5856000662369290909, guid: 63c0ec1246ae2f64a93bdc22bdd22cc1, type: 3}
   canChangeColor: 0
   bubbleColors:
@@ -34,7 +34,7 @@ MonoBehaviour:
     m_TableCollectionName: RedThings
   selectedLanguage: 0
   englishLocale: {fileID: 11400000, guid: 8453d8e5bb2028f40a88d83511917e13, type: 2}
-  canCreateGhost: 1
+  canCreateGhost: 0
   canMerge: 1
   order:
   - {fileID: 11400000, guid: 421c06c4ff94d8847829d4b98abaa5db, type: 2}
