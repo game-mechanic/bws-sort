@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
+  m_Name: Sand Bubbles
+  m_EditorClassIdentifier: 
+  bubbles:
+  - {fileID: 7926608256317659342, guid: d634d835f304de24baa81cb7acae5696, type: 3}
+  - {fileID: 7926608256317659342, guid: 7d44ee3e46450044a9a9689b40b35dcb, type: 3}
+  - {fileID: 7926608256317659342, guid: 61730039a54f20340b4523703f07a25d, type: 3}
+  - {fileID: 7926608256317659342, guid: 580b7c4fa67cc094c97d3adfbab9c455, type: 3}

@@ -49,8 +49,10 @@ public class Bubble : MonoBehaviour
     public BubbleType Category { get => category; set => category = value; }
     public List<Data> Names { get => names; }
     public BubbleContainer Container { get => container; set => container = value; }
+    public bool CanSuckIn { get => canSuckIn; private set => canSuckIn = value; }
 
     Vector3[] textPositions;
+    private bool canSuckIn=true;
 
     private void Start()
     {
@@ -178,17 +180,20 @@ public class Bubble : MonoBehaviour
         container.PickBubble(!goBack);
         if (goBack)
         {
+            CanSuckIn = false;
             transform.DOLocalMove(Vector3.zero, 0.2f)
                 .SetEase(Ease.OutBack)
                 .SetTarget(transform)
                 .OnComplete(() =>
                 {
                     container.SetGhost(false);
+                    CanSuckIn = true;
                 });
         }
         else
         {
             Destroy(Container.gameObject);
+            ParticlePool.PlayRevealFx(transform.position);
         }
         sortingGroup.sortingOrder = 2;
     }

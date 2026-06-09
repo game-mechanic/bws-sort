@@ -12,11 +12,7 @@ public class BubbleContainer : MonoBehaviour
     public float MoveTime { get => moveTime; set => moveTime = value; }
     public bool CanMove { get => canMove; set => canMove = value; }
 
-    private void OnDestroy()
-    {
-        ParticlePool.PlayRevealFx(transform.position);
-    }
-
+    
     public void PickBubble(bool active)
     {
         Bubble.transform.SetParent(active ? null : transform);

@@ -9,6 +9,7 @@ public class Portal : MonoBehaviour
         Transform transform1 = collision.transform;
         if (transform1.TryGetComponent(out Bubble b))
         {
+            if (!b.CanSuckIn) return;
             b.Container.CanMove = false;
         }
         transform1.DOMove(transform.position, 0.4f);
