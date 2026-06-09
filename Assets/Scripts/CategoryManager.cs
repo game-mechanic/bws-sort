@@ -19,7 +19,7 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] List<Data> datas = new();
     [SerializeField] int initialSpawns = 15;
 
-    [SerializeField] bool enableRandomSize = false;
+    bool EnableRandomSize =>GameSettings.Instance.EnableRandomBubbleSize;
     [SerializeField] float minMultiplier = 1f;
     [SerializeField] float maxMultiplier = 2f;
     int currentIndex = 0;
@@ -52,7 +52,7 @@ public class CategoryManager : Singleton<CategoryManager>
             {
                 var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
 
-                if (enableRandomSize)
+                if (EnableRandomSize)
                 {
                     float randomScale = Random.Range(minMultiplier, maxMultiplier);
                     bubble.transform.localScale = Vector3.one * randomScale;
@@ -136,7 +136,7 @@ public class CategoryManager : Singleton<CategoryManager>
             {
                 var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
 
-                if (enableRandomSize)
+                if (EnableRandomSize)
                 {
                     float randomScale = Random.Range(minMultiplier, maxMultiplier);
                     bubble.transform.localScale = Vector3.one * randomScale;
