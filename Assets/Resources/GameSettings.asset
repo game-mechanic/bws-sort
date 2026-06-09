@@ -34,7 +34,7 @@ MonoBehaviour:
     m_TableCollectionName: RedThings
   selectedLanguage: 0
   englishLocale: {fileID: 11400000, guid: 8453d8e5bb2028f40a88d83511917e13, type: 2}
-  canCreateGhost: 1
+  canCreateGhost: 0
   canMerge: 1
   order:
   - {fileID: 11400000, guid: 421c06c4ff94d8847829d4b98abaa5db, type: 2}

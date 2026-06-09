@@ -21,6 +21,7 @@ public class Bubble : MonoBehaviour
     {
         public string name;
         public Sprite icon;
+        public bool showBothTxtAndImg = false;
     }
     const float PhaseDiff = 90 * Mathf.Deg2Rad;
     [SerializeField] byte index;
@@ -101,30 +102,40 @@ public class Bubble : MonoBehaviour
     {
         for (int i = 0; i < Names.Count; i++)
         {
-            if (Names[i].icon == null)
+            // 1. Always evaluate and set the text value first so it's ready if needed
+            if (GameSettings.Instance.SelectedLanguage.ToString() == "en")
             {
-                if (GameSettings.Instance.SelectedLanguage.ToString() == "en")
-                {
-                    textUIs[i].textUIs.text = Names[i].name;
-                }
-                else
-                {
-                    textUIs[i].textUIs.text =
-                        LocalizationSettings.StringDatabase.GetLocalizedString(
-                           GameSettings.Instance.TableReference,
-                            Names[i].name
-                        );
-                }
-
-
-                textUIs[i].bg.gameObject.SetActive(false);
-                textUIs[i].textUIs.gameObject.SetActive(true);
+                textUIs[i].textUIs.text = Names[i].name;
             }
             else
             {
+                textUIs[i].textUIs.text =
+                    LocalizationSettings.StringDatabase.GetLocalizedString(
+                       GameSettings.Instance.TableReference,
+                        Names[i].name
+                    );
+            }
+
+            // 2. Handle the visibility logic based on the new boolean and icon existence
+            if (Names[i].showBothTxtAndImg && Names[i].icon != null)
+            {
+                // Show both
+                textUIs[i].bg.sprite = Names[i].icon;
+                textUIs[i].bg.gameObject.SetActive(true);
+                textUIs[i].textUIs.gameObject.SetActive(true);
+            }
+            else if (Names[i].icon != null)
+            {
+                // Show image only
                 textUIs[i].bg.sprite = Names[i].icon;
                 textUIs[i].textUIs.gameObject.SetActive(false);
                 textUIs[i].bg.gameObject.SetActive(true);
+            }
+            else
+            {
+                // Show text only
+                textUIs[i].bg.gameObject.SetActive(false);
+                textUIs[i].textUIs.gameObject.SetActive(true);
             }
         }
     }

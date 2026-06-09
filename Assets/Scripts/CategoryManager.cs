@@ -18,6 +18,10 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] HorizontalAlignment horizontalAlignment;
     [SerializeField] List<Data> datas = new();
     [SerializeField] int initialSpawns = 15;
+
+    [SerializeField] bool enableRandomSize = false;
+    [SerializeField] float minMultiplier = 1f;
+    [SerializeField] float maxMultiplier = 2f;
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
 
@@ -47,9 +51,18 @@ public class CategoryManager : Singleton<CategoryManager>
             DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
             {
                 var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
+
+                if (enableRandomSize)
+                {
+                    float randomScale = Random.Range(minMultiplier, maxMultiplier);
+                    bubble.transform.localScale = Vector3.one * randomScale;
+                }
+
                 bubble.Category = category;
+
                 if (GameSettings.Instance.CanChangeColor)
                     bubble.SetColor(bubbleColor);
+
                 bubble.SetName(new() { data });
             });
             if (j % 4 == 0)
@@ -122,9 +135,18 @@ public class CategoryManager : Singleton<CategoryManager>
             DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
             {
                 var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
+
+                if (enableRandomSize)
+                {
+                    float randomScale = Random.Range(minMultiplier, maxMultiplier);
+                    bubble.transform.localScale = Vector3.one * randomScale;
+                }
+
                 bubble.Category = category;
+
                 if (GameSettings.Instance.CanChangeColor)
                     bubble.SetColor(bubbleColor);
+
                 bubble.SetName(new() { data });
             });
         }
