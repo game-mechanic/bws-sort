@@ -52,7 +52,8 @@ public class Bubble : MonoBehaviour
     public bool CanSuckIn { get => canSuckIn; private set => canSuckIn = value; }
 
     Vector3[] textPositions;
-    private bool canSuckIn=true;
+    private bool canSuckIn = true;
+    private static int colorIndex;
 
     private void Start()
     {
@@ -65,6 +66,12 @@ public class Bubble : MonoBehaviour
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
         RestorePositions();
         Redraw();
+
+        if (GameSettings.Instance.CanUseRandomColors)
+        {
+            SetColor(GameSettings.Instance.BubbleColors[colorIndex++ % GameSettings.Instance.BubbleColors.Length]);
+        }
+
     }
     private void OnDisable()
     {
@@ -84,6 +91,7 @@ public class Bubble : MonoBehaviour
     {
         if (bg != null)
             bg.color = bgColor;
+        bg.color = bgColor;
         Redraw();
     }
 
@@ -150,6 +158,10 @@ public class Bubble : MonoBehaviour
         time = 0;
         this.bounceAmplitude = bounceAmplitude;
         this.bounceDuration = duration;
+    }
+    public void SetColor(Color color)
+    {
+        bg.color = color;
     }
     public void SetCollider(bool active)
     {
