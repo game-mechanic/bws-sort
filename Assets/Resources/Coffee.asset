@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
-  m_Name: Transparent Icon
+  m_Name: Coffee
   m_EditorClassIdentifier: 
   bubbles:
-  - {fileID: 7926608256317659342, guid: e4cb008ba34b4e24b8ab73009154bb10, type: 3}
-  - {fileID: 7926608256317659342, guid: 39262744e7ae23b47b834f3b49592d3a, type: 3}
-  - {fileID: 7926608256317659342, guid: 7cb0d25458ba9b44fbe1c4e64e284921, type: 3}
-  - {fileID: 7926608256317659342, guid: e84c9f16055f2dc4bb230d8b66c05b08, type: 3}
+  - {fileID: 7926608256317659342, guid: 14112b8e01bee0d49aa09ef86bd201b8, type: 3}
+  - {fileID: 7926608256317659342, guid: b7df3002f9a4b87478be40f1f1f9c63a, type: 3}
+  - {fileID: 7926608256317659342, guid: fe6d3c54897d4ef42898a939cc83ee4b, type: 3}
+  - {fileID: 7926608256317659342, guid: 24ee130fbb616bf43a2af5a57e77d7c2, type: 3}
