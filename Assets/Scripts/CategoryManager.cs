@@ -1,11 +1,25 @@
 using DG.Tweening;
+using DT.GridSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 
-public class CategoryManager : Singleton<CategoryManager>
+public class CategoryManager : GridSystem2D<Bubble>
 {
+    public static CategoryManager instance;
+    public static CategoryManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindAnyObjectByType<CategoryManager>();
+            }
+            return instance;
+        }
+    }
+
     [System.Serializable]
     public class Data
     {
@@ -18,12 +32,12 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] HorizontalAlignment horizontalAlignment;
     [SerializeField] List<Data> datas = new();
     [SerializeField] int initialSpawns = 15;
-
-    bool EnableRandomSize =>GameSettings.Instance.EnableRandomBubbleSize;
+    bool EnableRandomSize => GameSettings.Instance.EnableRandomBubbleSize;
     [SerializeField] float minMultiplier = 1f;
     [SerializeField] float maxMultiplier = 2f;
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
+
 
     IEnumerator Start()
     {
@@ -36,39 +50,40 @@ public class CategoryManager : Singleton<CategoryManager>
 
         Shuffle();
 
-
-        WaitForSeconds _waitForSeconds0_1 = new(0.1f);
         Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
-        for (int j = 0; j < Mathf.Min(initialSpawns, datas.Count); j++)
+
+        for (int j = 0; j < gridArray.Length; j++)
         {
-            Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
+
+            FromIndex(j, out int x, out int y);
+
+            Vector2Int gridPos = new(x, y);
+
+            Vector3 pos = GetWorldPosition(x, y);
             BubbleType category = datas[j].name;
             Bubble.Data data = datas[j].data;
             Color bubbleColor = datas[j].overrideColor ?
                 datas[j].bubbleColor :
                 GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
 
-            DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
+            var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
+
+            if (EnableRandomSize)
             {
-                var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
+                float randomScale = Random.Range(minMultiplier, maxMultiplier);
+                bubble.transform.localScale = Vector3.one * randomScale;
+            }
 
-                if (EnableRandomSize)
-                {
-                    float randomScale = Random.Range(minMultiplier, maxMultiplier);
-                    bubble.transform.localScale = Vector3.one * randomScale;
-                }
+            bubble.Category = category;
 
-                bubble.Category = category;
-
-                if (GameSettings.Instance.CanChangeColor)
-                    bubble.SetColor(bubbleColor);
-
-                bubble.SetName(new() { data });
-            });
-            if (j % 4 == 0)
-                yield return _waitForSeconds0_1;
+            if (GameSettings.Instance.CanChangeColor)
+                bubble.SetColor(bubbleColor);
+            bubble.GridPosition = gridPos;
+            AddGridObject(x, y, bubble);
+            bubble.SetName(new() { data });
         }
-        currentIndex = initialSpawns;
+
+        currentIndex = gridArray.Length;
     }
 
     private void Shuffle()
@@ -183,5 +198,59 @@ public class CategoryManager : Singleton<CategoryManager>
     {
         if (!categoryCounts.ContainsKey(category)) return -1;
         return categoryCounts[category];
+    }
+
+    public void CheckRow(int y)
+    {
+        HashSet<BubbleType> rowCategories = new();
+
+        print("checking row" + y);
+
+        for (int i = 0; i < GridSize.x; i++)
+        {
+            if (TryGetGridObject(i, y, out Bubble b))
+            {
+                rowCategories.Add(b.Category);
+            }
+        }
+        if (rowCategories.Count > 1)
+        {
+            Debug.Log("No Match");
+            return;
+        }
+        float delayInterval= 0.1f;
+        for (int i = 0; i < GridSize.x; i++)
+        {
+            if (TryGetGridObject(i, y, out Bubble b))
+            {
+               DOVirtual.DelayedCall(i*delayInterval, ()=>b.SetColor(b.Category.Color)); 
+            }
+        }
+        print("Match Found");
+    }
+
+    internal void SwapCategories(Bubble a, Bubble b)
+    {
+        Swap(a, b);
+        Swap(b, a);
+
+        (b.GridPosition, a.GridPosition) = (a.GridPosition, b.GridPosition);
+
+        AddGridObject(a.GridPosition.x, a.GridPosition.y, a);
+        AddGridObject(b.GridPosition.x, b.GridPosition.y, b);
+    }
+    private static void Swap(Bubble a, Bubble b)
+    {
+        const float MoveDuraiton = 1f;
+
+        Vector2 dir = b.transform.position - a.transform.position;
+        Vector3 perp = Vector3.Cross(dir, Vector3.forward).normalized * .52f;
+
+        a.transform.DOPath(new Vector3[] { Vector3.Lerp(a.transform.position, b.transform.position, 0.5f) + perp, b.transform.position }, MoveDuraiton, pathType: PathType.CatmullRom)
+            .OnComplete(() =>
+            {
+                a.EndDrag();
+                Instance.CheckRow(a.GridPosition.y);
+            });
     }
 }

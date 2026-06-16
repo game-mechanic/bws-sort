@@ -47,6 +47,9 @@ public class Bubble : MonoBehaviour
     Vector3 startScale;
     [SerializeField] private BubbleType category;
 
+    Vector3[] textPositions;
+    private GameObject ghostInstance;
+    private Vector2Int gridPosition;
     public RigidbodyType2D IsKinematic { get => rb.bodyType; set => rb.bodyType = value; }
     public float Radius => radius;
 
@@ -54,9 +57,8 @@ public class Bubble : MonoBehaviour
     public BubbleType Category { get => category; set => category = value; }
     public List<Data> Names { get => names; }
     public bool CanChangeColor { get => canChangeColor; }
+    public Vector2Int GridPosition { get => gridPosition; set => gridPosition = value; }
 
-    Vector3[] textPositions;
-    private GameObject ghostInstance;
 
     private IEnumerator Start()
     {
@@ -201,7 +203,7 @@ public class Bubble : MonoBehaviour
     }
     public void StartDrag()
     {
-        IsKinematic = RigidbodyType2D.Kinematic;
+        //IsKinematic = RigidbodyType2D.Kinematic;
         SetCollider(false);
         sortingGroup.sortingOrder = 100;
         if (GameSettings.Instance.CanCreateGhost)
@@ -209,7 +211,7 @@ public class Bubble : MonoBehaviour
     }
     public void EndDrag()
     {
-        IsKinematic = RigidbodyType2D.Dynamic;
+        //IsKinematic = RigidbodyType2D.Dynamic;
         SetCollider(true);
         sortingGroup.sortingOrder = 2;
     }
