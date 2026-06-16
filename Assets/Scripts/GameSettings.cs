@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Tables;
 
 [CreateAssetMenu(fileName = "GameSettings")]
+
 public class GameSettings : ScriptableObject
 {
 
@@ -54,7 +56,9 @@ public class GameSettings : ScriptableObject
     [SerializeField] private BubbleType[] order;
     [SerializeField] private bool canTextBreathe;
     [SerializeField] private bool enableRandomBubbleSize;
-
+    [SerializeField] MathAnswers mathAnswerPrefab;
+    [SerializeField] List<BubbleType> types;
+    [SerializeField] private GameObject trailPrefab;
     public float MaxBounceAmplitude { get => maxBounceAmplitude; }
     public float BounceTime { get => bounceTime; }
     public int MaxBounces { get => maxBounces; }
@@ -75,11 +79,25 @@ public class GameSettings : ScriptableObject
     public BubbleType[] Order { get => order; set => order = value; }
     public bool CanTextBreathe { get => canTextBreathe; internal set => canTextBreathe = value; }
     public bool EnableRandomBubbleSize { get => enableRandomBubbleSize; }
+    public MathAnswers MathAnswerPrefab { get => mathAnswerPrefab; }
+    public GameObject TrailPrefab { get => trailPrefab; }
+
+    int currentCategory = 0;
+
+    private void Awake()
+    {
+        currentCategory = 0;
+    }
 
     internal static IEnumerator Init()
     {
         var asyncOp = Resources.LoadAsync<GameSettings>("GameSettings");
         yield return asyncOp;
         instance = (GameSettings)asyncOp.asset;
+    }
+
+    internal BubbleType GetNextCategory()
+    {
+        return types[currentCategory++ % types.Count];
     }
 }

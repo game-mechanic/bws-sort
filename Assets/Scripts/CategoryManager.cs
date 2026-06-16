@@ -122,10 +122,11 @@ public class CategoryManager : Singleton<CategoryManager>
     {
         Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
 
-        int end = Mathf.Min(currentIndex + 4, datas.Count);
+        const int dropCount = 2;
+        int end = Mathf.Min(currentIndex + dropCount, datas.Count);
         for (int j = currentIndex; j < end; j++)
         {
-            Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
+            Vector3 pos = horizontalAlignment.GetSlotPosition(j % dropCount);
             BubbleType category = datas[j].name;
             Bubble.Data data = datas[j].data;
             Color bubbleColor = datas[j].overrideColor ?
@@ -150,7 +151,7 @@ public class CategoryManager : Singleton<CategoryManager>
                 bubble.SetName(new() { data });
             });
         }
-        currentIndex += 4;
+        currentIndex += dropCount;
     }
 
     void ChangeCategory()

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HandUI : MonoBehaviour
+public class HandUI : Singleton<HandUI>
 {
     private Transform handTransform;
     private Image hand;
@@ -16,12 +16,17 @@ public class HandUI : MonoBehaviour
     [SerializeField] Vector3 handJoinOffset;
 
     Camera mainCamera;
+    Vector3 handPosition;
+
+    public Vector3 HandPosition { get => handPosition; set => handPosition = value; }
+
     void Start()
     {
         mainCamera = Camera.main;
         handTransform = transform.GetChild(0);
 
         hand = handTransform.GetComponent<Image>();
+        HandPosition = handTransform.position;
         if (lineRenderer != null)
         {
             lineRenderer.positionCount = pointsCount;
@@ -37,8 +42,8 @@ public class HandUI : MonoBehaviour
         || Input.mousePosition.x > Screen.width || Input.mousePosition.y > Screen.height)
             return;
         UpdateLineRenderer();
-
-        handTransform.position = Input.mousePosition + new Vector3(offset.x, offset.y);
+        HandPosition = Vector3.Lerp(HandPosition, Input.mousePosition + new Vector3(offset.x, offset.y), Time.deltaTime * 10f);
+        handTransform.position = HandPosition;
 
         if (Input.GetMouseButtonDown(0)) hand.sprite = click;
         else if (Input.GetMouseButtonUp(0)) hand.sprite = idle;
@@ -52,7 +57,7 @@ public class HandUI : MonoBehaviour
         float timePerPoint = 1f / pointsCount;
 
         Plane plane = new Plane(Vector3.back, Vector3.zero);
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition + handJoinOffset);
+        Ray ray = mainCamera.ScreenPointToRay(HandPosition + handJoinOffset);
         plane.Raycast(ray, out float enter);
 
         Vector3 mousePosition = ray.origin + ray.direction * enter;

@@ -362,10 +362,12 @@ public class Bubble : MonoBehaviour
 
             blastSequence.Append(seq);
         }
+        //blastSequence.Append()
         blastSequence.AppendCallback(() =>
         {
             ParticlePool.PlayRevealFx(transform.position);
             CategoryManager.Instance.SpawnNewCategories();
+            //MathAnswers.DestroyBubble(category, transform.position);
             Destroy(gameObject);
             OnBlastComplete?.Invoke();
         });

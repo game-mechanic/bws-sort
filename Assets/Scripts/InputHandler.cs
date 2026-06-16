@@ -36,7 +36,7 @@ public class InputHandler : Singleton<InputHandler>
 
         if (!isDragging
             && Input.GetMouseButtonDown(0)
-            && TryRaycast2D(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit2D hit)
+            && TryRaycast2D(mainCamera.ScreenPointToRay(HandUI.Instance.HandPosition), out RaycastHit2D hit)
             && hit.collider.TryGetComponent(out Bubble d))
         {
             draggable = d;
@@ -65,7 +65,7 @@ public class InputHandler : Singleton<InputHandler>
         if (draggable != null && isDragging)
         {
             Plane plane = new(Vector3.back, new Vector3(0, 0, 0));
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = mainCamera.ScreenPointToRay(HandUI.Instance.HandPosition);
 
             plane.Raycast(ray, out float enter);
 
