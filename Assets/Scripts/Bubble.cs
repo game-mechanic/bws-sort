@@ -376,8 +376,9 @@ public class Bubble : MonoBehaviour
     internal void SetColor(Color bubbleColor)
     {
         bgColor = bubbleColor;
+        bgColor.a = 1f;
         if (bg != null)
-            bg.color = bgColor;
+            bg.DOColor(bgColor, 0.1f);
     }
     private void OnDrawGizmos()
     {

@@ -204,8 +204,6 @@ public class CategoryManager : GridSystem2D<Bubble>
     {
         HashSet<BubbleType> rowCategories = new();
 
-        print("checking row" + y);
-
         for (int i = 0; i < GridSize.x; i++)
         {
             if (TryGetGridObject(i, y, out Bubble b))
@@ -215,38 +213,44 @@ public class CategoryManager : GridSystem2D<Bubble>
         }
         if (rowCategories.Count > 1)
         {
-            Debug.Log("No Match");
             return;
         }
-        float delayInterval= 0.1f;
+        float delayInterval = 0.1f;
         for (int i = 0; i < GridSize.x; i++)
         {
             if (TryGetGridObject(i, y, out Bubble b))
             {
-               DOVirtual.DelayedCall(i*delayInterval, ()=>b.SetColor(b.Category.Color)); 
+                b.transform.DOMove(b.transform.position + Vector3.up * 0.05f, .1f).SetLoops(2, LoopType.Yoyo).SetDelay(delayInterval * i);
+                DOVirtual.DelayedCall(i * delayInterval, () => b.SetColor(b.Category.Color));
             }
         }
-        print("Match Found");
+
     }
 
     internal void SwapCategories(Bubble a, Bubble b)
     {
-        Swap(a, b);
-        Swap(b, a);
+        a.transform.DOMove(GetWorldPosition(b.GridPosition), .1f)
+           .OnComplete(() =>
+           {
+               a.EndDrag();
+               Instance.CheckRow(a.GridPosition.y);
+           });
+
+        Swap(b, GetWorldPosition(a.GridPosition));
 
         (b.GridPosition, a.GridPosition) = (a.GridPosition, b.GridPosition);
 
         AddGridObject(a.GridPosition.x, a.GridPosition.y, a);
         AddGridObject(b.GridPosition.x, b.GridPosition.y, b);
     }
-    private static void Swap(Bubble a, Bubble b)
+    private static void Swap(Bubble a, Vector3 b)
     {
-        const float MoveDuraiton = 1f;
+        const float MoveDuraiton = .5f;
 
-        Vector2 dir = b.transform.position - a.transform.position;
+        Vector2 dir = b - a.transform.position;
         Vector3 perp = Vector3.Cross(dir, Vector3.forward).normalized * .52f;
 
-        a.transform.DOPath(new Vector3[] { Vector3.Lerp(a.transform.position, b.transform.position, 0.5f) + perp, b.transform.position }, MoveDuraiton, pathType: PathType.CatmullRom)
+        a.transform.DOPath(new Vector3[] { Vector3.Lerp(a.transform.position, b, 0.5f) + perp, b }, MoveDuraiton, pathType: PathType.CatmullRom)
             .OnComplete(() =>
             {
                 a.EndDrag();
