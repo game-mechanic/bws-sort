@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6741be59f46a54fb6b2681cd4b81b4, type: 3}
   m_Name: Red Things
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 0.3160377, b: 0.3160377, a: 0}
+  color: {r: 1, g: 0.2783019, b: 0.39510345, a: 0}

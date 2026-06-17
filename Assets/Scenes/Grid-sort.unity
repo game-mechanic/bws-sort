@@ -523,7 +523,7 @@ MonoBehaviour:
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: PETER PAN
+      name: PETER
       icon: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
