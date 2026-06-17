@@ -48,13 +48,22 @@ public class Bubble : MonoBehaviour
     public UnityEvent OnBubbleBlasted = new();
     [SerializeField] private BubbleType category;
 
-    public RigidbodyType2D IsKinematic { get => rb.bodyType; set => rb.bodyType = value; }
+    public RigidbodyType2D IsKinematic { get => Rb.bodyType; set => Rb.bodyType = value; }
     public float Radius => radius;
 
     public byte Index { get => index; }
     public BubbleType Category { get => category; set => category = value; }
     public List<Data> Names { get => names; }
     public bool CanChangeColor { get => canChangeColor; }
+    public Rigidbody2D Rb
+    {
+        get
+        {
+            if(rb==null)
+                rb=GetComponent<Rigidbody2D>();
+            return rb;
+        }
+    }
 
     Vector3[] textPositions;
     private GameObject ghostInstance;

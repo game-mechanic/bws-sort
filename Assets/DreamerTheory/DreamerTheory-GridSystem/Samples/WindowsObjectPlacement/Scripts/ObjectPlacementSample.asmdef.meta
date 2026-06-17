@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a47b0718760183b49810f90007f62705
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 335448
+  packageName: DreamerTheory-GridSystem (Free)
+  packageVersion: 1.1.0
+  assetPath: Assets/DreamerTheory/DreamerTheory-GridSystem/Samples/WindowsObjectPlacement/Scripts/ObjectPlacementSample.asmdef
+  uploadId: 842156

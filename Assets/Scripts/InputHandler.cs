@@ -12,7 +12,7 @@ public class InputHandler : Singleton<InputHandler>
     Vector3 startScale;
     Vector3 offset;
     public UnityEvent OnSuccessfullMerge;
-
+    bool toggle;
     private void Start()
     {
         mainCamera = Camera.main;
@@ -46,7 +46,21 @@ public class InputHandler : Singleton<InputHandler>
         //{
         //    ReleaseDrag();
         //}
-
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (AimCamera.Instance)
+            {
+                    toggle = !toggle;
+                if (toggle)
+                {
+                    AimCamera.Instance.Open();
+                }
+                else
+                {
+                    AimCamera.Instance.Close();
+                }
+            }
+        }
 
         if (!isDragging
             && Input.GetMouseButtonDown(0)
@@ -297,7 +311,7 @@ public class InputHandler : Singleton<InputHandler>
 
         Vector3 screenTopLeft =
             Camera.main.ScreenToWorldPoint(
-                new Vector3(0, Screen.height*2, distance));
+                new Vector3(0, Screen.height * 2, distance));
 
         screenTopLeft.z = 0;
 

@@ -16,12 +16,12 @@ MonoBehaviour:
   bounceTime: 1
   maxBounces: 3
   lerpSpeeed: 15
-  bubbleProfile: {fileID: 11400000, guid: c7c9957fbb57bac4a8e6f735cdd3cd54, type: 2}
+  bubbleProfile: {fileID: 11400000, guid: 0dcfe33b7f4ccdd42bcadddfd88787d5, type: 2}
   dragSpeed: 10
   breathingSpeed: 5
   breathingAplitude: 0.05
   textBreathingSpeed: 1
-  bubbleFXPrefab: {fileID: 5856000662369290909, guid: 908abc1bbd8247d45b4ae04e865d277e, type: 3}
+  bubbleFXPrefab: {fileID: 5856000662369290909, guid: 63c0ec1246ae2f64a93bdc22bdd22cc1, type: 3}
   canChangeColor: 0
   bubbleColors:
   - {r: 1, g: 0.3160377, b: 0.7601107, a: 1}
@@ -37,11 +37,8 @@ MonoBehaviour:
   canCreateGhost: 1
   canMerge: 1
   order:
-  - {fileID: 11400000, guid: 421c06c4ff94d8847829d4b98abaa5db, type: 2}
-  - {fileID: 11400000, guid: 3f94bd056e1e53843b844e2e32042c05, type: 2}
-  - {fileID: 11400000, guid: 2486d2eb0f134114d943f8b43b5ccd15, type: 2}
-  - {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
-  - {fileID: 11400000, guid: 38bb36d15195522409ec5379b5374020, type: 2}
-  - {fileID: 11400000, guid: ec1fa4016a8007c489dbb546ed8a23e8, type: 2}
-  - {fileID: 11400000, guid: b8d1de56817b49a40b167e219f035818, type: 2}
+  - {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
+  - {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
+  - {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
+  - {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
   canTextBreathe: 0
