@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using UnityEditor;
 using UnityEngine;
 
 public class AimCamera : Singleton<AimCamera>
@@ -35,22 +36,45 @@ public class AimCamera : Singleton<AimCamera>
     {
         UpdatePosition();
         gameObject.SetActive(true);
+
         Camera camera = GetComponent<Camera>();
+
+        float time=0;
+        DOTween.To(
+            getter: () =>
+            {
+                return time;
+            },
+            setter: (x) =>
+            {
+                time =x;
+                camera.transform.position = Vector3.Lerp(camera.transform.position, GetPosition(), time);
+            },
+            endValue: 1f,
+            duration: 0.4f);
+
         camera.DOOrthoSize(targetSize, 0.5f)
             .From(mainCamera.orthographicSize)
             .OnComplete(() => CanMove = true);
+
         canvasGroup.DOFade(1, 0.4f);
     }
 
     void UpdatePosition()
     {
         if (!CanMove) return;
+        Vector3 pos = GetPosition();
+        transform.position = pos;
+    }
+
+    private Vector3 GetPosition()
+    {
         Plane plane = new Plane(Vector3.back, Vector3.zero);
         Ray ray = mainCamera.ScreenPointToRay(HandUI.Instance.MousePosition);
         plane.Raycast(ray, out float enter);
         Vector3 pos = ray.origin + ray.direction * enter;
         pos.z = zDistance;
-        transform.position = pos;
+        return pos;
     }
 
     public void Close()
