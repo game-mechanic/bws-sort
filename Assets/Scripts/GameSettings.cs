@@ -52,6 +52,11 @@ public class GameSettings : ScriptableObject
     [SerializeField] bool canCreateGhost;
     [SerializeField] private bool canMerge;
     [SerializeField] private BubbleType[] order;
+    [SerializeField] private float normalOffset = 1f;
+    [SerializeField] private float highlightedOffset = 1.3f;
+    [SerializeField] private float jumpDuration = 1f;
+    [SerializeField] private int jumpHeight = 5;
+
     public float MaxBounceAmplitude { get => maxBounceAmplitude; }
     public float BounceTime { get => bounceTime; }
     public int MaxBounces { get => maxBounces; }
@@ -70,11 +75,39 @@ public class GameSettings : ScriptableObject
     public bool CanCreateGhost { get => canCreateGhost; }
     public bool CanMerge { get => canMerge; internal set => canMerge = value; }
     public BubbleType[] Order { get => order; set => order = value; }
+    public float NormalOffset { get => normalOffset; }
+    public float HighlightedOffset { get => highlightedOffset; }
+    public float JumpDuration { get => jumpDuration; }
+    public int JumpHeight { get => jumpHeight; }
 
     internal static IEnumerator Init()
     {
         var asyncOp = Resources.LoadAsync<GameSettings>("GameSettings");
         yield return asyncOp;
         instance = (GameSettings)asyncOp.asset;
+    }
+
+
+
+    public static Vector3 GetStackedPosition(Vector3 position, int index, float slotOffset)
+    {
+        return GetStackedPosition(position, index, Vector3.up, Vector3.zero, slotOffset);
+    }
+
+
+    /// <summary>
+    /// Calculates the position of an object stacked in a line, with an additional rotation applied to the stacking direction.
+    /// </summary>
+    /// <param name="index">The index of the object in the stack (0-based).</param>
+    /// <param name="position">The starting position of the stack.</param>
+    /// <param name="direction">The direction in which to stack objects (should be normalized).</param>
+    /// <param name="eulerRotation">Euler angles (in degrees) to rotate the stacking direction.</param>
+    /// <param name="slotOffset">The distance between each stacked object.</param>
+    /// <returns>The calculated position for the object at the given index, with rotation applied.</returns>
+    public static Vector3 GetStackedPosition(Vector3 position, int index, Vector3 direction, Vector3 eulerRotation, float slotOffset)
+    {
+        Vector3 offset = index * slotOffset * direction;
+        Quaternion rotation = Quaternion.Euler(eulerRotation); // Convert Vector3 rotation to Quaternion
+        return position + rotation * offset; // Apply rotation to the offset
     }
 }

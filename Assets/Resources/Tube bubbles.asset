@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
+  m_Name: Tube bubbles
+  m_EditorClassIdentifier: 
+  bubbles:
+  - {fileID: 7926608256317659342, guid: 335a6a4cb038e694983abc9010fad162, type: 3}
+  - {fileID: 7926608256317659342, guid: 5c0c244b1faf01f428ebfdb2c6bfba60, type: 3}
+  - {fileID: 7926608256317659342, guid: 77f8c64ed31634f489ff2c5fedba9708, type: 3}
+  - {fileID: 7926608256317659342, guid: 366c940764553da4a9b8d10cd41a4a94, type: 3}
