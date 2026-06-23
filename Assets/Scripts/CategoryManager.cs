@@ -35,13 +35,6 @@ public class CategoryManager : Singleton<CategoryManager>
     [Tooltip("World-space centre of the pyramid. The apex bubble spawns here.")]
     [SerializeField] Transform originPyramidPoint;
 
-    [Tooltip("Bubbles placed in ring 2 (default 6).")]
-    [SerializeField] int layer2BubbleCount = 6;
-
-    [Tooltip("Extra bubbles added per subsequent ring. " +
-             "Default 6 → ring 2 = 6, ring 3 = 12, ring 4 = 18 …")]
-    [SerializeField] int layerCountIncrement = 6;
-
     [Tooltip("Scale multiplier applied only to the origin/apex bubble (layer 0).")]
     [SerializeField] float originPointBubbleScaleMultiplier = 1.25f;
 
@@ -49,11 +42,8 @@ public class CategoryManager : Singleton<CategoryManager>
              "Example: 0.1 => Layer0=1.25, Layer1=1.15, Layer2=1.05, Layer3=0.95")]
     [SerializeField] float layerScaleDecrementMultiplier = 0.1f;
 
-    [Tooltip("Radius (world units) of the second ring from the origin.")]
-    [SerializeField] float pyramidBaseRadius = 1.5f;
-
-    [Tooltip("Additional radius per ring beyond ring 2, so the cluster widens outward.")]
-    [SerializeField] float pyramidRadiusIncrement = 1f;
+    [Header("Grid Layers")]
+    [SerializeField] List<GridGenerator> layers = new();
 
     [Tooltip("SortingGroup.sortingOrder assigned to the apex bubble (layer 0). " +
              "Outer rings receive progressively lower values so they render behind.")]
@@ -84,7 +74,7 @@ public class CategoryManager : Singleton<CategoryManager>
         if (!spawnOnStart)
             yield break;
 
-        Shuffle();
+        // Shuffle();
 
         if (spawnInPyramid)
             yield return StartCoroutine(SpawnPyramid());
@@ -141,51 +131,79 @@ public class CategoryManager : Singleton<CategoryManager>
 
         while (dataIndex < datas.Count)
         {
-            int bubblesInLayer = layerIndex == 0
-                ? 1
-                : layer2BubbleCount + (layerIndex - 1) * layerCountIncrement;
+            List<Vector3> layerPositions = new();
 
-            // Capture layerIndex NOW — the while loop increments it after this block,
-            // so without a local copy all lambdas in this iteration would close over
-            // the same variable and read the wrong value by the time they fire.
+            if (layerIndex == 0)
+            {
+                layerPositions.Add(originPyramidPoint.position);
+            }
+            else
+            {
+                int gridIdx = layerIndex - 1;
+
+                if (gridIdx >= layers.Count || layers[gridIdx] == null)
+                    yield break;
+
+                layerPositions.AddRange(layers[gridIdx].GetBordersPos());
+            }
+
             int capturedLayer = layerIndex;
 
-            for (int i = 0; i < bubblesInLayer && dataIndex < datas.Count; i++)
+            for (int i = 0; i < layerPositions.Count && dataIndex < datas.Count; i++)
             {
-                Vector3 pos = GetPyramidPosition(capturedLayer, i, bubblesInLayer);
+                Vector3 pos = ApplyPositionNoise(
+                    layerPositions[i],
+                    capturedLayer,
+                    i
+                );
+
                 BubbleType cat = datas[dataIndex].name;
                 Bubble.Data data = datas[dataIndex].data;
+
                 Color bubbleColor = datas[dataIndex].overrideColor
                     ? datas[dataIndex].bubbleColor
-                    : GameSettings.Instance.BubbleColors[dataIndex % GameSettings.Instance.BubbleColors.Length];
+                    : GameSettings.Instance.BubbleColors[
+                        dataIndex % GameSettings.Instance.BubbleColors.Length];
 
-                // Inner rings pop in first, outer rings trail behind
                 float delay = Random.Range(0.05f, 0.15f) + capturedLayer * 0.15f;
 
                 float layerScale = Mathf.Max(
-                0.1f,
-                originPointBubbleScaleMultiplier - (capturedLayer * layerScaleDecrementMultiplier)
+                    0.1f,
+                    originPointBubbleScaleMultiplier -
+                    (capturedLayer * layerScaleDecrementMultiplier)
                 );
 
                 DOVirtual.DelayedCall(delay, () =>
                 {
-                    var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
+                    var bubble = Instantiate(
+                        bubblePrefab,
+                        pos,
+                        Quaternion.identity
+                    );
+
                     bubble.transform.localScale *= layerScale;
 
-                    // Kinematic + trigger so bubbles are purely visual decorations
                     var rb = bubble.GetComponent<Rigidbody2D>();
-                    if (rb != null) rb.bodyType = RigidbodyType2D.Kinematic;
+                    if (rb != null)
+                        rb.bodyType = RigidbodyType2D.Kinematic;
 
                     var coll = bubble.GetComponent<Collider2D>();
-                    if (coll != null) coll.isTrigger = true;
+                    if (coll != null)
+                        coll.isTrigger = true;
 
-                    // Inner layers render in front; each outer ring steps one order back
                     var sg = bubble.GetComponent<SortingGroup>();
                     if (sg != null)
-                        sg.sortingOrder = pyramidApexSortingOrder - capturedLayer * sortingOrderDecrement;
+                    {
+                        sg.sortingOrder =
+                            pyramidApexSortingOrder -
+                            capturedLayer * sortingOrderDecrement;
+                    }
 
                     bubble.Category = cat;
-                    if (GameSettings.Instance.CanChangeColor) bubble.SetColor(bubbleColor);
+
+                    if (GameSettings.Instance.CanChangeColor)
+                        bubble.SetColor(bubbleColor);
+
                     bubble.SetName(new() { data });
                 });
 
@@ -194,7 +212,6 @@ public class CategoryManager : Singleton<CategoryManager>
 
             layerIndex++;
 
-            // Breathe every two rings to avoid frame spikes on large data sets
             if (layerIndex % 2 == 0)
                 yield return new WaitForSeconds(0.05f);
         }
@@ -203,35 +220,6 @@ public class CategoryManager : Singleton<CategoryManager>
     }
 
     // ── Pyramid geometry helpers ──────────────────────────────────────────────
-
-    /// <summary>
-    /// Returns the world position for one bubble in the pyramid.
-    /// All rings share the same origin Z — depth is purely a sorting-order illusion.
-    /// </summary>
-    Vector3 GetPyramidPosition(int layer, int indexInLayer, int totalInLayer)
-    {
-        Vector3 origin = originPyramidPoint.position;
-
-        // Apex sits exactly on the origin point
-        if (layer == 0)
-            return ApplyPositionNoise(origin, 0, 0);
-
-        // Each successive ring is wider so the cluster fans out from the centre
-        float radius = pyramidBaseRadius + (layer - 1) * pyramidRadiusIncrement;
-
-        // Distribute bubbles evenly around the full 360° of the ring.
-        // Both X and Y are offset by the angle — there is no per-layer Y shift;
-        // the pyramid depth comes entirely from SortingGroup order.
-        float angle = (2f * Mathf.PI / totalInLayer) * indexInLayer;
-
-        Vector3 pos = new Vector3(
-            origin.x + radius * Mathf.Cos(angle),
-            origin.y + radius * Mathf.Sin(angle),
-            origin.z
-        );
-
-        return ApplyPositionNoise(pos, layer, indexInLayer);
-    }
 
     /// <summary>
     /// Applies Perlin-noise displacement to <paramref name="pos"/> scaled by

@@ -92,7 +92,8 @@ public class InputHandler : Singleton<InputHandler>
             {
                 d.transform.DOKill();
                 Vector3 pos = d.transform.position;
-                PerformClickEffect(d.transform, Vector3.one);
+                Vector3 originalScale = d.transform.localScale;
+                PerformClickEffect(d.transform, originalScale);
             }
         }
     }
