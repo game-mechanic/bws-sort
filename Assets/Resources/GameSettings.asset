@@ -41,4 +41,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
   - {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
   - {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
+  pyramidBubbles:
+  - {fileID: 7926608256317659342, guid: e6dbd01147e592543ac3c240f53373a7, type: 3}
+  - {fileID: 7926608256317659342, guid: db02e076f90622245bba1452c6e26921, type: 3}
+  - {fileID: 7926608256317659342, guid: 4ce0d416647fa4744830125c4aba2edb, type: 3}
   canTextBreathe: 0

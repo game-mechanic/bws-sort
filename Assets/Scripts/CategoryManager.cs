@@ -65,6 +65,10 @@ public class CategoryManager : Singleton<CategoryManager>
 
     public BubbleType CurrentCategory => categories[currentCategory % categories.Length];
 
+    [Header("Layer Scale Reveal")]
+    [SerializeField] float layerScaleRevealDuration = 0.25f;
+    [SerializeField] float layerScaleRevealDelay = 0.1f;
+
     // ── Lifecycle ─────────────────────────────────────────────────────────────
     IEnumerator Start()
     {
@@ -117,6 +121,8 @@ public class CategoryManager : Singleton<CategoryManager>
     // ── Pyramid spawn ─────────────────────────────────────────────────────────
     IEnumerator SpawnPyramid()
     {
+        List<SpawnedBubbleInfo> spawnedBubbles = new();
+
         if (originPyramidPoint == null)
         {
             Debug.LogWarning("CategoryManager: originPyramidPoint is not assigned! " +
@@ -125,7 +131,7 @@ public class CategoryManager : Singleton<CategoryManager>
             yield break;
         }
 
-        Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
+        
         int dataIndex = 0;
         int layerIndex = 0;
 
@@ -151,6 +157,10 @@ public class CategoryManager : Singleton<CategoryManager>
 
             for (int i = 0; i < layerPositions.Count && dataIndex < datas.Count; i++)
             {
+                Bubble bubblePrefab = GameSettings.Instance.PyramidBubbles[
+                Random.Range(0, GameSettings.Instance.PyramidBubbles.Length)
+    ];
+
                 Vector3 pos = ApplyPositionNoise(
                     layerPositions[i],
                     capturedLayer,
@@ -173,40 +183,47 @@ public class CategoryManager : Singleton<CategoryManager>
                     (capturedLayer * layerScaleDecrementMultiplier)
                 );
 
-                DOVirtual.DelayedCall(delay, () =>
+                var bubble = Instantiate(
+                bubblePrefab,
+                pos,
+                Quaternion.identity
+                );
+
+                bubble.transform.localScale *= layerScale;
+
+                var rb = bubble.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                    rb.bodyType = RigidbodyType2D.Kinematic;
+
+                var coll = bubble.GetComponent<Collider2D>();
+                if (coll != null)
+                    coll.isTrigger = true;
+
+                var sg = bubble.GetComponent<SortingGroup>();
+                if (sg != null)
                 {
-                    var bubble = Instantiate(
-                        bubblePrefab,
-                        pos,
-                        Quaternion.identity
-                    );
+                    sg.sortingOrder =
+                        pyramidApexSortingOrder -
+                        capturedLayer * sortingOrderDecrement;
+                }
 
-                    bubble.transform.localScale *= layerScale;
+                bubble.Category = cat;
 
-                    var rb = bubble.GetComponent<Rigidbody2D>();
-                    if (rb != null)
-                        rb.bodyType = RigidbodyType2D.Kinematic;
+                if (GameSettings.Instance.CanChangeColor)
+                    bubble.SetColor(bubbleColor);
 
-                    var coll = bubble.GetComponent<Collider2D>();
-                    if (coll != null)
-                        coll.isTrigger = true;
+                bubble.SetName(new() { data });
 
-                    var sg = bubble.GetComponent<SortingGroup>();
-                    if (sg != null)
-                    {
-                        sg.sortingOrder =
-                            pyramidApexSortingOrder -
-                            capturedLayer * sortingOrderDecrement;
-                    }
-
-                    bubble.Category = cat;
-
-                    if (GameSettings.Instance.CanChangeColor)
-                        bubble.SetColor(bubbleColor);
-
-                    bubble.SetName(new() { data });
+                spawnedBubbles.Add(new SpawnedBubbleInfo
+                {
+                    bubble = bubble,
+                    originalScale = bubble.transform.localScale,
+                    layer = capturedLayer
+                    
                 });
 
+                // Cache complete. Hide all bubbles.
+                bubble.transform.localScale = Vector3.zero;
                 dataIndex++;
             }
 
@@ -214,6 +231,38 @@ public class CategoryManager : Singleton<CategoryManager>
 
             if (layerIndex % 2 == 0)
                 yield return new WaitForSeconds(0.05f);
+        }
+
+        // Cache complete. Hide all bubbles.
+        /*foreach (var info in spawnedBubbles)
+        {
+            if (info.bubble != null)
+                info.bubble.transform.localScale = Vector3.zero;
+        }*/
+
+        // Reveal from outermost layer -> innermost layer.
+        int maxLayer = -1;
+
+        foreach (var info in spawnedBubbles)
+        {
+            maxLayer = Mathf.Max(maxLayer, info.layer);
+        }
+
+        for (int layer = maxLayer; layer >= 0; layer--)
+        {
+            float startDelay =
+                (maxLayer - layer) * layerScaleRevealDelay;
+
+            foreach (var info in spawnedBubbles)
+            {
+                if (info.layer != layer || info.bubble == null)
+                    continue;
+
+                info.bubble.transform
+                    .DOScale(info.originalScale, layerScaleRevealDuration)
+                    .SetEase(Ease.OutBack)
+                    .SetDelay(startDelay);
+            }
         }
 
         currentIndex = datas.Count;
@@ -348,4 +397,11 @@ public class CategoryManager : Singleton<CategoryManager>
         if (!categoryCounts.ContainsKey(category)) return -1;
         return categoryCounts[category];
     }
+}
+
+class SpawnedBubbleInfo
+{
+    public Bubble bubble;
+    public Vector3 originalScale;
+    public int layer;
 }
