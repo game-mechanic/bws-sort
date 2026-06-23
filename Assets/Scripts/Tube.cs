@@ -1,10 +1,12 @@
 using DG.Tweening;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Tube : MonoBehaviour
 {
+    private const float HighlightDuration = 0.1f;
     [SerializeField] List<CategoryManager.Data> datas;
 
 
@@ -12,6 +14,7 @@ public class Tube : MonoBehaviour
     [SerializeField] Transform startPosition;
     bool isHighlighted;
 
+    static int color;
 
     public bool IsHighlighted { get => isHighlighted; private set => isHighlighted = value; }
     public BubbleType TopCategory
@@ -27,14 +30,14 @@ public class Tube : MonoBehaviour
     {
         for (int i = 0; i < datas.Count; i++)
         {
-            Vector3 position = GameSettings.GetStackedPosition(startPosition.position, i, 1f);
+            Vector3 position = GameSettings.GetStackedPosition(startPosition.position, i, GameSettings.Instance.NormalOffset);
             Bubble bubble = Instantiate(GameSettings.Instance.Bubbles[0], position, Quaternion.identity, transform);
 
             BubbleType category = datas[i].name;
             Bubble.Data data = datas[i].data;
             Color bubbleColor = datas[i].overrideColor ?
                 datas[i].bubbleColor :
-                GameSettings.Instance.BubbleColors[i % GameSettings.Instance.BubbleColors.Length];
+                GameSettings.Instance.BubbleColors[color++ % GameSettings.Instance.BubbleColors.Length];
 
             bubble.Category = category;
             if (GameSettings.Instance.CanChangeColor)
@@ -66,8 +69,8 @@ public class Tube : MonoBehaviour
             {
                 position = GameSettings.GetStackedPosition(startPosition.position, i, GameSettings.Instance.NormalOffset);
             }
-
-            bubbles[i].transform.DOMove(position, 0.1f);
+            bubbles[i].DOKill();
+            bubbles[i].transform.DOMove(position, HighlightDuration);
             bubbles[i].Highlight(highlight);
         }
     }
@@ -131,17 +134,89 @@ public class Tube : MonoBehaviour
             // Add to this tube
             bubble.transform.SetParent(transform);
             Vector3 targetPosition = GameSettings.GetStackedPosition(startPosition.position, bubbles.Count, GameSettings.Instance.NormalOffset);
+            bool canCheckCompletion = i == toTransfer - 1;
+            Vector3 one = GameSettings.GetStackedPosition(tube.startPosition.position, GameSettings.Instance.JumpHeight, GameSettings.Instance.NormalOffset);
+            Vector3 two = GameSettings.GetStackedPosition(startPosition.position, GameSettings.Instance.JumpHeight, GameSettings.Instance.NormalOffset);
+
+            one.y = Mathf.Max(one.y, two.y);
+            two.y = one.y;
+
             bubble.transform.DOPath(
                 new Vector3[] {
-                    GameSettings.GetStackedPosition(tube.startPosition.position, GameSettings.Instance.JumpHeight, GameSettings.Instance.NormalOffset),
-                    GameSettings.GetStackedPosition(startPosition.position, GameSettings.Instance.JumpHeight, GameSettings.Instance.NormalOffset),
+                    one,
+                    two,
                     targetPosition,
                 },
                 GameSettings.Instance.JumpDuration,
-                pathType: PathType.CatmullRom).OnComplete(() => bubble.Highlight(false));
+                pathType: PathType.CatmullRom)
+                .SetEase(GameSettings.Instance.JumpTween)
+                .OnComplete(() =>
+                {
+                    bubble.Highlight(false);
+                    if (canCheckCompletion)
+                    {
+                        TryMerge();
+                    }
+                });
 
             bubbles.Add(bubble);
         }
         tube.Highlight(false);
+    }
+
+    void TryMerge()
+    {
+        if (bubbles.Count < 4) return;
+        BubbleType type = bubbles[^1].Category;
+        foreach (var bubble in bubbles)
+        {
+            if (bubble.Category != type) return;
+        }
+
+        //Highlight(true);
+
+        StartCoroutine(MergeOneByOne(bubbles, GameSettings.GetStackedPosition(startPosition.position, 4, GameSettings.Instance.NormalOffset) + Vector3.up * GameSettings.Instance.Offset)) ;
+    }
+    IEnumerator MergeOneByOne(List<Bubble> hoveredBubbles, Vector3 targetPosition)
+    {
+        const float Duration = .8f;
+        const float Interval = 0.2f;
+
+        //yield return new WaitForSeconds(HighlightDuration);
+
+        Bubble a = hoveredBubbles[3];
+        const Ease outBack = Ease.InOutSine;
+
+        a.transform.DOMove(targetPosition, Duration)
+            .SetEase(outBack);
+        Bubble b = hoveredBubbles[2];
+
+        b.transform.DOMove(targetPosition, Duration)
+            .SetDelay(Interval)
+            .SetEase(outBack);
+
+        hoveredBubbles[1].transform.DOMove(targetPosition, Duration)
+           .SetDelay(Interval * 2)
+           .SetEase(outBack);
+
+        hoveredBubbles[0].transform.DOMove(targetPosition, Duration)
+            .SetDelay(Interval * 3)
+            .SetEase(outBack);
+
+        yield return new WaitForSeconds(Duration);
+        // IMPORTANT: TryMerge must RETURN the new bubble
+        InputHandler.Instance.TryMerge(a, b, out Bubble current);
+        yield return new WaitForSeconds(0.1f);
+        a = current;
+        b = hoveredBubbles[1];
+        yield return new WaitForSeconds(Interval);
+        InputHandler.Instance.TryMerge(a, b, out current);
+        //yield return new WaitForSeconds(0.1f);
+        a = current;
+        b = hoveredBubbles[0];
+
+        yield return new WaitForSeconds(Interval);
+        InputHandler.Instance.TryMerge(a, b, out current);
+        bubbles.Clear();
     }
 }

@@ -1,4 +1,6 @@
+using DG.Tweening;
 using System.Collections;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Tables;
@@ -56,7 +58,8 @@ public class GameSettings : ScriptableObject
     [SerializeField] private float highlightedOffset = 1.3f;
     [SerializeField] private float jumpDuration = 1f;
     [SerializeField] private int jumpHeight = 5;
-
+    [SerializeField] private Ease jumpTween;
+    [SerializeField] private float offset;
     public float MaxBounceAmplitude { get => maxBounceAmplitude; }
     public float BounceTime { get => bounceTime; }
     public int MaxBounces { get => maxBounces; }
@@ -79,6 +82,8 @@ public class GameSettings : ScriptableObject
     public float HighlightedOffset { get => highlightedOffset; }
     public float JumpDuration { get => jumpDuration; }
     public int JumpHeight { get => jumpHeight; }
+    public Ease JumpTween { get => jumpTween; }
+    public float Offset { get => offset; }
 
     internal static IEnumerator Init()
     {

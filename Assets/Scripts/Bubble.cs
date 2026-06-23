@@ -226,6 +226,7 @@ public class Bubble : MonoBehaviour
     public void Highlight(bool v)
     {
         highlightImage.SetActive(v);
+        sortingGroup.sortingOrder = v ? 99 : 3;
     }
     private void OnDrawGizmosSelected()
     {
@@ -352,7 +353,7 @@ public class Bubble : MonoBehaviour
         blastSequence.AppendCallback(() =>
         {
             ParticlePool.PlayRevealFx(transform.position);
-            CategoryManager.Instance.SpawnNewCategories();
+            //CategoryManager.Instance.SpawnNewCategories();
             Destroy(gameObject);
             OnBlastComplete?.Invoke();
         });

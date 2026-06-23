@@ -45,8 +45,16 @@ public class InputHandler : Singleton<InputHandler>
             }
             else if (d.CanRecieve(selectedTube.TopCategory))
             {
-                d.Recieve(selectedTube);
-                selectedTube = null;
+                if (d != selectedTube)
+                {
+                    d.Recieve(selectedTube);
+                    selectedTube = null;
+                }
+                else
+                {
+                    selectedTube.Highlight(false);
+                    selectedTube = null;
+                }
             }
             else
             {
@@ -185,7 +193,36 @@ public class InputHandler : Singleton<InputHandler>
         //}
         //Highlight(null);
     }
+    public bool TryMerge(Bubble a, Bubble b, out Bubble bubble)
+    {
+        if (a.Category != b.Category)
+        {
+            bubble = null;
+            return false;
+        }
 
+        byte maxIndex = Math.Max(a.Index, b.Index);
+        int nextIndex = a.Index + b.Index + 1;
+        var bigBubble = a.Index == maxIndex ? a : b;
+        var newBubble = Instantiate(GameSettings.Instance.Bubbles[nextIndex]);
+        newBubble.transform.SetPositionAndRotation(bigBubble.transform.position, bigBubble.transform.rotation);
+        var names = a.Names;
+        names.AddRange(b.Names);
+        newBubble.Category = a.Category;
+        newBubble.SetName(names);
+        newBubble.Bounce();
+        a.transform.DOKill();
+        b.transform.DOKill();
+        Destroy(a.gameObject);
+        Destroy(b.gameObject);
+
+        if (nextIndex == 3)
+        {
+            newBubble.Blast();
+        }
+        bubble = newBubble;
+        return true;
+    }
     public bool TryMerge(Bubble a, Bubble b)
     {
         if (a.Category != b.Category) return false;
