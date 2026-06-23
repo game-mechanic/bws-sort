@@ -30,9 +30,12 @@ public class CategoryManager : Singleton<CategoryManager>
         fx.Play();
         WaitForSeconds _waitForSeconds0_1 = new(0.1f);
         Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
-        for (int j = 0; j < Mathf.Min(initialSpawns, datas.Count); j++)
+
+        for (int j = 0; j < Mathf.Min(initialSpawns, datas.Count); j += 3)
         {
-            CreateBubble(bubblePrefab, j, 1);
+            //CreateBubble(bubblePrefab, j, 1);
+            int endIndex = Mathf.Min(j + 3, datas.Count);
+            CreateDummyBubbles(datas.GetRange(j, endIndex - j), 1);
             yield return _waitForSeconds0_1;
         }
 
@@ -40,6 +43,13 @@ public class CategoryManager : Singleton<CategoryManager>
 
         currentIndex = initialSpawns;
     }
+    public void CreateDummyBubbles(List<Data> datas, int entry)
+    {
+        Vector3 position = horizontalAlignment.GetSlotPosition(entry % pipeCount);
+        DummyBubble dummyBubble = Instantiate(GameSettings.Instance.DummyBubble, position, Quaternion.identity);
+        dummyBubble.SetData(datas);
+    }
+
 
     private void CreateBubble(Bubble bubblePrefab, int j, int entry)
     {
@@ -121,9 +131,11 @@ public class CategoryManager : Singleton<CategoryManager>
         fx.Play();
 
         WaitForSeconds waitForSeconds = new(0.1f);
-        for (int j = currentIndex; j < end; j++)
+        for (int j = currentIndex; j < end; j += 3)
         {
-            CreateBubble(bubblePrefab, j, pipeIndex);
+            //CreateBubble(bubblePrefab, j, pipeIndex);
+            int endIndex = Mathf.Min(j + 3, datas.Count);
+            CreateDummyBubbles(datas.GetRange(j, endIndex - j), 1);
             yield return waitForSeconds;
         }
         fx.Stop();

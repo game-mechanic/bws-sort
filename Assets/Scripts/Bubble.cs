@@ -6,7 +6,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering;
-using static UnityEditor.Progress;
 
 public class Bubble : MonoBehaviour
 {
@@ -45,13 +44,24 @@ public class Bubble : MonoBehaviour
     Vector3 startScale;
     [SerializeField] private BubbleType category;
 
-    public RigidbodyType2D IsKinematic { get => rb.bodyType; set => rb.bodyType = value; }
+    public RigidbodyType2D IsKinematic { get => Rb.bodyType; set => Rb.bodyType = value; }
     public float Radius => radius;
 
     public byte Index { get => index; }
     public BubbleType Category { get => category; set => category = value; }
     public List<Data> Names { get => names; }
     public bool CanChangeColor { get => canChangeColor; }
+    public Rigidbody2D Rb
+    {
+        get
+        {
+            if (rb == null)
+            {
+                rb = GetComponent<Rigidbody2D>();
+            }
+            return rb;
+        }
+    }
 
     Vector3[] textPositions;
 
@@ -65,7 +75,7 @@ public class Bubble : MonoBehaviour
         randomPhaseDiff = Random.Range(0, 90) * Mathf.Deg2Rad;
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
         RestorePositions();
-        Redraw();
+        //Redraw();
         yield return null;
         foreach (var name in textUIs)
         {
@@ -175,6 +185,23 @@ public class Bubble : MonoBehaviour
     public void SetCollider(bool active)
     {
         col.enabled = active;
+    }
+    public void ScaleUptext()
+    {
+        foreach (var t in textUIs)
+        {
+            t.textUIs.gameObject.SetActive(true);
+            t.textUIs.transform.DOScale(t.textUIs.transform.localScale, 0.2f)
+                .From(Vector3.zero);
+        }
+    }
+    public void HideText()
+    {
+        foreach (var t in textUIs)
+        {
+            t.textUIs.gameObject.SetActive(false);
+            //t.textUIs.transform.DOScale(t.textUIs.transform.localScale, 0.2f).From(Vector3.zero);
+        }
     }
 
     public void SetName(List<Data> name)

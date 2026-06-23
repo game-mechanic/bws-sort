@@ -49,6 +49,7 @@ public class GameSettings : ScriptableObject
     [SerializeField] private TableReference tableReference;
     [SerializeField] private Locale selectedLanguage;
     [SerializeField] private UnityEngine.Localization.Locale englishLocale;
+    [SerializeField] private DummyBubble dummyBubble;
 
     public float MaxBounceAmplitude { get => maxBounceAmplitude; }
     public float BounceTime { get => bounceTime; }
@@ -65,6 +66,7 @@ public class GameSettings : ScriptableObject
     public Locale SelectedLanguage { get => selectedLanguage; }
     public TableReference TableReference { get => tableReference; }
     public UnityEngine.Localization.Locale EnglishLocale { get => englishLocale; }
+    public DummyBubble DummyBubble { get => dummyBubble; }
 
     internal static IEnumerator Init()
     {

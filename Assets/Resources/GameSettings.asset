@@ -16,7 +16,7 @@ MonoBehaviour:
   bounceTime: 1
   maxBounces: 3
   lerpSpeeed: 15
-  bubbleProfile: {fileID: 11400000, guid: 3c283154e7cc39b49bfe70f585ac9e5d, type: 2}
+  bubbleProfile: {fileID: 11400000, guid: 0dcfe33b7f4ccdd42bcadddfd88787d5, type: 2}
   dragSpeed: 10
   breathingSpeed: 5
   breathingAplitude: 0.05
@@ -34,3 +34,4 @@ MonoBehaviour:
     m_TableCollectionName: RedThings
   selectedLanguage: 0
   englishLocale: {fileID: 11400000, guid: 8453d8e5bb2028f40a88d83511917e13, type: 2}
+  dummyBubble: {fileID: 7985019681751148558, guid: 534ef9235e1dd184983d0e54b028d26d, type: 3}
