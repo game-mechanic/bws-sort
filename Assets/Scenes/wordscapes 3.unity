@@ -280,7 +280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &84020370
 SpriteRenderer:
   serializedVersion: 2
@@ -348,12 +348,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84020369}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 15.99}
   m_LocalScale: {x: 1.030666, y: 1.030666, z: 1.030666}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 963194228}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &157686649
 GameObject:
@@ -443,134 +443,190 @@ MonoBehaviour:
       m_Calls: []
   horizontalAlignment: {fileID: 1981860706}
   datas:
-  - name: {fileID: 11400000, guid: b0727d251b8fbde4f94cc465bc39217e, type: 2}
+  - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: e8abf8cbb80ee834ea5edda71db9349d, type: 3}
-  - name: {fileID: 11400000, guid: 7f8499ce36a9e3f448fbc3fa4893922c, type: 2}
+      name: AVOCADO
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: a9a3f2a92849cab42b4d1115aeb47d2f, type: 3}
-  - name: {fileID: 11400000, guid: b0727d251b8fbde4f94cc465bc39217e, type: 2}
+      name: PISCES
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 2f6cc4f3bd2d5774e8ed7c78c82a68e4, type: 3}
-  - name: {fileID: 11400000, guid: b0727d251b8fbde4f94cc465bc39217e, type: 2}
+      name: TAURUS
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 3842a0330d7edad4285a01bbff010895, type: 3}
-  - name: {fileID: 11400000, guid: 7f8499ce36a9e3f448fbc3fa4893922c, type: 2}
+      name: COCONUT
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 214a5ef2f1e88ee448ca4e29f0faaf87, type: 3}
-  - name: {fileID: 11400000, guid: b0727d251b8fbde4f94cc465bc39217e, type: 2}
+      name: ROSE
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 0ad88e2f97e56de498251bdbdcbe5ae3, type: 3}
-  - name: {fileID: 11400000, guid: 7f8499ce36a9e3f448fbc3fa4893922c, type: 2}
+      name: PUPPET
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 8147b4f9503516841839d70076144270, type: 3}
-  - name: {fileID: 11400000, guid: b9aebd80b99bda74da979493e2b3c8ad, type: 2}
+      name: GOLD
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: e71b6449b18bfe141b59337fe07c5826, type: 3}
-  - name: {fileID: 11400000, guid: 7f8499ce36a9e3f448fbc3fa4893922c, type: 2}
+      name: IRON
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 00560b7139e84194db2ed1506dd6d34f, type: 3}
-  - name: {fileID: 11400000, guid: b9aebd80b99bda74da979493e2b3c8ad, type: 2}
+      name: LEO
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 8ad5efa488441724485658c9a6dca223, type: 3}
-  - name: {fileID: 11400000, guid: b9aebd80b99bda74da979493e2b3c8ad, type: 2}
+      name: BLOOD
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: a892aa82e7e55fc409613f80a80da194, type: 3}
-  - name: {fileID: 11400000, guid: 9fa3a468568959447bc40daf8f6996f9, type: 2}
+      name: SUNFLOWER
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: e284249f1ca704f4686dafee95db76c6, type: 3}
-  - name: {fileID: 11400000, guid: 9fa3a468568959447bc40daf8f6996f9, type: 2}
+      name: HELIUM
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 211267c997bb1414491603a38bdef791, type: 3}
-  - name: {fileID: 11400000, guid: 9fa3a468568959447bc40daf8f6996f9, type: 2}
+      name: VIRGO
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 7f8a623ff3a138c46aba9ab1474432b7, type: 3}
-  - name: {fileID: 11400000, guid: b9aebd80b99bda74da979493e2b3c8ad, type: 2}
+      name: CHERRY
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 1db9f8ce8c0ab0b4a89ac4f7cff751df, type: 3}
-  - name: {fileID: 11400000, guid: 24051f9037b1ae74494b1f14841126c8, type: 2}
+      name: GEPPETTO
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: d4bf57d8dbcdd754795b779259d64b5d, type: 3}
-  - name: {fileID: 11400000, guid: 9fa3a468568959447bc40daf8f6996f9, type: 2}
+      name: Fairy
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 10b90d510bb0efa4ca7d34601ef4257e, type: 3}
-  - name: {fileID: 11400000, guid: 24051f9037b1ae74494b1f14841126c8, type: 2}
+      name: OXYGEN
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 7bc4fd5c8e5002f47a83ad347eb49c2c, type: 3}
-  - name: {fileID: 11400000, guid: 24051f9037b1ae74494b1f14841126c8, type: 2}
+      name: TOMATO
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 2578237c5a8d42f41859e009e92a26c9, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 93e25f27ec4c9bf44b606e6883786ffe, type: 3}
-  - name: {fileID: 11400000, guid: 24051f9037b1ae74494b1f14841126c8, type: 2}
+      name: PETER PAN
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: e0486312eb7e12541b45fef70b630491, type: 3}
-  - name: {fileID: 11400000, guid: 9137ab2fd86c87d48b3411fed745a798, type: 2}
+      name: Olive
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 45d527f2ad401394a95562af4088ce5b, type: 3}
-  - name: {fileID: 11400000, guid: 9137ab2fd86c87d48b3411fed745a798, type: 2}
+      name: Bulgaria
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 91578447670f19a418fc98e6d2e19d61, type: 3}
-  - name: {fileID: 11400000, guid: 9137ab2fd86c87d48b3411fed745a798, type: 2}
+      name: PUMPKIN
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 36ce754852c3ff74a80986464aefe8c6, type: 3}
-  - name: {fileID: 11400000, guid: 9137ab2fd86c87d48b3411fed745a798, type: 2}
+      name: serbia
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 120d67f99d6c53e4e8e7a1e60784b24c, type: 3}
-  - name: {fileID: 11400000, guid: bb33c3bc4a91b624db0816a7409ecf16, type: 2}
+      name: SLIPPER
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 2578237c5a8d42f41859e009e92a26c9, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 1d67273bf9fea3e40a09133d6101d66e, type: 3}
-  - name: {fileID: 11400000, guid: bb33c3bc4a91b624db0816a7409ecf16, type: 2}
+      name: RAPUNZEL
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 0854da64605246e4db57eff25bc94038, type: 3}
-  - name: {fileID: 11400000, guid: bb33c3bc4a91b624db0816a7409ecf16, type: 2}
+      name: Croatia
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 18e0d1b7560f86448835cb44fbb91160, type: 3}
-  - name: {fileID: 11400000, guid: bb33c3bc4a91b624db0816a7409ecf16, type: 2}
+      name: Romania
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: f7e8f7ebb511c1247993b0d76f9355c5, type: 3}
-  - name: {fileID: 11400000, guid: 10199a328d6df714e89ccbd5b1c47f0a, type: 2}
+      name: NOSE
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 62d7a7678a0cc324faf3df0530c48319, type: 3}
-  - name: {fileID: 11400000, guid: 10199a328d6df714e89ccbd5b1c47f0a, type: 2}
+      name: Prince
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: b75177d87c426b341b70d1bbebe38615, type: 3}
-  - name: {fileID: 11400000, guid: 10199a328d6df714e89ccbd5b1c47f0a, type: 2}
+      name: WOODEN
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: bd63d4a0e5bca714f9d322f572bbc783, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: bcd73b5033df13647bb617d6a04f2fd1, type: 3}
-  - name: {fileID: 11400000, guid: 10199a328d6df714e89ccbd5b1c47f0a, type: 2}
+      name: Tea
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: bd63d4a0e5bca714f9d322f572bbc783, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 97727007058d50941a5f38e3e3882f60, type: 3}
+      name: Coffee
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: bd63d4a0e5bca714f9d322f572bbc783, type: 2}
+    data:
+      name: Milk
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: bd63d4a0e5bca714f9d322f572bbc783, type: 2}
+    data:
+      name: juice
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 23cc316dbeb113046a62c77c99a96a43, type: 2}
+    data:
+      name: orange
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 23cc316dbeb113046a62c77c99a96a43, type: 2}
+    data:
+      name: grape
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 23cc316dbeb113046a62c77c99a96a43, type: 2}
+    data:
+      name: apple
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 23cc316dbeb113046a62c77c99a96a43, type: 2}
+    data:
+      name: pear
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 2136bfe15c546cd459b30fb080114df0, type: 2}
+    data:
+      name: owl
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 2136bfe15c546cd459b30fb080114df0, type: 2}
+    data:
+      name: dove
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 2136bfe15c546cd459b30fb080114df0, type: 2}
+    data:
+      name: toucan
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 2136bfe15c546cd459b30fb080114df0, type: 2}
+    data:
+      name: pelican
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: c66f84d91507831459965ef7c1d9d15f, type: 2}
+    data:
+      name: Guitar
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: c66f84d91507831459965ef7c1d9d15f, type: 2}
+    data:
+      name: violin
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: c66f84d91507831459965ef7c1d9d15f, type: 2}
+    data:
+      name: flute
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: c66f84d91507831459965ef7c1d9d15f, type: 2}
+    data:
+      name: piano
+      icon: {fileID: 0}
   spawnPosition: {fileID: 30197032}
   radius: 1.75
   initialSpawns: 8
@@ -600,7 +656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1266713152363001512, guid: 2e839e30a4a21bb4d8453b2c62e31f7f, type: 3}
       propertyPath: m_Color.a
-      value: 0.9647059
+      value: 0.4509804
       objectReference: {fileID: 0}
     - target: {fileID: 1266713152363001512, guid: 2e839e30a4a21bb4d8453b2c62e31f7f, type: 3}
       propertyPath: m_Color.b
@@ -962,8 +1018,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0}
-  idle: {fileID: 21300000, guid: 35d52cdf02db28a4e9d34760022104c2, type: 3}
-  click: {fileID: 21300000, guid: 96b6d47e32d4165409bc121b4f856d80, type: 3}
+  idle: {fileID: 21300000, guid: 0182f8f18b759b747b6e78078a76f24d, type: 3}
+  click: {fileID: 21300000, guid: 1d4eadbb9bdf6ea4797862e93c7d3cec, type: 3}
 --- !u!1001 &521007750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -990,7 +1046,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1266713152363001512, guid: 2e839e30a4a21bb4d8453b2c62e31f7f, type: 3}
       propertyPath: m_Color.a
-      value: 0.9647059
+      value: 0.4509804
       objectReference: {fileID: 0}
     - target: {fileID: 1266713152363001512, guid: 2e839e30a4a21bb4d8453b2c62e31f7f, type: 3}
       propertyPath: m_Color.b
@@ -1486,9 +1542,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1922.8042, y: -925.9927}
-  m_SizeDelta: {x: 200, y: 250}
-  m_Pivot: {x: 0.23598285, y: 0.91602844}
+  m_AnchoredPosition: {x: 27.188354, y: -781.43463}
+  m_SizeDelta: {x: 331.9512, y: 414.939}
+  m_Pivot: {x: 0.22408399, y: 0.73411113}
 --- !u!114 &799683888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1509,7 +1565,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 35d52cdf02db28a4e9d34760022104c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0182f8f18b759b747b6e78078a76f24d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1656,7 +1712,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -15.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 84020371}
+  - {fileID: 1543917870}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &963194229
@@ -1820,6 +1878,97 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1543917869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1543917870}
+  - component: {fileID: 1543917871}
+  m_Layer: 0
+  m_Name: Background (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1543917870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543917869}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 15.99}
+  m_LocalScale: {x: 18.972734, y: 18.981068, z: 19.12751}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 963194228}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1543917871
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543917869}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 21300000, guid: 01c22fd92c8474443971d353dbc95b10, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
 --- !u!1 &1577110368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,7 +2063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1266713152363001512, guid: 2e839e30a4a21bb4d8453b2c62e31f7f, type: 3}
       propertyPath: m_Color.a
-      value: 0.9647059
+      value: 0.4509804
       objectReference: {fileID: 0}
     - target: {fileID: 1266713152363001512, guid: 2e839e30a4a21bb4d8453b2c62e31f7f, type: 3}
       propertyPath: m_Color.b
@@ -2198,7 +2347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1266713152363001512, guid: 2e839e30a4a21bb4d8453b2c62e31f7f, type: 3}
       propertyPath: m_Color.a
-      value: 0.9647059
+      value: 0.4509804
       objectReference: {fileID: 0}
     - target: {fileID: 1266713152363001512, guid: 2e839e30a4a21bb4d8453b2c62e31f7f, type: 3}
       propertyPath: m_Color.b
@@ -2269,7 +2418,6 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 429325397}
   - {fileID: 1577110371}
-  - {fileID: 84020371}
   - {fileID: 29039207}
   - {fileID: 915107233}
   - {fileID: 157686651}

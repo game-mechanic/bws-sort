@@ -1,10 +1,11 @@
 using DG.Tweening;
+using DT.GridSystem;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Recorder.Encoder;
+using UnityEditor;
 using UnityEngine;
 
-public class CategoryManager : Singleton<CategoryManager>
+public class CategoryManager : GridSystem2D<Bubble>
 {
     [System.Serializable]
     public class Data
@@ -12,7 +13,7 @@ public class CategoryManager : Singleton<CategoryManager>
         public BubbleType name;
         public Bubble.Data data;
     }
-
+    private static CategoryManager instance;
     [SerializeField] HorizontalAlignment horizontalAlignment;
 
     [SerializeField] List<Data> datas = new();
@@ -21,6 +22,19 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] int initialSpawns = 15;
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
+
+    public static CategoryManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindAnyObjectByType<CategoryManager>();
+            }
+            return instance;
+        }
+    }
+
 
     //IEnumerator Start()
     //{
@@ -49,14 +63,28 @@ public class CategoryManager : Singleton<CategoryManager>
         angleOffset *= Mathf.Deg2Rad;
         Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
 
-        for (int i = 0; i < initialSpawns; i++)
+        for (int i = 0; i < GridSize.x; i++)
         {
-            GenerateBubble(bubblePrefab: bubblePrefab,
-                pos: spawnPosition.position + new Vector3(Mathf.Sin(angleOffset * i) * radius, Mathf.Cos(angleOffset * i) * radius, 0),
-                category: datas[i].name,
-                data: datas[i].data);
+            for (int j = 0; j < GridSize.y; j++)
+            {
+                int k = ToIndex(i, j);
+                var newBubble = GenerateBubble(bubblePrefab: bubblePrefab,
+                     pos: GetWorldPosition(i, j),
+                     category: datas[k].name,
+                     data: datas[k].data);
+
+                AddGridObject(i, j, newBubble);
+            }
         }
-        currentIndex = initialSpawns;
+
+        //for (int i = 0; i < initialSpawns; i++)
+        //{
+        //    GenerateBubble(bubblePrefab: bubblePrefab,
+        //        pos: spawnPosition.position + new Vector3(Mathf.Sin(angleOffset * i) * radius, Mathf.Cos(angleOffset * i) * radius, 0),
+        //        category: datas[i].name,
+        //        data: datas[i].data);
+        //}
+        currentIndex = ToIndex(gridSize.x - 1, gridSize.y - 1) + 1;
     }
 
     private void Update()
@@ -272,11 +300,17 @@ public class CategoryManager : Singleton<CategoryManager>
     //        yield return new WaitForSeconds(0.05f);
     //    }
     //}
-
-
-    private void OnDrawGizmos()
+    override public void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(spawnPosition.position, radius);
+        base.OnDrawGizmos();
+        for (int i = 0; i < GridSize.x; i++)
+        {
+            for (int j = 0; j < GridSize.y; j++)
+            {
+                int index = ToIndex(i, j);
+                if (index < datas.Count)
+                    Handles.Label(GetWorldPosition(i, j), datas[index].data.name);
+            }
+        }
     }
 }
