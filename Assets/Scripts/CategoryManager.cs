@@ -19,7 +19,7 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] List<Data> datas = new();
     [SerializeField] int initialSpawns = 15;
 
-    bool EnableRandomSize =>GameSettings.Instance.EnableRandomBubbleSize;
+    bool EnableRandomSize => GameSettings.Instance.EnableRandomBubbleSize;
     [SerializeField] float minMultiplier = 1f;
     [SerializeField] float maxMultiplier = 2f;
     int currentIndex = 0;
@@ -34,7 +34,7 @@ public class CategoryManager : Singleton<CategoryManager>
             yield break;
         }
 
-        Shuffle();
+        //Shuffle();
 
 
         WaitForSeconds _waitForSeconds0_1 = new(0.1f);
@@ -183,5 +183,33 @@ public class CategoryManager : Singleton<CategoryManager>
     {
         if (!categoryCounts.ContainsKey(category)) return -1;
         return categoryCounts[category];
+    }
+
+    internal Bubble SpawnNewBubble(Vector3 pos)
+    {
+        int j = currentIndex++;
+
+        BubbleType category = datas[j].name;
+        Bubble.Data data = datas[j].data;
+        Color bubbleColor = datas[j].overrideColor ?
+                    datas[j].bubbleColor :
+                    GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
+
+
+        var bubble = Instantiate(GameSettings.Instance.Bubbles[0], pos, Quaternion.identity);
+
+        if (EnableRandomSize)
+        {
+            float randomScale = Random.Range(minMultiplier, maxMultiplier);
+            bubble.transform.localScale = Vector3.one * randomScale;
+        }
+
+        bubble.Category = category;
+
+        if (GameSettings.Instance.CanChangeColor)
+            bubble.SetColor(bubbleColor);
+
+        bubble.SetName(new() { data });
+        return bubble;
     }
 }

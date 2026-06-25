@@ -6,7 +6,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering;
-using static UnityEditor.Progress;
 
 public class Bubble : MonoBehaviour
 {
@@ -46,24 +45,29 @@ public class Bubble : MonoBehaviour
     float time = 0f;
     Vector3 startScale;
     [SerializeField] private BubbleType category;
-
-    public RigidbodyType2D IsKinematic { get => rb.bodyType; set => rb.bodyType = value; }
+    [SerializeField] Collider2D trigger;
+    public RigidbodyType2D IsKinematic { get => Rb.bodyType; set => Rb.bodyType = value; }
     public float Radius => radius;
 
     public byte Index { get => index; }
     public BubbleType Category { get => category; set => category = value; }
     public List<Data> Names { get => names; }
     public bool CanChangeColor { get => canChangeColor; }
+    public Rigidbody2D Rb { get => rb; private set => rb = value; }
 
     Vector3[] textPositions;
     private GameObject ghostInstance;
 
+
+    private void Awake()
+    {
+        Rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
+        sortingGroup = GetComponent<SortingGroup>();
+    }
     private IEnumerator Start()
     {
         CategoryManager.Instance.RegisterCategory(Category);
-        rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<Collider2D>();
-        sortingGroup = GetComponent<SortingGroup>();
         startScale = viusal.localScale;
         randomPhaseDiff = Random.Range(0, 90) * Mathf.Deg2Rad;
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
@@ -212,6 +216,7 @@ public class Bubble : MonoBehaviour
         IsKinematic = RigidbodyType2D.Dynamic;
         SetCollider(true);
         sortingGroup.sortingOrder = 2;
+        trigger.enabled = true;
     }
     private void TextBreathing()
     {
@@ -245,6 +250,21 @@ public class Bubble : MonoBehaviour
         if (col == null)
             col = GetComponent<CircleCollider2D>();
         Gizmos.DrawSphere(transform.position, radius: Radius);
+    }
+    
+    bool isMerged = false;
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other && other.TryGetComponent(out Bubble otherBubble))
+        {
+            if (otherBubble.Category == Category && !isMerged && !otherBubble.isMerged)
+            {
+                isMerged = true;
+                otherBubble.isMerged = true;
+                Highlight(true);
+                InputHandler.Instance.TryMerge(this, otherBubble);
+            }
+        }
     }
 
     public void Blast(System.Action OnBlastComplete = null)
@@ -365,7 +385,7 @@ public class Bubble : MonoBehaviour
         blastSequence.AppendCallback(() =>
         {
             ParticlePool.PlayRevealFx(transform.position);
-            CategoryManager.Instance.SpawnNewCategories();
+            //CategoryManager.Instance.SpawnNewCategories();
             Destroy(gameObject);
             OnBlastComplete?.Invoke();
         });

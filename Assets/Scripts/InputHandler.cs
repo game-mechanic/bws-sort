@@ -1,4 +1,5 @@
 using DG.Tweening;
+using DG.Tweening.Core.Easing;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,12 +14,34 @@ public class InputHandler : Singleton<InputHandler>
     Vector3 offset;
     [SerializeField] Transform endPoint;
     public UnityEvent OnSuccessfullMerge;
+    [SerializeField] Transform dragger;
+    [SerializeField] Vector2 bounds = new Vector2(-2, 2);
+    [SerializeField] private float bubbleSpawnCooldown = 0.5f;
+    float lastTimeBubbleDropped = float.MinValue;
+    Collider2D[] results = new Collider2D[10];
+    float prevX = 0;
+    private bool canSpawnBubble;
 
     private void Start()
     {
         mainCamera = Camera.main;
         ParticlePool.Init();
+        DOVirtual.DelayedCall(2f, () =>
+        {
+            SpawnBubble();
+            canSpawnBubble = true;
+        });
     }
+
+    private void SpawnBubble()
+    {
+        draggable = CategoryManager.Instance.SpawnNewBubble(dragger.transform.position);
+        draggable.transform.DOScale(1, 0.2f)
+            .From(0)
+            .SetEase(Ease.OutBack);
+        draggable.StartDrag();
+    }
+
     private void OnDestroy()
     {
         ParticlePool.ReleasePool();
@@ -34,22 +57,60 @@ public class InputHandler : Singleton<InputHandler>
             Time.timeScale = 1f;
         }
 
-        if (!isDragging
-            && Input.GetMouseButtonDown(0)
-            && TryRaycast2D(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit2D hit)
-            && hit.collider.TryGetComponent(out Bubble d))
+        //if (!isDragging
+        //    && Input.GetMouseButtonDown(0)
+        //    && TryRaycast2D(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit2D hit)
+        //    && hit.collider.TryGetComponent(out Bubble d))
+        //{
+        //    draggable = d;
+        //    isDragging = true;
+        //    startScale = draggable.transform.localScale;
+        //    offset = new Vector2(draggable.transform.position.x, draggable.transform.position.y) - hit.point;
+        //    draggable.StartDrag();
+        //    draggable.Bounce(GameSettings.Instance.MaxBounceAmplitude, GameSettings.Instance.BounceTime);
+        //}
+
+        //if (Input.GetMouseButtonUp(0) && draggable != null)
+        //{
+        //    ReleaseDrag();
+        //}
+
+        // Mouse button pressed
+
+        if (draggable == null && canSpawnBubble && Time.time - lastTimeBubbleDropped > bubbleSpawnCooldown)
         {
-            draggable = d;
-            isDragging = true;
-            startScale = draggable.transform.localScale;
-            offset = new Vector2(draggable.transform.position.x, draggable.transform.position.y) - hit.point;
-            draggable.StartDrag();
-            draggable.Bounce(GameSettings.Instance.MaxBounceAmplitude, GameSettings.Instance.BounceTime);
+            SpawnBubble();
         }
 
-        if (Input.GetMouseButtonUp(0) && draggable != null)
+
+
+
+        if (Input.GetMouseButtonDown(0))
         {
-            ReleaseDrag();
+            isDragging = true;
+        }
+
+        // Mouse button held
+        if (Input.GetMouseButton(0))
+        {
+            if (isDragging)
+            {
+                MoveObjectWithMouse(draggable.transform);
+            }
+        }
+
+        // Mouse button released
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (draggable == null || !isDragging)
+                return;
+
+            isDragging = false;
+
+            // Allow the object to fall
+            draggable.EndDrag();
+            draggable = null;
+            lastTimeBubbleDropped = Time.time;
         }
     }
 
@@ -60,38 +121,59 @@ public class InputHandler : Singleton<InputHandler>
         hit = Physics2D.Raycast(ray.origin, ray.direction, 100);
         return hit.collider != null;
     }
-    private void FixedUpdate()
+
+    //private void FixedUpdate()
+    //{
+    //    if (draggable != null && isDragging)
+    //    {
+    //        Plane plane = new(Vector3.back, new Vector3(0, 0, 0));
+    //        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+    //        plane.Raycast(ray, out float enter);
+
+    //        Vector3 hitPoint = ray.origin + ray.direction * enter;
+    //        hitPoint += offset;
+
+    //        draggable.transform.position = Vector3.Lerp(draggable.transform.position, hitPoint, GameSettings.Instance.DragSpeed * Time.fixedDeltaTime);
+
+    //        if (GetOverlap(hitPoint, draggable.Radius, out Collider2D hit))
+    //        {
+    //            if (hit.TryGetComponent(out Bubble d))
+    //            {
+    //                if (d != highlightedBubble && d != draggable)
+    //                    Highlight(d);
+    //            }
+    //            else
+    //                Highlight(null);
+    //        }
+    //        else
+    //        {
+    //            Highlight(null);
+    //        }
+    //    }
+    //}
+    private void MoveObjectWithMouse(Transform obj)
     {
-        if (draggable != null && isDragging)
-        {
-            Plane plane = new(Vector3.back, new Vector3(0, 0, 0));
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if (obj == null) return;
 
-            plane.Raycast(ray, out float enter);
+        Vector3 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-            Vector3 hitPoint = ray.origin + ray.direction * enter;
-            hitPoint += offset;
+        float x = Mathf.Clamp(mousePos.x, bounds.x, bounds.y);
 
-            draggable.transform.position = Vector3.Lerp(draggable.transform.position, hitPoint, GameSettings.Instance.DragSpeed * Time.fixedDeltaTime);
+        prevX = Mathf.Lerp(prevX, x, 10 * Time.deltaTime);
 
-            if (GetOverlap(hitPoint, draggable.Radius, out Collider2D hit))
-            {
-                if (hit.TryGetComponent(out Bubble d))
-                {
-                    if (d != highlightedBubble && d != draggable)
-                        Highlight(d);
-                }
-                else
-                    Highlight(null);
-            }
-            else
-            {
-                Highlight(null);
-            }
-        }
+        obj.position = new Vector3(
+            prevX,
+            obj.transform.position.y,
+            obj.transform.position.z
+        );
+
+        dragger.position = new Vector3(
+            prevX,
+            dragger.position.y,
+            dragger.position.z
+        );
     }
-    Collider2D[] results = new Collider2D[10];
-
     private bool GetOverlap(Vector3 center, float radius, out Collider2D hit)
     {
         int count = Physics2D.OverlapCircle(center, radius, new ContactFilter2D() { layerMask = ~0 }, results);
@@ -197,7 +279,7 @@ public class InputHandler : Singleton<InputHandler>
         Destroy(a.gameObject);
         Destroy(b.gameObject);
 
-        if (CategoryManager.Instance.ReduceCount(a.Category) <= 0)
+        if (nextIndex == 3)
         {
             newBubble.Blast(() => OnSuccessfullMerge?.Invoke());
         }
