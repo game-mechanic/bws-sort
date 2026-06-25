@@ -19,7 +19,7 @@ MonoBehaviour:
   bubbleProfile: {fileID: 11400000, guid: 0aadc7b5130c86e40acb9eb731ccd03f, type: 2}
   dragSpeed: 10
   breathingSpeed: 5
-  breathingAplitude: 0.05
+  breathingAplitude: 0.02
   textBreathingSpeed: 1
   bubbleFXPrefab: {fileID: 5856000662369290909, guid: 63c0ec1246ae2f64a93bdc22bdd22cc1, type: 3}
   canChangeColor: 1
