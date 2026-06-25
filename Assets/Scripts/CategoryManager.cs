@@ -22,6 +22,9 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] bool enableRandomSize = false;
     [SerializeField] float minMultiplier = 1f;
     [SerializeField] float maxMultiplier = 2f;
+    [SerializeField] Transform photoAlbum;
+    public Transform PhotoAlbum => photoAlbum;
+
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
 

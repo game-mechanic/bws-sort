@@ -22,6 +22,7 @@ public class Bubble : MonoBehaviour
         public string name;
         public Sprite icon;
         public bool showBothTxtAndImg = false;
+        public int placementIdx = -1;
     }
     const float PhaseDiff = 90 * Mathf.Deg2Rad;
     [SerializeField] byte index;
@@ -86,7 +87,14 @@ public class Bubble : MonoBehaviour
         textPositions = new Vector3[textUIs.Count];
         for (int i = 0; i < textUIs.Count; i++)
         {
-            textPositions[i] = names[i].icon == null ? textUIs[i].textUIs.transform.localPosition : textUIs[i].bg.transform.localPosition;
+            // names may be shorter than textUIs on a freshly instantiated JigSaw bubble
+            // (SetName hasn't been called yet at Start), so fall back to the text position
+            if (i < names.Count)
+                textPositions[i] = names[i].icon == null
+                    ? textUIs[i].textUIs.transform.localPosition
+                    : textUIs[i].bg.transform.localPosition;
+            else
+                textPositions[i] = textUIs[i].textUIs.transform.localPosition;
         }
     }
 
@@ -100,42 +108,92 @@ public class Bubble : MonoBehaviour
 
     private void Redraw()
     {
-        for (int i = 0; i < Names.Count; i++)
+
+        if (Names.Count == 1)
         {
-            // 1. Always evaluate and set the text value first so it's ready if needed
+            for (int i = 0; i < Names.Count; i++)
+            {
+                // 1. Always evaluate and set the text value first so it's ready if needed
+                if (GameSettings.Instance.SelectedLanguage.ToString() == "en")
+                {
+                    textUIs[i].textUIs.text = Names[i].name;
+                }
+                else
+                {
+                    textUIs[i].textUIs.text =
+                        LocalizationSettings.StringDatabase.GetLocalizedString(
+                           GameSettings.Instance.TableReference,
+                            Names[i].name
+                        );
+                }
+
+                // 2. Handle the visibility logic based on the new boolean and icon existence
+                if (Names[i].showBothTxtAndImg && Names[i].icon != null)
+                {
+                    // Show both
+                    textUIs[i].bg.sprite = Names[i].icon;
+                    textUIs[i].bg.gameObject.SetActive(true);
+                    textUIs[i].textUIs.gameObject.SetActive(true);
+                }
+                else if (Names[i].icon != null)
+                {
+                    // Show image only
+                    textUIs[i].bg.sprite = Names[i].icon;
+                    textUIs[i].textUIs.gameObject.SetActive(false);
+                    textUIs[i].bg.gameObject.SetActive(true);
+                }
+                else
+                {
+                    // Show text only
+                    textUIs[i].bg.gameObject.SetActive(false);
+                    textUIs[i].textUIs.gameObject.SetActive(true);
+                }
+            }
+            return;
+        }
+        // Hide everything first
+        for (int i = 0; i < textUIs.Count; i++)
+        {
+            textUIs[i].bg.gameObject.SetActive(false);
+            textUIs[i].textUIs.gameObject.SetActive(false);
+        }
+
+        foreach (var data in Names)
+        {
+            if (data.placementIdx < 0 || data.placementIdx >= textUIs.Count)
+                continue;
+
+            int visualIdx = data.placementIdx;
+
             if (GameSettings.Instance.SelectedLanguage.ToString() == "en")
             {
-                textUIs[i].textUIs.text = Names[i].name;
+                textUIs[visualIdx].textUIs.text = data.name;
             }
             else
             {
-                textUIs[i].textUIs.text =
+                textUIs[visualIdx].textUIs.text =
                     LocalizationSettings.StringDatabase.GetLocalizedString(
-                       GameSettings.Instance.TableReference,
-                        Names[i].name
+                        GameSettings.Instance.TableReference,
+                        data.name
                     );
             }
 
-            // 2. Handle the visibility logic based on the new boolean and icon existence
-            if (Names[i].showBothTxtAndImg && Names[i].icon != null)
+            if (data.showBothTxtAndImg && data.icon != null)
             {
-                // Show both
-                textUIs[i].bg.sprite = Names[i].icon;
-                textUIs[i].bg.gameObject.SetActive(true);
-                textUIs[i].textUIs.gameObject.SetActive(true);
+                textUIs[visualIdx].bg.sprite = data.icon;
+                textUIs[visualIdx].bg.gameObject.SetActive(true);
+                textUIs[visualIdx].textUIs.gameObject.SetActive(true);
             }
-            else if (Names[i].icon != null)
+            else if (data.icon != null)
             {
-                // Show image only
-                textUIs[i].bg.sprite = Names[i].icon;
-                textUIs[i].textUIs.gameObject.SetActive(false);
-                textUIs[i].bg.gameObject.SetActive(true);
+                textUIs[visualIdx].bg.sprite = data.icon;
+                textUIs[visualIdx].bg.gameObject.SetActive(true);
+                textUIs[visualIdx].textUIs.gameObject.SetActive(false);
             }
             else
             {
-                // Show text only
-                textUIs[i].bg.gameObject.SetActive(false);
-                textUIs[i].textUIs.gameObject.SetActive(true);
+                textUIs[visualIdx].bg.gameObject.SetActive(false);
+                textUIs[visualIdx].textUIs.gameObject.SetActive(true);
             }
         }
     }
@@ -409,6 +467,26 @@ public class Bubble : MonoBehaviour
         //            );
         //#endif
         //        }
+    }
+
+    /// <summary>
+    /// Deactivates all direct children of this bubble, then re-activates those
+    /// whose index matches a placementIdx in the current Names list.
+    /// Call this after SetName() when spawning a JigSaw bubble from a merge.
+    /// </summary>
+    public void ApplyJigsawPlacements()
+    {
+        // child(0) is the Visual GameObject (Circle, color, Specular, etc.) and must
+        // always remain active — start deactivation from index 1 (the jigsaw pieces)
+        for (int i = 1; i < transform.childCount; i++)
+            transform.GetChild(i).gameObject.SetActive(false);
+
+        // Re-activate only the jigsaw piece slots that have a matching placementIdx
+        foreach (var data in names)
+        {
+            if (data.placementIdx >= 1 && data.placementIdx < transform.childCount)
+                transform.GetChild(data.placementIdx).gameObject.SetActive(true);
+        }
     }
 
     internal void BlastGhost()

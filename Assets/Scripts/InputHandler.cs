@@ -183,19 +183,26 @@ public class InputHandler : Singleton<InputHandler>
         byte maxIndex = Math.Max(a.Index, b.Index);
         int nextIndex = a.Index + b.Index + 1;
         var bigBubble = a.Index == maxIndex ? a : b;
-        var newBubble = Instantiate(GameSettings.Instance.Bubbles[nextIndex]);
+
+        // Always spawn the JigSaw prefab regardless of merge level
+        var newBubble = Instantiate(GameSettings.Instance.JigSawBubblePrefab);
         newBubble.transform.SetPositionAndRotation(bigBubble.transform.position, bigBubble.transform.rotation);
+
         var names = a.Names;
         names.AddRange(b.Names);
         newBubble.Category = a.Category;
         newBubble.SetName(names);
+
+        // Activate jigsaw piece slots that correspond to the merged names' placementIdx values
+        newBubble.ApplyJigsawPlacements();
+
         newBubble.Bounce();
         a.transform.DOKill();
         b.transform.DOKill();
         Destroy(a.gameObject);
         Destroy(b.gameObject);
 
-        if(overrideMergeWithHNum && nextIndex == hNum)
+        if (overrideMergeWithHNum && nextIndex == hNum)
         {
             newBubble.Blast();
         }
@@ -228,7 +235,7 @@ public class InputHandler : Singleton<InputHandler>
 
         Vector3 screenTopLeft =
             Camera.main.ScreenToWorldPoint(
-                new Vector3(0, Screen.height*2, distance));
+                new Vector3(0, Screen.height * 2, distance));
 
         screenTopLeft.z = 0;
 
