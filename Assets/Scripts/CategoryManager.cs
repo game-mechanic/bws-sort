@@ -24,6 +24,13 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] float maxMultiplier = 2f;
     [SerializeField] Transform photoAlbum;
     public Transform PhotoAlbum => photoAlbum;
+    int orderInLayerOnAlbum = -100;
+
+    public int OrderInLayerOnAlbum => orderInLayerOnAlbum;
+    public void UpdateOrderInLayerOnAlbum()
+    {
+        orderInLayerOnAlbum++;
+    }
 
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();

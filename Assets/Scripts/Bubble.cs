@@ -35,6 +35,8 @@ public class Bubble : MonoBehaviour
     [SerializeField] List<Data> names;
     [SerializeField] bool canChangeColor = true;
     [SerializeField] GameObject ghost;
+    [SerializeField] float scalePicMultOnFull = 1.2f;   // pop-out scale when leaving the bubble
+    [SerializeField] float scalePicMultOnMove = 0.3f;   // target scale while travelling to the album
     Rigidbody2D rb;
     Collider2D col;
     [SerializeField] float radius = 0.5f;
@@ -307,126 +309,49 @@ public class Bubble : MonoBehaviour
 
     public void Blast(System.Action OnBlastComplete = null)
     {
-        if (categoryText != null)
-        {
-            categoryText.text = Category.name;
-            if (GameSettings.Instance.SelectedLanguage.ToString() == "en")
+        // ── 1. Detach the pic chunk from this bubble ──────────────────────────
+        Transform picChunkParent = textUIs[0].bg.transform.parent;
+
+        Vector3 picOriginalScale = picChunkParent.localScale;
+
+        picChunkParent.SetParent(null);
+
+        // ── 2. Bubble is done — destroy immediately ───────────────────────────
+        ParticlePool.PlayRevealFx(transform.position);
+        CategoryManager.Instance.SpawnNewCategories();
+        Destroy(gameObject);
+        OnBlastComplete?.Invoke();
+
+        // ── 3. Simultaneously: pop the chunk out big ──────────────────────────
+        picChunkParent.DOScale(picOriginalScale * scalePicMultOnFull, 1f)
+            .SetEase(Ease.OutBack)
+            .OnComplete(() =>
             {
-                categoryText.text = Category.name;
-            }
-            else
-            {
-                categoryText.text =
-                    LocalizationSettings.StringDatabase.GetLocalizedString(
-                       GameSettings.Instance.TableReference,
-                        Category.name
-                    );
-            }
-        }
+                // ── 4. Re-parent into the album and fly to its centre ─────────
+                picChunkParent.SetParent(CategoryManager.Instance.PhotoAlbum);
 
-        Sequence blastSequence = DOTween.Sequence();
-        float delayStep = 0.08f;
-        int index = 0;
+                float randomZ = Random.Range(-45f, 45f);
+                float travelTime = .85f;
 
-        foreach (var text in textUIs)
-        {
-            Transform bg = text.bg.transform;
-            Transform txt = text.textUIs.transform;
+                // Move to the album's local origin
+                picChunkParent.DOLocalMove(Vector3.zero, travelTime)
+                    .SetEase(Ease.InOutQuad).OnComplete(() =>
+                    {
+                        foreach (var text in textUIs)
+                        {
+                            text.bg.GetComponent<SpriteRenderer>().sortingOrder = CategoryManager.Instance.OrderInLayerOnAlbum;
+                            CategoryManager.Instance.UpdateOrderInLayerOnAlbum();
+                        }
+                    });
 
-            bg.DOKill();
-            txt.DOKill();
+                // Rotate to a random angle while travelling
+                picChunkParent.DOLocalRotate(new Vector3(0f, 0f, randomZ), travelTime)
+                    .SetEase(Ease.InOutQuad);
 
-            // Store initial scale
-            Vector3 bgStartScale = bg.localScale;
-            Vector3 txtStartScale = txt.localScale;
-
-            float delay = index * delayStep;
-
-            Sequence textSeq = DOTween.Sequence();
-
-            textSeq.AppendInterval(delay);
-
-            // Optional tiny anticipation (feels nicer than instant shrink)
-            textSeq.Append(
-                bg.DOScale(bgStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
-            );
-
-            textSeq.Join(
-                txt.DOScale(txtStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
-            );
-
-            // Main disappear (shrink)
-            textSeq.Append(
-                bg.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InBack)
-            );
-
-            textSeq.Join(
-                txt.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack)
-            );
-
-            blastSequence.Join(textSeq);
-
-            index++;
-        }
-        blastSequence.AppendCallback(() =>
-        {
-            if (categoryText != null)
-            {
-                categoryText.gameObject.SetActive(true);
-                categoryText.transform.localScale = Vector3.zero;
-            }
-        });
-        if (categoryText != null)
-        {
-            Transform t = categoryText.transform;
-
-            t.DOKill();
-
-            // Store original scale
-            Vector3 startScale = t.localScale;
-
-            Sequence seq = DOTween.Sequence();
-
-            // Start slightly smaller for pop-in
-            t.localScale = startScale * 0.7f;
-
-            seq.AppendInterval(0.15f);
-
-            // Pop in with overshoot
-            seq.Append(
-                t.DOScale(startScale * 1.1f, 0.35f)
-                .SetEase(Ease.OutBack)
-            );
-
-            // Settle to normal
-            seq.Append(
-                t.DOScale(startScale, 0.15f)
-                .SetEase(Ease.OutSine)
-            );
-
-            // Short, snappy pause (not too long)
-            seq.AppendInterval(0.4f);
-
-            // Exit with slight anticipation
-            seq.Append(
-                t.DOScale(startScale * 1.05f, 0.1f)
-                .SetEase(Ease.OutSine)
-            );
-
-            seq.Append(
-                t.DOScale(Vector3.zero, 0.25f)
-                .SetEase(Ease.InBack)
-            );
-
-            blastSequence.Append(seq);
-        }
-        blastSequence.AppendCallback(() =>
-        {
-            ParticlePool.PlayRevealFx(transform.position);
-            CategoryManager.Instance.SpawnNewCategories();
-            Destroy(gameObject);
-            OnBlastComplete?.Invoke();
-        });
+                // Scale down to album size while travelling
+                picChunkParent.DOScale(picOriginalScale * scalePicMultOnMove, travelTime)
+                    .SetEase(Ease.InOutQuad);
+            });
     }
 
     internal void SetColor(Color bubbleColor)

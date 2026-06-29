@@ -20,7 +20,7 @@ MonoBehaviour:
   dragSpeed: 10
   breathingSpeed: 5
   breathingAplitude: 0.015
-  textBreathingSpeed: 1
+  textBreathingSpeed: 0
   bubbleFXPrefab: {fileID: 5856000662369290909, guid: 63c0ec1246ae2f64a93bdc22bdd22cc1, type: 3}
   canChangeColor: 0
   bubbleColors:
