@@ -154,9 +154,9 @@ public class Bubble : MonoBehaviour
         }
 
         time += Time.deltaTime;
-        float tt = (time / bounceDuration) * GameSettings.Instance.MaxBounces;
+        float tt = (time / bounceDuration) /** GameSettings.Instance.MaxBounces*/;
         float bounceIntensity = 1 - tt;
-        float rad = tt * Mathf.PI * 2;
+        float rad = tt * Mathf.PI * 2 * GameSettings.Instance.MaxBounces;
 
 
         float sin = (Mathf.Sin(rad) + 0.5f) * bounceAmplitude;
