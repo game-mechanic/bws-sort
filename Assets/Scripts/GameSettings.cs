@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Tables;
 
 [CreateAssetMenu(fileName = "GameSettings")]
@@ -45,7 +44,7 @@ public class GameSettings : ScriptableObject
     [SerializeField] private float textBreathingSpeed;
     [SerializeField] ParticleSystem bubbleFXPrefab;
     [SerializeField] bool canChangeColor;
-    [SerializeField] Color[] bubbleColors;
+    [SerializeField] ColorProfile colorProfile;
     [SerializeField] private TableReference tableReference;
     [SerializeField] private Locale selectedLanguage;
     [SerializeField] private UnityEngine.Localization.Locale englishLocale;
@@ -66,7 +65,7 @@ public class GameSettings : ScriptableObject
     public float TextBreathingSpeed { get => textBreathingSpeed; }
     public ParticleSystem BubbleFXPrefab { get => bubbleFXPrefab; internal set => bubbleFXPrefab = value; }
     public bool CanChangeColor { get => canChangeColor; }
-    public Color[] BubbleColors { get => bubbleColors; }
+    public Color[] BubbleColors { get => colorProfile.bubbleColors; }
     public Locale SelectedLanguage { get => selectedLanguage; }
     public TableReference TableReference { get => tableReference; }
     public UnityEngine.Localization.Locale EnglishLocale { get => englishLocale; }

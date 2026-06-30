@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HandUI : MonoBehaviour
+public class HandUI : Singleton<HandUI>
 {
     private Transform handTransform;
     private Image hand;
     public Vector2 offset;
     public Sprite idle;
     public Sprite click;
-
+    private Vector3 mousePosition;
 
     [SerializeField] Transform lineStartPosition;
     [SerializeField] LineRenderer lineRenderer;
@@ -16,6 +16,9 @@ public class HandUI : MonoBehaviour
     [SerializeField] Vector3 handJoinOffset;
 
     Camera mainCamera;
+
+    public Vector3 MousePosition { get => mousePosition; }
+
     void Start()
     {
         mainCamera = Camera.main;
@@ -38,8 +41,8 @@ public class HandUI : MonoBehaviour
             return;
         UpdateLineRenderer();
 
-        handTransform.position = Input.mousePosition + new Vector3(offset.x, offset.y);
-
+        mousePosition = Vector3.Lerp(MousePosition, Input.mousePosition + new Vector3(offset.x, offset.y), 10 * Time.deltaTime);
+        handTransform.position = MousePosition;
         if (Input.GetMouseButtonDown(0)) hand.sprite = click;
         else if (Input.GetMouseButtonUp(0)) hand.sprite = idle;
     }
