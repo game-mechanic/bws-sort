@@ -371,6 +371,125 @@ public class Bubble : MonoBehaviour
         });
     }
 
+    public void MoveToDest(System.Action OnMoveComplete = null)
+    {
+        Transform dest = CategoryManager.Instance.GetDestToMove(Category);
+        if (dest == null)
+        {
+            throw new System.Exception($"MoveToDest: No move destination registered for category '{Category}'.");
+        }
+
+        if (categoryText != null)
+        {
+            if (GameSettings.Instance.SelectedLanguage.ToString() == "en")
+            {
+                categoryText.text = Category.name;
+            }
+            else
+            {
+                categoryText.text =
+                    LocalizationSettings.StringDatabase.GetLocalizedString(
+                       GameSettings.Instance.TableReference,
+                        Category.name
+                    );
+            }
+        }
+
+        Sequence moveSequence = DOTween.Sequence();
+        float delayStep = 0.08f;
+        int index = 0;
+
+        // Same reveal-shrink effect on the jigsaw text/icon chunks as Blast
+        foreach (var text in textUIs)
+        {
+            Transform bg = text.bg.transform;
+            Transform txt = text.textUIs.transform;
+
+            bg.DOKill();
+            txt.DOKill();
+
+            Vector3 bgStartScale = bg.localScale;
+            Vector3 txtStartScale = txt.localScale;
+
+            float delay = index * delayStep;
+
+            Sequence textSeq = DOTween.Sequence();
+            textSeq.AppendInterval(delay);
+
+            textSeq.Append(
+                bg.DOScale(bgStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
+            );
+            textSeq.Join(
+                txt.DOScale(txtStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
+            );
+
+            textSeq.Append(
+                bg.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InBack)
+            );
+            textSeq.Join(
+                txt.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack)
+            );
+
+            moveSequence.Join(textSeq);
+            index++;
+        }
+
+        moveSequence.AppendCallback(() =>
+        {
+            if (categoryText != null)
+            {
+                categoryText.gameObject.SetActive(true);
+                categoryText.transform.localScale = Vector3.zero;
+            }
+        });
+
+        // Same category-name pop-in/settle effect as Blast
+        if (categoryText != null)
+        {
+            Transform t = categoryText.transform;
+            t.DOKill();
+            Vector3 catStartScale = t.localScale;
+
+            Sequence catSeq = DOTween.Sequence();
+            t.localScale = catStartScale * 0.7f;
+
+            catSeq.AppendInterval(0.15f);
+            catSeq.Append(
+                t.DOScale(catStartScale * 1.1f, 0.35f).SetEase(Ease.OutBack)
+            );
+            catSeq.Append(
+                t.DOScale(catStartScale, 0.15f).SetEase(Ease.OutSine)
+            );
+            catSeq.AppendInterval(0.4f);
+            catSeq.Append(
+                t.DOScale(catStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
+            );
+            /*catSeq.Append(
+                t.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InBack)
+            );*/
+
+            moveSequence.Append(catSeq);
+        }
+
+        // Now actually move into the destination slot, scaling down as it travels
+        moveSequence.AppendCallback(() =>
+        {
+            transform.SetParent(dest);
+        });
+
+        moveSequence.Append(
+            transform.DOMove(dest.position, .75f).SetEase(Ease.InOutSine)
+        );
+        moveSequence.Join(
+            transform.DOScale(Vector3.zero, .75f).SetEase(Ease.InBack)
+        );
+
+        moveSequence.AppendCallback(() =>
+        {
+            OnMoveComplete?.Invoke();
+        });
+    }
+
     internal void SetColor(Color bubbleColor)
     {
         bgColor = bubbleColor;

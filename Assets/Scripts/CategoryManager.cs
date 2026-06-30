@@ -14,6 +14,14 @@ public class CategoryManager : Singleton<CategoryManager>
         [ColorUsage(false)] public Color bubbleColor = Color.white;
         public Bubble.Data data;
     }
+
+    [System.Serializable]
+    public class MoveDestinationData
+    {
+        public BubbleType type;
+        public Transform destination;
+    }
+
     [SerializeField] bool spawnOnStart = true;
     [SerializeField] HorizontalAlignment horizontalAlignment;
     [SerializeField] List<Data> datas = new();
@@ -24,6 +32,16 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] float maxMultiplier = 2f;
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
+    [Header("Merge Move Destination")]
+    [SerializeField] List<MoveDestinationData> mergeMoveDestTable;
+
+    public Transform GetDestToMove(BubbleType destType)
+    {
+        if (mergeMoveDestTable.Exists(m => m.type == destType))
+            return mergeMoveDestTable.Find(m => m.type == destType).destination;
+        else
+            return null;
+    }
 
     IEnumerator Start()
     {

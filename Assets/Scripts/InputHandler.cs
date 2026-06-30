@@ -201,7 +201,14 @@ public class InputHandler : Singleton<InputHandler>
         }
         else if (CategoryManager.Instance.ReduceCount(a.Category) <= 0)
         {
-            newBubble.Blast(/*()=> OnSuccessfullMerge?.Invoke()*/);
+            if(GameSettings.Instance.MergeBehavior == GameSettings.MergeType.BLAST)
+            {
+                newBubble.Blast(/*()=> OnSuccessfullMerge?.Invoke()*/);
+            }
+            else if(GameSettings.Instance.MergeBehavior == GameSettings.MergeType.MOVE_UP)
+            {
+                newBubble.MoveToDest();
+            }
         }
         return true;
     }

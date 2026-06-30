@@ -17,6 +17,12 @@ public class GameSettings : ScriptableObject
         es = 5,
     }
 
+    public enum MergeType
+    {
+        BLAST = 0,
+        MOVE_UP = 1,
+    }
+
     public static GameSettings Instance
     {
         get
@@ -53,6 +59,9 @@ public class GameSettings : ScriptableObject
     [SerializeField] private bool canMerge;
     [SerializeField] private BubbleType[] order;
     [SerializeField] private bool canTextBreathe;
+    [SerializeField] private MergeType mergeType;
+
+    public MergeType MergeBehavior { get => mergeType; }
 
     public float MaxBounceAmplitude { get => maxBounceAmplitude; }
     public float BounceTime { get => bounceTime; }
