@@ -30,6 +30,11 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] bool enableRandomSize = false;
     [SerializeField] float minMultiplier = 1f;
     [SerializeField] float maxMultiplier = 2f;
+
+    [Header("Scale Spawn Animation")]
+    [SerializeField] bool spawnWithScaleZero = false;
+    [SerializeField] float spawnScaleOutDuration = 0.3f;
+
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
     [Header("Merge Move Destination")]
@@ -70,10 +75,18 @@ public class CategoryManager : Singleton<CategoryManager>
             {
                 var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
 
+                Vector3 targetScale = Vector3.one;
                 if (enableRandomSize)
                 {
                     float randomScale = Random.Range(minMultiplier, maxMultiplier);
-                    bubble.transform.localScale = Vector3.one * randomScale;
+                    targetScale = Vector3.one * randomScale;
+                }
+                bubble.transform.localScale = targetScale;
+
+                if (spawnWithScaleZero)
+                {
+                    bubble.transform.localScale = Vector3.zero;
+                    bubble.transform.DOScale(targetScale, spawnScaleOutDuration);
                 }
 
                 bubble.Category = category;
@@ -154,10 +167,18 @@ public class CategoryManager : Singleton<CategoryManager>
             {
                 var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
 
+                Vector3 targetScale = Vector3.one;
                 if (enableRandomSize)
                 {
                     float randomScale = Random.Range(minMultiplier, maxMultiplier);
-                    bubble.transform.localScale = Vector3.one * randomScale;
+                    targetScale = Vector3.one * randomScale;
+                }
+                bubble.transform.localScale = targetScale;
+
+                if (spawnWithScaleZero)
+                {
+                    bubble.transform.localScale = Vector3.zero;
+                    bubble.transform.DOScale(targetScale, spawnScaleOutDuration);
                 }
 
                 bubble.Category = category;

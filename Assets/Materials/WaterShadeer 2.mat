@@ -174,9 +174,9 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DirectIntensityOutline: 1
-    - _DistortAmount: 0.11
-    - _DistortTexXSpeed: 3
-    - _DistortTexYSpeed: 3
+    - _DistortAmount: 0.9
+    - _DistortTexXSpeed: -0.5
+    - _DistortTexYSpeed: 0.5
     - _DstBlend: 0
     - _EditorDrawers: 6
     - _EmissionChannel: 4
@@ -342,10 +342,10 @@ Material:
     - _WarpScale: 0.5
     - _WarpSpeed: 8
     - _WarpStrength: 0.025
-    - _WaveAmount: 12.8
-    - _WaveSpeed: 4.4
-    - _WaveStrength: 5.8
-    - _WaveX: 0.247
+    - _WaveAmount: 17.7
+    - _WaveSpeed: 6.7
+    - _WaveStrength: 8.6
+    - _WaveX: 0.311
     - _WaveY: 0.473
     - _ZTestMode: 4
     - _ZWrite: 1
