@@ -43,8 +43,12 @@ public class GameSettings : ScriptableObject
     [SerializeField] float breathingAplitude = .05f;
     [SerializeField] private float textBreathingSpeed;
     [SerializeField] ParticleSystem bubbleFXPrefab;
+
     [SerializeField] bool canChangeColor;
     [SerializeField] ColorProfile colorProfile;
+    [SerializeField] bool canUseDifferentSprites;
+    [SerializeField] Sprite[] bubbleSprites;
+
     [SerializeField] private TableReference tableReference;
     [SerializeField] private Locale selectedLanguage;
     [SerializeField] private UnityEngine.Localization.Locale englishLocale;
@@ -74,6 +78,8 @@ public class GameSettings : ScriptableObject
     public BubbleType[] Order { get => order; set => order = value; }
     public bool CanTextBreathe { get => canTextBreathe; internal set => canTextBreathe = value; }
     public bool EnableRandomBubbleSize { get => enableRandomBubbleSize; }
+    public bool CanUseDifferentSprites { get => canUseDifferentSprites; }
+    public Sprite[] BubbleSprites { get => bubbleSprites; }
 
     internal static IEnumerator Init()
     {

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ColorProfile
   bubbleColors:
   - {r: 0, g: 0.8159847, b: 1, a: 1}
-  - {r: 0, g: 0.49127686, b: 1, a: 1}
-  - {r: 0, g: 0.32809806, b: 1, a: 1}
+  - {r: 0, g: 0.5456041, b: 1, a: 1}
+  - {r: 0.0047169924, g: 0.33257478, b: 1, a: 1}

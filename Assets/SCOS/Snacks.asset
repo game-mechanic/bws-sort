@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d6741be59f46a54fb6b2681cd4b81b4, type: 3}
-  m_Name: Proteins
+  m_Name: Snacks
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0.41509432, b: 0.012445271, a: 0}
+  color: {r: 0.4056604, g: 0.11482652, b: 0, a: 0}

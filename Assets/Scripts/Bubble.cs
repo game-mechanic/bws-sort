@@ -6,7 +6,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering;
-using static UnityEditor.Progress;
 
 public class Bubble : MonoBehaviour
 {
@@ -223,8 +222,8 @@ public class Bubble : MonoBehaviour
         {
             if (textUIs[i] == null) continue;
 
-            var x = (Mathf.Sin((Time.time * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff)) * 0.05f;
-            var y = (Mathf.Sin((Time.time * .5f * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff)) * 0.1f;
+            var x = (Mathf.Sin((Time.time * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff)) * 0.05f*.5f;
+            var y = (Mathf.Sin((Time.time * .5f * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff)) * 0.1f * .5f;
 
 
             Vector3 offset = new Vector3(x / scaleModifier.x, y / scaleModifier.y, 0);
