@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
+  m_Name: B&W
+  m_EditorClassIdentifier: 
+  bubbles:
+  - {fileID: 7926608256317659342, guid: 7547ddba60798a642bb293d6e177d5b8, type: 3}
+  - {fileID: 7926608256317659342, guid: d23968a4ffd1c91449a0b583148febe9, type: 3}
+  - {fileID: 7926608256317659342, guid: 21f63a6f44475af40841f6b5c33196b9, type: 3}
+  - {fileID: 7926608256317659342, guid: e4a17a679fff79b40a12cd9d29f88694, type: 3}

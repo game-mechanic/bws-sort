@@ -22,7 +22,7 @@ MonoBehaviour:
   breathingAplitude: 0.01
   textBreathingSpeed: 1
   bubbleFXPrefab: {fileID: 19855088, guid: cc4edba986607ba48b17927b27d25e4e, type: 3}
-  canChangeColor: 1
+  canChangeColor: 0
   colorProfile: {fileID: 11400000, guid: c90b4300100f3ce47b73f9cc2147a2c5, type: 2}
   canUseDifferentSprites: 0
   bubbleSprites: []

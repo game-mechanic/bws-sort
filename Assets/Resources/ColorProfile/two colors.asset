@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: two colors
   m_EditorClassIdentifier: Assembly-CSharp::ColorProfile
   bubbleColors:
-  - {r: 0, g: 0.8159847, b: 1, a: 1}
-  - {r: 0, g: 0.5456041, b: 1, a: 1}
-  - {r: 0.0047169924, g: 0.33257478, b: 1, a: 1}
+  - {r: 0.047058824, g: 0, b: 1, a: 1}
+  - {r: 0, g: 0.40784314, b: 1, a: 1}
+  - {r: 0.6901961, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.6046512, b: 0, a: 1}
+  - {r: 0.5568628, g: 1, b: 0, a: 1}

@@ -222,7 +222,7 @@ public class Bubble : MonoBehaviour
         {
             if (textUIs[i] == null) continue;
 
-            var x = (Mathf.Sin((Time.time * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff)) * 0.05f*.5f;
+            var x = (Mathf.Sin((Time.time * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff)) * 0.05f * .5f;
             var y = (Mathf.Sin((Time.time * .5f * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff)) * 0.1f * .5f;
 
 
@@ -235,6 +235,7 @@ public class Bubble : MonoBehaviour
                 textUIs[i].textUIs.transform.localPosition = Vector3.Lerp(textUIs[i].textUIs.transform.localPosition, textPositions[i] + offset, GameSettings.Instance.LerpSpeeed * Time.deltaTime);
         }
     }
+   
     public void Highlight(bool v)
     {
         highlightImage.SetActive(v);
