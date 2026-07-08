@@ -29,6 +29,7 @@ public class SplineObjectPlacer : MonoBehaviour
     [SerializeField] bool canShuffle = true;
     [SerializeField] int shuffleCount = 10;
     [SerializeField] Vector2Int shuffleRange;
+    [SerializeField] int repeatStartIndex = 30;
     [SerializeField] List<Data> colorTypes = new();
     //public List<ColorType> colorTypes = new List<ColorType>();
     public List<BubbleContainer> placedBubbles = new();
@@ -50,6 +51,8 @@ public class SplineObjectPlacer : MonoBehaviour
     bool isAnimating = false;
     float animationTimer = 0f;
     [SerializeField] float animationDuration = 1f;
+
+
 
     private void Awake()
     {
@@ -90,10 +93,11 @@ public class SplineObjectPlacer : MonoBehaviour
         {
             moveSpeed = moveSpeed * 0.001f;
             animationTimer += Time.deltaTime;
+            float t = EaseOutQuad(Mathf.Clamp01(animationTimer / animationDuration));
 
             for (int i = 0; i < placedBubbles.Count; i++)
             {
-                placedBubbles[i].UpdatePositionImmediate(splineComputer, Mathf.Lerp(placedBubbles[i].MoveTime, splineSlots[i], animationDuration * Time.deltaTime));
+                placedBubbles[i].UpdatePositionImmediate(splineComputer, Mathf.Lerp(0, splineSlots[i], t /** Time.deltaTime*/));
             }
             if (animationTimer >= animationDuration)
             {
@@ -111,7 +115,10 @@ public class SplineObjectPlacer : MonoBehaviour
             placedBubbles[i].UpdatePosition(splineComputer, splineSlots[i]);
         }
     }
-
+    static float EaseOutQuad(float t)
+    {
+        return 1f - (1f - t) * (1f - t);
+    }
     [EditorButton("Place objects")]
     public void PlaceObjects()
     {
@@ -192,7 +199,7 @@ public class SplineObjectPlacer : MonoBehaviour
         }
         else
         {
-            data = colorTypes[Random.Range(shuffleRange.y, colorTypes.Count)];
+            data = colorTypes[Random.Range(repeatStartIndex, colorTypes.Count)];
         }
         var bubble = CategoryManager.CreateBubble(Vector3.zero, data.name, data.data);
 

@@ -16,17 +16,17 @@ MonoBehaviour:
   bounceTime: 1
   maxBounces: 3
   lerpSpeeed: 15
-  bubbleProfile: {fileID: 11400000, guid: 3c283154e7cc39b49bfe70f585ac9e5d, type: 2}
+  bubbleProfile: {fileID: 11400000, guid: a2dd2e986a5250f4bac38f3a9821673b, type: 2}
   dragSpeed: 10
   breathingSpeed: 5
   breathingAplitude: 0.05
   textBreathingSpeed: 1
   bubbleFXPrefab: {fileID: 5856000662369290909, guid: 63c0ec1246ae2f64a93bdc22bdd22cc1, type: 3}
   canBreath: 0
-  canUseRandomColors: 0
+  canUseRandomColors: 1
   bubbleColors:
-  - {r: 0.023584902, g: 0.6452131, b: 1, a: 1}
-  - {r: 0.9843138, g: 0.3921569, b: 0.11764707, a: 1}
-  - {r: 0.39177337, g: 0.8113208, b: 0.049750824, a: 1}
-  - {r: 0.98823535, g: 0.7843138, b: 0.0627451, a: 1}
-  - {r: 0.66091967, g: 0, b: 1, a: 1}
+  - {r: 0.8301887, g: 0.20528463, b: 0.17621933, a: 1}
+  - {r: 0.70861775, g: 0.20069422, b: 0.7735849, a: 1}
+  - {r: 0.46389937, g: 0.8207547, b: 0.17421682, a: 1}
+  - {r: 0.9215687, g: 0.77647066, b: 0.23529413, a: 1}
+  - {r: 0.1462264, g: 0.4206367, b: 1, a: 1}

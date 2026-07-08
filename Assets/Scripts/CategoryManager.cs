@@ -12,6 +12,11 @@ public class CategoryManager : Singleton<CategoryManager>
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new();
     public BubbleType CurrentType => categories[currentIndex % categories.Length];
+
+    private static int colorIndex;
+
+
+
     /* IEnumerator Start()
      {
          WaitForSeconds _waitForSeconds0_1 = new(0.1f);
@@ -107,6 +112,10 @@ public class CategoryManager : Singleton<CategoryManager>
         var bubble = Instantiate(GameSettings.Instance.Bubbles[0], pos, Quaternion.identity);
         bubble.Category = category;
         bubble.SetName(new() { data });
+        if (GameSettings.Instance.CanUseRandomColors)
+        {
+            bubble.SetColor(GameSettings.Instance.BubbleColors[colorIndex++ % GameSettings.Instance.BubbleColors.Length]);
+        }
         return bubble;
     }
 
