@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
-  m_Name: Text and Icon 1
+  m_Name: New Text and Icon
   m_EditorClassIdentifier: 
   bubbles:
   - {fileID: 7926608256317659342, guid: cb91a3c86ae12184c925c45693057c49, type: 3}

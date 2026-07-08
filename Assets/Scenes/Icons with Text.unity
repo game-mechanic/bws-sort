@@ -256,7 +256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &84020370
 SpriteRenderer:
   serializedVersion: 2
@@ -395,203 +395,168 @@ MonoBehaviour:
   spawnOnStart: 1
   horizontalAlignment: {fileID: 1345279678}
   datas:
-  - name: {fileID: 11400000, guid: 6843f556ac3a1cc4c947595e041dd72a, type: 2}
+  - name: {fileID: 11400000, guid: ff26520652616d746845627cccad64a7, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: Hammer
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 6843f556ac3a1cc4c947595e041dd72a, type: 2}
+      name: Flamingo
+      icon: {fileID: 21300000, guid: e2568dbad08962642976a8f061c21603, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: Beard
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 6843f556ac3a1cc4c947595e041dd72a, type: 2}
+      name: PISCES
+      icon: {fileID: 21300000, guid: a89a9abe41027b248bf97800a4552c45, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: wallet
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 6843f556ac3a1cc4c947595e041dd72a, type: 2}
+      name: TAURUS
+      icon: {fileID: 21300000, guid: 3ad5f7f4dea97484e8c21d4fd0126bfb, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: ff26520652616d746845627cccad64a7, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: tie
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: c9e2678e52e9431419d597966b96df3d, type: 2}
+      name: Pig
+      icon: {fileID: 21300000, guid: 69d5286d48090de46ac40773cc3e7185, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: ff26520652616d746845627cccad64a7, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: Lipstick
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: c9e2678e52e9431419d597966b96df3d, type: 2}
+      name: Tulip
+      icon: {fileID: 21300000, guid: db79b30c7488bc04cabc41b816ce0e9f, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: earrings
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: c9e2678e52e9431419d597966b96df3d, type: 2}
+      name: COCONUT
+      icon: {fileID: 21300000, guid: a16bfbfd2a48e97468bd5b99e65ba67b, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: Handbag
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: c9e2678e52e9431419d597966b96df3d, type: 2}
+      name: HELIUM
+      icon: {fileID: 21300000, guid: bfd6b30fd50c17346b660890b28b223b, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: ff26520652616d746845627cccad64a7, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: Perfume
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 8f7900e9c9e74944e9b3240b7161b532, type: 2}
+      name: Orchid
+      icon: {fileID: 21300000, guid: 65ecf7bcda2ebb046972568fd4ba92af, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: Frying pan
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 8f7900e9c9e74944e9b3240b7161b532, type: 2}
+      name: ROSE
+      icon: {fileID: 21300000, guid: 60ffc6b9a5a76a244a48e30504296a2c, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: spatula
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 8f7900e9c9e74944e9b3240b7161b532, type: 2}
+      name: GOLD
+      icon: {fileID: 21300000, guid: 09750f7893035f44d80687d806c0fdd6, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: blender
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 8f7900e9c9e74944e9b3240b7161b532, type: 2}
+      name: IRON
+      icon: {fileID: 21300000, guid: d0b047b7234ecad4a93e90a3bda08eab, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: knife
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: a8056ea8e9262554bb5379b7d90c342b, type: 2}
+      name: BLOOD
+      icon: {fileID: 21300000, guid: 49f38404b0eaff84d979f528e3bf27b6, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: handcuffs
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: a8056ea8e9262554bb5379b7d90c342b, type: 2}
+      name: SUNFLOWER
+      icon: {fileID: 21300000, guid: 7e6a745d5acaf854bbe048c60a1c2fc8, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: fingerprint
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: a8056ea8e9262554bb5379b7d90c342b, type: 2}
+      name: AVOCADO
+      icon: {fileID: 21300000, guid: ecd1879118a0b20449ab2df5a8540478, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: safe
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: a8056ea8e9262554bb5379b7d90c342b, type: 2}
+      name: LEO
+      icon: {fileID: 21300000, guid: 7626e3e142402b744b48c4a373331453, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: crowbar
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: f69bd78e226fbcd44ae0ce0deb4e03c8, type: 2}
+      name: VIRGO
+      icon: {fileID: 21300000, guid: 575a977f540539647ad6c8fb034ed511, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: Plunger
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: f69bd78e226fbcd44ae0ce0deb4e03c8, type: 2}
+      name: Cherry
+      icon: {fileID: 21300000, guid: 2e7bb05142290bf41a8da4dbeb5f9abb, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: Toilet
-      icon: {fileID: 0}
+      name: OXYGEN
+      icon: {fileID: 21300000, guid: 4aa1cfa016ce1304686f081dfeafcd4c, type: 3}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: f69bd78e226fbcd44ae0ce0deb4e03c8, type: 2}
+  - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: Toilet paper
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: f69bd78e226fbcd44ae0ce0deb4e03c8, type: 2}
+      name: TOMATO
+      icon: {fileID: 21300000, guid: 80d824ff64824584b9a2d69ce663d02f, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: Soap
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 7229902819667c045aa3e11eaaeefd6c, type: 2}
+      name: Bulgaria
+      icon: {fileID: 21300000, guid: 5d14e44744cc5fa48846d59d39a809db, type: 3}
+      showBothTxtAndImg: 1
+  - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: Suitcase
-      icon: {fileID: 0}
+      name: serbia
+      icon: {fileID: 21300000, guid: 3be9f220833c2d648891e8dc69ef1c70, type: 3}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 7229902819667c045aa3e11eaaeefd6c, type: 2}
+  - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: Passport
-      icon: {fileID: 0}
+      name: Croatia
+      icon: {fileID: 21300000, guid: 8c9948034e101254a83d44fa69eca510, type: 3}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 7229902819667c045aa3e11eaaeefd6c, type: 2}
+  - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: Airplane
-      icon: {fileID: 0}
+      name: Romania
+      icon: {fileID: 21300000, guid: 1bf51cf5ab508804ab14b2155af598c4, type: 3}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 7229902819667c045aa3e11eaaeefd6c, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: Compass
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 21ce559b195cb6a45a48afb442ab8dba, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: Kitten
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 21ce559b195cb6a45a48afb442ab8dba, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: Teddy
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 21ce559b195cb6a45a48afb442ab8dba, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: Bunny
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 21ce559b195cb6a45a48afb442ab8dba, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: Cupcake
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  initialSpawns: 14
+  initialSpawns: 20
   minMultiplier: 1
   maxMultiplier: 1.2
 --- !u!1 &429325393
@@ -1147,7 +1112,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 0}
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
