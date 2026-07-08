@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
+  m_Name: Icicles
+  m_EditorClassIdentifier: 
+  bubbles:
+  - {fileID: 7926608256317659342, guid: 1b284d9e9282146eca19fe7b69b41d53, type: 3}
+  - {fileID: 7926608256317659342, guid: b4c299517604c4dd5a0211e86f3f1643, type: 3}
+  - {fileID: 7926608256317659342, guid: 10926b085a53b4e3cbbc6f8462e3c8fc, type: 3}
+  - {fileID: 7926608256317659342, guid: b5e8a8d9c50a64dfab1158ee660deda6, type: 3}
