@@ -197,7 +197,7 @@ public class InputHandler : Singleton<InputHandler>
         Destroy(a.gameObject);
         Destroy(b.gameObject);
 
-        if (CategoryManager.Instance.ReduceCount(a.Category) <= 0)
+        if (nextIndex==3)
         {
             newBubble.Blast(() => OnSuccessfullMerge?.Invoke());
         }
