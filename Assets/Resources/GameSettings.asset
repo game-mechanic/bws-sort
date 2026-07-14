@@ -17,7 +17,7 @@ MonoBehaviour:
   maxBounces: 2
   lerpSpeeed: 15
   bubbleProfile: {fileID: 11400000, guid: bcbdada8b0baa45eba73c1b5d6adf9e0, type: 2}
-  mergeCount: 5
+  mergeCount: 4
   dragSpeed: 10
   breathingSpeed: 5
   breathingAplitude: 0.01

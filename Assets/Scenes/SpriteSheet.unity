@@ -619,7 +619,7 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 7400000, guid: 892a63211e8f746a68afc119cff1c974, type: 2}
       showBothTxtAndImg: 0
-  initialSpawns: 20
+  initialSpawns: 24
   minMultiplier: 1
   maxMultiplier: 2
 --- !u!1 &429325393
@@ -1424,7 +1424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1261789452
 Transform:
   m_ObjectHideFlags: 0
@@ -1489,7 +1489,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -11000
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: b74ae24eef349b547840c174f11768d4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a8ab9e9f78067147b3bc30cdaade30d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1515,7 +1515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1277935291
 Transform:
   m_ObjectHideFlags: 0
@@ -1580,8 +1580,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -11000
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: dd1642de64a7497468d2af263b570a91, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1a8ab9e9f78067147b3bc30cdaade30d, type: 3}
+  m_Color: {r: 0.21960784, g: 0.19215687, b: 0.24705882, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
