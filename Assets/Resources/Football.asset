@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
+  m_Name: Football
+  m_EditorClassIdentifier: 
+  bubbles:
+  - {fileID: 7926608256317659342, guid: 96914c3170a1e400ca6df7b4180d40bc, type: 3}
+  - {fileID: 7926608256317659342, guid: 90d57335ee6e149b3b4cb957cc2e06bb, type: 3}
+  - {fileID: 7926608256317659342, guid: f53c168b474d0437d924585243b4756d, type: 3}
+  - {fileID: 7926608256317659342, guid: 03df3bb05a599415da0f490a10a74516, type: 3}

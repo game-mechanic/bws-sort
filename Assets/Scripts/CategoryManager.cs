@@ -1,6 +1,6 @@
-using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 
@@ -19,7 +19,7 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] List<Data> datas = new();
     [SerializeField] int initialSpawns = 15;
 
-    bool EnableRandomSize =>GameSettings.Instance.EnableRandomBubbleSize;
+    bool EnableRandomSize => GameSettings.Instance.EnableRandomBubbleSize;
     [SerializeField] float minMultiplier = 1f;
     [SerializeField] float maxMultiplier = 2f;
     int currentIndex = 0;
@@ -50,7 +50,7 @@ public class CategoryManager : Singleton<CategoryManager>
 
             DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
             {
-                var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
+                var bubble = Instantiate(bubblePrefab, pos, Quaternion.Euler(new Vector3(0, 0, Random.Range(-GameSettings.Instance.RotationOffset, GameSettings.Instance.RotationOffset))));
 
                 if (EnableRandomSize)
                 {

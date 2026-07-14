@@ -37,13 +37,18 @@ public class GameSettings : ScriptableObject
 
     [SerializeField]
     BubbleProfile bubbleProfile;
+    [SerializeField, Range(2, 5)]
+    [Tooltip("Maximum number of bubbles that can be merged at once. It is recommended to keep it a 4. 5 is no merge")]
+    int mergeCount;
     //Bubble[] bubbles;
     [SerializeField] private int dragSpeed = 10;
     [SerializeField] float breathingSpeed = 2;
     [SerializeField] float breathingAplitude = .05f;
     [SerializeField] private float textBreathingSpeed;
     [SerializeField] ParticleSystem bubbleFXPrefab;
-
+    [SerializeField] float rotationOffset;
+    [SerializeField] private RuntimeAnimatorController animatorController;
+    [SerializeField] bool canAnimateSprite;
     [SerializeField] bool canChangeColor;
     [SerializeField] ColorProfile colorProfile;
     [SerializeField] bool canUseDifferentSprites;
@@ -67,7 +72,7 @@ public class GameSettings : ScriptableObject
     public float BreathingSpeed { get => breathingSpeed; }
     public float BreathingAplitude { get => breathingAplitude; }
     public float TextBreathingSpeed { get => textBreathingSpeed; }
-    public ParticleSystem BubbleFXPrefab { get => bubbleFXPrefab; internal set => bubbleFXPrefab = value; }
+    public ParticleSystem BubbleFXPrefab { get => bubbleFXPrefab; }
     public bool CanChangeColor { get => canChangeColor; }
     public Color[] BubbleColors { get => colorProfile.bubbleColors; }
     public Locale SelectedLanguage { get => selectedLanguage; }
@@ -80,6 +85,10 @@ public class GameSettings : ScriptableObject
     public bool EnableRandomBubbleSize { get => enableRandomBubbleSize; }
     public bool CanUseDifferentSprites { get => canUseDifferentSprites; }
     public Sprite[] BubbleSprites { get => bubbleSprites; }
+    public int MergeCount { get => mergeCount; }
+    public bool CanAnimateSprite { get => canAnimateSprite; }
+    public RuntimeAnimatorController AnimatorController { get => animatorController; }
+    public float RotationOffset { get => rotationOffset; }
 
     internal static IEnumerator Init()
     {

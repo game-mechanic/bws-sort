@@ -1,6 +1,6 @@
-using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -20,6 +20,7 @@ public class Bubble : MonoBehaviour
     {
         public string name;
         public Sprite icon;
+        public AnimationClip animationClip;
         public bool showBothTxtAndImg = false;
     }
     const float PhaseDiff = 90 * Mathf.Deg2Rad;
@@ -120,13 +121,37 @@ public class Bubble : MonoBehaviour
             {
                 // Show both
                 textUIs[i].bg.sprite = Names[i].icon;
+                if (GameSettings.Instance.CanAnimateSprite)
+                {
+                    Animator animator = textUIs[i].bg.GetComponent<Animator>();
+                    animator.runtimeAnimatorController = GameSettings.Instance.AnimatorController;
+                    animator.Play(Names[i].animationClip.name);
+                }
                 textUIs[i].bg.gameObject.SetActive(true);
                 textUIs[i].textUIs.gameObject.SetActive(true);
+            }
+            else if (Names[i].animationClip != null)
+            {
+                // Show animation only
+                if (GameSettings.Instance.CanAnimateSprite)
+                {
+                    Animator animator = textUIs[i].bg.GetComponent<Animator>();
+                    animator.runtimeAnimatorController = GameSettings.Instance.AnimatorController;
+                    animator.Play(Names[i].animationClip.name);
+                }
+                textUIs[i].textUIs.gameObject.SetActive(false);
+                textUIs[i].bg.gameObject.SetActive(true);
             }
             else if (Names[i].icon != null)
             {
                 // Show image only
                 textUIs[i].bg.sprite = Names[i].icon;
+                if (GameSettings.Instance.CanAnimateSprite)
+                {
+                    Animator animator = textUIs[i].bg.GetComponent<Animator>();
+                    animator.runtimeAnimatorController = GameSettings.Instance.AnimatorController;
+                    animator.Play(Names[i].animationClip.name);
+                }
                 textUIs[i].textUIs.gameObject.SetActive(false);
                 textUIs[i].bg.gameObject.SetActive(true);
             }
@@ -235,7 +260,7 @@ public class Bubble : MonoBehaviour
                 textUIs[i].textUIs.transform.localPosition = Vector3.Lerp(textUIs[i].textUIs.transform.localPosition, textPositions[i] + offset, GameSettings.Instance.LerpSpeeed * Time.deltaTime);
         }
     }
-   
+
     public void Highlight(bool v)
     {
         highlightImage.SetActive(v);

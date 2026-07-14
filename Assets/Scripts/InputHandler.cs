@@ -1,5 +1,6 @@
-using DG.Tweening;
 using System;
+using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -197,7 +198,7 @@ public class InputHandler : Singleton<InputHandler>
         Destroy(a.gameObject);
         Destroy(b.gameObject);
 
-        if (nextIndex==3)
+        if (nextIndex == GameSettings.Instance.MergeCount - 1)
         {
             newBubble.Blast(() => OnSuccessfullMerge?.Invoke());
         }
