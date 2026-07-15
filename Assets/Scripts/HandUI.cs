@@ -55,7 +55,7 @@ public class HandUI : Singleton<HandUI>
         float timePerPoint = 1f / pointsCount;
 
         Plane plane = new Plane(Vector3.back, Vector3.zero);
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition + handJoinOffset);
+        Ray ray = mainCamera.ScreenPointToRay(MousePosition + handJoinOffset);
         plane.Raycast(ray, out float enter);
 
         Vector3 mousePosition = ray.origin + ray.direction * enter;
