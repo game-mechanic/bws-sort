@@ -84,8 +84,4 @@ public class HandUI : MonoBehaviour
             + 2 * _1MinusT * t * mid
             + t * t * end;
     }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawSphere(hand.transform.position + handJoinOffset, 2f);
-    }
 }

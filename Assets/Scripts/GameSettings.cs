@@ -49,6 +49,7 @@ public class GameSettings : ScriptableObject
     [SerializeField] private TableReference tableReference;
     [SerializeField] private Locale selectedLanguage;
     [SerializeField] private UnityEngine.Localization.Locale englishLocale;
+    [SerializeField] bool canUseGravity;
     [SerializeField] bool canCreateGhost;
     [SerializeField] private bool canMerge;
     [SerializeField] private BubbleType[] order;
@@ -70,6 +71,7 @@ public class GameSettings : ScriptableObject
     public bool CanCreateGhost { get => canCreateGhost; }
     public bool CanMerge { get => canMerge; internal set => canMerge = value; }
     public BubbleType[] Order { get => order; set => order = value; }
+    public bool CanUseGravity { get => canUseGravity; }
 
     internal static IEnumerator Init()
     {

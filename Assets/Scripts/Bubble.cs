@@ -1,12 +1,13 @@
-using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering;
 
+[SelectionBase]
 public class Bubble : MonoBehaviour
 {
     [System.Serializable]
@@ -46,7 +47,7 @@ public class Bubble : MonoBehaviour
     Vector3 startScale;
     [SerializeField] private BubbleType category;
 
-    public RigidbodyType2D IsKinematic { get => rb.bodyType; set => rb.bodyType = value; }
+    public RigidbodyType2D IsKinematic { get => Rb.bodyType; set => Rb.bodyType = value; }
     public float Radius => radius;
 
     public byte Index { get => index; }
@@ -58,10 +59,25 @@ public class Bubble : MonoBehaviour
     {
         get
         {
-            if(sortingGroup == null)
+            if (sortingGroup == null)
                 sortingGroup = GetComponent<SortingGroup>();
             return sortingGroup;
         }
+    }
+
+    public Rigidbody2D Rb
+    {
+        get
+        {
+            if (rb == null)
+            {
+                rb = GetComponent<Rigidbody2D>();
+                if (!GameSettings.Instance.CanUseGravity)
+                    IsKinematic = RigidbodyType2D.Kinematic;
+            }
+            return rb;
+        }
+        private set => rb = value;
     }
 
     Vector3[] textPositions;
@@ -70,7 +86,7 @@ public class Bubble : MonoBehaviour
     private IEnumerator Start()
     {
         CategoryManager.Instance.RegisterCategory(Category);
-        rb = GetComponent<Rigidbody2D>();
+        Rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         sortingGroup ??= GetComponent<SortingGroup>();
         startScale = viusal.localScale;
@@ -204,9 +220,13 @@ public class Bubble : MonoBehaviour
         SetCollider(false);
         SetOrder(100);
         if (GameSettings.Instance.CanCreateGhost)
+        {
             this.ghostInstance = Instantiate(ghost, transform.position, Quaternion.identity);
-    }
+            if (!GameSettings.Instance.CanUseGravity)
+                ghostInstance.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        }
 
+    }
     public void SetOrder(int order)
     {
         SortingGroup.sortingOrder = order;

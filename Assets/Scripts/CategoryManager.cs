@@ -1,6 +1,7 @@
-using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 
@@ -35,37 +36,42 @@ public class CategoryManager : Singleton<CategoryManager>
             yield break;
         }
 
-        Shuffle(bubbleSlots.Length);
+        Shuffle(Mathf.Min(bubbleSlots.Length, datas.Count));
 
 
         WaitForSeconds _waitForSeconds0_1 = new(0.1f);
         Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
 
+        int playableIndex = 0;
         for (int j = 0; j < bubbleSlots.Length; j++)
         {
             Vector3 pos = bubbleSlots[j].transform.position;
-            BubbleType category = datas[j].name;
-            Bubble.Data data = datas[j].data;
-            Color bubbleColor = datas[j].overrideColor ?
-                datas[j].bubbleColor :
-                GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
+            Data categoryMangagerData = datas[bubbleSlots[j].IsPlayable ? playableIndex % datas.Count : j % datas.Count];
+            BubbleType category = categoryMangagerData.name;
+            Bubble.Data data = categoryMangagerData.data;
+            Color bubbleColor = categoryMangagerData.overrideColor ?
+                categoryMangagerData.bubbleColor :
+                (bubbleSlots[j].ShouldOverrideColor ? bubbleSlots[j].Color : GameSettings.Instance.BubbleColors[currentIndex % GameSettings.Instance.BubbleColors.Length]);
 
             /*DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
             {*/
             Bubble bubble = CreateBubble(bubblePrefab, pos, category, data, bubbleColor);
 
             bubble.BubbleSlot = bubbleSlots[j];
+            if (bubbleSlots[j].IsPlayable)
+                playableIndex++;
             /*});*/
             /*if (j % 4 == 0)
                 yield return _waitForSeconds0_1;*/
         }
-        currentIndex = bubbleSlots.Length;
+        currentIndex = playableIndex + 1;
     }
 
     private static Bubble CreateBubble(Bubble bubblePrefab, Vector3 pos, BubbleType category, Bubble.Data data, Color bubbleColor)
     {
         var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
         bubble.Category = category;
+        bubble.IsKinematic = RigidbodyType2D.Kinematic;
         if (GameSettings.Instance.CanChangeColor)
             bubble.SetColor(bubbleColor);
         bubble.SetName(new() { data });
@@ -75,7 +81,7 @@ public class CategoryManager : Singleton<CategoryManager>
     private void Shuffle(int length)
     {
         if (datas.Count == 0) return;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 15; i++)
         {
             int a = Random.Range(0, length);
             int b = Random.Range(0, length);
@@ -179,14 +185,17 @@ public class CategoryManager : Singleton<CategoryManager>
 
     internal void SpawnNewCategory(BubbleSlot bubbleSlot)
     {
-        if (currentIndex >= datas.Count) return;
+        // if (currentIndex >= datas.Count) return;
+
+        Data data = datas[currentIndex % datas.Count];
+
         var bubble = CreateBubble(bubblePrefab: GameSettings.Instance.Bubbles[0],
             pos: bubbleSlot.transform.position,
-            category: datas[currentIndex].name,
-            data: datas[currentIndex].data,
-            bubbleColor: datas[currentIndex].overrideColor ?
-            datas[currentIndex].bubbleColor :
-            GameSettings.Instance.BubbleColors[currentIndex % GameSettings.Instance.BubbleColors.Length]);
+            category: data.name,
+            data: data.data,
+            bubbleColor: data.overrideColor ?
+            data.bubbleColor :
+            (bubbleSlot.ShouldOverrideColor ? bubbleSlot.Color : GameSettings.Instance.BubbleColors[currentIndex % GameSettings.Instance.BubbleColors.Length]));
         bubble.BubbleSlot = bubbleSlot;
         currentIndex++;
         bubble.transform.DOScale(1, 0.3f)
