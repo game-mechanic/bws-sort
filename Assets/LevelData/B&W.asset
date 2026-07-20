@@ -1,0 +1,242 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ba278c177864e64b79aa31831b5b38, type: 3}
+  m_Name: B&W
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  datas:
+  - name: {fileID: 11400000, guid: 6843f556ac3a1cc4c947595e041dd72a, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Trimmer
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 6843f556ac3a1cc4c947595e041dd72a, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Beard
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 6843f556ac3a1cc4c947595e041dd72a, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: wallet
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 6843f556ac3a1cc4c947595e041dd72a, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: tie
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: c9e2678e52e9431419d597966b96df3d, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Lipstick
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: c9e2678e52e9431419d597966b96df3d, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: earrings
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: c9e2678e52e9431419d597966b96df3d, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Handbag
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: c9e2678e52e9431419d597966b96df3d, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Perfume
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 8f7900e9c9e74944e9b3240b7161b532, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Frying pan
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 8f7900e9c9e74944e9b3240b7161b532, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: spatula
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 8f7900e9c9e74944e9b3240b7161b532, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: blender
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 8f7900e9c9e74944e9b3240b7161b532, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: knife
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: a8056ea8e9262554bb5379b7d90c342b, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: hand cuffs
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: a8056ea8e9262554bb5379b7d90c342b, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: finger print
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: a8056ea8e9262554bb5379b7d90c342b, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: safe
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: a8056ea8e9262554bb5379b7d90c342b, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: crowbar
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: f69bd78e226fbcd44ae0ce0deb4e03c8, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Plunger
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: f69bd78e226fbcd44ae0ce0deb4e03c8, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Toilet
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: f69bd78e226fbcd44ae0ce0deb4e03c8, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Toilet paper
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: f69bd78e226fbcd44ae0ce0deb4e03c8, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Soap
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 7229902819667c045aa3e11eaaeefd6c, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Suitcase
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 7229902819667c045aa3e11eaaeefd6c, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Passport
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 7229902819667c045aa3e11eaaeefd6c, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Airplane
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 7229902819667c045aa3e11eaaeefd6c, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Compass
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 21ce559b195cb6a45a48afb442ab8dba, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Kitten
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 21ce559b195cb6a45a48afb442ab8dba, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Teddy
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 21ce559b195cb6a45a48afb442ab8dba, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Bunny
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 21ce559b195cb6a45a48afb442ab8dba, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Cupcake
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  initialSpawns: 18
+  minMultiplier: 1
+  maxMultiplier: 1.2

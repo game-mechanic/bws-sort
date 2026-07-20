@@ -15,6 +15,7 @@ public class CategoryManager : Singleton<CategoryManager>
         public Bubble.Data data;
     }
     [SerializeField] bool spawnOnStart = true;
+    [SerializeField] LevelData levelData;
     [SerializeField] HorizontalAlignment horizontalAlignment;
     [SerializeField] List<Data> datas = new();
     [SerializeField] int initialSpawns = 15;
@@ -24,6 +25,8 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] float maxMultiplier = 2f;
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
+
+    public LevelData LevelDataAsset => levelData;
 
     IEnumerator Start()
     {

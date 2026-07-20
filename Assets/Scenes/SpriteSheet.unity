@@ -393,6 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnStart: 1
+  levelData: {fileID: 11400000, guid: 01ef2066727514eb3b308c547d45f8a5, type: 2}
   horizontalAlignment: {fileID: 1345279678}
   datas:
   - name: {fileID: 11400000, guid: 5f4998ee740e54d5b8e9020c6fd31539, type: 2}
@@ -1667,6 +1668,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnStart: 1
+  levelData: {fileID: 11400000, guid: 467fa61124e814d4eaff256981181494, type: 2}
   horizontalAlignment: {fileID: 1345279678}
   datas:
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}

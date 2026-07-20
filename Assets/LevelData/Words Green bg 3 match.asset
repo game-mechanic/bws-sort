@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ba278c177864e64b79aa31831b5b38, type: 3}
+  m_Name: Words Green bg 3 match
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  datas:
+  - name: {fileID: 11400000, guid: f1f070b3e6112a844a9f1b3e17183db0, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 0f49d769e18e6c14cb398885ff85962f, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: f1f070b3e6112a844a9f1b3e17183db0, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 49dd5c7cab0b4a94990c77880c0305ec, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: f1f070b3e6112a844a9f1b3e17183db0, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 51ff1586905a74f42bd53d5ea2985155, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: c37b2f6f77f66c4428755ebfeaf5baf0, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: aff0d33c2f4d3bd4c9b53d5668e99460, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: c37b2f6f77f66c4428755ebfeaf5baf0, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: ee384de0354f56b48a711186005a51a0, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: c37b2f6f77f66c4428755ebfeaf5baf0, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 93abfc89041438f4389ee1ec5c613ba8, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 48cb53ce0d307064bb49a0d42ef9fa79, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: eace630c9ebe24d409ac38d31cec9f76, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 48cb53ce0d307064bb49a0d42ef9fa79, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 6eeeb648e7028df4dbfdd5c72e118077, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 48cb53ce0d307064bb49a0d42ef9fa79, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 98910de25ec1b664e8fdc2107fe5f2eb, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: fdb6c3ec8fb3c144b9da36badde5da48, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 12e35c7483bd9fe4e8d83ed73510c315, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: fdb6c3ec8fb3c144b9da36badde5da48, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: f99391e3595dabd4fb770b311736de19, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: fdb6c3ec8fb3c144b9da36badde5da48, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 67a82926d2b0ba945910959fd0ad8e11, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: ab0b41acf721e5c46a70d6be23e91010, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: ae98274d01b27664ead9628f8923d9b6, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: ab0b41acf721e5c46a70d6be23e91010, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: f33c8aa527503c54dbda68d5b696e18d, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: ab0b41acf721e5c46a70d6be23e91010, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: e9ac161efdcc3114d9788b1276dddb35, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  initialSpawns: 12
+  minMultiplier: 1
+  maxMultiplier: 2

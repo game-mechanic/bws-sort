@@ -1,0 +1,210 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ba278c177864e64b79aa31831b5b38, type: 3}
+  m_Name: Words and Icons Sticker merge
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  datas:
+  - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 6118dfe2c9fc9774ea3c79ca4316d477, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 8080f9008e3b120478a815964d1efd61, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Hamster
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Cat
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Rose
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Tulip
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Tulip
+      icon: {fileID: 21300000, guid: 8e5cd5c4367f4ab44a20933aa8000cef, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Tulip
+      icon: {fileID: 21300000, guid: 8f13c2f9d313e9648bb95063519ff6d3, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Taco
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Pizza
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Pizza
+      icon: {fileID: 21300000, guid: 505f5a21fd34d6b40a5428759006557c, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Pizza
+      icon: {fileID: 21300000, guid: d40909f4747bc8347b5690c8194041cb, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: bd7e2eae9f21232459d656e5a758a459, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Baseball
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: bd7e2eae9f21232459d656e5a758a459, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Soccer
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: bd7e2eae9f21232459d656e5a758a459, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Soccer
+      icon: {fileID: 21300000, guid: 785d027e72d3da64d87b893d567cf4f8, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: bd7e2eae9f21232459d656e5a758a459, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Soccer
+      icon: {fileID: 21300000, guid: 242b62a976d36874ba4e5de1bf8e7542, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Soccer
+      icon: {fileID: 21300000, guid: bbdf99916aa955e44a119446205ca221, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Soccer
+      icon: {fileID: 21300000, guid: c592a926259da3545ba7a4ec12ad0ab5, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Sofa
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Bed
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: ffca69653cb0b22469d4fc18a2cde8e2, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Flour
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: ffca69653cb0b22469d4fc18a2cde8e2, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Oven
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: ffca69653cb0b22469d4fc18a2cde8e2, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Oven
+      icon: {fileID: 21300000, guid: 707d18c5de708dc488a11e491a298f10, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: ffca69653cb0b22469d4fc18a2cde8e2, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Oven
+      icon: {fileID: 21300000, guid: b883c7b5a9feb9f42b8d234da134f6f5, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  initialSpawns: 20
+  minMultiplier: 1
+  maxMultiplier: 2

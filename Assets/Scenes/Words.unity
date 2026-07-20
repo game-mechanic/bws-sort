@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnStart: 1
+  levelData: {fileID: 11400000, guid: b81adb5e547b94821a1f3c01c329bb72, type: 2}
   horizontalAlignment: {fileID: 1345279678}
   datas:
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
@@ -653,6 +654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PenInputHandler
   penColor: {r: 1, g: 1, b: 0, a: 1}
   lineMaterial: {fileID: 2100000, guid: b3cdde6a2536e4e6884c714fc4d74fde, type: 2}
+  orderInLayer: 5
   lineWidth: 0.1
   minPointDistance: 0.05
   fadeDuration: 0.5
@@ -1587,6 +1589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnStart: 1
+  levelData: {fileID: 11400000, guid: 7d27ef9ad48e5446c9b84544681b3c5c, type: 2}
   horizontalAlignment: {fileID: 1345279678}
   datas:
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}

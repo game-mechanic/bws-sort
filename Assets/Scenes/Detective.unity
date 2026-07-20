@@ -393,6 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnStart: 1
+  levelData: {fileID: 11400000, guid: 402528249f38941079904896a77b8eba, type: 2}
   horizontalAlignment: {fileID: 1345279678}
   datas:
   - name: {fileID: 11400000, guid: fdc2bdeaffef0a64584f6a57573a21ef, type: 2}
@@ -401,6 +402,7 @@ MonoBehaviour:
     data:
       name: Magifying glass
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: fdc2bdeaffef0a64584f6a57573a21ef, type: 2}
     overrideColor: 0
@@ -408,6 +410,7 @@ MonoBehaviour:
     data:
       name: trench coat
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: fdc2bdeaffef0a64584f6a57573a21ef, type: 2}
     overrideColor: 0
@@ -415,6 +418,7 @@ MonoBehaviour:
     data:
       name: hat
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: fdc2bdeaffef0a64584f6a57573a21ef, type: 2}
     overrideColor: 0
@@ -422,6 +426,7 @@ MonoBehaviour:
     data:
       name: pipe
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 838cb123b87ca7240ae4e7075930aeff, type: 2}
     overrideColor: 0
@@ -429,6 +434,7 @@ MonoBehaviour:
     data:
       name: Camera
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 838cb123b87ca7240ae4e7075930aeff, type: 2}
     overrideColor: 0
@@ -436,6 +442,7 @@ MonoBehaviour:
     data:
       name: Alarm
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 838cb123b87ca7240ae4e7075930aeff, type: 2}
     overrideColor: 0
@@ -443,6 +450,7 @@ MonoBehaviour:
     data:
       name: Lock
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 838cb123b87ca7240ae4e7075930aeff, type: 2}
     overrideColor: 0
@@ -450,6 +458,7 @@ MonoBehaviour:
     data:
       name: Keycard
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ea942022aa72c224db45aad3a930aa8c, type: 2}
     overrideColor: 0
@@ -457,6 +466,7 @@ MonoBehaviour:
     data:
       name: Cell
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ea942022aa72c224db45aad3a930aa8c, type: 2}
     overrideColor: 0
@@ -464,6 +474,7 @@ MonoBehaviour:
     data:
       name: Bars
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ea942022aa72c224db45aad3a930aa8c, type: 2}
     overrideColor: 0
@@ -471,6 +482,7 @@ MonoBehaviour:
     data:
       name: warden
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ea942022aa72c224db45aad3a930aa8c, type: 2}
     overrideColor: 0
@@ -478,6 +490,7 @@ MonoBehaviour:
     data:
       name: Uniform
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c07f2c21faf8fa84fafd164de11f85d7, type: 2}
     overrideColor: 0
@@ -485,6 +498,7 @@ MonoBehaviour:
     data:
       name: judge
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c07f2c21faf8fa84fafd164de11f85d7, type: 2}
     overrideColor: 0
@@ -492,6 +506,7 @@ MonoBehaviour:
     data:
       name: Gavel
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c07f2c21faf8fa84fafd164de11f85d7, type: 2}
     overrideColor: 0
@@ -499,6 +514,7 @@ MonoBehaviour:
     data:
       name: Witness
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c07f2c21faf8fa84fafd164de11f85d7, type: 2}
     overrideColor: 0
@@ -506,6 +522,7 @@ MonoBehaviour:
     data:
       name: Jury
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: d1a61de8f7959bd40b919d9ba9c438ee, type: 2}
     overrideColor: 0
@@ -513,6 +530,7 @@ MonoBehaviour:
     data:
       name: Mask
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: d1a61de8f7959bd40b919d9ba9c438ee, type: 2}
     overrideColor: 0
@@ -520,6 +538,7 @@ MonoBehaviour:
     data:
       name: Backpack
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: d1a61de8f7959bd40b919d9ba9c438ee, type: 2}
     overrideColor: 0
@@ -527,6 +546,7 @@ MonoBehaviour:
     data:
       name: Gloves
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: d1a61de8f7959bd40b919d9ba9c438ee, type: 2}
     overrideColor: 0
@@ -534,6 +554,7 @@ MonoBehaviour:
     data:
       name: Grappling hook
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: d1aad09c1bc73f6449eea205fcbc732a, type: 2}
     overrideColor: 0
@@ -541,6 +562,7 @@ MonoBehaviour:
     data:
       name: Police Car
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: d1aad09c1bc73f6449eea205fcbc732a, type: 2}
     overrideColor: 0
@@ -548,6 +570,7 @@ MonoBehaviour:
     data:
       name: Van
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: d1aad09c1bc73f6449eea205fcbc732a, type: 2}
     overrideColor: 0
@@ -555,6 +578,7 @@ MonoBehaviour:
     data:
       name: Motorcycle
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: d1aad09c1bc73f6449eea205fcbc732a, type: 2}
     overrideColor: 0
@@ -562,6 +586,7 @@ MonoBehaviour:
     data:
       name: Helicopter
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   initialSpawns: 14
   minMultiplier: 1
@@ -1467,6 +1492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnStart: 1
+  levelData: {fileID: 11400000, guid: d63ff9c3b465d4ef09b1798c366c9fa9, type: 2}
   horizontalAlignment: {fileID: 1345279678}
   datas:
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
@@ -1475,6 +1501,7 @@ MonoBehaviour:
     data:
       name: LEO
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     overrideColor: 0
@@ -1482,6 +1509,7 @@ MonoBehaviour:
     data:
       name: SLIPPER
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     overrideColor: 0
@@ -1489,6 +1517,7 @@ MonoBehaviour:
     data:
       name: PISCES
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     overrideColor: 0
@@ -1496,6 +1525,7 @@ MonoBehaviour:
     data:
       name: ROSE
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: f1f070b3e6112a844a9f1b3e17183db0, type: 2}
     overrideColor: 0
@@ -1503,6 +1533,7 @@ MonoBehaviour:
     data:
       name: COCONUT
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
@@ -1510,6 +1541,7 @@ MonoBehaviour:
     data:
       name: HELIUM
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
     overrideColor: 0
@@ -1517,6 +1549,7 @@ MonoBehaviour:
     data:
       name: Romania
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     overrideColor: 0
@@ -1524,6 +1557,7 @@ MonoBehaviour:
     data:
       name: BLOOD
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     overrideColor: 0
@@ -1531,6 +1565,7 @@ MonoBehaviour:
     data:
       name: PUMPKIN
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     overrideColor: 0
@@ -1538,6 +1573,7 @@ MonoBehaviour:
     data:
       name: TAURUS
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
@@ -1545,6 +1581,7 @@ MonoBehaviour:
     data:
       name: GOLD
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
@@ -1552,6 +1589,7 @@ MonoBehaviour:
     data:
       name: IRON
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
@@ -1559,6 +1597,7 @@ MonoBehaviour:
     data:
       name: OxyGen
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     overrideColor: 0
@@ -1566,6 +1605,7 @@ MonoBehaviour:
     data:
       name: Cherry
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     overrideColor: 0
@@ -1573,6 +1613,7 @@ MonoBehaviour:
     data:
       name: TOMATO
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 7af8a0828acb22e44a41b37777d70bb4, type: 2}
     overrideColor: 0
@@ -1580,6 +1621,7 @@ MonoBehaviour:
     data:
       name: AVOCADO
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     overrideColor: 0
@@ -1587,6 +1629,7 @@ MonoBehaviour:
     data:
       name: VIRGO
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     overrideColor: 0
@@ -1594,6 +1637,7 @@ MonoBehaviour:
     data:
       name: Prince
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     overrideColor: 0
@@ -1601,6 +1645,7 @@ MonoBehaviour:
     data:
       name: Fairy
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 48cb53ce0d307064bb49a0d42ef9fa79, type: 2}
     overrideColor: 0
@@ -1608,6 +1653,7 @@ MonoBehaviour:
     data:
       name: WOODEN
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 48cb53ce0d307064bb49a0d42ef9fa79, type: 2}
     overrideColor: 0
@@ -1615,6 +1661,7 @@ MonoBehaviour:
     data:
       name: PUPPET
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   initialSpawns: 20
   minMultiplier: 1

@@ -157,6 +157,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -178,9 +180,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &29039206
 MeshFilter:
@@ -255,6 +259,7 @@ GameObject:
   m_IsActive: 0
 --- !u!212 &84020370
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -273,6 +278,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -294,9 +301,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -100
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: a7d2c317a1949f24282ffd51e35be7f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -306,7 +315,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &84020371
 Transform:
@@ -353,6 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8e16477125c9040b4f1477e2ee2119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endPoint: {fileID: 0}
   OnSuccessfullMerge:
     m_PersistentCalls:
       m_Calls: []
@@ -384,6 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnStart: 1
+  levelData: {fileID: 11400000, guid: e7e58d44239c242f0921eaa85cf97f73, type: 2}
   horizontalAlignment: {fileID: 1345279678}
   datas:
   - name: {fileID: 11400000, guid: feca891a749cd95428aa367563758be8, type: 2}
@@ -392,121 +402,163 @@ MonoBehaviour:
     data:
       name: 
       icon: {fileID: 21300000, guid: 4bf2eb9ec2e0248409ffd9a0102803d0, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: feca891a749cd95428aa367563758be8, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: ddb3d1c4781b2f54d910ca33232d6bab, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: feca891a749cd95428aa367563758be8, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: 86484db8e35849d43a0fb311243fc538, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: feca891a749cd95428aa367563758be8, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: 1fb26f5dadf1b5c4b92963cc9f878dc0, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: bf05d3a473e30b548be4bc5ca4681716, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: 7d13c518db035a5488de479c9b9ba395, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: bf05d3a473e30b548be4bc5ca4681716, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: e999f1e53f9437e4f99ec1bd713260c4, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: bf05d3a473e30b548be4bc5ca4681716, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: a3d026d7a99006e4b9f8dee2d6a31d79, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: bf05d3a473e30b548be4bc5ca4681716, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: 0d69ff126987ba345ae77a858c2cdba2, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: 1b4be99e615b2d14a8b80db9ee2a4cdb, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: ed4d126c939b0b5408ea8d6a97ae1783, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: 489a2039b975be44eaca10fede0563ee, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: caf4ee58e2748b14c944a800ad5c37d2, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 4eb4d37ccda3c0743bc6e55aff39f667, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: 8187ef1fd0c655e499421a10bdf96dd4, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 4eb4d37ccda3c0743bc6e55aff39f667, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: f8002ee51c0743e4a89fc25d3c77f6f7, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 4eb4d37ccda3c0743bc6e55aff39f667, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: c5974612d9e89bf438f237394903ad2c, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 4eb4d37ccda3c0743bc6e55aff39f667, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: b07e7ad531d150741b98204eecb3c9b7, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: fe5b5cc36a6c5e7459f44090b842416c, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: a81e38ee21529cd4689d86172e25ddf2, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: fe5b5cc36a6c5e7459f44090b842416c, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: 1a3c5dc82ee0f15449d5823086b219f6, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: fe5b5cc36a6c5e7459f44090b842416c, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: 1757cfc645c1c344a89cdf549cddeeaf, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: fe5b5cc36a6c5e7459f44090b842416c, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
       icon: {fileID: 21300000, guid: 7275bb336dfa56c4b8ad24b729d46d94, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   initialSpawns: 21
+  minMultiplier: 1
+  maxMultiplier: 2
 --- !u!1 &339842783
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,6 +593,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &339842785
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -559,6 +612,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -580,9 +635,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -100
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 1a8ab9e9f78067147b3bc30cdaade30d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -592,7 +649,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &364550088
 GameObject:
@@ -628,6 +684,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &364550090
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -646,6 +703,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -667,9 +726,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -100
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: c6dd0566bb0ce3d498bd0896e0ecbe65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -679,7 +740,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &429325393
 GameObject:
@@ -759,6 +819,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -937,14 +998,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_Enabled: 1
-  serializedVersion: 11
+  serializedVersion: 13
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 2
     m_Resolution: 2
@@ -989,7 +1050,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -1121,6 +1182,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &711215765
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1139,6 +1201,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1160,9 +1224,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -100
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: b74ae24eef349b547840c174f11768d4, type: 3}
   m_Color: {r: 0.90588236, g: 0.90588236, b: 0.90588236, a: 1}
   m_FlipX: 0
@@ -1172,7 +1238,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &799683886
 GameObject:
@@ -1578,6 +1643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnStart: 1
+  levelData: {fileID: 11400000, guid: a6553070c92d64baeb77a3b331a77bd9, type: 2}
   horizontalAlignment: {fileID: 1345279678}
   datas:
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
@@ -1586,127 +1652,171 @@ MonoBehaviour:
     data:
       name: LEO
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: SLIPPER
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: PISCES
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: ROSE
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: f1f070b3e6112a844a9f1b3e17183db0, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: COCONUT
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: HELIUM
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Romania
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: BLOOD
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: PUMPKIN
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: TAURUS
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: GOLD
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: IRON
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: OxyGen
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Cherry
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: TOMATO
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 7af8a0828acb22e44a41b37777d70bb4, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: AVOCADO
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: VIRGO
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Prince
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: Fairy
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 48cb53ce0d307064bb49a0d42ef9fa79, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: WOODEN
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 48cb53ce0d307064bb49a0d42ef9fa79, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: PUPPET
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   initialSpawns: 20
+  minMultiplier: 1
+  maxMultiplier: 2
 --- !u!4 &1484017449
 Transform:
   m_ObjectHideFlags: 0

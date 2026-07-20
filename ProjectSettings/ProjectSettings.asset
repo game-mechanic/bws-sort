@@ -993,11 +993,11 @@ PlayerSettings:
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
   enableDirectStorage: 0
-  cloudProjectId: f20e5490-0f36-4937-bcd5-ab77a38bc586
+  cloudProjectId: 07d896c8-1c93-4427-a705-ebda9900e6f2
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: AdTemplate
-  organizationId: rahullinganagoudra
+  organizationId: unity_6cecf23df32a75cc0100
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

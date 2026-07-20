@@ -188,6 +188,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -209,9 +211,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &29039206
 MeshFilter:
@@ -301,6 +305,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &61662399
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -319,6 +324,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -340,9 +347,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 459ebe3c715b34044a415031607467af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -352,7 +361,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &84020369
 GameObject:
@@ -373,6 +381,7 @@ GameObject:
   m_IsActive: 1
 --- !u!212 &84020370
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -391,6 +400,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -412,9 +423,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -100
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 1a8ab9e9f78067147b3bc30cdaade30d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -424,7 +437,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &84020371
 Transform:
@@ -473,6 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8e16477125c9040b4f1477e2ee2119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endPoint: {fileID: 0}
   OnSuccessfullMerge:
     m_PersistentCalls:
       m_Calls: []
@@ -503,6 +516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf384fb6eec2be54b8bcacde80477751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnOnStart: 1
+  levelData: {fileID: 11400000, guid: 211f01667a68a4f9fa34d3f6e1024305, type: 2}
   horizontalAlignment: {fileID: 1345279678}
   datas:
   - name: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
@@ -511,217 +526,291 @@ MonoBehaviour:
     data:
       name: Rose
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
     data:
       name: Tulip
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0.46900606, b: 1, a: 1}
     data:
       name: Hibiscus
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.5712824, b: 0, a: 1}
     data:
       name: Sunflower
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.14199996, b: 0.14199996, a: 1}
     data:
       name: Table
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.7353099, b: 0, a: 1}
     data:
       name: Chair
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: sofa
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
     data:
       name: bed
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: bd7e2eae9f21232459d656e5a758a459, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
     data:
       name: BaseBall
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: bd7e2eae9f21232459d656e5a758a459, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: rugby
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: bd7e2eae9f21232459d656e5a758a459, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.14199996, b: 0.14199996, a: 1}
     data:
       name: Tennis
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: bd7e2eae9f21232459d656e5a758a459, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.5712824, b: 0, a: 1}
     data:
       name: soccer
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.3160377, b: 0.7601107, a: 1}
     data:
       name: Burger
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
     data:
       name: Hot dog
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0.46900606, b: 1, a: 1}
     data:
       name: Pizza
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.872, g: 0, b: 0.12894145, a: 1}
     data:
       name: Taco
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: Dog
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.7353099, b: 0, a: 1}
     data:
       name: Parrot
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.3160377, b: 0.7601107, a: 1}
     data:
       name: Cat
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
     data:
       name: Hamster
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ffca69653cb0b22469d4fc18a2cde8e2, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: flour
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ffca69653cb0b22469d4fc18a2cde8e2, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.14199996, b: 0.14199996, a: 1}
     data:
       name: Oven
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ffca69653cb0b22469d4fc18a2cde8e2, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.3160377, b: 0.7601107, a: 1}
     data:
       name: Cookies
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ffca69653cb0b22469d4fc18a2cde8e2, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: Bread
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.7353099, b: 0, a: 1}
     data:
       name: Egypt
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0.46900606, b: 1, a: 1}
     data:
       name: Newton
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.14199996, b: 0.14199996, a: 1}
     data:
       name: Darwin
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: Romans
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: Curie
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: Mayans
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
     data:
       name: Tesla
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: Vikings
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 4231dbf6664e35944b4fde27cad75755, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: Picasso
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 4231dbf6664e35944b4fde27cad75755, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: Da Vinci
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 4231dbf6664e35944b4fde27cad75755, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: Monet
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 4231dbf6664e35944b4fde27cad75755, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: Van Gogh
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   initialSpawns: 19
+  minMultiplier: 1
+  maxMultiplier: 2
 --- !u!1 &429325393
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,6 +889,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
+  m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -978,14 +1068,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_Enabled: 1
-  serializedVersion: 11
+  serializedVersion: 13
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 2
     m_Resolution: 2
@@ -1030,7 +1120,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 0
+  m_ShapeRadius: 0
   m_ShadowAngle: 0
   m_LightUnit: 1
   m_LuxAtDistance: 1
@@ -1289,6 +1379,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &958701125
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1307,6 +1398,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1328,9 +1421,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 459ebe3c715b34044a415031607467af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1340,7 +1435,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &963194225
 GameObject:
@@ -1529,6 +1623,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1201894633
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1547,6 +1642,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1568,9 +1665,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 459ebe3c715b34044a415031607467af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1580,7 +1679,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1220627822
 GameObject:
@@ -1616,6 +1714,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1220627824
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1634,6 +1733,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1655,9 +1756,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 459ebe3c715b34044a415031607467af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1667,7 +1770,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1311168464
 GameObject:
@@ -1788,6 +1890,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1435113244
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1806,6 +1909,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1827,9 +1932,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 459ebe3c715b34044a415031607467af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1839,7 +1946,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1458059615
 GameObject:
@@ -1875,6 +1981,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1458059617
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1893,6 +2000,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1914,9 +2023,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 459ebe3c715b34044a415031607467af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1926,7 +2037,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1484017447
 GameObject:
@@ -1957,6 +2067,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf384fb6eec2be54b8bcacde80477751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnOnStart: 1
+  levelData: {fileID: 11400000, guid: dd518c3577a42496dae46400d5f6c71d, type: 2}
   horizontalAlignment: {fileID: 1345279678}
   datas:
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
@@ -1965,127 +2077,171 @@ MonoBehaviour:
     data:
       name: LEO
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: SLIPPER
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: PISCES
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: ROSE
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: f1f070b3e6112a844a9f1b3e17183db0, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: COCONUT
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: HELIUM
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Romania
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: BLOOD
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: PUMPKIN
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: TAURUS
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: GOLD
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: IRON
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: OxyGen
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Cherry
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: TOMATO
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 7af8a0828acb22e44a41b37777d70bb4, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: AVOCADO
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: VIRGO
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Prince
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Fairy
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 48cb53ce0d307064bb49a0d42ef9fa79, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: WOODEN
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 48cb53ce0d307064bb49a0d42ef9fa79, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: PUPPET
       icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   initialSpawns: 20
+  minMultiplier: 1
+  maxMultiplier: 2
 --- !u!4 &1484017449
 Transform:
   m_ObjectHideFlags: 0
@@ -2268,6 +2424,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1609873386
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2286,6 +2443,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2307,9 +2466,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 459ebe3c715b34044a415031607467af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2319,7 +2480,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &1646079304
 PrefabInstance:
