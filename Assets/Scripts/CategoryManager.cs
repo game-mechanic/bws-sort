@@ -6,23 +6,15 @@ using UnityEngine.Localization.Settings;
 
 public class CategoryManager : Singleton<CategoryManager>
 {
-    [System.Serializable]
-    public class Data
-    {
-        public BubbleType name;
-        public bool overrideColor = false;
-        [ColorUsage(false)] public Color bubbleColor = Color.white;
-        public Bubble.Data data;
-    }
     [SerializeField] bool spawnOnStart = true;
     [SerializeField] LevelData levelData;
     [SerializeField] HorizontalAlignment horizontalAlignment;
-    [SerializeField] List<Data> datas = new();
-    [SerializeField] int initialSpawns = 15;
+    List<LevelData.Data> datas = new();
+    int initialSpawns = 15;
 
     bool EnableRandomSize => GameSettings.Instance.EnableRandomBubbleSize;
-    [SerializeField] float minMultiplier = 1f;
-    [SerializeField] float maxMultiplier = 2f;
+    float minMultiplier = 1f;
+    float maxMultiplier = 2f;
     int currentIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
 
@@ -30,6 +22,11 @@ public class CategoryManager : Singleton<CategoryManager>
 
     IEnumerator Start()
     {
+        datas = new(levelData.datas);
+        initialSpawns = levelData.initialSpawns;
+        minMultiplier = levelData.minMultiplier;
+        maxMultiplier = levelData.maxMultiplier;
+
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[(int)GameSettings.Instance.SelectedLanguage];
 
         if (!spawnOnStart)

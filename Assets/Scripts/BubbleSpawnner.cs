@@ -1,12 +1,12 @@
-﻿using DG.Tweening;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class BubbleSpawnner : MonoBehaviour
 {
     [SerializeField] HorizontalAlignment horizontalAlignment;
-    [SerializeField] List<CategoryManager.Data> datas = new();
+    [SerializeField] List<LevelData.Data> datas = new();
     IEnumerator Start()
     {
         WaitForSeconds _waitForSeconds0_1 = new(0.1f);
