@@ -67,15 +67,16 @@ public class Bubble : MonoBehaviour
         startScale = viusal.localScale;
         randomPhaseDiff = Random.Range(0, 90) * Mathf.Deg2Rad;
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
-        RestorePositions();
-        Redraw();
+        categoryText.transform.DOScale(categoryText.transform.localScale, 0.2f);
+        // RestorePositions();
+        // Redraw();
         yield return null;
-        foreach (var name in textUIs)
-        {
-#if UNITY_EDITOR
-            SceneVisibilityManager.instance.Hide(name.textUIs.gameObject, true);
-#endif
-        }
+        //         foreach (var name in textUIs)
+        //         {
+        // #if UNITY_EDITOR
+        //             SceneVisibilityManager.instance.Hide(name.textUIs.gameObject, true);
+        // #endif
+        //         }
     }
     private void OnDisable()
     {
@@ -173,7 +174,7 @@ public class Bubble : MonoBehaviour
             Vector3 t = startScale + new Vector3(x, y: y, 0);
 
             viusal.localScale = Vector3.Lerp(viusal.localScale, t, GameSettings.Instance.LerpSpeeed * Time.deltaTime);
-            TextBreathing();
+            //TextBreathing();
             return;
         }
 
@@ -187,6 +188,7 @@ public class Bubble : MonoBehaviour
         float cos = (Mathf.Cos(rad + PhaseDiff) + 0.5f) * bounceAmplitude;
         Vector3 targetScale = startScale + new Vector3(cos, y: sin, 0) * bounceIntensity;
         viusal.transform.localScale = Vector3.Lerp(viusal.localScale, targetScale, GameSettings.Instance.LerpSpeeed * Time.deltaTime);
+
         if (tt >= 1)
         {
             isBouncing = false;
@@ -226,6 +228,7 @@ public class Bubble : MonoBehaviour
     public void StartDrag()
     {
         IsKinematic = RigidbodyType2D.Kinematic;
+        rb.linearVelocity = Vector2.zero;
         SetCollider(false);
         sortingGroup.sortingOrder = 100;
         if (GameSettings.Instance.CanCreateGhost)
@@ -237,6 +240,20 @@ public class Bubble : MonoBehaviour
         SetCollider(true);
         sortingGroup.sortingOrder = 2;
     }
+    public void SetName(string name)
+    {
+        categoryText.text = name;
+    }
+    public void IncreaseSize(float size)
+    {
+        Transform child = transform.GetChild(0);
+        child.localScale *= size;
+        if (TryGetComponent(out CircleCollider2D circleCollider2D))
+        {
+            circleCollider2D.radius *= size;
+        }
+    }
+
     private void TextBreathing()
     {
         if (!GameSettings.Instance.CanTextBreathe)
@@ -409,6 +426,7 @@ public class Bubble : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
+        if (category == null) return;
         Color color = category.Color;
         color.a = 1f;
         Gizmos.color = color;

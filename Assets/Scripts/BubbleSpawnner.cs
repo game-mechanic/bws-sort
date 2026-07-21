@@ -26,7 +26,7 @@ public class BubbleSpawnner : MonoBehaviour
                 bubble.Category = category;
                 if (GameSettings.Instance.CanChangeColor)
                     bubble.SetColor(bubbleColor);
-                bubble.SetName(new() { data });
+                bubble.SetName(new List<Bubble.Data> { data });
             });
             if (j % 4 == 0)
                 yield return _waitForSeconds0_1;

@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -92,6 +90,7 @@ public class InputHandler : Singleton<InputHandler>
         }
     }
     Collider2D[] results = new Collider2D[10];
+    private int colorIndex;
 
     private bool GetOverlap(Vector3 center, float radius, out Collider2D hit)
     {
@@ -183,26 +182,31 @@ public class InputHandler : Singleton<InputHandler>
     {
         if (a.Category != b.Category) return false;
 
-        byte maxIndex = Math.Max(a.Index, b.Index);
-        int nextIndex = a.Index + b.Index + 1;
-        var bigBubble = a.Index == maxIndex ? a : b;
-        var newBubble = Instantiate(GameSettings.Instance.Bubbles[nextIndex]);
-        newBubble.transform.SetPositionAndRotation(bigBubble.transform.position, bigBubble.transform.rotation);
-        var names = a.Names;
-        names.AddRange(b.Names);
-        newBubble.Category = a.Category;
-        newBubble.SetName(names);
+        var newBubble = Instantiate(GameSettings.Instance.Bubbles[0]);
+        newBubble.transform.SetPositionAndRotation(a.transform.position, a.transform.rotation);
+
+        var nextIndex = a.Category.NextCategory;
+
+        newBubble.IncreaseSize(nextIndex.Size);
+        newBubble.Category = nextIndex;
+        newBubble.SetName(nextIndex.name);
+
         if (GameSettings.Instance.CanUseDifferentSprites)
         {
             newBubble.SetBubbleSprite(GameSettings.Instance.BubbleSprites[CategoryManager.Instance.CurrentIndex % GameSettings.Instance.BubbleSprites.Length]);
         }
+        if (GameSettings.Instance.CanChangeColor)
+        {
+            newBubble.SetColor(GameSettings.Instance.BubbleColors[colorIndex++ % GameSettings.Instance.BubbleColors.Length]);
+        }
+
         newBubble.Bounce();
         a.transform.DOKill();
         b.transform.DOKill();
         Destroy(a.gameObject);
         Destroy(b.gameObject);
-
-        if (nextIndex == GameSettings.Instance.MergeCount - 1)
+        CategoryManager.Instance.SpawnNewCategories();
+        if (nextIndex.NextCategory == null)
         {
             newBubble.Blast(() => OnSuccessfullMerge?.Invoke());
         }

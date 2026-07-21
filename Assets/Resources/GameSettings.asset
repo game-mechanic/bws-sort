@@ -16,7 +16,7 @@ MonoBehaviour:
   bounceTime: 0.5
   maxBounces: 2
   lerpSpeeed: 15
-  bubbleProfile: {fileID: 11400000, guid: bcbdada8b0baa45eba73c1b5d6adf9e0, type: 2}
+  bubbleProfile: {fileID: 11400000, guid: 3c283154e7cc39b49bfe70f585ac9e5d, type: 2}
   mergeCount: 4
   dragSpeed: 10
   breathingSpeed: 5
@@ -26,7 +26,7 @@ MonoBehaviour:
   rotationOffset: 10
   animatorController: {fileID: 9100000, guid: 2a9b6302fcdbd415db510c9d0e3fd78a, type: 2}
   canAnimateSprite: 1
-  canChangeColor: 0
+  canChangeColor: 1
   colorProfile: {fileID: 11400000, guid: a0304dc618e3ae945972530dfd5672b7, type: 2}
   canUseDifferentSprites: 0
   spriteProfile: {fileID: 11400000, guid: 124293f2e40344627ada2d170d169cd2, type: 2}

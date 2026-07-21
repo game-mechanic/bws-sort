@@ -9,6 +9,7 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] bool spawnOnStart = true;
     [SerializeField] LevelData levelData;
     [SerializeField] HorizontalAlignment horizontalAlignment;
+    [SerializeField] int dropCount = 20;
     List<LevelData.Data> datas = new();
     int initialSpawns = 15;
 
@@ -41,7 +42,8 @@ public class CategoryManager : Singleton<CategoryManager>
 
         WaitForSeconds _waitForSeconds0_1 = new(0.1f);
         Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
-        for (int j = 0; j < Mathf.Min(initialSpawns, datas.Count); j++)
+
+        for (int j = 0, i = 0; i < dropCount; i++, j = (j + 1) % datas.Count)
         {
             Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
             BubbleType category = datas[j].name;
@@ -66,6 +68,7 @@ public class CategoryManager : Singleton<CategoryManager>
                 {
                     bubble.SetColor(bubbleColor);
                 }
+                bubble.IncreaseSize(category.Size);
 
                 if (GameSettings.Instance.CanUseDifferentSprites)
                 {
@@ -74,11 +77,12 @@ public class CategoryManager : Singleton<CategoryManager>
 
                 bubble.transform.DOScale(bubble.transform.localScale, 0.2f).From(0);
 
-                bubble.SetName(new() { data });
+                bubble.SetName(category.name);
             });
             if (j % 4 == 0)
                 yield return _waitForSeconds0_1;
         }
+
         currentIndex = initialSpawns;
     }
 
@@ -133,15 +137,17 @@ public class CategoryManager : Singleton<CategoryManager>
     {
         Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
 
-        int end = Mathf.Min(currentIndex + 4, datas.Count);
+        int end = currentIndex + 2;
+
         for (int j = currentIndex; j < end; j++)
         {
-            Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
-            BubbleType category = datas[j].name;
-            Bubble.Data data = datas[j].data;
-            Color bubbleColor = datas[j].overrideColor ?
-                        datas[j].bubbleColor :
-                        GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
+            int jCircular = j % datas.Count;
+            Vector3 pos = horizontalAlignment.GetSlotPosition(jCircular % 4);
+            BubbleType category = datas[jCircular].name;
+            Bubble.Data data = datas[jCircular].data;
+            Color bubbleColor = datas[jCircular].overrideColor ?
+                        datas[jCircular].bubbleColor :
+                        GameSettings.Instance.BubbleColors[jCircular % GameSettings.Instance.BubbleColors.Length];
 
             DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
             {
@@ -154,11 +160,12 @@ public class CategoryManager : Singleton<CategoryManager>
                 }
 
                 bubble.Category = category;
+                bubble.IncreaseSize(category.Size);
 
                 if (GameSettings.Instance.CanChangeColor)
                     bubble.SetColor(bubbleColor);
 
-                bubble.SetName(new() { data });
+                bubble.SetName(category.name);
             });
         }
         currentIndex += 4;
