@@ -28,7 +28,7 @@ MonoBehaviour:
   canAnimateSprite: 1
   canChangeColor: 0
   colorProfile: {fileID: 11400000, guid: a0304dc618e3ae945972530dfd5672b7, type: 2}
-  canUseDifferentSprites: 1
+  canUseDifferentSprites: 0
   spriteProfile: {fileID: 11400000, guid: 124293f2e40344627ada2d170d169cd2, type: 2}
   tableReference:
     m_TableCollectionName: RedThings

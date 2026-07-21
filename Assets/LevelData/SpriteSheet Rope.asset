@@ -10,9 +10,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8ba278c177864e64b79aa31831b5b38, type: 3}
-  m_Name: SpriteSheet
+  m_Name: SpriteSheet Rope
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   datas:
+  - name: {fileID: 11400000, guid: 6d56714c38c284596b54d7c2b65c5108, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 0}
+      animationClip: {fileID: 7400000, guid: 77a4151265ca547ccb66885b11f8e2ea, type: 2}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 6d56714c38c284596b54d7c2b65c5108, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 0}
+      animationClip: {fileID: 7400000, guid: 1a8cba2951d3540d39edb18ff7e4d1fa, type: 2}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 6d56714c38c284596b54d7c2b65c5108, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 0}
+      animationClip: {fileID: 7400000, guid: c983015e77bd84d8680bb3fdcac17a8e, type: 2}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 6d56714c38c284596b54d7c2b65c5108, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 0}
+      animationClip: {fileID: 7400000, guid: a3ba9f4e8c37c491384bf34df066c728, type: 2}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 5f4998ee740e54d5b8e9020c6fd31539, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
@@ -173,38 +205,6 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 7400000, guid: f99f5b7d3da2e46ca8f145e8b4ca7b15, type: 2}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 6d56714c38c284596b54d7c2b65c5108, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: 
-      icon: {fileID: 0}
-      animationClip: {fileID: 7400000, guid: 77a4151265ca547ccb66885b11f8e2ea, type: 2}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 6d56714c38c284596b54d7c2b65c5108, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: 
-      icon: {fileID: 0}
-      animationClip: {fileID: 7400000, guid: 1a8cba2951d3540d39edb18ff7e4d1fa, type: 2}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 6d56714c38c284596b54d7c2b65c5108, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: 
-      icon: {fileID: 0}
-      animationClip: {fileID: 7400000, guid: c983015e77bd84d8680bb3fdcac17a8e, type: 2}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 6d56714c38c284596b54d7c2b65c5108, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: 
-      icon: {fileID: 0}
-      animationClip: {fileID: 7400000, guid: a3ba9f4e8c37c491384bf34df066c728, type: 2}
-      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 9ed0f9f8946ca43059c8b8e45c24a0cb, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
@@ -237,7 +237,7 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 7400000, guid: 892a63211e8f746a68afc119cff1c974, type: 2}
       showBothTxtAndImg: 0
-  initialSpawns: 27
+  initialSpawns: 20
   minMultiplier: 1
   maxMultiplier: 2
   levelDataToAppend: {fileID: 0}

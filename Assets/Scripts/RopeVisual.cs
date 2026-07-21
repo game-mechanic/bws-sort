@@ -66,4 +66,8 @@ public class RopeVisual : MonoBehaviour
         breakPoint.useConnectedAnchor = false;
         isBroken = true;
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(pivotPositions[0].position, pivotPositions[^1].position);
+    }
 }
