@@ -20,6 +20,8 @@ public class CategoryManager : Singleton<CategoryManager>
 
     public LevelData LevelDataAsset => levelData;
 
+    public int CurrentIndex { get => currentIndex; }
+
     IEnumerator Start()
     {
         datas = new(levelData.datas);
@@ -61,7 +63,16 @@ public class CategoryManager : Singleton<CategoryManager>
                 bubble.Category = category;
 
                 if (GameSettings.Instance.CanChangeColor)
+                {
                     bubble.SetColor(bubbleColor);
+                }
+
+                if (GameSettings.Instance.CanUseDifferentSprites)
+                {
+                    bubble.SetBubbleSprite(GameSettings.Instance.BubbleSprites[j % GameSettings.Instance.BubbleSprites.Length]);
+                }
+
+                bubble.transform.DOScale(bubble.transform.localScale, 0.2f).From(0);
 
                 bubble.SetName(new() { data });
             });

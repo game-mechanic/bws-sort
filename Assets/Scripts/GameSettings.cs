@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization.Tables;
-
 [CreateAssetMenu(fileName = "GameSettings")]
 public class GameSettings : ScriptableObject
 {
@@ -52,7 +51,7 @@ public class GameSettings : ScriptableObject
     [SerializeField] bool canChangeColor;
     [SerializeField] ColorProfile colorProfile;
     [SerializeField] bool canUseDifferentSprites;
-    [SerializeField] Sprite[] bubbleSprites;
+    [SerializeField] SpriteProfile spriteProfile;
 
     [SerializeField] private TableReference tableReference;
     [SerializeField] private Locale selectedLanguage;
@@ -84,7 +83,7 @@ public class GameSettings : ScriptableObject
     public bool CanTextBreathe { get => canTextBreathe; internal set => canTextBreathe = value; }
     public bool EnableRandomBubbleSize { get => enableRandomBubbleSize; }
     public bool CanUseDifferentSprites { get => canUseDifferentSprites; }
-    public Sprite[] BubbleSprites { get => bubbleSprites; }
+    public Sprite[] BubbleSprites { get => spriteProfile.BubbleSprites; }
     public int MergeCount { get => mergeCount; }
     public bool CanAnimateSprite { get => canAnimateSprite; }
     public RuntimeAnimatorController AnimatorController { get => animatorController; }

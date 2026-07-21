@@ -25,6 +25,8 @@ public class HandUI : Singleton<HandUI>
         handTransform = transform.GetChild(0);
 
         hand = handTransform.GetComponent<Image>();
+        mousePosition = Input.mousePosition + new Vector3(offset.x, offset.y);
+        handTransform.transform.position = mousePosition;
         if (lineRenderer != null)
         {
             lineRenderer.positionCount = pointsCount;
@@ -35,7 +37,6 @@ public class HandUI : Singleton<HandUI>
     // Update is called once per frame
     void Update()
     {
-
         if (Input.mousePosition.x < 0 || Input.mousePosition.y < 0
         || Input.mousePosition.x > Screen.width || Input.mousePosition.y > Screen.height)
             return;

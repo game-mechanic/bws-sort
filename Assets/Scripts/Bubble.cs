@@ -396,6 +396,11 @@ public class Bubble : MonoBehaviour
         });
     }
 
+    internal void SetBubbleSprite(Sprite sprite)
+    {
+        bg.sprite = sprite;
+    }
+
     internal void SetColor(Color bubbleColor)
     {
         bgColor = bubbleColor;

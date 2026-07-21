@@ -192,6 +192,10 @@ public class InputHandler : Singleton<InputHandler>
         names.AddRange(b.Names);
         newBubble.Category = a.Category;
         newBubble.SetName(names);
+        if (GameSettings.Instance.CanUseDifferentSprites)
+        {
+            newBubble.SetBubbleSprite(GameSettings.Instance.BubbleSprites[CategoryManager.Instance.CurrentIndex % GameSettings.Instance.BubbleSprites.Length]);
+        }
         newBubble.Bounce();
         a.transform.DOKill();
         b.transform.DOKill();
