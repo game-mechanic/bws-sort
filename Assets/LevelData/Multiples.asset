@@ -61,6 +61,14 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: a525c03e6d9474be5a78d51fef898ba6, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   initialSpawns: 4
   minMultiplier: 1
   maxMultiplier: 2
