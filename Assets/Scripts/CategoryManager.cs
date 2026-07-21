@@ -68,7 +68,7 @@ public class CategoryManager : Singleton<CategoryManager>
                 {
                     bubble.SetColor(bubbleColor);
                 }
-                bubble.IncreaseSize(category.Size);
+                // bubble.IncreaseSize(category.Size);
 
                 if (GameSettings.Instance.CanUseDifferentSprites)
                 {
@@ -77,7 +77,7 @@ public class CategoryManager : Singleton<CategoryManager>
 
                 bubble.transform.DOScale(bubble.transform.localScale, 0.2f).From(0);
 
-                bubble.SetName(category.name);
+                bubble.SetName(new List<Bubble.Data> { data });
             });
             if (j % 4 == 0)
                 yield return _waitForSeconds0_1;
@@ -165,7 +165,7 @@ public class CategoryManager : Singleton<CategoryManager>
                 if (GameSettings.Instance.CanChangeColor)
                     bubble.SetColor(bubbleColor);
 
-                bubble.SetName(category.name);
+                bubble.SetName(new List<Bubble.Data> { data });
             });
         }
         currentIndex += 4;

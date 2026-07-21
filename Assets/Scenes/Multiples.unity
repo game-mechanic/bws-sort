@@ -394,9 +394,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnStart: 1
-  levelData: {fileID: 11400000, guid: 50c1cfb228a5a46d195f0bef77e3b605, type: 2}
+  levelData: {fileID: 11400000, guid: 53b581d5ac75e423dbe500ce6e80385d, type: 2}
   horizontalAlignment: {fileID: 1345279678}
-  dropCount: 50
+  dropCount: 10
 --- !u!114 &157686654
 MonoBehaviour:
   m_ObjectHideFlags: 0

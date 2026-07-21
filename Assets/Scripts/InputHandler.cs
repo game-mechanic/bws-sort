@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -185,11 +186,15 @@ public class InputHandler : Singleton<InputHandler>
         var newBubble = Instantiate(GameSettings.Instance.Bubbles[0]);
         newBubble.transform.SetPositionAndRotation(a.transform.position, a.transform.rotation);
 
-        var nextIndex = a.Category.NextCategory;
+        var nextIndex = a.Category;
 
         newBubble.IncreaseSize(nextIndex.Size);
         newBubble.Category = nextIndex;
-        newBubble.SetName(nextIndex.name);
+        Bubble.Data data = new Bubble.Data()
+        {
+            name = a.Names[0].name + b.Names[0].name,
+        };
+        newBubble.SetName(new List<Bubble.Data> { data });
 
         if (GameSettings.Instance.CanUseDifferentSprites)
         {

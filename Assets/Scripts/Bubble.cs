@@ -68,15 +68,15 @@ public class Bubble : MonoBehaviour
         randomPhaseDiff = Random.Range(0, 90) * Mathf.Deg2Rad;
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
         categoryText.transform.DOScale(categoryText.transform.localScale, 0.2f);
-        // RestorePositions();
-        // Redraw();
+        //RestorePositions();
+        Redraw();
         yield return null;
-        //         foreach (var name in textUIs)
-        //         {
-        // #if UNITY_EDITOR
-        //             SceneVisibilityManager.instance.Hide(name.textUIs.gameObject, true);
-        // #endif
-        //         }
+        foreach (var name in textUIs)
+        {
+#if UNITY_EDITOR
+            SceneVisibilityManager.instance.Hide(name.textUIs.gameObject, true);
+#endif
+        }
     }
     private void OnDisable()
     {
