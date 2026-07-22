@@ -10,178 +10,154 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8ba278c177864e64b79aa31831b5b38, type: 3}
-  m_Name: 7Wonders
+  m_Name: HumanBody
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   datas:
-  - name: {fileID: 11400000, guid: eebf53e82ec834ce69d60d91585330fc, type: 2}
+  - name: {fileID: 11400000, guid: 490c2067268a34bcd807f6e8fb2c35d5, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Great
+      name: Sk
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: eebf53e82ec834ce69d60d91585330fc, type: 2}
+  - name: {fileID: 11400000, guid: 490c2067268a34bcd807f6e8fb2c35d5, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Pyra
+      name: ull
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 51d3b0f3363454c25a29fddf577e94f9, type: 2}
+  - name: {fileID: 11400000, guid: 180cb9ca779314de1a76a67147019730, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Collo
+      name: ul
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 51d3b0f3363454c25a29fddf577e94f9, type: 2}
+  - name: {fileID: 11400000, guid: 180cb9ca779314de1a76a67147019730, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: sseum
+      name: na
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 15f0c7895f599442cb0320abfc2808df, type: 2}
+  - name: {fileID: 11400000, guid: 0301a123e1d8d4f3eae793e0a273c8b7, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: 'Great '
+      name: Ri
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 15f0c7895f599442cb0320abfc2808df, type: 2}
+  - name: {fileID: 11400000, guid: 0301a123e1d8d4f3eae793e0a273c8b7, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Wall of
+      name: bs
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 7099645d1240d46dea81e27e33bfe051, type: 2}
+  - name: {fileID: 11400000, guid: 4e9981f2cc7244112905bf64ab14ee0e, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: "itz\xE1"
+      name: Fe
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 7099645d1240d46dea81e27e33bfe051, type: 2}
+  - name: {fileID: 11400000, guid: 4e9981f2cc7244112905bf64ab14ee0e, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Chi
+      name: mur
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 8cc3b8335a38a4013b7647a42c84fd50, type: 2}
+  - name: {fileID: 11400000, guid: f2bb7038774a14965828b83275468f59, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Taj
+      name: pel
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 8cc3b8335a38a4013b7647a42c84fd50, type: 2}
+  - name: {fileID: 11400000, guid: f2bb7038774a14965828b83275468f59, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Mahal
+      name: vis
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 2e17065abae494a7792ad120bf97ae29, type: 2}
+  - name: {fileID: 11400000, guid: 0df0c280b92aa437e9cc3b1b485072ce, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Christ
+      name: SP
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 2e17065abae494a7792ad120bf97ae29, type: 2}
+  - name: {fileID: 11400000, guid: 0df0c280b92aa437e9cc3b1b485072ce, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: 'The '
+      name: ine
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: eebf53e82ec834ce69d60d91585330fc, type: 2}
+  - name: {fileID: 11400000, guid: 0eb039fe221c04409a37a33b794a2562, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: mids
+      name: bia
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 2e17065abae494a7792ad120bf97ae29, type: 2}
+  - name: {fileID: 11400000, guid: 0eb039fe221c04409a37a33b794a2562, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: red
+      name: Ti
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 15f0c7895f599442cb0320abfc2808df, type: 2}
+  - name: {fileID: 11400000, guid: f5c6ac5b4ae8b48d5a532083938296a6, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: China
+      name: Col
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 7099645d1240d46dea81e27e33bfe051, type: 2}
+  - name: {fileID: 11400000, guid: f5c6ac5b4ae8b48d5a532083938296a6, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: "ch\xE9n"
+      name: lor
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 8775cf7d40c1c4be383741b73a42b7fa, type: 2}
+  - name: {fileID: 11400000, guid: f5c6ac5b4ae8b48d5a532083938296a6, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Ma
+      name: ' Bo'
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 8775cf7d40c1c4be383741b73a42b7fa, type: 2}
+  - name: {fileID: 11400000, guid: f5c6ac5b4ae8b48d5a532083938296a6, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: 'chu '
+      name: ne
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 8775cf7d40c1c4be383741b73a42b7fa, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: Pi
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 8775cf7d40c1c4be383741b73a42b7fa, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: Cchu
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 2e17065abae494a7792ad120bf97ae29, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: eemer
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
-  initialSpawns: 15
+  initialSpawns: 12
   minMultiplier: 1
   maxMultiplier: 2
   levelDataToAppend: {fileID: 0}

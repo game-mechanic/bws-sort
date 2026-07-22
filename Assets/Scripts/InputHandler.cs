@@ -188,13 +188,10 @@ public class InputHandler : Singleton<InputHandler>
 
         var nextIndex = a.Category;
 
-        newBubble.IncreaseSize(nextIndex.Size);
+        float maxSize = Mathf.Max(a.Radius, b.Radius) * 2;
+        newBubble.IncreaseSize(maxSize + .2f);
         newBubble.Category = nextIndex;
-        Bubble.Data data = new Bubble.Data()
-        {
-            name = a.Names[0].name + b.Names[0].name,
-        };
-        newBubble.SetName(new List<Bubble.Data> { data });
+
 
         if (GameSettings.Instance.CanUseDifferentSprites)
         {
@@ -210,8 +207,20 @@ public class InputHandler : Singleton<InputHandler>
         b.transform.DOKill();
         Destroy(a.gameObject);
         Destroy(b.gameObject);
-        CategoryManager.Instance.SpawnNewCategories();
-        if (nextIndex.NextCategory == null)
+
+        Bubble.Data data = new Bubble.Data()
+        {
+            name = /*a.Names[0].name + b.Names[0].name*/"",
+        };
+        int categoryCount = CategoryManager.Instance.ReduceCount(nextIndex);
+        if (categoryCount != 0)
+        {
+            data.name = a.Names[0].name + b.Names[0].name;
+        }
+
+        newBubble.SetName(new List<Bubble.Data> { data });
+        // CategoryManager.Instance.SpawnNewCategories();
+        if (categoryCount == 0)
         {
             newBubble.Blast(() => OnSuccessfullMerge?.Invoke());
         }

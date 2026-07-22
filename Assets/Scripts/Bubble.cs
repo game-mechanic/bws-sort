@@ -242,11 +242,13 @@ public class Bubble : MonoBehaviour
     }
     public void SetName(string name)
     {
+        transform.DOScale(categoryText.transform.localScale, 0.1f).From(0);
         categoryText.text = name;
     }
     public void IncreaseSize(float size)
     {
         Transform child = transform.GetChild(0);
+        radius = size / 2f;
         child.localScale *= size;
         if (TryGetComponent(out CircleCollider2D circleCollider2D))
         {
@@ -294,6 +296,7 @@ public class Bubble : MonoBehaviour
         if (categoryText != null)
         {
             categoryText.text = Category.name;
+            categoryText.gameObject.SetActive(false);
             if (GameSettings.Instance.SelectedLanguage.ToString() == "en")
             {
                 categoryText.text = Category.name;
@@ -312,46 +315,46 @@ public class Bubble : MonoBehaviour
         float delayStep = 0.08f;
         int index = 0;
 
-        foreach (var text in textUIs)
-        {
-            Transform bg = text.bg.transform;
-            Transform txt = text.textUIs.transform;
+        // foreach (var text in textUIs)
+        // {
+        //     Transform bg = text.bg.transform;
+        //     Transform txt = text.textUIs.transform;
 
-            bg.DOKill();
-            txt.DOKill();
+        //     bg.DOKill();
+        //     txt.DOKill();
 
-            // Store initial scale
-            Vector3 bgStartScale = bg.localScale;
-            Vector3 txtStartScale = txt.localScale;
+        //     // Store initial scale
+        //     Vector3 bgStartScale = bg.localScale;
+        //     Vector3 txtStartScale = txt.localScale;
 
-            float delay = index * delayStep;
+        //     float delay = index * delayStep;
 
-            Sequence textSeq = DOTween.Sequence();
+        //     Sequence textSeq = DOTween.Sequence();
 
-            textSeq.AppendInterval(delay);
+        //     textSeq.AppendInterval(delay);
 
-            // Optional tiny anticipation (feels nicer than instant shrink)
-            textSeq.Append(
-                bg.DOScale(bgStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
-            );
+        //     // Optional tiny anticipation (feels nicer than instant shrink)
+        //     textSeq.Append(
+        //         bg.DOScale(bgStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
+        //     );
 
-            textSeq.Join(
-                txt.DOScale(txtStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
-            );
+        //     textSeq.Join(
+        //         txt.DOScale(txtStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
+        //     );
 
-            // Main disappear (shrink)
-            textSeq.Append(
-                bg.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InBack)
-            );
+        //     // Main disappear (shrink)
+        //     textSeq.Append(
+        //         bg.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InBack)
+        //     );
 
-            textSeq.Join(
-                txt.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack)
-            );
+        //     textSeq.Join(
+        //         txt.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack)
+        //     );
 
-            blastSequence.Join(textSeq);
+        //     blastSequence.Join(textSeq);
 
-            index++;
-        }
+        //     index++;
+        // }
         blastSequence.AppendCallback(() =>
         {
             if (categoryText != null)

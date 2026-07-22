@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 
 public class CategoryManager : Singleton<CategoryManager>
 {
+    private const int IndexIncrease = 2;
     [SerializeField] bool spawnOnStart = true;
     [SerializeField] LevelData levelData;
     [SerializeField] HorizontalAlignment horizontalAlignment;
@@ -42,6 +44,7 @@ public class CategoryManager : Singleton<CategoryManager>
 
         WaitForSeconds _waitForSeconds0_1 = new(0.1f);
         Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
+        dropCount = Mathf.Min(initialSpawns, datas.Count);
 
         for (int j = 0, i = 0; i < dropCount; i++, j = (j + 1) % datas.Count)
         {
@@ -119,7 +122,7 @@ public class CategoryManager : Singleton<CategoryManager>
     public int ReduceCount(BubbleType category)
     {
         if (!categoryCounts.ContainsKey(category)) return 0;
-        categoryCounts[category] -= 2;
+        categoryCounts[category] -= IndexIncrease;
 
         if (categoryCounts[category] <= 0)
         {
@@ -135,9 +138,10 @@ public class CategoryManager : Singleton<CategoryManager>
 
     public void SpawnNewCategories()
     {
+        if (currentIndex >= datas.Count) return;
         Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
 
-        int end = currentIndex + 2;
+        int end = Mathf.Min(currentIndex + IndexIncrease, datas.Count);
 
         for (int j = currentIndex; j < end; j++)
         {
@@ -168,7 +172,7 @@ public class CategoryManager : Singleton<CategoryManager>
                 bubble.SetName(new List<Bubble.Data> { data });
             });
         }
-        currentIndex += 4;
+        currentIndex += IndexIncrease;
     }
 
     void ChangeCategory()

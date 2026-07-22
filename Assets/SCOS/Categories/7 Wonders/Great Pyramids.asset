@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6741be59f46a54fb6b2681cd4b81b4, type: 3}
   m_Name: Great Pyramids
   m_EditorClassIdentifier: Assembly-CSharp::BubbleType
-  color: {r: 0, g: 0, b: 0, a: 0}
+  color: {r: 1, g: 0.9345745, b: 0, a: 0}
   nextCategory: {fileID: 0}
   size: 1
