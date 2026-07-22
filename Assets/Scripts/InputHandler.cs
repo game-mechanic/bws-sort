@@ -197,7 +197,14 @@ public class InputHandler : Singleton<InputHandler>
 
         if(overrideMergeWithHNum && nextIndex == hNum)
         {
-            newBubble.Blast();
+            if(GameSettings.Instance.MergeBehavior == GameSettings.MergeType.BLAST)
+            {
+                newBubble.Blast();
+            }
+            else if(GameSettings.Instance.MergeBehavior == GameSettings.MergeType.MOVE_UP)
+            {
+                newBubble.MoveToDest();
+            }
         }
         else if (CategoryManager.Instance.ReduceCount(a.Category) <= 0)
         {

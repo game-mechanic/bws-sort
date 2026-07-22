@@ -474,6 +474,7 @@ public class Bubble : MonoBehaviour
         // Now actually move into the destination slot, scaling down as it travels
         moveSequence.AppendCallback(() =>
         {
+            CategoryManager.Instance.SpawnNewCategories();
             transform.SetParent(dest);
         });
 
