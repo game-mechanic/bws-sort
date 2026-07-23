@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: b29b9aa4df3974845a22a6a737b96aec
-AssemblyDefinitionImporter:
+guid: 4aae85a41c9d0b54d8b2356b7d333b54
+DefaultImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
@@ -10,5 +10,5 @@ AssetOrigin:
   productId: 335448
   packageName: DreamerTheory-GridSystem (Free)
   packageVersion: 1.2.0
-  assetPath: Assets/DreamerTheory/DreamerTheory-GridSystem/Editor/com.dreamertheory.gridsystem.editor.asmdef
+  assetPath: Assets/DreamerTheory/DreamerTheory-GridSystem/Samples/WindowsObjectPlacement/Scenes/GridTestScne.unity
   uploadId: 941720

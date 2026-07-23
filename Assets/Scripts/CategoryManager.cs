@@ -1,7 +1,7 @@
-using DG.Tweening;
-using DT.GridSystem;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using DT.GridSystem;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 
@@ -133,39 +133,50 @@ public class CategoryManager : GridSystem2D<Bubble>
     }
 
 
-    public void SpawnNewCategories()
+    public void SpawnNewCategories(Vector2Int index)
     {
         Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
 
-        int end = Mathf.Min(currentIndex + 4, datas.Count);
+        int newSpawnCount = GameSettings.Instance.CheckRow ? GridSize.x : GridSize.y;
+
+        int end = Mathf.Min(currentIndex + newSpawnCount, datas.Count);
+        int i = 0;
         for (int j = currentIndex; j < end; j++)
         {
-            Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
+            int x = GameSettings.Instance.CheckRow ? j % GridSize.x : index.x;
+
+            int y = GameSettings.Instance.CheckRow ? index.y : j % GridSize.y;
+
+            Vector3 pos = GetWorldPosition(x, y);
+
             BubbleType category = datas[j].name;
             Bubble.Data data = datas[j].data;
             Color bubbleColor = datas[j].overrideColor ?
                         datas[j].bubbleColor :
                         GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
 
-            DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
+            // DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
+            // {
+            var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
+
+            if (EnableRandomSize)
             {
-                var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
+                float randomScale = Random.Range(minMultiplier, maxMultiplier);
+                bubble.transform.localScale = Vector3.one * randomScale;
+            }
+            bubble.transform.DOScale(bubble.transform.localScale, .1f).From(0).SetDelay(i++ * 0.1f);
 
-                if (EnableRandomSize)
-                {
-                    float randomScale = Random.Range(minMultiplier, maxMultiplier);
-                    bubble.transform.localScale = Vector3.one * randomScale;
-                }
+            bubble.Category = category;
+            bubble.GridPosition = new(x, y);
+            AddGridObject(x, y, bubble);
 
-                bubble.Category = category;
+            if (GameSettings.Instance.CanChangeColor)
+                bubble.SetColor(bubbleColor);
 
-                if (GameSettings.Instance.CanChangeColor)
-                    bubble.SetColor(bubbleColor);
-
-                bubble.SetName(new() { data });
-            });
+            bubble.SetName(new() { data });
+            // });
         }
-        currentIndex += 4;
+        currentIndex += newSpawnCount;
     }
 
     void ChangeCategory()
@@ -227,13 +238,52 @@ public class CategoryManager : GridSystem2D<Bubble>
 
     }
 
+    public void CheckColumn(int x)
+    {
+        HashSet<BubbleType> rowCategories = new();
+
+        for (int i = 0; i < GridSize.y; i++)
+        {
+            if (TryGetGridObject(x, i, out Bubble b))
+            {
+                rowCategories.Add(b.Category);
+            }
+        }
+        if (rowCategories.Count > 1)
+        {
+            return;
+        }
+        float delayInterval = 0.1f;
+
+        /*
+                for (int i = 0; i < GridSize.y; i++)
+                {
+                    if (TryGetGridObject(x, i, out Bubble b))
+                    {
+                        b.transform.DOMove(b.transform.position + Vector3.up * 0.05f, .1f).SetLoops(2, LoopType.Yoyo).SetDelay(delayInterval * i);
+                        DOVirtual.DelayedCall(i * delayInterval, () => b.SetColor(b.Category.Color));
+                    }
+                }
+        */
+        List<Bubble> colBubbles = new();
+        for (int i = 0; i < GridSize.y; i++)
+        {
+            if (TryGetGridObject(x, i, out Bubble b))
+            {
+                colBubbles.Add(b);
+            }
+        }
+        StartCoroutine(MergeOneByOne(colBubbles, GameSettings.GetStackedPosition(GetWorldPosition(x, 0), 7, CellSize.y)));
+
+    }
+
     internal void SwapCategories(Bubble a, Bubble b)
     {
         a.transform.DOMove(GetWorldPosition(b.GridPosition), .1f)
            .OnComplete(() =>
            {
                a.EndDrag();
-               Instance.CheckRow(a.GridPosition.y);
+               CheckForMatch(a.GridPosition);
            });
 
         Swap(b, GetWorldPosition(a.GridPosition));
@@ -254,7 +304,92 @@ public class CategoryManager : GridSystem2D<Bubble>
             .OnComplete(() =>
             {
                 a.EndDrag();
-                Instance.CheckRow(a.GridPosition.y);
+                CheckForMatch(a.GridPosition);
             });
+    }
+    static void CheckForMatch(Vector2Int index)
+    {
+        if (GameSettings.Instance.CheckRow)
+            Instance.CheckRow(index.y);
+        else
+            Instance.CheckColumn(index.x);
+    }
+
+
+
+    // IEnumerator MergeOneByOne(List<Bubble> hoveredBubbles, Vector3 targetPosition)
+    // {
+    //     const float Duration = .8f;
+    //     const float Interval = 0.2f;
+
+    //     //yield return new WaitForSeconds(HighlightDuration);
+
+    //     Bubble a = hoveredBubbles[3];
+    //     const Ease outBack = Ease.InOutSine;
+
+    //     a.transform.DOMove(targetPosition, Duration)
+    //         .SetEase(outBack);
+    //     Bubble b = hoveredBubbles[2];
+
+    //     b.transform.DOMove(targetPosition, Duration)
+    //         .SetDelay(Interval)
+    //         .SetEase(outBack);
+
+    //     hoveredBubbles[1].transform.DOMove(targetPosition, Duration)
+    //        .SetDelay(Interval * 2)
+    //        .SetEase(outBack);
+
+    //     hoveredBubbles[0].transform.DOMove(targetPosition, Duration)
+    //         .SetDelay(Interval * 3)
+    //         .SetEase(outBack);
+
+    //     yield return new WaitForSeconds(Duration);
+    //     // IMPORTANT: TryMerge must RETURN the new bubble
+    //     InputHandler.Instance.TryMerge(a, b, out Bubble current);
+    //     yield return new WaitForSeconds(0.1f);
+    //     a = current;
+    //     b = hoveredBubbles[1];
+    //     yield return new WaitForSeconds(Interval);
+    //     InputHandler.Instance.TryMerge(a, b, out current);
+    //     //yield return new WaitForSeconds(0.1f);
+    //     a = current;
+    //     b = hoveredBubbles[0];
+
+    //     yield return new WaitForSeconds(Interval);
+    //     InputHandler.Instance.TryMerge(a, b, out current);
+    // }
+    IEnumerator MergeOneByOne(List<Bubble> hoveredBubbles, Vector3 targetPosition)
+    {
+        const float Duration = 0.8f;
+        const float Interval = 0.2f;
+        const Ease ease = Ease.InOutSine;
+
+        // Move all bubbles one by one
+        Tween lastTween = null;
+
+        for (int i = hoveredBubbles.Count - 1, order = 0; i >= 0; i--, order++)
+        {
+            lastTween = hoveredBubbles[i].transform
+                .DOMove(targetPosition, Duration)
+                .SetDelay(order * Interval)
+                .SetEase(ease);
+        }
+
+        // Wait until the last bubble reaches the target
+        yield return lastTween.WaitForCompletion();
+
+        // Start with the last bubble
+        Bubble current = hoveredBubbles[hoveredBubbles.Count - 1];
+
+        // Merge remaining bubbles one by one
+        for (int i = hoveredBubbles.Count - 2; i >= 0; i--)
+        {
+            InputHandler.Instance.TryMerge(current, hoveredBubbles[i], out Bubble merged);
+            current = merged;
+
+            // Small delay between merges (optional)
+            if (i > 0)
+                yield return new WaitForSeconds(Interval);
+        }
     }
 }

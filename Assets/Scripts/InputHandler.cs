@@ -1,5 +1,5 @@
-using DG.Tweening;
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -167,6 +167,7 @@ public class InputHandler : Singleton<InputHandler>
         b.StartDrag();
 
         draggable = null;
+
         //else if (!TryMerge(draggable, highlightedBubble))
         //{
         //    draggable.ReturnBack();
@@ -222,6 +223,37 @@ public class InputHandler : Singleton<InputHandler>
         {
             newBubble.Blast(() => OnSuccessfullMerge?.Invoke());
         }
+        return true;
+    }
+    public bool TryMerge(Bubble a, Bubble b, out Bubble bubble)
+    {
+        if (a.Category != b.Category)
+        {
+            bubble = null;
+            return false;
+        }
+
+        byte maxIndex = Math.Max(a.Index, b.Index);
+        int nextIndex = a.Index + b.Index + 1;
+        var bigBubble = a.Index == maxIndex ? a : b;
+        var newBubble = Instantiate(GameSettings.Instance.Bubbles[nextIndex]);
+        newBubble.transform.SetPositionAndRotation(bigBubble.transform.position, bigBubble.transform.rotation);
+        var names = a.Names;
+        names.AddRange(b.Names);
+        newBubble.GridPosition = a.GridPosition;
+        newBubble.Category = a.Category;
+        newBubble.SetName(names);
+        newBubble.Bounce();
+        a.transform.DOKill();
+        b.transform.DOKill();
+        Destroy(a.gameObject);
+        Destroy(b.gameObject);
+
+        if (nextIndex == 3)
+        {
+            newBubble.Blast();
+        }
+        bubble = newBubble;
         return true;
     }
 

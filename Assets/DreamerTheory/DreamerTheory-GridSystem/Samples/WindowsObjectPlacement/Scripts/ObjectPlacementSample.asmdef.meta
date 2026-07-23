@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b29b9aa4df3974845a22a6a737b96aec
+guid: a47b0718760183b49810f90007f62705
 AssemblyDefinitionImporter:
   externalObjects: {}
   userData: 
@@ -10,5 +10,5 @@ AssetOrigin:
   productId: 335448
   packageName: DreamerTheory-GridSystem (Free)
   packageVersion: 1.2.0
-  assetPath: Assets/DreamerTheory/DreamerTheory-GridSystem/Editor/com.dreamertheory.gridsystem.editor.asmdef
+  assetPath: Assets/DreamerTheory/DreamerTheory-GridSystem/Samples/WindowsObjectPlacement/Scripts/ObjectPlacementSample.asmdef
   uploadId: 941720

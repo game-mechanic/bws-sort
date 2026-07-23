@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: b29b9aa4df3974845a22a6a737b96aec
-AssemblyDefinitionImporter:
+guid: 66fc97f8e3c9c3948b475bb22937e1a5
+PrefabImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
@@ -10,5 +10,5 @@ AssetOrigin:
   productId: 335448
   packageName: DreamerTheory-GridSystem (Free)
   packageVersion: 1.2.0
-  assetPath: Assets/DreamerTheory/DreamerTheory-GridSystem/Editor/com.dreamertheory.gridsystem.editor.asmdef
+  assetPath: Assets/DreamerTheory/DreamerTheory-GridSystem/Samples/WindowsObjectPlacement/Prefabs/Cube.prefab
   uploadId: 941720
