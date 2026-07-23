@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
-  m_Name: Transparent
+  m_Name: No Specular
   m_EditorClassIdentifier: 
   bubbles:
-  - {fileID: 7926608256317659342, guid: 90f0b0d4837f94a9f8e0d713184a44ae, type: 3}
-  - {fileID: 7926608256317659342, guid: 39262744e7ae23b47b834f3b49592d3a, type: 3}
-  - {fileID: 7926608256317659342, guid: 7cb0d25458ba9b44fbe1c4e64e284921, type: 3}
-  - {fileID: 7926608256317659342, guid: e84c9f16055f2dc4bb230d8b66c05b08, type: 3}
+  - {fileID: 7926608256317659342, guid: 0bba6de26ad5d467195b52f23f169ec4, type: 3}
+  - {fileID: 7926608256317659342, guid: edda37a39a95241278634bea254b89cb, type: 3}
+  - {fileID: 7926608256317659342, guid: d652b53341bde4ff49df86905b87eb3a, type: 3}
+  - {fileID: 7926608256317659342, guid: cb2895a2f624b4da5a52700c2ec46572, type: 3}
