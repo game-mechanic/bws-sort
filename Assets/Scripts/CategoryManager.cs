@@ -89,7 +89,7 @@ public class CategoryManager : GridSystem2D<Bubble>
     private void Shuffle()
     {
         if (datas.Count == 0) return;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 10; i++)
         {
             int a = Random.Range(0, initialSpawns);
             int b = Random.Range(0, initialSpawns);
@@ -255,25 +255,25 @@ public class CategoryManager : GridSystem2D<Bubble>
         }
         float delayInterval = 0.1f;
 
-        /*
-                for (int i = 0; i < GridSize.y; i++)
-                {
-                    if (TryGetGridObject(x, i, out Bubble b))
-                    {
-                        b.transform.DOMove(b.transform.position + Vector3.up * 0.05f, .1f).SetLoops(2, LoopType.Yoyo).SetDelay(delayInterval * i);
-                        DOVirtual.DelayedCall(i * delayInterval, () => b.SetColor(b.Category.Color));
-                    }
-                }
-        */
-        List<Bubble> colBubbles = new();
+
         for (int i = 0; i < GridSize.y; i++)
         {
             if (TryGetGridObject(x, i, out Bubble b))
             {
-                colBubbles.Add(b);
+                b.transform.DOMove(b.transform.position + Vector3.up * 0.05f, .1f).SetLoops(2, LoopType.Yoyo).SetDelay(delayInterval * i);
+                DOVirtual.DelayedCall(i * delayInterval, () => b.SetColor(b.Category.Color));
             }
         }
-        StartCoroutine(MergeOneByOne(colBubbles, GameSettings.GetStackedPosition(GetWorldPosition(x, 0), 7, CellSize.y)));
+
+        // List<Bubble> colBubbles = new();
+        // for (int i = 0; i < GridSize.y; i++)
+        // {
+        //     if (TryGetGridObject(x, i, out Bubble b))
+        //     {
+        //         colBubbles.Add(b);
+        //     }
+        // }
+        // StartCoroutine(MergeOneByOne(colBubbles, GameSettings.GetStackedPosition(GetWorldPosition(x, 0), 5, CellSize.y)));
 
     }
 

@@ -44,6 +44,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 38bb36d15195522409ec5379b5374020, type: 2}
   - {fileID: 11400000, guid: ec1fa4016a8007c489dbb546ed8a23e8, type: 2}
   - {fileID: 11400000, guid: b8d1de56817b49a40b167e219f035818, type: 2}
-  canTextBreathe: 1
+  canTextBreathe: 0
   enableRandomBubbleSize: 0
   checkRow: 0

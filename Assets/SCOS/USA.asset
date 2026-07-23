@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6741be59f46a54fb6b2681cd4b81b4, type: 3}
   m_Name: USA
   m_EditorClassIdentifier: 
-  material: {fileID: 0}
+  color: {r: 1, g: 0, b: 0.7987497, a: 0}
