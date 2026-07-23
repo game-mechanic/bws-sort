@@ -26,6 +26,8 @@ public class BubbleSpawnner : MonoBehaviour
                 bubble.Category = category;
                 if (GameSettings.Instance.CanChangeColor)
                     bubble.SetColor(bubbleColor);
+                if (GameSettings.Instance.CanUseDifferentSprites)
+                    bubble.SetBubbleSprite(GameSettings.Instance.BubbleSprites[j % GameSettings.Instance.BubbleSprites.Length]);
                 bubble.SetName(new() { data });
             });
             if (j % 4 == 0)

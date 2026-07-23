@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5856000662369290909}
   - component: {fileID: 8628797636617183381}
   m_Layer: 0
-  m_Name: Ice Break
+  m_Name: IceBreak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -50,6 +50,8 @@ public class CategoryManager : Singleton<CategoryManager>
                 datas[j].bubbleColor :
                 GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
 
+            Sprite sprite = GameSettings.Instance.BubbleSprites[j % GameSettings.Instance.BubbleSprites.Length];
+
             DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
             {
                 var bubble = Instantiate(bubblePrefab, pos, Quaternion.Euler(new Vector3(0, 0, Random.Range(-GameSettings.Instance.RotationOffset, GameSettings.Instance.RotationOffset))));
@@ -69,7 +71,7 @@ public class CategoryManager : Singleton<CategoryManager>
 
                 if (GameSettings.Instance.CanUseDifferentSprites)
                 {
-                    bubble.SetBubbleSprite(GameSettings.Instance.BubbleSprites[j % GameSettings.Instance.BubbleSprites.Length]);
+                    bubble.SetBubbleSprite(sprite);
                 }
 
                 bubble.transform.DOScale(bubble.transform.localScale, 0.2f).From(0);
@@ -143,6 +145,7 @@ public class CategoryManager : Singleton<CategoryManager>
                         datas[j].bubbleColor :
                         GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
 
+            Sprite sprite = GameSettings.Instance.BubbleSprites[j % GameSettings.Instance.BubbleSprites.Length];
             DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
             {
                 var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
@@ -157,6 +160,9 @@ public class CategoryManager : Singleton<CategoryManager>
 
                 if (GameSettings.Instance.CanChangeColor)
                     bubble.SetColor(bubbleColor);
+
+                if (GameSettings.Instance.CanUseDifferentSprites)
+                    bubble.SetBubbleSprite(sprite);
 
                 bubble.SetName(new() { data });
             });
