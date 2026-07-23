@@ -6,7 +6,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering;
-using static UnityEditor.Progress;
 
 public class Bubble : MonoBehaviour
 {
