@@ -10,30 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8ba278c177864e64b79aa31831b5b38, type: 3}
-  m_Name: 7Wonders
+  m_Name: 7Wonders with newyork
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   datas:
-  - name: {fileID: 11400000, guid: d8bc01c3b23d34194b387fdf21b6c752, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: Statue
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: eebf53e82ec834ce69d60d91585330fc, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Great
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: d8bc01c3b23d34194b387fdf21b6c752, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: of Liberty
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -197,7 +181,7 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  initialSpawns: 18
+  initialSpawns: 20
   minMultiplier: 1
   maxMultiplier: 2
   levelDataToAppend: {fileID: 0}
