@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cce15b2957fff114597fd8fefd7e93d8, type: 3}
-  m_Name: Redthings
-  m_EditorClassIdentifier: 
+  m_Name: AnimatedSprite
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
   gridWidth: 10
   gridHeight: 10
   hexOrientation: 0
   cells:
   - position: {x: 0, y: 0}
-    category: {fileID: 11400000, guid: bd7e2eae9f21232459d656e5a758a459, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Tennis
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 0, y: 1}
-    category: {fileID: 11400000, guid: 3647eb6dd435dac4a987742651d7650e, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Saturn
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 0, y: 2}
@@ -87,31 +87,31 @@ MonoBehaviour:
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 1, y: 0}
-    category: {fileID: 11400000, guid: 3647eb6dd435dac4a987742651d7650e, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Neptune
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 1, y: 1}
-    category: {fileID: 11400000, guid: 4231dbf6664e35944b4fde27cad75755, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: da vinci
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 1, y: 2}
-    category: {fileID: 11400000, guid: 903c710981151bd4d996da631dffc9a4, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: zeus
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 1, y: 3}
-    category: {fileID: 11400000, guid: bd7e2eae9f21232459d656e5a758a459, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Soccer
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 1, y: 4}
@@ -150,71 +150,71 @@ MonoBehaviour:
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 1, y: 9}
-    category: {fileID: 0}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: a07e13dcb704ca54d91ebedbad4a4c5a, type: 2}
+    sprite: {fileID: 793382158, guid: c36a51be0d6f84ec295199edb5608a0d, type: 3}
     name: 
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 2, y: 0}
-    category: {fileID: 11400000, guid: 3647eb6dd435dac4a987742651d7650e, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Jupiter
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 2, y: 1}
-    category: {fileID: 11400000, guid: bd7e2eae9f21232459d656e5a758a459, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Basketball
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 2, y: 2}
-    category: {fileID: 11400000, guid: 903c710981151bd4d996da631dffc9a4, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Medusa
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 2, y: 3}
-    category: {fileID: 11400000, guid: 903c710981151bd4d996da631dffc9a4, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: anubis
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 2, y: 4}
-    category: {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Brazil
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 2, y: 5}
-    category: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Leo
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 2, y: 6}
-    category: {fileID: 0}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: f2d755cd4e94e104da72bfcd30bf8a58, type: 2}
+    sprite: {fileID: -66707857, guid: 78f8ed25b552b4ef385aaa65cbad7bd8, type: 3}
     name: 
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 2, y: 7}
-    category: {fileID: 0}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: 4c2828cdb17c07a4680f5f7a37f8931a, type: 2}
+    sprite: {fileID: -1037273763, guid: da99cd1cd7de64702ba6d87361334205, type: 3}
     name: 
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 2, y: 8}
-    category: {fileID: 0}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: 4c2828cdb17c07a4680f5f7a37f8931a, type: 2}
+    sprite: {fileID: 1589943818, guid: f6cc6c4a7c533419aa74b5b5f2d56f48, type: 3}
     name: 
     text: 
     overrideColor: 0
@@ -227,206 +227,206 @@ MonoBehaviour:
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 3, y: 0}
-    category: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Sofa
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 3, y: 1}
-    category: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Spartans
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 3, y: 2}
-    category: {fileID: 11400000, guid: bd7e2eae9f21232459d656e5a758a459, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Rugby
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 3, y: 3}
-    category: {fileID: 11400000, guid: 4231dbf6664e35944b4fde27cad75755, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: van gough
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 3, y: 4}
-    category: {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Japan
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 3, y: 5}
-    category: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: newton
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 3, y: 6}
-    category: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: f2d755cd4e94e104da72bfcd30bf8a58, type: 2}
+    sprite: {fileID: -1233337182, guid: 9233648b078724c73bf92d1c7d32a467, type: 3}
     name: 
-    text: Virgo
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 3, y: 7}
-    category: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: f2d755cd4e94e104da72bfcd30bf8a58, type: 2}
+    sprite: {fileID: -1787411156, guid: 85ab5c138155c46098c6312edf9a805c, type: 3}
     name: 
-    text: Gold
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 3, y: 8}
-    category: {fileID: 0}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: 4c2828cdb17c07a4680f5f7a37f8931a, type: 2}
+    sprite: {fileID: -1267236657, guid: d345f7a0a77fe478d85cccbef7575a4b, type: 3}
     name: 
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 3, y: 9}
+    category: {fileID: 11400000, guid: a07e13dcb704ca54d91ebedbad4a4c5a, type: 2}
+    sprite: {fileID: 802238387, guid: 66e896c8ddff74ad5b5d4b02998dcf68, type: 3}
+    name: 
+    text: 
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+  - position: {x: 4, y: 0}
     category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-  - position: {x: 4, y: 0}
-    category: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
-    sprite: {fileID: 0}
-    name: 
-    text: Romans
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 4, y: 1}
-    category: {fileID: 11400000, guid: 4231dbf6664e35944b4fde27cad75755, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Monet
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 4, y: 2}
-    category: {fileID: 11400000, guid: 4231dbf6664e35944b4fde27cad75755, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: picasso
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 4, y: 3}
-    category: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Parrot
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 4, y: 4}
-    category: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Cat
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 4, y: 5}
-    category: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Tesla
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 4, y: 6}
-    category: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: 9e6a15fa66e65f341a0e376092eb3042, type: 2}
+    sprite: {fileID: 372584605, guid: 80743c8a3da094531b12d2a63a826458, type: 3}
     name: 
-    text: Croatia
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 4, y: 7}
-    category: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: 9e6a15fa66e65f341a0e376092eb3042, type: 2}
+    sprite: {fileID: 1405044773, guid: fd8e70666bc72445aa149cf4b2a845c2, type: 3}
     name: 
-    text: Blood
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 4, y: 8}
-    category: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: e407dca57a6039b4aa4e0e3e0112b3aa, type: 2}
+    sprite: {fileID: -135845684, guid: 18bb53e1f45cd41f69c84dbfc1c8ad17, type: 3}
     name: 
-    text: Oxygen
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 4, y: 9}
-    category: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: e407dca57a6039b4aa4e0e3e0112b3aa, type: 2}
+    sprite: {fileID: -1862233742, guid: e4672d0ce0ae44ef78cf6af1da987d16, type: 3}
     name: 
-    text: Cherry
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 5, y: 0}
-    category: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Vikings
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 5, y: 1}
-    category: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Mayans
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 5, y: 2}
-    category: {fileID: 11400000, guid: a43fa4a2afc6e53439bcb3b4aae4cdc4, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Napoleon
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 5, y: 3}
-    category: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Tulip
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 5, y: 4}
-    category: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Hamster
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 5, y: 5}
-    category: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Prince
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 5, y: 6}
-    category: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: 9e6a15fa66e65f341a0e376092eb3042, type: 2}
+    sprite: {fileID: -959819477, guid: 4fb7bc341926a4fe2a8e53c6a2579a15, type: 3}
     name: 
-    text: Slippers
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 5, y: 7}
-    category: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: 9fc5aa333cf64af4ca63522ee4347d0b, type: 2}
+    sprite: {fileID: -768965134, guid: 9b69e3419642b45cdbde77e62cb55561, type: 3}
     name: 
-    text: Sunflower
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 5, y: 8}
-    category: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: e407dca57a6039b4aa4e0e3e0112b3aa, type: 2}
+    sprite: {fileID: -463237081, guid: e0f7d7ad9f52b44f4b414f3545c3c6d8, type: 3}
     name: 
-    text: Rose
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 5, y: 9}
@@ -437,52 +437,52 @@ MonoBehaviour:
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 6, y: 0}
-    category: {fileID: 11400000, guid: ffca69653cb0b22469d4fc18a2cde8e2, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Oven
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 6, y: 1}
-    category: {fileID: 11400000, guid: a43fa4a2afc6e53439bcb3b4aae4cdc4, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Gandhi
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 6, y: 2}
-    category: {fileID: 11400000, guid: a43fa4a2afc6e53439bcb3b4aae4cdc4, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Cleopatra
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 6, y: 3}
-    category: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: hibiscus
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 6, y: 4}
-    category: {fileID: 11400000, guid: 3647eb6dd435dac4a987742651d7650e, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Neptune
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 6, y: 5}
-    category: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Coconut
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 6, y: 6}
-    category: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Avacado
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 6, y: 7}
@@ -493,52 +493,52 @@ MonoBehaviour:
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 6, y: 8}
-    category: {fileID: 0}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: 9fc5aa333cf64af4ca63522ee4347d0b, type: 2}
+    sprite: {fileID: 1068826725, guid: 8db2609fe7df24e8789b2711ed9ecc22, type: 3}
     name: 
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 6, y: 9}
+    category: {fileID: 11400000, guid: 9fc5aa333cf64af4ca63522ee4347d0b, type: 2}
+    sprite: {fileID: 326147620, guid: 128fd97ff79d24563a2a6d1b91717008, type: 3}
+    name: 
+    text: 
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+  - position: {x: 7, y: 0}
     category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-  - position: {x: 7, y: 0}
-    category: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
-    sprite: {fileID: 0}
-    name: 
-    text: hotdog
-    overrideColor: 0
-    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 7, y: 1}
-    category: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Pizza
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 7, y: 2}
-    category: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Lily
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 7, y: 3}
-    category: {fileID: 11400000, guid: ffca69653cb0b22469d4fc18a2cde8e2, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Cookies
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 7, y: 4}
-    category: {fileID: 11400000, guid: ffca69653cb0b22469d4fc18a2cde8e2, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Flour
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 7, y: 5}
@@ -577,24 +577,24 @@ MonoBehaviour:
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 8, y: 0}
-    category: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Taco
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 8, y: 1}
-    category: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Chair
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 8, y: 2}
-    category: {fileID: 11400000, guid: ffca69653cb0b22469d4fc18a2cde8e2, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Bread
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 8, y: 3}
@@ -647,10 +647,10 @@ MonoBehaviour:
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 9, y: 0}
-    category: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
+    category: {fileID: 0}
     sprite: {fileID: 0}
     name: 
-    text: Bed
+    text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
   - position: {x: 9, y: 1}
