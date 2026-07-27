@@ -47,7 +47,7 @@ public class GridCell
 public class LevelDesignToolWindow : EditorWindow
 {
     // keep old constant as default folder
-    private const string COLOR_TYPE_PATH = "Assets/GameData/ColorTypes";
+    private const string COLOR_TYPE_PATH = "Assets/SCOS";
     private const string PREF_KEY_BUBBLE_FOLDER = "LevelDesignTool_LastBubbleFolder";
 
     // allow user-selected folder (project-relative)
