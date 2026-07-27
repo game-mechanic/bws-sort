@@ -34,107 +34,43 @@ public class InputHandler : Singleton<InputHandler>
 
         if (Input.GetMouseButtonDown(0))
         {
-            // Check if we clicked on the stack
-            //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //RaycastHit hit;
-
-            //if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == activeStack.gameObject)
-            //{
-            //}
             isDragging = true;
-            draggerVisual.gameObject.SetActive(true);
-            dragger.WarmUp();
+            if (draggerVisual != null) draggerVisual.gameObject.SetActive(false);
+
+            Plane plane = new(Vector3.back, Vector3.zero);
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            if (plane.Raycast(ray, out float enter))
+            {
+                Vector3 point = ray.origin + ray.direction * enter;
+                if (Vector3.Distance(point, activeStack.transform.position) < activeStack.Radius * 3f)
+                {
+                    offset = activeStack.transform.position - point;
+                }
+                else
+                {
+                    offset = Vector3.zero;
+                }
+                activeStack.transform.DOKill();
+            }
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            isDragging = false;
-            draggerVisual.gameObject.SetActive(false);
-            if (highlightedBubble != null && activeStack != null)
+            if (isDragging)
             {
-                Vector3 direction = (new Vector3(hit.point.x, hit.point.y, 0) - highlightedBubble.transform.position).normalized;
-                Vector3 position = highlightedBubble.transform.position + 2 * activeStack.Radius * direction;
-                Debug.DrawLine(hit.point, hit.point + Vector2.up * -.1f, Color.red, 3);
-                Debug.DrawRay(hit.point, direction, Color.green, 3);
-
-
-                dragger.Shoot();
-                ReleaseStack(activeStack, position);
+                isDragging = false;
+                DropBubble();
             }
         }
 
         if (isDragging)
         {
-            // Update position
-            Vector3 newPosition = activeStack.transform.position;
-
-            //Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit hitInfo,
-            //    Mathf.Infinity, LayerMask.GetMask("Ground"));
-
             Plane plane = new(Vector3.back, Vector3.zero);
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-            plane.Raycast(ray, out float enter);
-
-            Vector3 point = ray.origin + ray.direction * enter;
-
-            newPosition.x = Mathf.Clamp(point.x, leftLimit, rightLimit);
-            //newPosition.y = 2;
-            //activeStack.transform.position = newPosition;
-
-            Vector3 direction = (new Vector3(point.x, point.y) - activeStack.transform.position).normalized;
-            direction.z = 0;
-            draggerVisual.up = direction;
-
-            // Get the base
-            var hit = Physics2D.Raycast(activeStack.transform.position + direction, direction, 100);
-
-            //Debug.DrawRay(activeStack.transform.position, direction, Color.red, 2f);
-            this.hit = hit;
-
-            Debug.DrawRay(hit.point, direction, Color.red, 2f);
-            if (hit.collider && hit.collider.TryGetComponent(out Bubble b))
+            if (plane.Raycast(ray, out float enter))
             {
-                if (b != highlightedBubble)
-                {
-                    Highlight(b);
-                }
+                Vector3 point = ray.origin + ray.direction * enter;
+                activeStack.transform.position = point + offset;
             }
-            else
-            {
-                Highlight(null);
-            }
-            //// Find the last base with null hexaBundleStack
-            //targetBase = null;
-            //int yIndex = -1;
-            //for (int i = hexaBases.Length - 1; i >= 0; i--)
-            //{
-            //    var hBase = hexaBases[i].collider.GetComponent<HexaBase>();
-            //    if (hBase != null && hBase.Bundle == null && hBase.GridPosition.y > yIndex)
-            //    {
-            //        targetBase = hBase;
-            //        yIndex = hBase.GridPosition.y;
-            //    }
-            //}
-
-            //// Update highlighting only if we found a valid target base
-            //if (targetBase != null)
-            //{
-            //    if (previousHighlightedBase != null && targetBase.gameObject != previousHighlightedBase.transform.parent)
-            //    {
-            //        previousHighlightedBase.highlighted = false;
-            //    }
-
-            //    var baseHighlight = targetBase.GetComponentInChildren<HighlightEffect>();
-            //    baseHighlight.highlighted = true;
-            //    previousHighlightedBase = baseHighlight;
-
-            //    //Debug.Log("Base highlighted: " + baseHighlight.gameObject.name);
-            //}
-            //else if (previousHighlightedBase != null)
-            //{
-            //    previousHighlightedBase.highlighted = false;
-            //    previousHighlightedBase = null;
-            //}
         }
     }
 
@@ -302,68 +238,69 @@ public class InputHandler : Singleton<InputHandler>
             highlightedBubble.Bounce(0.2f, 0.5f);
         }
     }
-    private void ReleaseStack(Bubble activeStack, Vector3 position)
+    private void DropBubble()
     {
-        if (activeStack == null)
-            return;
+        if (activeStack == null) return;
 
-        Bubble targetBubble = highlightedBubble;
-        Highlight(null);
         var hexGrid = CategoryManager.Instance?.HexGrid;
-
-        if (hexGrid == null || targetBubble == null)
+        if (hexGrid == null)
+        {
+            ReturnActiveStackToSpawn();
             return;
-        activeStack.Bounce();
+        }
 
-        activeStack.transform
-            .DOMove(position, (activeStack.transform.position - position).magnitude * shootDuration)
-            .SetEase(shootEase)
-            .OnComplete(() =>
+        Vector2Int gridPos = hexGrid.GetGridPosition(activeStack.transform.position);
+
+        // 1. Check if the cell is already occupied
+        if (hexGrid.TryGetGridObject(gridPos, out Bubble occupied) && occupied != null)
+        {
+            ReturnActiveStackToSpawn();
+            return;
+        }
+
+        // 2. Check if it's adjacent to any existing bubble
+        bool hasNeighbor = false;
+        foreach (var nPos in hexGrid.GetNeighbors(gridPos))
+        {
+            if (hexGrid.TryGetGridObject(nPos, out Bubble nb) && nb != null)
             {
-                // Target might have been destroyed while animating
-                if (targetBubble == null || activeStack == null)
-                    return;
+                hasNeighbor = true;
+                break;
+            }
+        }
 
-                activeStack.Bounce();
-                targetBubble.Bounce();
+        if (!hasNeighbor)
+        {
+            ReturnActiveStackToSpawn();
+            return;
+        }
 
-                //CascadeBounceEffect(targetBubble);
+        // Drop is valid
+        Vector3 snapPos = hexGrid.GetWorldPosition(gridPos);
+        hexGrid.AddGridObject(snapPos, activeStack);
+        
+        activeStack.transform.DOMove(snapPos, 0.1f).SetLink(activeStack.gameObject).OnComplete(() => 
+        {
+            if (activeStack == null) return;
+            activeStack.Bounce();
 
-                if (activeStack.Category != targetBubble.Category)
-                {
-                    var targetGridPos = hexGrid.GetGridPosition(position);
-                    hexGrid.AddGridObject(position, activeStack);
-                    activeStack.transform.DOMove(hexGrid.GetWorldPosition(targetGridPos), 0.1f);
-                    return;
-                }
+            List<Bubble> connected = GetConnectedBubblesFrom(gridPos, activeStack.Category);
+            
+            if (connected.Count >= 4)
+            {
+                MergeBubbles(connected);
+            }
+            
+            this.activeStack = null;
+            isDragging = false;
+            SpawnNewBubble();
+        });
+    }
 
-                Vector2Int rootPos = hexGrid.GetGridPosition(targetBubble.transform.position);
-
-                List<Bubble> connected =
-                    GetConnectedBubblesFrom(rootPos, targetBubble.Category);
-
-                // Find all connected bubbles of same category
-                connected.Insert(0, activeStack);
-
-                // Need at least 2 to merge
-                if (connected.Count == 4)
-                {
-                    MergeBubbles(connected);
-                }
-                else
-                {
-                    var targetGridPos = hexGrid.GetGridPosition(position);
-                    hexGrid.AddGridObject(position, activeStack);
-                    activeStack.transform.DOMove(hexGrid.GetWorldPosition(targetGridPos), 0.1f);
-                }
-            });
-
-        this.activeStack = null;
-        isDragging = false;
-        //DOVirtual.DelayedCall(1f, () =>
-        //{
-        SpawnNewBubble();
-        //});
+    private void ReturnActiveStackToSpawn()
+    {
+        if (activeStack == null) return;
+        activeStack.transform.DOMove(spawnPosition.position, 0.3f).SetEase(Ease.OutBack).SetLink(activeStack.gameObject);
     }
     private void CascadeBounceEffect(Bubble originBubble)
     {
@@ -622,7 +559,8 @@ public class InputHandler : Singleton<InputHandler>
             // Move CURRENT merged bubble towards NEXT bubble
             Tween moveTween = current.transform
                 .DOMove(next.transform.position, mergeMoveDuration)
-                .SetEase(mergeEase);
+                .SetEase(mergeEase)
+                .SetLink(current.gameObject);
 
             foreach (var b in hexGrid.GetNeighbors(hexGrid.GetGridPosition(next.transform.position)))
             {
@@ -635,7 +573,7 @@ public class InputHandler : Singleton<InputHandler>
                     Vector3 direction = (n.transform.position - next.transform.position).normalized;
                     n.transform.DOKill();
                     n.transform.DOMove(n.transform.position + direction * 0.3f, mergeMoveDuration)
-                    .SetEase(mergeEase).SetTarget(n.transform);
+                    .SetEase(mergeEase).SetTarget(n.transform).SetLink(n.gameObject);
                 }
             }
 
@@ -666,7 +604,7 @@ public class InputHandler : Singleton<InputHandler>
                 if (HasNeighbour(item.Key))
                 {
                     item.Key.transform.DOKill();
-                    item.Key.transform.DOMove(item.Value, mergeMoveDuration).SetEase(Ease.OutBack);
+                    item.Key.transform.DOMove(item.Value, mergeMoveDuration).SetEase(Ease.OutBack).SetLink(item.Key.gameObject);
                 }
                 else
                 {
@@ -699,7 +637,7 @@ public class InputHandler : Singleton<InputHandler>
     public void SpawnNewBubble()
     {
         activeStack = CategoryManager.Instance.SpawnNewBubble(spawnPosition.position);
-        activeStack.transform.DOScale(1, 0.5f).From(0).SetEase(Ease.OutBack);
+        activeStack.transform.DOScale(1, 0.5f).From(0).SetEase(Ease.OutBack).SetLink(activeStack.gameObject);
     }
 
 }

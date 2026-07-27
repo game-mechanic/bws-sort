@@ -177,7 +177,7 @@ public class Bubble : MonoBehaviour
             time = 0;
             OnBounce?.Invoke();
             viusal.DOKill();
-            viusal.DOScale(startScale, 0.05f).SetTarget(viusal);
+            viusal.DOScale(startScale, 0.05f).SetTarget(viusal).SetLink(gameObject);
         }
     }
     public void Bounce()
@@ -305,20 +305,20 @@ public class Bubble : MonoBehaviour
 
             // Optional tiny anticipation (feels nicer than instant shrink)
             textSeq.Append(
-                bg.DOScale(bgStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
+                bg.DOScale(bgStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine).SetLink(gameObject)
             );
 
             textSeq.Join(
-                txt.DOScale(txtStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
+                txt.DOScale(txtStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine).SetLink(gameObject)
             );
 
             // Main disappear (shrink)
             textSeq.Append(
-                bg.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InBack)
+                bg.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InBack).SetLink(gameObject)
             );
 
             textSeq.Join(
-                txt.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack)
+                txt.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack).SetLink(gameObject)
             );
 
             blastSequence.Join(textSeq);
@@ -352,13 +352,13 @@ public class Bubble : MonoBehaviour
             // Pop in with overshoot
             seq.Append(
                 t.DOScale(startScale * 1.1f, 0.35f)
-                .SetEase(Ease.OutBack)
+                .SetEase(Ease.OutBack).SetLink(gameObject)
             );
 
             // Settle to normal
             seq.Append(
                 t.DOScale(startScale, 0.15f)
-                .SetEase(Ease.OutSine)
+                .SetEase(Ease.OutSine).SetLink(gameObject)
             );
 
             // Short, snappy pause (not too long)
@@ -367,12 +367,12 @@ public class Bubble : MonoBehaviour
             // Exit with slight anticipation
             seq.Append(
                 t.DOScale(startScale * 1.05f, 0.1f)
-                .SetEase(Ease.OutSine)
+                .SetEase(Ease.OutSine).SetLink(gameObject)
             );
 
             seq.Append(
                 t.DOScale(Vector3.zero, 0.25f)
-                .SetEase(Ease.InBack)
+                .SetEase(Ease.InBack).SetLink(gameObject)
             );
 
             blastSequence.Append(seq);
@@ -432,7 +432,7 @@ public class Bubble : MonoBehaviour
 
     internal void ReturnBack()
     {
-        transform.DOMove(ghostInstance.transform.position, 0.2f).OnComplete(() =>
+        transform.DOMove(ghostInstance.transform.position, 0.2f).SetLink(gameObject).OnComplete(() =>
         {
             EndDrag();
             Destroy(ghostInstance);
