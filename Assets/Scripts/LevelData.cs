@@ -26,6 +26,8 @@ public class CellData
     /// <summary>Tile state for this cell (None, CROSS, WRONG, Queen).</summary>
     public string name;
     public string text;
+      public bool overrideColor = false;
+    public Color bubbleColor = Color.white;
 }
 
 /// <summary>

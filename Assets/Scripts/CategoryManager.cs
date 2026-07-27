@@ -1,5 +1,5 @@
-using DG.Tweening;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 
@@ -105,14 +105,16 @@ public class CategoryManager : Singleton<CategoryManager>
             Bubble.Data data = datas[j].data;
             Color bubbleColor = datas[j].overrideColor ?
                         datas[j].bubbleColor :
-                        GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
+                        GameSettings.Instance.ColorMode == GameSettings.ColorAssignmentMode.CATEGORY_WISE ? category.Color : (GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length]);
 
             DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
             {
                 var bubble = Instantiate(bubblePrefab, pos, Quaternion.identity);
                 bubble.Category = category;
                 if (GameSettings.Instance.CanChangeColor)
+                {
                     bubble.SetColor(bubbleColor);
+                }
                 bubble.SetName(new() { data });
             });
         }
@@ -159,14 +161,16 @@ public class CategoryManager : Singleton<CategoryManager>
         BubbleType category = datas[j].name;
         Bubble.Data data = datas[j].data;
         Color bubbleColor = datas[j].overrideColor ?
-                    datas[j].bubbleColor :
-                    GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
+                      datas[j].bubbleColor :
+                      GameSettings.Instance.ColorMode == GameSettings.ColorAssignmentMode.CATEGORY_WISE ? category.Color : (GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length]);
 
 
         var bubble = Instantiate(GameSettings.Instance.Bubbles[0], pos, Quaternion.identity);
         bubble.Category = category;
         if (GameSettings.Instance.CanChangeColor)
+        {
             bubble.SetColor(bubbleColor);
+        }
         bubble.SetName(new() { data });
         bubble.RestorePositions();
         return bubble;

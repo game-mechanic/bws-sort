@@ -17,6 +17,12 @@ public class GameSettings : ScriptableObject
         es = 5,
     }
 
+    public enum ColorAssignmentMode
+    {
+        RANDOMISE,
+        CATEGORY_WISE
+    }
+
     public static GameSettings Instance
     {
         get
@@ -45,6 +51,7 @@ public class GameSettings : ScriptableObject
     [SerializeField] private float textBreathingSpeed;
     [SerializeField] ParticleSystem bubbleFXPrefab;
     [SerializeField] bool canChangeColor;
+    [SerializeField] ColorAssignmentMode colorAssignmentMode;
     [SerializeField] Color[] bubbleColors;
     [SerializeField] private TableReference tableReference;
     [SerializeField] private Locale selectedLanguage;
@@ -61,6 +68,7 @@ public class GameSettings : ScriptableObject
     public float TextBreathingSpeed { get => textBreathingSpeed; }
     public ParticleSystem BubbleFXPrefab { get => bubbleFXPrefab; internal set => bubbleFXPrefab = value; }
     public bool CanChangeColor { get => canChangeColor; }
+    public ColorAssignmentMode ColorMode { get => colorAssignmentMode; }
     public Color[] BubbleColors { get => bubbleColors; }
     public Locale SelectedLanguage { get => selectedLanguage; }
     public TableReference TableReference { get => tableReference; }

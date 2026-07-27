@@ -22,7 +22,8 @@ MonoBehaviour:
   breathingAplitude: 0.05
   textBreathingSpeed: 1
   bubbleFXPrefab: {fileID: 5856000662369290909, guid: 63c0ec1246ae2f64a93bdc22bdd22cc1, type: 3}
-  canChangeColor: 0
+  canChangeColor: 1
+  colorAssignmentMode: 1
   bubbleColors:
   - {r: 1, g: 0.3160377, b: 0.7601107, a: 1}
   - {r: 0, g: 0.46900606, b: 1, a: 1}
@@ -30,6 +31,8 @@ MonoBehaviour:
   - {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
   - {r: 1, g: 0.14199996, b: 0.14199996, a: 1}
   - {r: 0, g: 0.8159847, b: 1, a: 1}
+  - {r: 1, g: 0.8616482, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.16912782, a: 1}
   tableReference:
     m_TableCollectionName: RedThings
   selectedLanguage: 0

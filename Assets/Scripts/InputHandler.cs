@@ -19,6 +19,9 @@ public class InputHandler : Singleton<InputHandler>
     RaycastHit2D hit;
     public UnityEvent OnSuccessfullMerge;
 
+    private List<Bubble> dockedBubbles = new List<Bubble>();
+    private Dictionary<Bubble, Vector3> bubbleSpawnPoints = new Dictionary<Bubble, Vector3>();
+
     private void Start()
     {
         mainCamera = Camera.main;
@@ -30,39 +33,48 @@ public class InputHandler : Singleton<InputHandler>
     }
     private void Update()
     {
-        if (!activeStack) return;
-
         if (Input.GetMouseButtonDown(0))
         {
-            isDragging = true;
-            if (draggerVisual != null) draggerVisual.gameObject.SetActive(false);
-
             Plane plane = new(Vector3.back, Vector3.zero);
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             if (plane.Raycast(ray, out float enter))
             {
                 Vector3 point = ray.origin + ray.direction * enter;
-                if (Vector3.Distance(point, activeStack.transform.position) < activeStack.Radius * 3f)
+                
+                float closestDist = float.MaxValue;
+                Bubble closestBubble = null;
+                
+                foreach (var b in dockedBubbles)
                 {
+                    if (b == null) continue;
+                    float dist = Vector3.Distance(point, b.transform.position);
+                    if (dist < b.Radius * 3f && dist < closestDist)
+                    {
+                        closestDist = dist;
+                        closestBubble = b;
+                    }
+                }
+                
+                if (closestBubble != null)
+                {
+                    activeStack = closestBubble;
+                    isDragging = true;
+                    if (draggerVisual != null) draggerVisual.gameObject.SetActive(false);
                     offset = activeStack.transform.position - point;
+                    activeStack.transform.DOKill();
                 }
-                else
-                {
-                    offset = Vector3.zero;
-                }
-                activeStack.transform.DOKill();
             }
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            if (isDragging)
+            if (isDragging && activeStack != null)
             {
                 isDragging = false;
                 DropBubble();
             }
         }
 
-        if (isDragging)
+        if (isDragging && activeStack != null)
         {
             Plane plane = new(Vector3.back, Vector3.zero);
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -279,20 +291,24 @@ public class InputHandler : Singleton<InputHandler>
         Vector3 snapPos = hexGrid.GetWorldPosition(gridPos);
         hexGrid.AddGridObject(snapPos, activeStack);
         
-        activeStack.transform.DOMove(snapPos, 0.1f).SetLink(activeStack.gameObject).OnComplete(() => 
+        dockedBubbles.Remove(activeStack);
+        bubbleSpawnPoints.Remove(activeStack);
+        
+        Bubble droppedBubble = activeStack;
+        activeStack = null;
+        
+        droppedBubble.transform.DOMove(snapPos, 0.1f).SetLink(droppedBubble.gameObject).OnComplete(() => 
         {
-            if (activeStack == null) return;
-            activeStack.Bounce();
+            if (droppedBubble == null) return;
+            droppedBubble.Bounce();
 
-            List<Bubble> connected = GetConnectedBubblesFrom(gridPos, activeStack.Category);
+            List<Bubble> connected = GetConnectedBubblesFrom(gridPos, droppedBubble.Category);
             
             if (connected.Count >= 4)
             {
                 MergeBubbles(connected);
             }
             
-            this.activeStack = null;
-            isDragging = false;
             SpawnNewBubble();
         });
     }
@@ -300,7 +316,15 @@ public class InputHandler : Singleton<InputHandler>
     private void ReturnActiveStackToSpawn()
     {
         if (activeStack == null) return;
-        activeStack.transform.DOMove(spawnPosition.position, 0.3f).SetEase(Ease.OutBack).SetLink(activeStack.gameObject);
+        
+        Vector3 returnPos = spawnPosition.position;
+        if (bubbleSpawnPoints.TryGetValue(activeStack, out Vector3 point))
+        {
+            returnPos = point;
+        }
+        
+        activeStack.transform.DOMove(returnPos, 0.3f).SetEase(Ease.OutBack).SetLink(activeStack.gameObject);
+        activeStack = null;
     }
     private void CascadeBounceEffect(Bubble originBubble)
     {
@@ -636,8 +660,37 @@ public class InputHandler : Singleton<InputHandler>
 
     public void SpawnNewBubble()
     {
-        activeStack = CategoryManager.Instance.SpawnNewBubble(spawnPosition.position);
-        activeStack.transform.DOScale(1, 0.5f).From(0).SetEase(Ease.OutBack).SetLink(activeStack.gameObject);
+        // Only spawn when all bubbles have been placed
+        if (dockedBubbles.Count > 0) return;
+
+        List<Transform> points = new List<Transform>();
+        if (spawnPosition.childCount > 0)
+        {
+            foreach (Transform child in spawnPosition)
+            {
+                points.Add(child);
+            }
+        }
+        else
+        {
+            points.Add(spawnPosition);
+        }
+
+        foreach (var point in points)
+        {
+            Bubble newBubble = CategoryManager.Instance.SpawnNewBubble(point.position);
+            if (newBubble != null)
+            {
+                newBubble.transform.DOScale(1, 0.5f).From(0).SetEase(Ease.OutBack).SetLink(newBubble.gameObject);
+                dockedBubbles.Add(newBubble);
+                bubbleSpawnPoints[newBubble] = point.position;
+            }
+            else
+            {
+                // Break out if no more bubbles available
+                break;
+            }
+        }
     }
 
 }

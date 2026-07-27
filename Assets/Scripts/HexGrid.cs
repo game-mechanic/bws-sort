@@ -23,12 +23,17 @@ public class HexGrid : HexGridSystem3D<Bubble>
                     icon = levelData.cells[i].sprite,
                 };
 
+                Color bubbleColor = levelData.cells[i].overrideColor ?
+                        levelData.cells[i].bubbleColor :
+                        GameSettings.Instance.ColorMode == GameSettings.ColorAssignmentMode.CATEGORY_WISE ? levelData.cells[i].category.Color : (GameSettings.Instance.BubbleColors[i % GameSettings.Instance.BubbleColors.Length]);
 
                 var bubble = Instantiate(bubblePrefab, worldPos, Quaternion.identity);
                 bubble.Category = levelData.cells[i].category;
                 bubble.SetName(new() { data });
                 if (GameSettings.Instance.CanChangeColor)
-                    bubble.SetColor(GameSettings.Instance.BubbleColors[i % GameSettings.Instance.BubbleColors.Length]);
+                {
+                     bubble.SetColor(bubbleColor);
+                }
                 bubble.RestorePositions();
 
                 AddGridObject(worldPos, bubble);
