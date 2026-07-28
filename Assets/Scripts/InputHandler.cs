@@ -431,6 +431,7 @@ public class InputHandler : Singleton<InputHandler>
         return result;
     }
     [SerializeField] private float mergeMoveDuration = 0.45f;
+    [SerializeField] private float mergeScaleDuration = 0.2f;
     [SerializeField] private float mergeInterval = 0.12f;
     [SerializeField] private float mergeStartDelay = 0.5f;
     [SerializeField] private Ease mergeEase = Ease.InOutSine;
@@ -560,87 +561,124 @@ public class InputHandler : Singleton<InputHandler>
         if (bubbles.Count <= 1)
             yield break;
 
-        // First bubble stays in place
-        Bubble current = bubbles[1];
-
         var hexGrid = CategoryManager.Instance.HexGrid;
-        var rGP = hexGrid.GetGridPosition(bubbles[1].transform.position);
+        Bubble current = bubbles[0];
+        
+        var rGP = hexGrid.GetGridPosition(current.transform.position);
         hexGrid.RemoveGridObject(rGP.x, rGP.y);
 
-        TryMerge(bubbles[0], bubbles[1], out current);
-        current.SortingOrder = 100;
-        current.transform.DOKill();
-        Dictionary<Bubble, Vector3> originalPositions = new();
-        for (int i = 2; i < bubbles.Count; i++)
+
+        Dictionary<Bubble, Vector3> stepOriginalPositions = null;
+
+        for (int i = 1; i < bubbles.Count; i++)
         {
             Bubble next = bubbles[i];
 
             if (current == null || next == null)
                 continue;
 
+            Vector3 nextPos = next.transform.position;
             next.transform.DOKill();
 
-            // Move CURRENT merged bubble towards NEXT bubble
-            Tween moveTween = current.transform
-                .DOMove(next.transform.position, mergeMoveDuration)
-                .SetEase(mergeEase)
-                .SetLink(current.gameObject);
+            rGP = hexGrid.GetGridPosition(nextPos);
+            hexGrid.RemoveGridObject(rGP.x, rGP.y);
 
-            foreach (var b in hexGrid.GetNeighbors(hexGrid.GetGridPosition(next.transform.position)))
+            stepOriginalPositions = new Dictionary<Bubble, Vector3>();
+
+            foreach (var b in hexGrid.GetNeighbors(hexGrid.GetGridPosition(nextPos)))
             {
                 if (hexGrid.TryGetGridObject(b, out Bubble n) && n != null)
                 {
-                    if (!originalPositions.ContainsKey(n))
+                    if (!stepOriginalPositions.ContainsKey(n))
                     {
-                        originalPositions.Add(n, n.transform.position);
+                        stepOriginalPositions.Add(n, n.transform.position);
                     }
-                    Vector3 direction = (n.transform.position - next.transform.position).normalized;
+                    Vector3 direction = (n.transform.position - nextPos).normalized;
                     n.transform.DOKill();
-                    n.transform.DOMove(n.transform.position + direction * 0.3f, mergeMoveDuration)
-                    .SetEase(mergeEase).SetTarget(n.transform).SetLink(n.gameObject);
+                    n.transform.DOMove(n.transform.position + direction * 0.3f, mergeScaleDuration)
+                    .SetEase(Ease.OutBack).SetTarget(n.transform).SetLink(n.gameObject);
                 }
             }
 
-            yield return moveTween.WaitForCompletion();
+            // Get previous scale before merge
+            Vector3 prevScale = current.transform.GetChild(0).localScale;
 
-            rGP = hexGrid.GetGridPosition(current.transform.position);
-            hexGrid.RemoveGridObject(rGP.x, rGP.y);
-
-            // Merge when reached
+            // Merge instantly without moving physically, just jump
             TryMerge(current, next, out Bubble mergedResult);
-            mergedResult.SortingOrder = 100;
 
-            // Use merged bubble if created
             if (mergedResult != null)
             {
+                mergedResult.transform.position = nextPos;
+                mergedResult.SortingOrder = 100;
+
+                Tween scaleTween = mergedResult.AnimateScaleFrom(prevScale, mergeScaleDuration);
+                
                 current = mergedResult;
+                
+                yield return scaleTween.WaitForCompletion();
             }
 
-            // Small delay between merges
+            if (i < bubbles.Count - 1)
+            {
+                foreach (var item in stepOriginalPositions)
+                {
+                    if (item.Key != null)
+                    {
+                        if (HasNeighbour(item.Key))
+                        {
+                            item.Key.transform.DOKill();
+                            item.Key.transform.DOMove(item.Value, mergeScaleDuration).SetEase(Ease.OutBack).SetLink(item.Key.gameObject);
+                        }
+                        else
+                        {
+                            item.Key.Bounce();
+                            item.Key.OnBounce.AddListener(() =>
+                            {
+                                ParticlePool.PlayRevealFx(item.Key.transform.position);
+                                Destroy(item.Key.gameObject);
+                            });
+                        }
+                    }
+                }
+            }
+
+            // Delay before the next merge in the chain
             yield return new WaitForSeconds(mergeInterval);
         }
-        yield return new WaitForSeconds(2);
 
-        foreach (var item in originalPositions)
+        // Add the final bubble back to the grid at its final position
+        if (current != null)
         {
-            if (item.Key != null && item.Key != null)
+            hexGrid.AddGridObject(current.transform.position, current);
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        if (stepOriginalPositions != null)
+        {
+            foreach (var item in stepOriginalPositions)
             {
-                if (HasNeighbour(item.Key))
+                if (item.Key != null)
                 {
-                    item.Key.transform.DOKill();
-                    item.Key.transform.DOMove(item.Value, mergeMoveDuration).SetEase(Ease.OutBack).SetLink(item.Key.gameObject);
-                }
-                else
-                {
-                    item.Key.Bounce();
-                    item.Key.OnBounce.AddListener(() =>
+                    if (HasNeighbour(item.Key))
                     {
-                        ParticlePool.PlayRevealFx(item.Key.transform.position);
-                        Destroy(item.Key.gameObject);
-                    });
+                        item.Key.transform.DOKill();
+                        item.Key.transform.DOMove(item.Value, mergeScaleDuration).SetEase(Ease.OutBack).SetLink(item.Key.gameObject);
+                    }
+                    else
+                    {
+                        item.Key.Bounce();
+                        item.Key.OnBounce.AddListener(() =>
+                        {
+                            ParticlePool.PlayRevealFx(item.Key.transform.position);
+                            Destroy(item.Key.gameObject);
+                        });
+                    }
                 }
             }
         }
+
+
     }
 
     bool HasNeighbour(Bubble b)

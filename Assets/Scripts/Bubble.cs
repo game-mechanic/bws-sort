@@ -74,6 +74,11 @@ public class Bubble : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        startScale = viusal.localScale;
+    }
+
     private void Start()
     {
         RestorePositions();
@@ -83,7 +88,7 @@ public class Bubble : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         sortingGroup = GetComponent<SortingGroup>();
-        startScale = viusal.localScale;
+
         randomPhaseDiff = Random.Range(0, 90) * Mathf.Deg2Rad;
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
         Redraw();
@@ -183,8 +188,12 @@ public class Bubble : MonoBehaviour
         }
     }
 
+    bool isScalingExternally = false;
+
     private void Update()
     {
+        if (isScalingExternally) return;
+
         if (!isBouncing)
         {
             float x = (Mathf.Sin((Time.time + randomPhaseDiff) * GameSettings.Instance.BreathingSpeed) + 0.5f) * GameSettings.Instance.BreathingAplitude;
@@ -215,6 +224,18 @@ public class Bubble : MonoBehaviour
             viusal.DOScale(startScale, 0.05f).SetTarget(viusal).SetLink(gameObject);
         }
     }
+
+    public Tween AnimateScaleFrom(Vector3 fromScale, float duration)
+    {
+        isBouncing = false;
+        isScalingExternally = true;
+        viusal.DOKill();
+        viusal.localScale = fromScale;
+        return viusal.DOScale(startScale, duration).SetEase(Ease.OutBack).SetLink(gameObject).OnComplete(() => {
+            isScalingExternally = false;
+        });
+    }
+
     public void Bounce()
     {
         isBouncing = true;
