@@ -391,6 +391,11 @@ public class Bubble : MonoBehaviour
         {
             ParticlePool.PlayRevealFx(transform.position);
             CategoryManager.Instance.SpawnNewCategories();
+
+            BubbleEffect bubbleEffect = Object.FindObjectOfType<BubbleEffect>();
+            if (bubbleEffect != null)
+                bubbleEffect.OnBubblePop();
+
             Destroy(gameObject);
             OnBlastComplete?.Invoke();
         });

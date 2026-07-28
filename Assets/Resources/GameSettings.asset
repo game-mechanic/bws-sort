@@ -22,14 +22,14 @@ MonoBehaviour:
   breathingSpeed: 5
   breathingAplitude: 0.01
   textBreathingSpeed: 1
-  bubbleFXPrefab: {fileID: 5856000662369290909, guid: 01165fb911977974d97fc40ef97c5490, type: 3}
-  rotationOffset: 10
+  bubbleFXPrefab: {fileID: 5856000662369290909, guid: 63c0ec1246ae2f64a93bdc22bdd22cc1, type: 3}
+  rotationOffset: 5
   animatorController: {fileID: 9100000, guid: 2a9b6302fcdbd415db510c9d0e3fd78a, type: 2}
   canAnimateSprite: 0
   canChangeColor: 0
   colorProfile: {fileID: 11400000, guid: a0304dc618e3ae945972530dfd5672b7, type: 2}
   canUseDifferentSprites: 1
-  spriteProfile: {fileID: 11400000, guid: 2802460379ecb425c98b78509e7a2f63, type: 2}
+  spriteProfile: {fileID: 11400000, guid: 76432923b9c37b04d9e94fc1ebd82a6c, type: 2}
   tableReference:
     m_TableCollectionName: RedThings
   selectedLanguage: 0

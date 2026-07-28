@@ -263,4 +263,5 @@ MonoBehaviour:
       showBothTxtAndImg: 0
   initialSpawns: 20
   minMultiplier: 1
-  maxMultiplier: 2
+  maxMultiplier: 1.5
+  levelDataToAppend: {fileID: 0}
