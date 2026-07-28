@@ -117,11 +117,11 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 2578237c5a8d42f41859e009e92a26c9, type: 2}
+  - name: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: PETER PAN
+      name: Hot Dog
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -205,11 +205,11 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 2578237c5a8d42f41859e009e92a26c9, type: 2}
+  - name: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
-      name: RAPUNZEL
+      name: Taco
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -250,6 +250,22 @@ MonoBehaviour:
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     data:
       name: WOODEN
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Pizza
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    data:
+      name: Burger
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0

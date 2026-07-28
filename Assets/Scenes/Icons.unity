@@ -1205,6 +1205,10 @@ PrefabInstance:
       value: 0.5019608
       objectReference: {fileID: 0}
     - target: {fileID: 6900754448820765722, guid: c72a17eb734274d689eeda82e8cc360a, type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6900754448820765722, guid: c72a17eb734274d689eeda82e8cc360a, type: 3}
       propertyPath: InitialModule.gravityModifier.scalar
       value: -0.5
       objectReference: {fileID: 0}
