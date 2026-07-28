@@ -23,6 +23,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 0, y: 1}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -30,6 +32,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 0, y: 2}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -37,6 +41,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 0, y: 3}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -44,6 +50,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 0, y: 4}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -51,6 +59,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 0, y: 5}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -58,6 +68,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 0, y: 6}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -65,6 +77,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 0, y: 7}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -72,6 +86,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 0, y: 8}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -79,6 +95,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 0, y: 9}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -86,6 +104,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 1, y: 0}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -93,6 +113,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 1, y: 1}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -100,6 +122,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 1, y: 2}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -107,6 +131,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 1, y: 3}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -114,6 +140,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 1, y: 4}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -121,6 +149,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 1, y: 5}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -128,6 +158,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 1, y: 6}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -135,6 +167,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 1, y: 7}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -142,6 +176,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 1, y: 8}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -149,6 +185,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 1, y: 9}
     category: {fileID: 11400000, guid: a07e13dcb704ca54d91ebedbad4a4c5a, type: 2}
     sprite: {fileID: 793382158, guid: c36a51be0d6f84ec295199edb5608a0d, type: 3}
@@ -156,6 +194,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: f99f5b7d3da2e46ca8f145e8b4ca7b15, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 2, y: 0}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -163,6 +203,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 2, y: 1}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -170,6 +212,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 2, y: 2}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -177,6 +221,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 2, y: 3}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -184,6 +230,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 2, y: 4}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -191,6 +239,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 2, y: 5}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -198,6 +248,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 2, y: 6}
     category: {fileID: 11400000, guid: f2d755cd4e94e104da72bfcd30bf8a58, type: 2}
     sprite: {fileID: -66707857, guid: 78f8ed25b552b4ef385aaa65cbad7bd8, type: 3}
@@ -205,6 +257,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: 892a63211e8f746a68afc119cff1c974, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 2, y: 7}
     category: {fileID: 11400000, guid: 4c2828cdb17c07a4680f5f7a37f8931a, type: 2}
     sprite: {fileID: -1037273763, guid: da99cd1cd7de64702ba6d87361334205, type: 3}
@@ -212,6 +266,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: a09d6c539c09f4013a7f9d3e44f74f5e, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 2, y: 8}
     category: {fileID: 11400000, guid: 4c2828cdb17c07a4680f5f7a37f8931a, type: 2}
     sprite: {fileID: 1589943818, guid: f6cc6c4a7c533419aa74b5b5f2d56f48, type: 3}
@@ -219,6 +275,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 2, y: 9}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -226,6 +284,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 3, y: 0}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -233,6 +293,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 3, y: 1}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -240,6 +302,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 3, y: 2}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -247,6 +311,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 3, y: 3}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -254,6 +320,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 3, y: 4}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -261,13 +329,17 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 3, y: 5}
-    category: {fileID: 0}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: af562ae031b60c741a9653d44b9e2872, type: 2}
+    sprite: {fileID: -2135824390, guid: 5d5ce18a366f24298bc46d9a5a9b4bdd, type: 3}
     name: 
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: 77a4151265ca547ccb66885b11f8e2ea, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 3, y: 6}
     category: {fileID: 11400000, guid: f2d755cd4e94e104da72bfcd30bf8a58, type: 2}
     sprite: {fileID: -1233337182, guid: 9233648b078724c73bf92d1c7d32a467, type: 3}
@@ -275,6 +347,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: e7356d670e8f745469b681abd6a3fe61, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 3, y: 7}
     category: {fileID: 11400000, guid: f2d755cd4e94e104da72bfcd30bf8a58, type: 2}
     sprite: {fileID: -1787411156, guid: 85ab5c138155c46098c6312edf9a805c, type: 3}
@@ -282,6 +356,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: d403899193a6b405781d9734bdcfbbcc, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 3, y: 8}
     category: {fileID: 11400000, guid: 4c2828cdb17c07a4680f5f7a37f8931a, type: 2}
     sprite: {fileID: -1267236657, guid: d345f7a0a77fe478d85cccbef7575a4b, type: 3}
@@ -289,6 +365,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: a84abe7a688f64f1789f66565a1c8069, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 3, y: 9}
     category: {fileID: 11400000, guid: a07e13dcb704ca54d91ebedbad4a4c5a, type: 2}
     sprite: {fileID: 802238387, guid: 66e896c8ddff74ad5b5d4b02998dcf68, type: 3}
@@ -296,6 +374,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: f5831818e49394e8c8d2e91553e2f612, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 4, y: 0}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -303,6 +383,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 4, y: 1}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -310,6 +392,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 4, y: 2}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -317,6 +401,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 4, y: 3}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -324,6 +410,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 4, y: 4}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -331,13 +419,17 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 4, y: 5}
-    category: {fileID: 0}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: af562ae031b60c741a9653d44b9e2872, type: 2}
+    sprite: {fileID: -847648243, guid: 85ed8e7e98f024cd790e0b70a2d0930b, type: 3}
     name: 
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: 1a8cba2951d3540d39edb18ff7e4d1fa, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 4, y: 6}
     category: {fileID: 11400000, guid: 9e6a15fa66e65f341a0e376092eb3042, type: 2}
     sprite: {fileID: 372584605, guid: 80743c8a3da094531b12d2a63a826458, type: 3}
@@ -345,6 +437,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: 877fb36f0926b4ba8a496c9576aba26e, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 4, y: 7}
     category: {fileID: 11400000, guid: 9e6a15fa66e65f341a0e376092eb3042, type: 2}
     sprite: {fileID: 1405044773, guid: fd8e70666bc72445aa149cf4b2a845c2, type: 3}
@@ -352,6 +446,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: 3be8fe55170ce435e87556bde95240ba, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 4, y: 8}
     category: {fileID: 11400000, guid: e407dca57a6039b4aa4e0e3e0112b3aa, type: 2}
     sprite: {fileID: -135845684, guid: 18bb53e1f45cd41f69c84dbfc1c8ad17, type: 3}
@@ -359,6 +455,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: 968c40da43fb0421ba1945fe882bb3b4, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 4, y: 9}
     category: {fileID: 11400000, guid: e407dca57a6039b4aa4e0e3e0112b3aa, type: 2}
     sprite: {fileID: -1862233742, guid: e4672d0ce0ae44ef78cf6af1da987d16, type: 3}
@@ -366,6 +464,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: 1c011bd503491492782ec3358f11776c, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 5, y: 0}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -373,6 +473,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 5, y: 1}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -380,6 +482,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 5, y: 2}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -387,6 +491,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 5, y: 3}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -394,6 +500,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 5, y: 4}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -401,6 +509,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 5, y: 5}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -408,6 +518,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 5, y: 6}
     category: {fileID: 11400000, guid: 9e6a15fa66e65f341a0e376092eb3042, type: 2}
     sprite: {fileID: -959819477, guid: 4fb7bc341926a4fe2a8e53c6a2579a15, type: 3}
@@ -415,6 +527,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: 8f073127355ee46148280b01804fb56d, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 5, y: 7}
     category: {fileID: 11400000, guid: 9fc5aa333cf64af4ca63522ee4347d0b, type: 2}
     sprite: {fileID: -768965134, guid: 9b69e3419642b45cdbde77e62cb55561, type: 3}
@@ -422,6 +536,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: b12df815bf3744c5aa249e9fee3102e4, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 5, y: 8}
     category: {fileID: 11400000, guid: e407dca57a6039b4aa4e0e3e0112b3aa, type: 2}
     sprite: {fileID: -463237081, guid: e0f7d7ad9f52b44f4b414f3545c3c6d8, type: 3}
@@ -429,6 +545,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: 9879307f7e91b4f14bcebf36f6f9ca35, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 5, y: 9}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -436,6 +554,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 6, y: 0}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -443,6 +563,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 6, y: 1}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -450,6 +572,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 6, y: 2}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -457,6 +581,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 6, y: 3}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -464,6 +590,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 6, y: 4}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -471,6 +599,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 6, y: 5}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -478,13 +608,17 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 6, y: 6}
-    category: {fileID: 0}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: af562ae031b60c741a9653d44b9e2872, type: 2}
+    sprite: {fileID: 882012443, guid: e307152b43d274e5586f25cc83c52d7f, type: 3}
     name: 
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: a3ba9f4e8c37c491384bf34df066c728, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 6, y: 7}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -492,6 +626,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 6, y: 8}
     category: {fileID: 11400000, guid: 9fc5aa333cf64af4ca63522ee4347d0b, type: 2}
     sprite: {fileID: 1068826725, guid: 8db2609fe7df24e8789b2711ed9ecc22, type: 3}
@@ -499,6 +635,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: 2bcb8a3cb75574fffa194fb448505cc2, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 6, y: 9}
     category: {fileID: 11400000, guid: 9fc5aa333cf64af4ca63522ee4347d0b, type: 2}
     sprite: {fileID: 326147620, guid: 128fd97ff79d24563a2a6d1b91717008, type: 3}
@@ -506,6 +644,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 7400000, guid: 8367bfa09150d442c8310924ac236ac3, type: 2}
+    showBothTxtAndImg: 0
   - position: {x: 7, y: 0}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -513,6 +653,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 7, y: 1}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -520,6 +662,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 7, y: 2}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -527,6 +671,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 7, y: 3}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -534,6 +680,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 7, y: 4}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -541,6 +689,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 7, y: 5}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -548,6 +698,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 7, y: 6}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -555,6 +707,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 7, y: 7}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -562,6 +716,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 7, y: 8}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -569,6 +725,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 7, y: 9}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -576,6 +734,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 8, y: 0}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -583,6 +743,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 8, y: 1}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -590,6 +752,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 8, y: 2}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -597,6 +761,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 8, y: 3}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -604,6 +770,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 8, y: 4}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -611,6 +779,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 8, y: 5}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -618,6 +788,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 8, y: 6}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -625,6 +797,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 8, y: 7}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -632,6 +806,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 8, y: 8}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -639,6 +815,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 8, y: 9}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -646,6 +824,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 9, y: 0}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -653,6 +833,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 9, y: 1}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -660,6 +842,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 9, y: 2}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -667,6 +851,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 9, y: 3}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -674,6 +860,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 9, y: 4}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -681,6 +869,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 9, y: 5}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -688,6 +878,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 9, y: 6}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -695,6 +887,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 9, y: 7}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -702,6 +896,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 9, y: 8}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -709,6 +905,8 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0
   - position: {x: 9, y: 9}
     category: {fileID: 0}
     sprite: {fileID: 0}
@@ -716,3 +914,5 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    animationClip: {fileID: 0}
+    showBothTxtAndImg: 0

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6741be59f46a54fb6b2681cd4b81b4, type: 3}
   m_Name: Sea Animals
   m_EditorClassIdentifier: Assembly-CSharp::BubbleType
-  color: {r: 0.10810248, g: 0.7705291, b: 0.90943396, a: 1}
+  color: {r: 0.1098039, g: 0.2953915, b: 0.9098039, a: 1}

@@ -21,6 +21,8 @@ public class HexGrid : HexGridSystem3D<Bubble>
                 {
                     name = levelData.cells[i].text,
                     icon = levelData.cells[i].sprite,
+                    animationClip = levelData.cells[i].animationClip,
+                    showBothTxtAndImg = levelData.cells[i].showBothTxtAndImg
                 };
 
                 Color bubbleColor = levelData.cells[i].overrideColor ?

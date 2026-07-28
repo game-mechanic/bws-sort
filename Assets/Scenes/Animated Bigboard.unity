@@ -501,42 +501,64 @@ MonoBehaviour:
     data:
       name: Tomato
       icon: {fileID: -1576088048, guid: 1d9374fdd957d499a9ea003721cf1956, type: 3}
+      animationClip: {fileID: 7400000, guid: fc5fc07f7bd14428881b8faa187395e6, type: 2}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 9fc5aa333cf64af4ca63522ee4347d0b, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Lotus
       icon: {fileID: 1959861453, guid: 2275d7ef09221486a893e9a1032c42a5, type: 3}
+      animationClip: {fileID: 7400000, guid: f7a528a805e0a4504a7330b419d89152, type: 2}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: a07e13dcb704ca54d91ebedbad4a4c5a, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Iron
       icon: {fileID: -1310958859, guid: a92d773231ae84684890cd585d420a4d, type: 3}
+      animationClip: {fileID: 7400000, guid: c1fccbde0c74747c08875719aec48963, type: 2}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: a07e13dcb704ca54d91ebedbad4a4c5a, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Helium
       icon: {fileID: -1593252988, guid: 21a29d6eda5d74ee7826fbdc97896ceb, type: 3}
+      animationClip: {fileID: 7400000, guid: c154c824f2a58457e83bccc53754099d, type: 2}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 4c2828cdb17c07a4680f5f7a37f8931a, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Tauraus
       icon: {fileID: 1532546362, guid: de3c4a0a8b85841758d935533dfc4412, type: 3}
+      animationClip: {fileID: 7400000, guid: 67fa02e477d5f4534a406933a2ca3f43, type: 2}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: f2d755cd4e94e104da72bfcd30bf8a58, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Romania
       icon: {fileID: -1551902501, guid: 6f735c4628dbe4b12a202141502b0c06, type: 3}
+      animationClip: {fileID: 7400000, guid: 7baeffa3ba10946ce8248c8bff76c3cc, type: 2}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 9e6a15fa66e65f341a0e376092eb3042, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Bulgaria
       icon: {fileID: -742786408, guid: 0d179778aa795400c8a1e9bab7ec5813, type: 3}
+      animationClip: {fileID: 7400000, guid: 90019a2f5a9114284ba7a3dd27bd5296, type: 2}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: af562ae031b60c741a9653d44b9e2872, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Bulgaria
+      icon: {fileID: 121016389, guid: 1c1baef0dd0ec4851a5b9114e3611bcc, type: 3}
+      animationClip: {fileID: 7400000, guid: c983015e77bd84d8680bb3fdcac17a8e, type: 2}
+      showBothTxtAndImg: 0
   initialSpawns: 0
   hexGrid: {fileID: 797184863}
 --- !u!1001 &276500069

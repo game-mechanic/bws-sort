@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6741be59f46a54fb6b2681cd4b81b4, type: 3}
   m_Name: Symbols
   m_EditorClassIdentifier: Assembly-CSharp::BubbleType
-  color: {r: 0.13189739, g: 0.4194834, b: 0.735849, a: 1}
+  color: {r: 0.43563226, g: 0.5622641, b: 0.10927016, a: 1}

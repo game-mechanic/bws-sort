@@ -27,6 +27,9 @@ public class GridCell
     /// <summary>Sprite shown on the cell (optional editor/runtime asset). If set, sprite is used instead of drawing text.</summary>
     public Sprite sprite = null;
 
+    public AnimationClip animationClip = null;
+    public bool showBothTxtAndImg = false;
+
     /// <summary>Text color for editor preview (NOT saved to LevelData).</summary>
     public Color textColor = Color.white;
 
@@ -90,6 +93,8 @@ public class LevelDesignToolWindow : EditorWindow
     private string inspectorIsBubble = "";
     private Color inspectorTextColor = Color.white;
     private Sprite inspectorSprite = null;
+    private AnimationClip inspectorAnimationClip = null;
+    private bool inspectorShowBothTxtAndImg = false;
 
     // ── LevelData persistence ──────────────────────────────────────────────────
 
@@ -1240,9 +1245,26 @@ public class LevelDesignToolWindow : EditorWindow
             inspectorSprite = (Sprite)EditorGUILayout.ObjectField(inspectorSprite, typeof(Sprite), false);
             GUILayout.EndHorizontal();
 
+            GUILayout.BeginHorizontal();
+            GUILayout.Label(new GUIContent("Anim Clip", "Optional animation clip to play."), EditorStyles.miniLabel, GUILayout.Width(90));
+            inspectorAnimationClip = (AnimationClip)EditorGUILayout.ObjectField(inspectorAnimationClip, typeof(AnimationClip), false);
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label(new GUIContent("Show Both", "Show both text and image."), EditorStyles.miniLabel, GUILayout.Width(90));
+            inspectorShowBothTxtAndImg = EditorGUILayout.Toggle(inspectorShowBothTxtAndImg);
+            GUILayout.EndHorizontal();
+
             if (EditorGUI.EndChangeCheck())
             {
-                foreach (var cell in selectedCells) { cell.text = inspectorIsBubble; cell.textColor = inspectorTextColor; cell.sprite = inspectorSprite; if (inspectorSprite != null) cell.text = ""; }
+                foreach (var cell in selectedCells) { 
+                    cell.text = inspectorIsBubble; 
+                    cell.textColor = inspectorTextColor; 
+                    cell.sprite = inspectorSprite; 
+                    cell.animationClip = inspectorAnimationClip;
+                    cell.showBothTxtAndImg = inspectorShowBothTxtAndImg;
+                    if (inspectorSprite != null && !inspectorShowBothTxtAndImg) cell.text = ""; 
+                }
                 Repaint();
             }
 
@@ -1281,6 +1303,8 @@ public class LevelDesignToolWindow : EditorWindow
         inspectorIsBubble = first.text;
         inspectorTextColor = first.textColor;
         inspectorSprite = first.sprite;
+        inspectorAnimationClip = first.animationClip;
+        inspectorShowBothTxtAndImg = first.showBothTxtAndImg;
     }
 
     private void CreateNewAndSaveLevelData()
@@ -1314,7 +1338,9 @@ public class LevelDesignToolWindow : EditorWindow
                     position = cell.position,
                     category = cell.category,
                     text = cell.text,
-                    sprite = cell.sprite
+                    sprite = cell.sprite,
+                    animationClip = cell.animationClip,
+                    showBothTxtAndImg = cell.showBothTxtAndImg
                 });
             }
 
@@ -1342,6 +1368,8 @@ public class LevelDesignToolWindow : EditorWindow
             grid[x, y].category = data.category;
             grid[x, y].text = data.text;
             grid[x, y].sprite = data.sprite;
+            grid[x, y].animationClip = data.animationClip;
+            grid[x, y].showBothTxtAndImg = data.showBothTxtAndImg;
             // textColor intentionally editor-only
         }
 

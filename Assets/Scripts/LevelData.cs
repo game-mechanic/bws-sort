@@ -28,6 +28,8 @@ public class CellData
     public string text;
       public bool overrideColor = false;
     public Color bubbleColor = Color.white;
+    public AnimationClip animationClip;
+    public bool showBothTxtAndImg = false;
 }
 
 /// <summary>
