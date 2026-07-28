@@ -16,20 +16,20 @@ MonoBehaviour:
   bounceTime: 0.5
   maxBounces: 2
   lerpSpeeed: 15
-  bubbleProfile: {fileID: 11400000, guid: 11de5d5d4568c46a88662b048b20c575, type: 2}
+  bubbleProfile: {fileID: 11400000, guid: 3c283154e7cc39b49bfe70f585ac9e5d, type: 2}
   mergeCount: 4
   dragSpeed: 10
   breathingSpeed: 5
   breathingAplitude: 0.01
   textBreathingSpeed: 1
   bubbleFXPrefab: {fileID: 5856000662369290909, guid: 63c0ec1246ae2f64a93bdc22bdd22cc1, type: 3}
-  rotationOffset: 5
+  rotationOffset: 10
   animatorController: {fileID: 9100000, guid: 2a9b6302fcdbd415db510c9d0e3fd78a, type: 2}
   canAnimateSprite: 0
   canChangeColor: 0
   colorProfile: {fileID: 11400000, guid: a0304dc618e3ae945972530dfd5672b7, type: 2}
-  canUseDifferentSprites: 1
-  spriteProfile: {fileID: 11400000, guid: 76432923b9c37b04d9e94fc1ebd82a6c, type: 2}
+  canUseDifferentSprites: 0
+  spriteProfile: {fileID: 11400000, guid: 2802460379ecb425c98b78509e7a2f63, type: 2}
   tableReference:
     m_TableCollectionName: RedThings
   selectedLanguage: 0
@@ -45,4 +45,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ec1fa4016a8007c489dbb546ed8a23e8, type: 2}
   - {fileID: 11400000, guid: b8d1de56817b49a40b167e219f035818, type: 2}
   canTextBreathe: 0
-  enableRandomBubbleSize: 1
+  enableRandomBubbleSize: 0
