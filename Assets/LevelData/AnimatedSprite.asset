@@ -275,7 +275,7 @@ MonoBehaviour:
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    animationClip: {fileID: 0}
+    animationClip: {fileID: 7400000, guid: 3f71b7d6a19684b4480b0c49d27a949b, type: 2}
     showBothTxtAndImg: 0
   - position: {x: 2, y: 9}
     category: {fileID: 0}
