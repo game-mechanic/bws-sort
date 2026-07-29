@@ -29,7 +29,8 @@ public class CenterCircle : Singleton<CenterCircle>
     [SerializeField] float dropRadius = 1.2f;
 
     [Header("Colors")]
-    [SerializeField] Color idleColor      = Color.white;
+    [SerializeField] Color restColor      = new Color(0.8f, 0.8f, 0.8f, 1f); // circle color when nothing is happening
+    [SerializeField] Color idleColor      = Color.white;                       // circle color when hovered
     [SerializeField] Color correctColor   = new Color(0.2f, 0.9f, 0.2f, 1f);
     [SerializeField] Color wrongColor     = new Color(0.95f, 0.2f, 0.2f, 1f);
 
@@ -46,12 +47,12 @@ public class CenterCircle : Singleton<CenterCircle>
 
     // ── state ──────────────────────────────────────────────────────────────
     BubbleType currentCategory;
-    int filledSlots;                            // how many slots are occupied
+    int filledSlots;
     bool isAnimating;
+    bool isFlashing;                            // true while a drop color flash is active
     Queue<BubbleType> categoryQueue = new Queue<BubbleType>();
     Vector3 originalScale;
-    Vector3 originalLabelScale;                 // design-time scale of categoryLabel
-    // keep refs to bubble GameObjects sitting in slots so we can explode them
+    Vector3 originalLabelScale;
     List<GameObject> slottedBubbles = new List<GameObject>();
 
     public BubbleType CurrentCategory => currentCategory;
@@ -101,12 +102,16 @@ public class CenterCircle : Singleton<CenterCircle>
     }
 
     /// <summary>
-    /// Called while a bubble is being dragged over the circle.
-    /// Circle stays white regardless — color feedback only happens on drop.
+    /// Called while a bubble is being dragged. Highlights the circle white when
+    /// hovering over it, returns to rest color when not hovering.
+    /// Color feedback (green/red) only happens on actual drop.
     /// </summary>
     public void SetHoverHighlight(bool active, bool isMatch = false)
     {
-        // No color change during hover — circle always stays idle white
+        // Don't override a drop flash that's currently playing
+        if (isAnimating || isFlashing) return;
+        DOTween.Kill(circleRenderer);
+        circleRenderer.DOColor(active ? idleColor : restColor, 0.15f);
     }
 
     // ── private ────────────────────────────────────────────────────────────
@@ -218,7 +223,7 @@ public class CenterCircle : Singleton<CenterCircle>
         explode.Append(visualRoot.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InQuad));
 
         // 6. Wait 1 second after the explosion, then advance to next category
-        explode.AppendInterval(1f);
+        explode.AppendInterval(0.5f);
         explode.AppendCallback(() =>
         {
             // Destroy leftover slot bubble GOs
@@ -265,7 +270,8 @@ public class CenterCircle : Singleton<CenterCircle>
 
         // Re-enable circle renderer and scale in from 0 → original
         circleRenderer.enabled = true;
-        circleRenderer.color = idleColor;
+        circleRenderer.color = restColor;
+        isFlashing = false;
         visualRoot.localScale = Vector3.zero;
         visualRoot.DOScale(originalScale, 0.38f)
                   .SetEase(Ease.OutBack)
@@ -301,9 +307,14 @@ public class CenterCircle : Singleton<CenterCircle>
 
     void FlashColor(Color flash)
     {
-        circleRenderer.DOKill();
-        circleRenderer.DOColor(flash, 0.15f)
-                      .OnComplete(() => circleRenderer.DOColor(idleColor, 1f)); // 1 second fade back to white
+        isFlashing = true;
+        DOTween.Kill(circleRenderer);
+        circleRenderer.color = flash;
+        DOTween.To(() => circleRenderer.color,
+                   c => circleRenderer.color = c,
+                   restColor, 1f)
+               .SetDelay(0.15f)
+               .OnComplete(() => isFlashing = false);
     }
 
     void PlayWrongFeedback()
