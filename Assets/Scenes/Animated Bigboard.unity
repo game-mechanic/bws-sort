@@ -458,8 +458,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   draggerVisual: {fileID: 1954701670}
-  mergeMoveDuration: 0.3
-  mergeInterval: 0
+  mergeMoveDuration: 0
+  preMergeMoveDuration: 0.1
+  mergeScaleDuration: 0.16
+  mergeInterval: 0.05
   mergeStartDelay: 0.2
   mergeEase: 1
   mergeSpawnEarlyOffset: 0.15

@@ -233,22 +233,22 @@ MonoBehaviour:
     animationClip: {fileID: 0}
     showBothTxtAndImg: 0
   - position: {x: 2, y: 4}
-    category: {fileID: 0}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: 2578237c5a8d42f41859e009e92a26c9, type: 2}
+    sprite: {fileID: 848586937, guid: da519505eb27ada4e98fb9afda672afe, type: 3}
     name: 
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    animationClip: {fileID: 0}
+    animationClip: {fileID: 7400000, guid: 89e1a0e806d1d4b42b4e52469e7dffeb, type: 2}
     showBothTxtAndImg: 0
   - position: {x: 2, y: 5}
-    category: {fileID: 0}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
+    sprite: {fileID: -610266695, guid: 61dff7648341389409895ac2b816fd70, type: 3}
     name: 
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    animationClip: {fileID: 0}
+    animationClip: {fileID: 7400000, guid: 49acb31cf20a5c54b8c64b78ddde054e, type: 2}
     showBothTxtAndImg: 0
   - position: {x: 2, y: 6}
     category: {fileID: 11400000, guid: f2d755cd4e94e104da72bfcd30bf8a58, type: 2}
@@ -323,13 +323,13 @@ MonoBehaviour:
     animationClip: {fileID: 0}
     showBothTxtAndImg: 0
   - position: {x: 3, y: 4}
-    category: {fileID: 0}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
+    sprite: {fileID: -2089879383, guid: ec1d24a41ac02c945879596411f2c519, type: 3}
     name: 
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    animationClip: {fileID: 0}
+    animationClip: {fileID: 7400000, guid: ea8975c5d7ede9345a406dc8c22bcfb2, type: 2}
     showBothTxtAndImg: 0
   - position: {x: 3, y: 5}
     category: {fileID: 11400000, guid: af562ae031b60c741a9653d44b9e2872, type: 2}
@@ -413,13 +413,13 @@ MonoBehaviour:
     animationClip: {fileID: 0}
     showBothTxtAndImg: 0
   - position: {x: 4, y: 4}
-    category: {fileID: 0}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: 48cb53ce0d307064bb49a0d42ef9fa79, type: 2}
+    sprite: {fileID: -1605558637, guid: 63fc7592ad90e524497357a41d6bfb7d, type: 3}
     name: 
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    animationClip: {fileID: 0}
+    animationClip: {fileID: 7400000, guid: b95b233acadfd8844a73e49a890c4b74, type: 2}
     showBothTxtAndImg: 0
   - position: {x: 4, y: 5}
     category: {fileID: 11400000, guid: af562ae031b60c741a9653d44b9e2872, type: 2}
@@ -503,22 +503,22 @@ MonoBehaviour:
     animationClip: {fileID: 0}
     showBothTxtAndImg: 0
   - position: {x: 5, y: 4}
-    category: {fileID: 0}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: 4231dbf6664e35944b4fde27cad75755, type: 2}
+    sprite: {fileID: -1106312702, guid: bf29483691c322543b9ce62dd57f7389, type: 3}
     name: 
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    animationClip: {fileID: 0}
+    animationClip: {fileID: 7400000, guid: d8d4a02f8edc5874a98622945bf8711e, type: 2}
     showBothTxtAndImg: 0
   - position: {x: 5, y: 5}
-    category: {fileID: 0}
-    sprite: {fileID: 0}
+    category: {fileID: 11400000, guid: 3647eb6dd435dac4a987742651d7650e, type: 2}
+    sprite: {fileID: -838400924, guid: 6ec5e86c3a753354f90d76fea7712994, type: 3}
     name: 
     text: 
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
-    animationClip: {fileID: 0}
+    animationClip: {fileID: 7400000, guid: c13222c91bda64d4995b420daab4b789, type: 2}
     showBothTxtAndImg: 0
   - position: {x: 5, y: 6}
     category: {fileID: 11400000, guid: 9e6a15fa66e65f341a0e376092eb3042, type: 2}

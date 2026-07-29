@@ -431,6 +431,7 @@ public class InputHandler : Singleton<InputHandler>
         return result;
     }
     [SerializeField] private float mergeMoveDuration = 0.45f;
+    [SerializeField] private float preMergeMoveDuration = 0.15f;
     [SerializeField] private float mergeScaleDuration = 0.2f;
     [SerializeField] private float mergeInterval = 0.12f;
     [SerializeField] private float mergeStartDelay = 0.5f;
@@ -582,6 +583,10 @@ public class InputHandler : Singleton<InputHandler>
 
             rGP = hexGrid.GetGridPosition(nextPos);
             hexGrid.RemoveGridObject(rGP.x, rGP.y);
+
+            // Phase 1: Move current towards next until they visually touch
+            Vector3 touchPos = Vector3.Lerp(current.transform.position, nextPos, 0.6f);
+            yield return current.transform.DOMove(touchPos, preMergeMoveDuration).SetEase(Ease.InSine).WaitForCompletion();
 
             stepOriginalPositions = new Dictionary<Bubble, Vector3>();
 
