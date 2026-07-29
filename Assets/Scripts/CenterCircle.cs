@@ -120,35 +120,39 @@ public class CenterCircle : Singleton<CenterCircle>
     {
         CategoryManager.Instance.ReduceCount(bubble.Category);
 
-        // Determine which slot this bubble flies into
         int slotIndex = filledSlots;
         filledSlots++;
+        bool isLastBubble = filledSlots >= slots.Length;
 
         Vector3 slotWorldPos = slots[slotIndex].position;
 
         bubble.transform.DOKill();
         bubble.SetColliderEnabled(false);
 
-        // Fly bubble into its slot
+        // Reparent immediately so it's tracked under visualRoot from the start
+        bubble.transform.SetParent(visualRoot, worldPositionStays: true);
+        bubble.DisableBackground();
+        bubble.SetTextWhite();
+
+        // Track for explosion right away — no need to wait for float to finish
+        slottedBubbles.Add(bubble.gameObject);
+
+        // Spawn replacement immediately at the origin slot
+        CategoryManager.Instance.SpawnNewBubbleAt(spawnPos);
+
+        Vector3 bubbleStart = bubble.transform.position;
+        Vector3 arcMid = Vector3.Lerp(bubbleStart, slotWorldPos, 0.5f)
+                         + Vector3.up * UnityEngine.Random.Range(0.15f, 0.35f)
+                         + new Vector3(UnityEngine.Random.Range(-0.1f, 0.1f), 0, 0);
+
         Sequence flyIn = DOTween.Sequence();
-        flyIn.Append(bubble.transform.DOMove(slotWorldPos, 0.28f).SetEase(Ease.InBack));
-        flyIn.Join(bubble.transform.DOScale(Vector3.one * slotBubbleScale, 0.28f).SetEase(Ease.InBack));
-        flyIn.AppendCallback(() =>
-        {
-            // Make the bubble a child of visualRoot so it scales with the center circle during pop
-            bubble.transform.SetParent(visualRoot, worldPositionStays: true);
-
-            // Disable background sprite — only text/icon remains visible in the slot
-            bubble.DisableBackground();
-            // Text turns white so it's readable against the center circle
-            bubble.SetTextWhite();
-
-            // Track it for the explosion later
-            slottedBubbles.Add(bubble.gameObject);
-
-            // Spawn replacement at the slot the player dragged from
-            CategoryManager.Instance.SpawnNewBubbleAt(spawnPos);
-        });
+        flyIn.Append(bubble.transform.DOPath(
+                new Vector3[] { arcMid, slotWorldPos },
+                duration: 3.0f,
+                pathType: PathType.CatmullRom)
+            .SetEase(Ease.InOutSine));
+        flyIn.Join(bubble.transform.DOScale(Vector3.one * slotBubbleScale, 3.0f)
+            .SetEase(Ease.InOutSine));
 
         // Flash green then back to white on correct drop
         FlashColor(correctColor);
@@ -161,7 +165,8 @@ public class CenterCircle : Singleton<CenterCircle>
         if (filledSlots == 1)
             SetLabelAlignment(top: true);
 
-        if (filledSlots >= slots.Length)
+        // Last bubble — trigger explosion immediately, don't wait for it to arrive
+        if (isLastBubble)
             DOVirtual.DelayedCall(0.4f, ExplodeAndAdvance);
     }
 
@@ -171,6 +176,10 @@ public class CenterCircle : Singleton<CenterCircle>
         isAnimating = true;
 
         OnCategoryCompleted?.Invoke(currentCategory);
+
+        // Kill any in-flight float tweens on slotted bubbles
+        foreach (var go in slottedBubbles)
+            if (go != null) go.transform.DOKill();
 
         // Scale-up sequence: anticipation → hide sprites & label → explosion → pause → advance
         visualRoot.DOKill();
@@ -188,7 +197,7 @@ public class CenterCircle : Singleton<CenterCircle>
         }
 
         // 2. Brief pause at peak
-        explode.AppendInterval(0.15f);
+        explode.AppendInterval(0.33f);
 
         // 3. NOW disable sprites — circle sprite, slotted bubble sprites, and label
         explode.AppendCallback(() =>
