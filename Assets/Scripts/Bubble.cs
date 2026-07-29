@@ -59,6 +59,10 @@ public class Bubble : MonoBehaviour
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
         RestorePositions();
         Redraw();
+        // Freeze in place until the player picks up the bubble
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
     }
     private void OnDisable()
     {
@@ -150,6 +154,12 @@ public class Bubble : MonoBehaviour
         col.enabled = active;
     }
 
+    /// <summary>Enable or disable the collider (alias used by CenterCircle).</summary>
+    public void SetColliderEnabled(bool active)
+    {
+        if (col != null) col.enabled = active;
+    }
+
     public void SetName(List<Data> name)
     {
         Names.Clear();
@@ -162,10 +172,21 @@ public class Bubble : MonoBehaviour
     public void StartDrag()
     {
         Highlight(true);
+        // Kinematic during drag so physics doesn't fight the finger
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
     }
+
     public void EndDrag()
     {
         Highlight(false);
+        // Stay Kinematic so the bubble freezes in place after snap-back.
+        // Physics is NOT restored here — the bubble only gets velocity/gravity
+        // back when StartDrag is called again (pick-up sets Kinematic which it
+        // already is, so the cycle is: frozen → drag → frozen → drag …).
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
     }
     private void TextBreathing()
     {
