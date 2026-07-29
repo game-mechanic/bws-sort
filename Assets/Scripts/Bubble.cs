@@ -155,6 +155,16 @@ public class Bubble : MonoBehaviour
         if (bg != null) bg.enabled = false;
     }
 
+    /// <summary>Turns all text and icon labels white (for when dropped into the center circle).</summary>
+    public void SetTextWhite()
+    {
+        foreach (var v in textUIs)
+        {
+            if (v.textUIs != null) v.textUIs.color = Color.white;
+            if (v.bg != null) v.bg.color = Color.white;
+        }
+    }
+
     /// <summary>Enable or disable the collider (alias used by CenterCircle).</summary>
     public void SetColliderEnabled(bool active)
     {

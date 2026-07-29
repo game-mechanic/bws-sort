@@ -140,6 +140,8 @@ public class CenterCircle : Singleton<CenterCircle>
 
             // Disable background sprite — only text/icon remains visible in the slot
             bubble.DisableBackground();
+            // Text turns white so it's readable against the center circle
+            bubble.SetTextWhite();
 
             // Track it for the explosion later
             slottedBubbles.Add(bubble.gameObject);
@@ -194,12 +196,14 @@ public class CenterCircle : Singleton<CenterCircle>
             // Disable circle sprite renderer
             circleRenderer.enabled = false;
 
-            // Disable sprite renderers on all slotted bubbles (explosion effect)
+            // Disable all visuals on slotted bubbles (sprites + text)
             foreach (var go in slottedBubbles)
             {
                 if (go == null) continue;
                 foreach (var sr in go.GetComponentsInChildren<SpriteRenderer>())
                     sr.enabled = false;
+                foreach (var tmp in go.GetComponentsInChildren<TMPro.TextMeshPro>())
+                    tmp.enabled = false;
             }
 
             // Hide label and reparent it out of visualRoot
@@ -295,6 +299,11 @@ public class CenterCircle : Singleton<CenterCircle>
     {
         if (categoryLabel == null) return;
         categoryLabel.text = currentCategory != null ? currentCategory.name : string.Empty;
+        // Force single line — shrink font to fit rather than wrapping
+        categoryLabel.enableWordWrapping = false;
+        categoryLabel.overflowMode = TextOverflowModes.Ellipsis;
+        categoryLabel.enableAutoSizing = true;
+        categoryLabel.fontSizeMax = categoryLabel.fontSize;
     }
 
     void SetLabelAlignment(bool top)

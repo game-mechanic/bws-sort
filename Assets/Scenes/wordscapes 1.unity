@@ -473,134 +473,134 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   datas:
-  - name: {fileID: 11400000, guid: b0727d251b8fbde4f94cc465bc39217e, type: 2}
+  - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: e8abf8cbb80ee834ea5edda71db9349d, type: 3}
-  - name: {fileID: 11400000, guid: 7f8499ce36a9e3f448fbc3fa4893922c, type: 2}
+      name: Blood
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: a9a3f2a92849cab42b4d1115aeb47d2f, type: 3}
-  - name: {fileID: 11400000, guid: b0727d251b8fbde4f94cc465bc39217e, type: 2}
+      name: Leo
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 2f6cc4f3bd2d5774e8ed7c78c82a68e4, type: 3}
-  - name: {fileID: 11400000, guid: b0727d251b8fbde4f94cc465bc39217e, type: 2}
+      name: Rose
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 3842a0330d7edad4285a01bbff010895, type: 3}
-  - name: {fileID: 11400000, guid: 7f8499ce36a9e3f448fbc3fa4893922c, type: 2}
+      name: Cherry
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 214a5ef2f1e88ee448ca4e29f0faaf87, type: 3}
-  - name: {fileID: 11400000, guid: b0727d251b8fbde4f94cc465bc39217e, type: 2}
+      name: Taurus
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 0ad88e2f97e56de498251bdbdcbe5ae3, type: 3}
-  - name: {fileID: 11400000, guid: 7f8499ce36a9e3f448fbc3fa4893922c, type: 2}
+      name: Tomato
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 8147b4f9503516841839d70076144270, type: 3}
-  - name: {fileID: 11400000, guid: b9aebd80b99bda74da979493e2b3c8ad, type: 2}
+      name: Virgo
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: e71b6449b18bfe141b59337fe07c5826, type: 3}
-  - name: {fileID: 11400000, guid: 7f8499ce36a9e3f448fbc3fa4893922c, type: 2}
+      name: Coconut
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 00560b7139e84194db2ed1506dd6d34f, type: 3}
-  - name: {fileID: 11400000, guid: b9aebd80b99bda74da979493e2b3c8ad, type: 2}
+      name: Pisces
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 8ad5efa488441724485658c9a6dca223, type: 3}
-  - name: {fileID: 11400000, guid: b9aebd80b99bda74da979493e2b3c8ad, type: 2}
+      name: Sunflower
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: a892aa82e7e55fc409613f80a80da194, type: 3}
+      name: Avacado
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
+    data:
+      name: Iron
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
+    data:
+      name: Oxygen
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
+    data:
+      name: Helium
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
+    data:
+      name: Olive
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
+    data:
+      name: Bulgaria
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
+    data:
+      name: Gold
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
+    data:
+      name: Croatia
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
+    data:
+      name: Serbia
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
+    data:
+      name: Romania
+      icon: {fileID: 0}
   - name: {fileID: 11400000, guid: 9fa3a468568959447bc40daf8f6996f9, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: e284249f1ca704f4686dafee95db76c6, type: 3}
+      name: Pizza
+      icon: {fileID: 0}
   - name: {fileID: 11400000, guid: 9fa3a468568959447bc40daf8f6996f9, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 211267c997bb1414491603a38bdef791, type: 3}
+      name: Burger
+      icon: {fileID: 0}
   - name: {fileID: 11400000, guid: 9fa3a468568959447bc40daf8f6996f9, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 7f8a623ff3a138c46aba9ab1474432b7, type: 3}
-  - name: {fileID: 11400000, guid: b9aebd80b99bda74da979493e2b3c8ad, type: 2}
-    data:
-      name: 
-      icon: {fileID: 21300000, guid: 1db9f8ce8c0ab0b4a89ac4f7cff751df, type: 3}
-  - name: {fileID: 11400000, guid: 24051f9037b1ae74494b1f14841126c8, type: 2}
-    data:
-      name: 
-      icon: {fileID: 21300000, guid: d4bf57d8dbcdd754795b779259d64b5d, type: 3}
+      name: Taco
+      icon: {fileID: 0}
   - name: {fileID: 11400000, guid: 9fa3a468568959447bc40daf8f6996f9, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 10b90d510bb0efa4ca7d34601ef4257e, type: 3}
-  - name: {fileID: 11400000, guid: 24051f9037b1ae74494b1f14841126c8, type: 2}
-    data:
-      name: 
-      icon: {fileID: 21300000, guid: 7bc4fd5c8e5002f47a83ad347eb49c2c, type: 3}
-  - name: {fileID: 11400000, guid: 24051f9037b1ae74494b1f14841126c8, type: 2}
-    data:
-      name: 
-      icon: {fileID: 21300000, guid: 93e25f27ec4c9bf44b606e6883786ffe, type: 3}
-  - name: {fileID: 11400000, guid: 24051f9037b1ae74494b1f14841126c8, type: 2}
-    data:
-      name: 
-      icon: {fileID: 21300000, guid: e0486312eb7e12541b45fef70b630491, type: 3}
-  - name: {fileID: 11400000, guid: 9137ab2fd86c87d48b3411fed745a798, type: 2}
-    data:
-      name: 
-      icon: {fileID: 21300000, guid: 45d527f2ad401394a95562af4088ce5b, type: 3}
-  - name: {fileID: 11400000, guid: 9137ab2fd86c87d48b3411fed745a798, type: 2}
-    data:
-      name: 
-      icon: {fileID: 21300000, guid: 91578447670f19a418fc98e6d2e19d61, type: 3}
-  - name: {fileID: 11400000, guid: 9137ab2fd86c87d48b3411fed745a798, type: 2}
-    data:
-      name: 
-      icon: {fileID: 21300000, guid: 36ce754852c3ff74a80986464aefe8c6, type: 3}
-  - name: {fileID: 11400000, guid: 9137ab2fd86c87d48b3411fed745a798, type: 2}
-    data:
-      name: 
-      icon: {fileID: 21300000, guid: 120d67f99d6c53e4e8e7a1e60784b24c, type: 3}
+      name: Hot Dog
+      icon: {fileID: 0}
   - name: {fileID: 11400000, guid: bb33c3bc4a91b624db0816a7409ecf16, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 1d67273bf9fea3e40a09133d6101d66e, type: 3}
+      name: Cat
+      icon: {fileID: 0}
   - name: {fileID: 11400000, guid: bb33c3bc4a91b624db0816a7409ecf16, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 0854da64605246e4db57eff25bc94038, type: 3}
+      name: Dog
+      icon: {fileID: 0}
   - name: {fileID: 11400000, guid: bb33c3bc4a91b624db0816a7409ecf16, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 18e0d1b7560f86448835cb44fbb91160, type: 3}
+      name: Hamster
+      icon: {fileID: 0}
   - name: {fileID: 11400000, guid: bb33c3bc4a91b624db0816a7409ecf16, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: f7e8f7ebb511c1247993b0d76f9355c5, type: 3}
-  - name: {fileID: 11400000, guid: 10199a328d6df714e89ccbd5b1c47f0a, type: 2}
+      name: Parrot
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 62d7a7678a0cc324faf3df0530c48319, type: 3}
-  - name: {fileID: 11400000, guid: 10199a328d6df714e89ccbd5b1c47f0a, type: 2}
+      name: Puppet
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: b75177d87c426b341b70d1bbebe38615, type: 3}
-  - name: {fileID: 11400000, guid: 10199a328d6df714e89ccbd5b1c47f0a, type: 2}
+      name: Wooden
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: bcd73b5033df13647bb617d6a04f2fd1, type: 3}
-  - name: {fileID: 11400000, guid: 10199a328d6df714e89ccbd5b1c47f0a, type: 2}
+      name: Nose
+      icon: {fileID: 0}
+  - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
     data:
-      name: 
-      icon: {fileID: 21300000, guid: 97727007058d50941a5f38e3e3882f60, type: 3}
+      name: Geppetto
+      icon: {fileID: 0}
   spawnPosition: {fileID: 30197032}
   radius: 3.3
   initialSpawns: 9
