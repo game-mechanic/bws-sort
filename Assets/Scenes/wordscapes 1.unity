@@ -1547,7 +1547,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1922.8042, y: -925.9927}
+  m_AnchoredPosition: {x: 0, y: -1127}
   m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0.23598285, y: 0.91602844}
 --- !u!114 &799683888
@@ -2019,7 +2019,7 @@ MonoBehaviour:
   - {fileID: 1253180783}
   - {fileID: 844222867}
   slotHighlights: []
-  slotBubbleScale: 0.65
+  slotBubbleScale: 0.2
   dropRadius: 1.75
   restColor: {r: 1, g: 1, b: 1, a: 0.29411766}
   idleColor: {r: 1, g: 1, b: 1, a: 1}
