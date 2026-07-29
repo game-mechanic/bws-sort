@@ -149,9 +149,10 @@ public class Bubble : MonoBehaviour
         this.bounceAmplitude = bounceAmplitude;
         this.bounceDuration = duration;
     }
-    public void SetCollider(bool active)
+    /// <summary>Disables only the bubble's main background circle sprite.</summary>
+    public void DisableBackground()
     {
-        col.enabled = active;
+        if (bg != null) bg.enabled = false;
     }
 
     /// <summary>Enable or disable the collider (alias used by CenterCircle).</summary>

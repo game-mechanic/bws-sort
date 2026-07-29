@@ -23,6 +23,7 @@ public class CenterCircle : Singleton<CenterCircle>
     [Header("Slots — assign 4 child Transforms in order")]
     [SerializeField] Transform[] slots = new Transform[4];    // world positions inside circle
     [SerializeField] SpriteRenderer[] slotHighlights;         // one per slot (optional tint indicator)
+    [SerializeField] float slotBubbleScale = 0.6f;            // scale multiplier for bubbles in slots
 
     [Header("Drop Zone")]
     [SerializeField] float dropRadius = 1.2f;
@@ -32,8 +33,12 @@ public class CenterCircle : Singleton<CenterCircle>
     [SerializeField] Color correctColor   = new Color(0.2f, 0.9f, 0.2f, 1f);
     [SerializeField] Color wrongColor     = new Color(0.95f, 0.2f, 0.2f, 1f);
 
+    [Header("Explosion Animation")]
+    [SerializeField] float anticipationCircleScale = 1.25f;   // Scale multiplier for circle during anticipation
+    [SerializeField] float anticipationTextScale = 1.25f;     // Scale multiplier for text during anticipation
+
     [Header("FX")]
-    [SerializeField] ParticleSystem popFxPrefab;
+    [SerializeField] Vector3 popFxRotation = new Vector3(-90f, 0f, 0f);  // kept for reference
 
     // ── events ─────────────────────────────────────────────────────────────
     public static event Action<BubbleType> OnCategoryCompleted;
@@ -45,6 +50,7 @@ public class CenterCircle : Singleton<CenterCircle>
     bool isAnimating;
     Queue<BubbleType> categoryQueue = new Queue<BubbleType>();
     Vector3 originalScale;
+    Vector3 originalLabelScale;                 // design-time scale of categoryLabel
     // keep refs to bubble GameObjects sitting in slots so we can explode them
     List<GameObject> slottedBubbles = new List<GameObject>();
 
@@ -56,6 +62,7 @@ public class CenterCircle : Singleton<CenterCircle>
     {
         base.Awake();
         originalScale = visualRoot != null ? visualRoot.localScale : Vector3.one;
+        originalLabelScale = categoryLabel != null ? categoryLabel.transform.localScale : Vector3.one;
     }
 
     // ── public API ─────────────────────────────────────────────────────────
@@ -94,14 +101,12 @@ public class CenterCircle : Singleton<CenterCircle>
     }
 
     /// <summary>
-    /// Show green/red hover tint while dragging over the circle.
-    /// Pass active=false to reset to white.
+    /// Called while a bubble is being dragged over the circle.
+    /// Circle stays white regardless — color feedback only happens on drop.
     /// </summary>
     public void SetHoverHighlight(bool active, bool isMatch = false)
     {
-        if (isAnimating) return;
-        circleRenderer.DOKill();
-        circleRenderer.DOColor(active ? (isMatch ? correctColor : wrongColor) : idleColor, 0.15f);
+        // No color change during hover — circle always stays idle white
     }
 
     // ── private ────────────────────────────────────────────────────────────
@@ -122,12 +127,14 @@ public class CenterCircle : Singleton<CenterCircle>
         // Fly bubble into its slot
         Sequence flyIn = DOTween.Sequence();
         flyIn.Append(bubble.transform.DOMove(slotWorldPos, 0.28f).SetEase(Ease.InBack));
-        flyIn.Join(bubble.transform.DOScale(originalScale * 0.55f, 0.28f).SetEase(Ease.InBack));
+        flyIn.Join(bubble.transform.DOScale(Vector3.one * slotBubbleScale, 0.28f).SetEase(Ease.InBack));
         flyIn.AppendCallback(() =>
         {
-            // Hide original sprite — bubble "merges" visually into the slot
-            var sr = bubble.GetComponent<SpriteRenderer>();
-            if (sr != null) sr.enabled = false;
+            // Make the bubble a child of visualRoot so it scales with the center circle during pop
+            bubble.transform.SetParent(visualRoot, worldPositionStays: true);
+
+            // Disable background sprite — only text/icon remains visible in the slot
+            bubble.DisableBackground();
 
             // Track it for the explosion later
             slottedBubbles.Add(bubble.gameObject);
@@ -158,27 +165,62 @@ public class CenterCircle : Singleton<CenterCircle>
 
         OnCategoryCompleted?.Invoke(currentCategory);
 
-        // Disable sprite renderers on all slotted bubbles (explosion effect)
-        foreach (var go in slottedBubbles)
-        {
-            if (go == null) continue;
-            foreach (var sr in go.GetComponentsInChildren<SpriteRenderer>())
-                sr.enabled = false;
-        }
-
-        // Particle burst
-        if (popFxPrefab != null)
-            Instantiate(popFxPrefab, transform.position, Quaternion.identity);
-
-        // Scale circle out then disable its renderer
+        // Scale-up sequence: anticipation → hide sprites & label → explosion → pause → advance
         visualRoot.DOKill();
         Sequence explode = DOTween.Sequence();
-        explode.Append(visualRoot.DOScale(originalScale * 1.4f, 0.12f).SetEase(Ease.OutBack));
-        explode.Append(visualRoot.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack));
+
+        // 1. Anticipation — scale up the circle (visualRoot automatically scales slots inside)
+        //    AND scale the text separately since it's a separate GameObject
+        //    Circle sprite STAYS VISIBLE during this phase
+        explode.Append(visualRoot.DOScale(originalScale * anticipationCircleScale, 0.3f).SetEase(Ease.OutQuad));
+        
+        if (categoryLabel != null)
+        {
+            categoryLabel.transform.DOKill();
+            explode.Join(categoryLabel.transform.DOScale(originalLabelScale * anticipationTextScale, 0.3f).SetEase(Ease.OutQuad));
+        }
+
+        // 2. Brief pause at peak
+        explode.AppendInterval(0.15f);
+
+        // 3. NOW disable sprites — circle sprite, slotted bubble sprites, and label
         explode.AppendCallback(() =>
         {
+            // Disable circle sprite renderer
             circleRenderer.enabled = false;
 
+            // Disable sprite renderers on all slotted bubbles (explosion effect)
+            foreach (var go in slottedBubbles)
+            {
+                if (go == null) continue;
+                foreach (var sr in go.GetComponentsInChildren<SpriteRenderer>())
+                    sr.enabled = false;
+            }
+
+            // Hide label and reparent it out of visualRoot
+            if (categoryLabel != null)
+            {
+                categoryLabel.transform.SetParent(transform, worldPositionStays: true);
+                categoryLabel.enabled = false;
+            }
+        });
+
+        // 4. Particle burst
+        explode.AppendCallback(() =>
+        {
+            ParticlePool.PlayRevealFx(transform.position);
+            foreach (var go in slottedBubbles)
+                if (go != null) ParticlePool.PlayRevealFx(go.transform.position);
+        });
+
+        // 5. Big explosion scale: current → 5× → 0 (slower outward push)
+        explode.Append(visualRoot.DOScale(originalScale * 5f, 0.45f).SetEase(Ease.OutQuad));
+        explode.Append(visualRoot.DOScale(Vector3.zero, 0.3f).SetEase(Ease.InQuad));
+
+        // 6. Wait 1 second after the explosion, then advance to next category
+        explode.AppendInterval(1f);
+        explode.AppendCallback(() =>
+        {
             // Destroy leftover slot bubble GOs
             foreach (var go in slottedBubbles)
                 if (go != null) Destroy(go);
@@ -193,9 +235,22 @@ public class CenterCircle : Singleton<CenterCircle>
         filledSlots = 0;
         slottedBubbles.Clear();
 
+        // Restore label under visualRoot and reset its scale to original
+        if (categoryLabel != null)
+        {
+            categoryLabel.transform.SetParent(visualRoot, worldPositionStays: true);
+            categoryLabel.transform.localScale = originalLabelScale;
+            // Keep label HIDDEN during the circle pop-in
+            categoryLabel.enabled = false;
+        }
+
         if (categoryQueue.Count == 0)
         {
-            categoryLabel.text = "Done!";
+            if (categoryLabel != null)
+            {
+                categoryLabel.text = "Done!";
+                categoryLabel.enabled = true;
+            }
             isAnimating = false;
             return;
         }
@@ -214,7 +269,20 @@ public class CenterCircle : Singleton<CenterCircle>
         visualRoot.localScale = Vector3.zero;
         visualRoot.DOScale(originalScale, 0.38f)
                   .SetEase(Ease.OutBack)
-                  .OnComplete(() => isAnimating = false);
+                  .OnComplete(() =>
+                  {
+                      // Pop the text in with a cartoonistic overshoot animation
+                      if (categoryLabel != null)
+                      {
+                          categoryLabel.enabled = true;
+                          categoryLabel.transform.localScale = Vector3.zero;
+                          categoryLabel.transform.DOKill();
+                          categoryLabel.transform
+                              .DOScale(originalLabelScale, 0.45f)
+                              .SetEase(Ease.OutBack, overshoot: 3.5f);
+                      }
+                      isAnimating = false;
+                  });
     }
 
     void RefreshLabel()
@@ -234,8 +302,8 @@ public class CenterCircle : Singleton<CenterCircle>
     void FlashColor(Color flash)
     {
         circleRenderer.DOKill();
-        circleRenderer.DOColor(flash, 0.1f)
-                      .OnComplete(() => circleRenderer.DOColor(idleColor, 0.35f));
+        circleRenderer.DOColor(flash, 0.15f)
+                      .OnComplete(() => circleRenderer.DOColor(idleColor, 1f)); // 1 second fade back to white
     }
 
     void PlayWrongFeedback()
