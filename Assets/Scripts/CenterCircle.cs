@@ -53,6 +53,7 @@ public class CenterCircle : Singleton<CenterCircle>
     Queue<BubbleType> categoryQueue = new Queue<BubbleType>();
     Vector3 originalScale;
     Vector3 originalLabelScale;
+    Vector3 originalLabelLocalPos;
     List<GameObject> slottedBubbles = new List<GameObject>();
 
     public BubbleType CurrentCategory => currentCategory;
@@ -64,6 +65,7 @@ public class CenterCircle : Singleton<CenterCircle>
         base.Awake();
         originalScale = visualRoot != null ? visualRoot.localScale : Vector3.one;
         originalLabelScale = categoryLabel != null ? categoryLabel.transform.localScale : Vector3.one;
+        originalLabelLocalPos = categoryLabel != null ? categoryLabel.transform.localPosition : Vector3.zero;
     }
 
     // ── public API ─────────────────────────────────────────────────────────
@@ -220,6 +222,7 @@ public class CenterCircle : Singleton<CenterCircle>
             if (categoryLabel != null)
             {
                 categoryLabel.transform.SetParent(transform, worldPositionStays: true);
+                categoryLabel.transform.localPosition = Vector3.zero;
                 categoryLabel.enabled = false;
             }
         });
@@ -258,6 +261,7 @@ public class CenterCircle : Singleton<CenterCircle>
         if (categoryLabel != null)
         {
             categoryLabel.transform.SetParent(visualRoot, worldPositionStays: true);
+            categoryLabel.transform.localPosition = originalLabelLocalPos;
             categoryLabel.transform.localScale = originalLabelScale;
             // Keep label HIDDEN during the circle pop-in
             categoryLabel.enabled = false;
