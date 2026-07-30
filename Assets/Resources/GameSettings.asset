@@ -21,9 +21,10 @@ MonoBehaviour:
   breathingSpeed: 5
   breathingAplitude: 0.05
   textBreathingSpeed: 1
+  textBreathingAmplitude: {x: 0.05, y: 0.1}
   bubbleFXPrefab: {fileID: 5856000662369290909, guid: 63c0ec1246ae2f64a93bdc22bdd22cc1, type: 3}
-  canChangeColor: 1
-  colorAssignmentMode: 1
+  canChangeColor: 0
+  colorAssignmentMode: 0
   bubbleColors:
   - {r: 1, g: 0.3160377, b: 0.7601107, a: 1}
   - {r: 0, g: 0.46900606, b: 1, a: 1}

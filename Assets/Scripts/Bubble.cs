@@ -294,8 +294,8 @@ public class Bubble : MonoBehaviour
         {
             if (textUIs[i] == null) continue;
 
-            var x = (Mathf.Sin((Time.time * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff)) * 0.05f;
-            var y = (Mathf.Sin((Time.time * .5f * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff)) * 0.1f;
+            var x = (Mathf.Sin((Time.time * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff)) * GameSettings.Instance.TextBreathingAmplitude.x;  // 0.05f;
+            var y = (Mathf.Sin((Time.time * .5f * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff)) * GameSettings.Instance.TextBreathingAmplitude.y; //0.1f;
 
 
             Vector3 offset = new Vector3(x / scaleModifier.x, y / scaleModifier.y, 0);

@@ -49,6 +49,7 @@ public class GameSettings : ScriptableObject
     [SerializeField] float breathingSpeed = 2;
     [SerializeField] float breathingAplitude = .05f;
     [SerializeField] private float textBreathingSpeed;
+    [SerializeField] private Vector2 textBreathingAmplitude;
     [SerializeField] ParticleSystem bubbleFXPrefab;
     [SerializeField] bool canChangeColor;
     [SerializeField] ColorAssignmentMode colorAssignmentMode;
@@ -68,6 +69,7 @@ public class GameSettings : ScriptableObject
     public float BreathingSpeed { get => breathingSpeed; }
     public float BreathingAplitude { get => breathingAplitude; }
     public float TextBreathingSpeed { get => textBreathingSpeed; }
+    public Vector2 TextBreathingAmplitude { get => textBreathingAmplitude; }
     public ParticleSystem BubbleFXPrefab { get => bubbleFXPrefab; internal set => bubbleFXPrefab = value; }
     public bool CanChangeColor { get => canChangeColor; }
     public ColorAssignmentMode ColorMode { get => colorAssignmentMode; }
