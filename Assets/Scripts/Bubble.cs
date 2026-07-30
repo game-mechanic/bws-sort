@@ -134,6 +134,7 @@ public class Bubble : MonoBehaviour
             viusal.DOKill();
             viusal.DOScale(startScale, 0.05f).SetTarget(viusal);
         }
+        categoryText.transform.localScale = Vector3.zero;
     }
     public void Bounce()
     {

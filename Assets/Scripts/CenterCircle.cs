@@ -151,8 +151,9 @@ public class CenterCircle : Singleton<CenterCircle>
                 duration: 3.0f,
                 pathType: PathType.CatmullRom)
             .SetEase(Ease.InOutSine));
-        flyIn.Join(bubble.transform.DOScale(Vector3.one * slotBubbleScale, 3.0f)
-            .SetEase(Ease.InOutSine));
+        // Snap to slot scale immediately on drop, then float at that size
+        flyIn.Join(bubble.transform.DOScale(Vector3.one * slotBubbleScale, 0.2f)
+            .SetEase(Ease.OutBack));
 
         // Flash green then back to white on correct drop
         FlashColor(correctColor);

@@ -2019,7 +2019,7 @@ MonoBehaviour:
   - {fileID: 1253180783}
   - {fileID: 844222867}
   slotHighlights: []
-  slotBubbleScale: 0.65
+  slotBubbleScale: 0.18
   dropRadius: 1.75
   restColor: {r: 1, g: 1, b: 1, a: 0.29411766}
   idleColor: {r: 1, g: 1, b: 1, a: 1}
