@@ -21,11 +21,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Trimmer
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 6843f556ac3a1cc4c947595e041dd72a, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Beard
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Beard
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -37,11 +47,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: wallet
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 6843f556ac3a1cc4c947595e041dd72a, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: tie
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: tie
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -53,11 +73,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Lipstick
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c9e2678e52e9431419d597966b96df3d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: earrings
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: earrings
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -69,11 +99,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Handbag
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c9e2678e52e9431419d597966b96df3d, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Perfume
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Perfume
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -85,11 +125,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Frying pan
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 8f7900e9c9e74944e9b3240b7161b532, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: spatula
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: spatula
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -101,11 +151,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: blender
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 8f7900e9c9e74944e9b3240b7161b532, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: knife
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: knife
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -117,11 +177,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: hand cuffs
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: a8056ea8e9262554bb5379b7d90c342b, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: finger print
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: finger print
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -133,11 +203,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: safe
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: a8056ea8e9262554bb5379b7d90c342b, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: crowbar
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: crowbar
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -149,11 +229,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Plunger
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: f69bd78e226fbcd44ae0ce0deb4e03c8, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Toilet
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Toilet
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -165,11 +255,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Toilet paper
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: f69bd78e226fbcd44ae0ce0deb4e03c8, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Soap
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Soap
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -181,11 +281,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Suitcase
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 7229902819667c045aa3e11eaaeefd6c, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Passport
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Passport
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -197,11 +307,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Airplane
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 7229902819667c045aa3e11eaaeefd6c, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Compass
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Compass
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -213,11 +333,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Kitten
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 21ce559b195cb6a45a48afb442ab8dba, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Teddy
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Teddy
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -229,6 +359,11 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Bunny
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 21ce559b195cb6a45a48afb442ab8dba, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
@@ -237,6 +372,12 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Cupcake
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   initialSpawns: 18
   minMultiplier: 1
   maxMultiplier: 1.2
+  levelDataToAppend: {fileID: 0}

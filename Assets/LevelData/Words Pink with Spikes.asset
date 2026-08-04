@@ -21,11 +21,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Napoleon
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: a43fa4a2afc6e53439bcb3b4aae4cdc4, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
     data:
       name: Cleopatra
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Cleopatra
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -37,11 +47,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Gandhi
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: a43fa4a2afc6e53439bcb3b4aae4cdc4, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.5712824, b: 0, a: 1}
     data:
       name: Einstein
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Einstein
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -53,11 +73,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Buddhism
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 0e822b0419aab0a48819bfbf5c604fcc, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.7353099, b: 0, a: 1}
     data:
       name: Hinduism
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Hinduism
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -69,11 +99,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Christianity
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 0e822b0419aab0a48819bfbf5c604fcc, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
     data:
       name: Islam
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Islam
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -85,11 +125,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Zeus
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 903c710981151bd4d996da631dffc9a4, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: Thor
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Thor
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -101,11 +151,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Anubis
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 903c710981151bd4d996da631dffc9a4, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.5712824, b: 0, a: 1}
     data:
       name: Medusa
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Medusa
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -117,11 +177,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Eiffel Tower
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 8a07ae09d00207d4898664e9cc851628, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
     data:
       name: Taj Mahal
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Taj Mahal
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -133,11 +203,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Colosseum
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 8a07ae09d00207d4898664e9cc851628, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.872, g: 0, b: 0.12894145, a: 1}
     data:
       name: Big ben
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Big ben
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -149,11 +229,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Brazil
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.14199996, b: 0.14199996, a: 1}
     data:
       name: Canada
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Canada
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -165,11 +255,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Japan
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: Spartans
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Spartans
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -181,11 +281,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Egypt
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0.46900606, b: 1, a: 1}
     data:
       name: Newton
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Newton
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -197,11 +307,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Darwin
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: Romans
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Romans
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -213,11 +333,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Curie
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: Mayans
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Mayans
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -229,11 +359,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Tesla
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: Vikings
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Vikings
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -245,11 +385,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Picasso
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 4231dbf6664e35944b4fde27cad75755, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
     data:
       name: Da Vinci
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Da Vinci
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -261,6 +411,11 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Monet
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 4231dbf6664e35944b4fde27cad75755, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
@@ -269,6 +424,12 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Van Gogh
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   initialSpawns: 19
   minMultiplier: 1
   maxMultiplier: 2
+  levelDataToAppend: {fileID: 0}

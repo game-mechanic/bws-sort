@@ -15,7 +15,8 @@ public class BubbleSpawnner : MonoBehaviour
         {
             Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
             BubbleType category = datas[j].name;
-            Bubble.Data data = datas[j].data;
+            List<Bubble.Data> data = new();
+            data.AddRange(datas[j].newDatas);
             Color bubbleColor = datas[j].overrideColor ?
                 datas[j].bubbleColor :
                 GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
@@ -28,7 +29,7 @@ public class BubbleSpawnner : MonoBehaviour
                     bubble.SetColor(bubbleColor);
                 if (GameSettings.Instance.CanUseDifferentSprites)
                     bubble.SetBubbleSprite(GameSettings.Instance.BubbleSprites[j % GameSettings.Instance.BubbleSprites.Length]);
-                bubble.SetName(new() { data });
+                bubble.SetName(data);
             });
             if (j % 4 == 0)
                 yield return _waitForSeconds0_1;

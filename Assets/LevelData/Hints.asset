@@ -21,11 +21,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Bob
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 89395aa24ed0445949b38aec08415875, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Wallace
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Wallace
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -37,11 +47,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Alex
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: efbe3ec498c0d49fd929f2ee2b9a7a0a, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Julie
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Julie
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -53,11 +73,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Henry
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: f07a9b954222e794a97b00e0a3bf338c, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: plumber
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: plumber
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -69,11 +99,21 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: 18e0d1b7560f86448835cb44fbb91160, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Dog
+      icon: {fileID: 21300000, guid: 18e0d1b7560f86448835cb44fbb91160, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 24ef5d654323b47f8b5c87b369893996, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Parrot
+      icon: {fileID: 21300000, guid: 0854da64605246e4db57eff25bc94038, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Parrot
       icon: {fileID: 21300000, guid: 0854da64605246e4db57eff25bc94038, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -85,11 +125,21 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: 1d67273bf9fea3e40a09133d6101d66e, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Hamster
+      icon: {fileID: 21300000, guid: 1d67273bf9fea3e40a09133d6101d66e, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 89395aa24ed0445949b38aec08415875, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Doctors
+      icon: {fileID: 21300000, guid: 5d574d351822b40bb93271e0a9feb93b, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Doctors
       icon: {fileID: 21300000, guid: 5d574d351822b40bb93271e0a9feb93b, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -101,11 +151,21 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: bc9e5269233b1406eb676bd05171bacc, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Paris
+      icon: {fileID: 21300000, guid: bc9e5269233b1406eb676bd05171bacc, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: f07a9b954222e794a97b00e0a3bf338c, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Cat
+      icon: {fileID: 21300000, guid: b28b4a88c11bd40fb93286e01be5a274, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Cat
       icon: {fileID: 21300000, guid: b28b4a88c11bd40fb93286e01be5a274, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -117,11 +177,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Elsa
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Elsa
+      icon: {fileID: 21300000, guid: a3d217bedfc6e41efa6a1750e5a1e8a8, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Elsa
       icon: {fileID: 21300000, guid: a3d217bedfc6e41efa6a1750e5a1e8a8, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -133,11 +203,21 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: 9591a1da8888644fc829d4bca5ab24f3, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Elsa
+      icon: {fileID: 21300000, guid: 9591a1da8888644fc829d4bca5ab24f3, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Elsa
+      icon: {fileID: 21300000, guid: e5378d6305a57c149a25d32439c8781f, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Elsa
       icon: {fileID: 21300000, guid: e5378d6305a57c149a25d32439c8781f, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -149,6 +229,11 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Sofa
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
@@ -157,11 +242,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Table
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Chair
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Chair
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -173,11 +268,21 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: 3f14e130139693946899df61b1f6d739, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Chair
+      icon: {fileID: 21300000, guid: 3f14e130139693946899df61b1f6d739, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Chair
+      icon: {fileID: 21300000, guid: 000127c87064dcb408c82eb4264df986, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Chair
       icon: {fileID: 21300000, guid: 000127c87064dcb408c82eb4264df986, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -189,11 +294,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Tulip
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Rose
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Rose
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -205,11 +320,21 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: 8f13c2f9d313e9648bb95063519ff6d3, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Rose
+      icon: {fileID: 21300000, guid: 8f13c2f9d313e9648bb95063519ff6d3, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Rose
+      icon: {fileID: 21300000, guid: 505f5a21fd34d6b40a5428759006557c, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Rose
       icon: {fileID: 21300000, guid: 505f5a21fd34d6b40a5428759006557c, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -221,6 +346,12 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: 1c0227c52686b3440b425de81d63eb60, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Rose
+      icon: {fileID: 21300000, guid: 1c0227c52686b3440b425de81d63eb60, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   initialSpawns: 22
   minMultiplier: 1
   maxMultiplier: 2
+  levelDataToAppend: {fileID: 0}

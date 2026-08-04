@@ -10,277 +10,212 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8ba278c177864e64b79aa31831b5b38, type: 3}
-  m_Name: Words with Spikes
+  m_Name: Tastinh
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   datas:
-  - name: {fileID: 11400000, guid: a43fa4a2afc6e53439bcb3b4aae4cdc4, type: 2}
+  - name: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.3160377, b: 0.7601107, a: 1}
-    data:
-      name: Napoleon
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Napoleon
+    - name: Rose
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: a43fa4a2afc6e53439bcb3b4aae4cdc4, type: 2}
+    - name: MC
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    - name: BC
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
-    data:
-      name: Cleopatra
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Cleopatra
+    - name: Tulip
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: a43fa4a2afc6e53439bcb3b4aae4cdc4, type: 2}
+  - name: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0.46900606, b: 1, a: 1}
-    data:
-      name: Gandhi
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Gandhi
+    - name: Hibiscus
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: a43fa4a2afc6e53439bcb3b4aae4cdc4, type: 2}
+  - name: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.5712824, b: 0, a: 1}
-    data:
-      name: Einstein
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Einstein
+    - name: Sunflower
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 0e822b0419aab0a48819bfbf5c604fcc, type: 2}
+  - name: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.14199996, b: 0.14199996, a: 1}
-    data:
-      name: Buddhism
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Buddhism
+    - name: Table
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 0e822b0419aab0a48819bfbf5c604fcc, type: 2}
+  - name: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.7353099, b: 0, a: 1}
-    data:
-      name: Hinduism
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Hinduism
+    - name: Chair
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 0e822b0419aab0a48819bfbf5c604fcc, type: 2}
+  - name: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Christianity
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Christianity
+    - name: sofa
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 0e822b0419aab0a48819bfbf5c604fcc, type: 2}
+  - name: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
-    data:
-      name: Islam
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Islam
+    - name: bed
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 903c710981151bd4d996da631dffc9a4, type: 2}
+  - name: {fileID: 11400000, guid: bd7e2eae9f21232459d656e5a758a459, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
-    data:
-      name: Zeus
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Zeus
+    - name: BaseBall
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 903c710981151bd4d996da631dffc9a4, type: 2}
+  - name: {fileID: 11400000, guid: bd7e2eae9f21232459d656e5a758a459, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Thor
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Thor
+    - name: rugby
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 903c710981151bd4d996da631dffc9a4, type: 2}
+  - name: {fileID: 11400000, guid: bd7e2eae9f21232459d656e5a758a459, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.14199996, b: 0.14199996, a: 1}
-    data:
-      name: Anubis
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Anubis
+    - name: Tennis
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 903c710981151bd4d996da631dffc9a4, type: 2}
+  - name: {fileID: 11400000, guid: bd7e2eae9f21232459d656e5a758a459, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.5712824, b: 0, a: 1}
-    data:
-      name: Medusa
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Medusa
+    - name: soccer
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 8a07ae09d00207d4898664e9cc851628, type: 2}
+  - name: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.3160377, b: 0.7601107, a: 1}
-    data:
-      name: Eiffel Tower
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Eiffel Tower
+    - name: Burger
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 8a07ae09d00207d4898664e9cc851628, type: 2}
+  - name: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
-    data:
-      name: Taj Mahal
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Taj Mahal
+    - name: Hot dog
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 8a07ae09d00207d4898664e9cc851628, type: 2}
+  - name: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0.46900606, b: 1, a: 1}
-    data:
-      name: Colosseum
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Colosseum
+    - name: Pizza
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 8a07ae09d00207d4898664e9cc851628, type: 2}
+  - name: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.872, g: 0, b: 0.12894145, a: 1}
-    data:
-      name: Big ben
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Big ben
+    - name: Taco
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
+  - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Brazil
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Brazil
+    - name: Dog
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
+  - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
     overrideColor: 0
-    bubbleColor: {r: 1, g: 0.14199996, b: 0.14199996, a: 1}
-    data:
-      name: Canada
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
+    bubbleColor: {r: 1, g: 0.7353099, b: 0, a: 1}
     newDatas:
-    - name: Canada
+    - name: Parrot
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
+  - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.3160377, b: 0.7601107, a: 1}
-    data:
-      name: Japan
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
-    - name: Japan
+    - name: Cat
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
+  - name: {fileID: 11400000, guid: 5d5438e4c4bef5b41841506862c89203, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
+    newDatas:
+    - name: Hamster
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: ffca69653cb0b22469d4fc18a2cde8e2, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Spartans
+    newDatas:
+    - name: flour
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: ffca69653cb0b22469d4fc18a2cde8e2, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 0.14199996, b: 0.14199996, a: 1}
     newDatas:
-    - name: Spartans
+    - name: Oven
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: ffca69653cb0b22469d4fc18a2cde8e2, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 0.3160377, b: 0.7601107, a: 1}
+    newDatas:
+    - name: Cookies
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: ffca69653cb0b22469d4fc18a2cde8e2, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
+    newDatas:
+    - name: Bread
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.7353099, b: 0, a: 1}
-    data:
-      name: Egypt
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
     - name: Egypt
       icon: {fileID: 0}
@@ -289,11 +224,6 @@ MonoBehaviour:
   - name: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0.46900606, b: 1, a: 1}
-    data:
-      name: Newton
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
     - name: Newton
       icon: {fileID: 0}
@@ -302,11 +232,6 @@ MonoBehaviour:
   - name: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
     overrideColor: 0
     bubbleColor: {r: 1, g: 0.14199996, b: 0.14199996, a: 1}
-    data:
-      name: Darwin
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
     - name: Darwin
       icon: {fileID: 0}
@@ -315,11 +240,6 @@ MonoBehaviour:
   - name: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Romans
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
     - name: Romans
       icon: {fileID: 0}
@@ -328,11 +248,6 @@ MonoBehaviour:
   - name: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Curie
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
     - name: Curie
       icon: {fileID: 0}
@@ -341,11 +256,6 @@ MonoBehaviour:
   - name: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Mayans
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
     - name: Mayans
       icon: {fileID: 0}
@@ -354,11 +264,6 @@ MonoBehaviour:
   - name: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
-    data:
-      name: Tesla
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
     - name: Tesla
       icon: {fileID: 0}
@@ -367,11 +272,6 @@ MonoBehaviour:
   - name: {fileID: 11400000, guid: b03bc700aac5efa40ae3445840f46670, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Vikings
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
     - name: Vikings
       icon: {fileID: 0}
@@ -380,11 +280,6 @@ MonoBehaviour:
   - name: {fileID: 11400000, guid: 4231dbf6664e35944b4fde27cad75755, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Picasso
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
     - name: Picasso
       icon: {fileID: 0}
@@ -393,11 +288,6 @@ MonoBehaviour:
   - name: {fileID: 11400000, guid: 4231dbf6664e35944b4fde27cad75755, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Da Vinci
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
     - name: Da Vinci
       icon: {fileID: 0}
@@ -406,11 +296,6 @@ MonoBehaviour:
   - name: {fileID: 11400000, guid: 4231dbf6664e35944b4fde27cad75755, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Monet
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
     - name: Monet
       icon: {fileID: 0}
@@ -419,11 +304,6 @@ MonoBehaviour:
   - name: {fileID: 11400000, guid: 4231dbf6664e35944b4fde27cad75755, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.30313772, g: 0.638, b: 0, a: 1}
-    data:
-      name: Van Gogh
-      icon: {fileID: 0}
-      animationClip: {fileID: 0}
-      showBothTxtAndImg: 0
     newDatas:
     - name: Van Gogh
       icon: {fileID: 0}

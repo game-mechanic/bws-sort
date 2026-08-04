@@ -21,11 +21,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: chips
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 938fcecd60c389648a62de4d13bdd732, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: cookies
+      icon: {fileID: 21300000, guid: 592fa7e97611c0e41a218cd50b830d37, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: cookies
       icon: {fileID: 21300000, guid: 592fa7e97611c0e41a218cd50b830d37, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -37,11 +47,21 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: 471099f54db9cee44a80bc9fe92e33b3, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Chocolate
+      icon: {fileID: 21300000, guid: 471099f54db9cee44a80bc9fe92e33b3, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 938fcecd60c389648a62de4d13bdd732, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Doughnut
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Doughnut
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -53,11 +73,21 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: db812d2e9dcd6d846a2635823a3eece6, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Eggs
+      icon: {fileID: 21300000, guid: db812d2e9dcd6d846a2635823a3eece6, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 776b42aad0f210e4b8ee2357fc126fea, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Chicken
+      icon: {fileID: 21300000, guid: 9a0a2912f8bd5e343a817732c9f7293a, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Chicken
       icon: {fileID: 21300000, guid: 9a0a2912f8bd5e343a817732c9f7293a, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -69,11 +99,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: lentils
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 776b42aad0f210e4b8ee2357fc126fea, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Tofu
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Tofu
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -85,11 +125,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Rice
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 662af2ab03733984484015a67a48e762, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Wheat
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Wheat
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -101,11 +151,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: oats
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 662af2ab03733984484015a67a48e762, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: cornflakes
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: cornflakes
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -117,11 +177,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Espresso
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: d13d71ef68178be4a9365b3e0f8d9ef1, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: mocha
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: mocha
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -133,11 +203,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: latte
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: d13d71ef68178be4a9365b3e0f8d9ef1, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: cappuccino
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: cappuccino
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -149,11 +229,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Tea
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 421c06c4ff94d8847829d4b98abaa5db, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Coffee
+      icon: {fileID: 21300000, guid: 9b3944160ff4ecd499beaaddb224b9f5, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Coffee
       icon: {fileID: 21300000, guid: 9b3944160ff4ecd499beaaddb224b9f5, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -165,11 +255,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: juice
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 421c06c4ff94d8847829d4b98abaa5db, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Milk
+      icon: {fileID: 21300000, guid: ee433bb7a67e0494e8f171721688a00f, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Milk
       icon: {fileID: 21300000, guid: ee433bb7a67e0494e8f171721688a00f, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -181,11 +281,21 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: ac88b38e7658ab94bb11581d6b6821ff, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Toothpaste
+      icon: {fileID: 21300000, guid: ac88b38e7658ab94bb11581d6b6821ff, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: a454500fff9a094469de8d0a33a9b4ab, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Toothbrush
+      icon: {fileID: 21300000, guid: 00720ceeff0de9f4291fdd9e31093c74, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Toothbrush
       icon: {fileID: 21300000, guid: 00720ceeff0de9f4291fdd9e31093c74, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -197,11 +307,21 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Soap
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: a454500fff9a094469de8d0a33a9b4ab, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Towel
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Towel
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -213,11 +333,21 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: b9caf5e51dcb37447ab925dd6f431f75, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Chair
+      icon: {fileID: 21300000, guid: b9caf5e51dcb37447ab925dd6f431f75, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Table
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    newDatas:
+    - name: Table
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -229,6 +359,11 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Sofa
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: fadb9e3db9192264a97592e7e5d1c613, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
@@ -237,6 +372,12 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: 36d4a99f39ddeed46838f337614a66c2, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    newDatas:
+    - name: Lamp
+      icon: {fileID: 21300000, guid: 36d4a99f39ddeed46838f337614a66c2, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   initialSpawns: 16
   minMultiplier: 1
   maxMultiplier: 1.2
+  levelDataToAppend: {fileID: 0}

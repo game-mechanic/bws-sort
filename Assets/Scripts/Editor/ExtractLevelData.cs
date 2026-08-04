@@ -84,25 +84,35 @@ public static class ExtractLevelData
                     SerializedProperty nameProp = element.FindPropertyRelative("name");
                     SerializedProperty overrideColorProp = element.FindPropertyRelative("overrideColor");
                     SerializedProperty bubbleColorProp = element.FindPropertyRelative("bubbleColor");
-                    SerializedProperty dataProp = element.FindPropertyRelative("data");
+                    SerializedProperty dataProp = element.FindPropertyRelative("newDatas"); // Now representing the List<Bubble.Data>
 
-                    SerializedProperty dataNameProp = dataProp.FindPropertyRelative("name");
-                    SerializedProperty dataIconProp = dataProp.FindPropertyRelative("icon");
-                    SerializedProperty dataAnimClipProp = dataProp.FindPropertyRelative("animationClip");
-                    SerializedProperty dataShowBothProp = dataProp.FindPropertyRelative("showBothTxtAndImg");
+                    List<Bubble.Data> copiedBubbleData = new List<Bubble.Data>();
+                    if (dataProp != null && dataProp.isArray)
+                    {
+                        for (int k = 0; k < dataProp.arraySize; k++)
+                        {
+                            SerializedProperty bDataElement = dataProp.GetArrayElementAtIndex(k);
+                            SerializedProperty dataNameProp = bDataElement.FindPropertyRelative("name");
+                            SerializedProperty dataIconProp = bDataElement.FindPropertyRelative("icon");
+                            SerializedProperty dataAnimClipProp = bDataElement.FindPropertyRelative("animationClip");
+                            SerializedProperty dataShowBothProp = bDataElement.FindPropertyRelative("showBothTxtAndImg");
+
+                            copiedBubbleData.Add(new Bubble.Data
+                            {
+                                name = dataNameProp != null ? dataNameProp.stringValue : "",
+                                icon = dataIconProp != null ? dataIconProp.objectReferenceValue as Sprite : null,
+                                animationClip = dataAnimClipProp != null ? dataAnimClipProp.objectReferenceValue as AnimationClip : null,
+                                showBothTxtAndImg = dataShowBothProp != null ? dataShowBothProp.boolValue : false
+                            });
+                        }
+                    }
 
                     LevelData.Data entry = new LevelData.Data
                     {
                         name = nameProp.objectReferenceValue as BubbleType,
                         overrideColor = overrideColorProp.boolValue,
                         bubbleColor = bubbleColorProp.colorValue,
-                        data = new Bubble.Data
-                        {
-                            name = dataNameProp.stringValue,
-                            icon = dataIconProp.objectReferenceValue as Sprite,
-                            animationClip = dataAnimClipProp.objectReferenceValue as AnimationClip,
-                            showBothTxtAndImg = dataShowBothProp.boolValue
-                        }
+                        newDatas = copiedBubbleData
                     };
 
                     levelData.datas.Add(entry);

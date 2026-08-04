@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "BWS/Level Data")]
 public class LevelData : ScriptableObject
@@ -11,7 +12,7 @@ public class LevelData : ScriptableObject
         public BubbleType name;
         public bool overrideColor = false;
         [ColorUsage(false)] public Color bubbleColor = Color.white;
-        public Bubble.Data data;
+        public List<Bubble.Data> newDatas = new();
     }
 
     public List<Data> datas = new();
@@ -35,19 +36,28 @@ public class LevelData : ScriptableObject
 
         foreach (var item in levelDataToAppend.datas)
         {
-            // Deep copy the data to avoid reference issues
+            // Deep copy the data list to avoid reference issues
+            List<Bubble.Data> copiedBubbleData = new List<Bubble.Data>();
+            if (item.newDatas != null)
+            {
+                foreach (var bData in item.newDatas)
+                {
+                    copiedBubbleData.Add(new Bubble.Data
+                    {
+                        name = bData.name,
+                        icon = bData.icon,
+                        animationClip = bData.animationClip,
+                        showBothTxtAndImg = bData.showBothTxtAndImg
+                    });
+                }
+            }
+
             datas.Add(new Data
             {
                 name = item.name,
                 overrideColor = item.overrideColor,
                 bubbleColor = item.bubbleColor,
-                data = new Bubble.Data
-                {
-                    name = item.data.name,
-                    icon = item.data.icon,
-                    animationClip = item.data.animationClip,
-                    showBothTxtAndImg = item.data.showBothTxtAndImg
-                }
+                newDatas = copiedBubbleData
             });
         }
 
@@ -57,6 +67,7 @@ public class LevelData : ScriptableObject
         UnityEditor.EditorUtility.SetDirty(this);
 #endif
     }
+
     [EditorButton("Clear Data")]
     public void ClearData()
     {

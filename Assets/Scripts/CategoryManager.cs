@@ -40,12 +40,17 @@ public class CategoryManager : Singleton<CategoryManager>
 
 
         WaitForSeconds _waitForSeconds0_1 = new(0.1f);
-        Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
         for (int j = 0; j < Mathf.Min(initialSpawns, datas.Count); j++)
         {
+            Bubble bubblePrefab = GameSettings.Instance.Bubbles[datas[j].newDatas.Count - 1];
             Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
             BubbleType category = datas[j].name;
-            Bubble.Data data = datas[j].data;
+            List<Bubble.Data> data = new();
+            if (datas[j].newDatas != null)
+            {
+                data.AddRange(datas[j].newDatas);
+            }
+
             Color bubbleColor = datas[j].overrideColor ?
                 datas[j].bubbleColor :
                 GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
@@ -76,7 +81,7 @@ public class CategoryManager : Singleton<CategoryManager>
 
                 bubble.transform.DOScale(bubble.transform.localScale, 0.2f).From(0);
 
-                bubble.SetName(new() { data });
+                bubble.SetName(data);
             });
             if (j % 4 == 0)
                 yield return _waitForSeconds0_1;
@@ -140,7 +145,11 @@ public class CategoryManager : Singleton<CategoryManager>
         {
             Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
             BubbleType category = datas[j].name;
-            Bubble.Data data = datas[j].data;
+            List<Bubble.Data> data = new();
+            if (datas[j].newDatas != null)
+            {
+                data.AddRange(datas[j].newDatas);
+            }
             Color bubbleColor = datas[j].overrideColor ?
                         datas[j].bubbleColor :
                         GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
@@ -164,7 +173,7 @@ public class CategoryManager : Singleton<CategoryManager>
                 if (GameSettings.Instance.CanUseDifferentSprites)
                     bubble.SetBubbleSprite(sprite);
 
-                bubble.SetName(new() { data });
+                bubble.SetName(data);
             });
         }
         currentIndex += 4;
