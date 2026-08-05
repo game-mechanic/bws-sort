@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
+  m_Name: Transparent Start
+  m_EditorClassIdentifier: 
+  bubbles:
+  - {fileID: 7926608256317659342, guid: 9e0987b541db1436c93b27775bc54d76, type: 3}
+  - {fileID: 7926608256317659342, guid: 14d9e7d4e6f4dd845b943af513069830, type: 3}
+  - {fileID: 7926608256317659342, guid: d64ab61e928c95c408d30cf3df506913, type: 3}
+  - {fileID: 7926608256317659342, guid: f51cc0cdd59f01e419bfd79fbb711c9a, type: 3}

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92e738552f6290c4f876c51f380cb4bc, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  maxBounceAmplitude: 0.1
+  maxBounceAmplitude: 0.4
   bounceTime: 0.5
   maxBounces: 2
   lerpSpeeed: 15
-  bubbleProfile: {fileID: 11400000, guid: 7111c125cce9b454aaa5c6fb01707ffa, type: 2}
+  bubbleProfile: {fileID: 11400000, guid: e945550fac2c24b2a87e920a62e17655, type: 2}
   mergeCount: 4
   dragSpeed: 10
   breathingSpeed: 5

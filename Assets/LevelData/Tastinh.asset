@@ -29,11 +29,27 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+    - name: BSDk
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: cb8e411b98a0c7b47bc872453c520c48, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0.58400005, g: 0.22000003, b: 1, a: 1}
     newDatas:
     - name: Tulip
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    - name: MADGOD
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    - name: LANJA
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+    - name: PUKU
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
@@ -309,7 +325,7 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  initialSpawns: 19
+  initialSpawns: 24
   minMultiplier: 1
   maxMultiplier: 2
   levelDataToAppend: {fileID: 0}

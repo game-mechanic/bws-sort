@@ -38,6 +38,7 @@ public class CategoryManager : Singleton<CategoryManager>
 
         Shuffle();
 
+        List<Bubble> blastableBubble = new();
 
         WaitForSeconds _waitForSeconds0_1 = new(0.1f);
         for (int j = 0; j < Mathf.Min(initialSpawns, datas.Count); j++)
@@ -82,11 +83,28 @@ public class CategoryManager : Singleton<CategoryManager>
                 bubble.transform.DOScale(bubble.transform.localScale, 0.2f).From(0);
 
                 bubble.SetName(data);
+
+                if (bubble.Index == GameSettings.Instance.MergeCount - 1)
+                {
+                    blastableBubble.Add(bubble);
+                }
+
             });
+
             if (j % 4 == 0)
                 yield return _waitForSeconds0_1;
         }
+
         currentIndex = initialSpawns;
+        yield return new WaitForSeconds(2);
+        for (int i = 0; i < blastableBubble.Count; i++)
+        {
+            if (blastableBubble[i].Index == GameSettings.Instance.MergeCount - 1)
+            {
+                blastableBubble[i].Blast(() => InputHandler.Instance.OnSuccessfullMerge?.Invoke());
+            }
+            yield return new WaitForSeconds(.2f);
+        }
     }
 
     private void Shuffle()

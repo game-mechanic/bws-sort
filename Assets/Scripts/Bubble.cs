@@ -228,6 +228,7 @@ public class Bubble : MonoBehaviour
         IsKinematic = RigidbodyType2D.Kinematic;
         SetCollider(false);
         sortingGroup.sortingOrder = 100;
+        rb.linearVelocity = Vector2.zero;
         if (GameSettings.Instance.CanCreateGhost)
             this.ghostInstance = Instantiate(ghost, transform.position, Quaternion.identity);
     }
@@ -295,6 +296,46 @@ public class Bubble : MonoBehaviour
         float delayStep = 0.08f;
         int index = 0;
 
+        /* foreach (var text in textUIs)
+        {
+            Transform bg = text.bg.transform;
+            Transform txt = text.textUIs.transform;
+
+            bg.DOKill();
+            txt.DOKill();
+
+            // Store initial scale
+            Vector3 bgStartScale = bg.localScale;
+            Vector3 txtStartScale = txt.localScale;
+
+            float delay = index * delayStep;
+
+            Sequence textSeq = DOTween.Sequence();
+
+            textSeq.AppendInterval(delay);
+
+            // Optional tiny anticipation (feels nicer than instant shrink)
+            textSeq.Append(
+                bg.DOScale(bgStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
+            );
+
+            textSeq.Join(
+                txt.DOScale(txtStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
+            );
+
+            // Main disappear (shrink)
+            textSeq.Append(
+                bg.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InBack)
+            );
+
+            textSeq.Join(
+                txt.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack)
+            );
+
+            blastSequence.Join(textSeq);
+
+            index++;
+        } */
         foreach (var text in textUIs)
         {
             Transform bg = text.bg.transform;
@@ -326,6 +367,9 @@ public class Bubble : MonoBehaviour
             textSeq.Append(
                 bg.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InBack)
             );
+            const float moveSpeed = 0.2f;
+            textSeq.Join(bg.DOLocalMove(Vector3.zero, moveSpeed).SetEase(Ease.InBack));
+            textSeq.Join(txt.DOLocalMove(Vector3.zero, moveSpeed).SetEase(Ease.InBack));
 
             textSeq.Join(
                 txt.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack)
