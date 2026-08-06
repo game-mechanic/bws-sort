@@ -2682,7 +2682,7 @@ Material:
     - _ColorMask: 15
     - _CullMode: 0
     - _Diffuse: 0.5
-    - _FaceDilate: -0.027
+    - _FaceDilate: -0.141
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.05
@@ -2696,12 +2696,12 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0
+    - _OutlineWidth: 0.104
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.85714287
-    - _ScaleRatioB: 0.7195715
-    - _ScaleRatioC: 0.7195715
+    - _ScaleRatioB: 0.8172857
+    - _ScaleRatioC: 0.8172857
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -2746,7 +2746,7 @@ Texture2D:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
   m_IsAlphaChannelOptional: 0
-  serializedVersion: 3
+  serializedVersion: 4
   m_Width: 512
   m_Height: 512
   m_CompleteImageSize: 262144
