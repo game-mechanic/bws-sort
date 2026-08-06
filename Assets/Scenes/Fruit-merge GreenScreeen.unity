@@ -503,6 +503,20 @@ MonoBehaviour:
       name: Italy
       icon: {fileID: 0}
       showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Newton
+      icon: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Einstein
+      icon: {fileID: 0}
+      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 8a07ae09d00207d4898664e9cc851628, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
@@ -510,11 +524,11 @@ MonoBehaviour:
       name: Times Square
       icon: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 8a07ae09d00207d4898664e9cc851628, type: 2}
+  - name: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Colosseum
+      name: Darwin
       icon: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: a43fa4a2afc6e53439bcb3b4aae4cdc4, type: 2}
@@ -522,6 +536,13 @@ MonoBehaviour:
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Gandhi
+      icon: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 8a07ae09d00207d4898664e9cc851628, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: Colosseum
       icon: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
@@ -535,14 +556,7 @@ MonoBehaviour:
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
-      name: Newton
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: Darwin
+      name: Tesla
       icon: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 8a07ae09d00207d4898664e9cc851628, type: 2}
@@ -601,13 +615,6 @@ MonoBehaviour:
       name: Egypt
       icon: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: Einstein
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: a43fa4a2afc6e53439bcb3b4aae4cdc4, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
@@ -627,13 +634,6 @@ MonoBehaviour:
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: Roman
-      icon: {fileID: 0}
-      showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 0db63b04f5d32cf4b9a208b8aabc6117, type: 2}
-    overrideColor: 0
-    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
-    data:
-      name: Tesla
       icon: {fileID: 0}
       showBothTxtAndImg: 0
   initialSpawns: 5
@@ -1433,6 +1433,93 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!1001 &1043759933
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1872489197125276822, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_Name
+      value: Second (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652232489858092070, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_text
+      value: Tokyo
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652232489858092070, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_fontSize
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119163483510671203, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_text
+      value: FUji
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926608256317659342, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: category
+      value: 
+      objectReference: {fileID: 11400000, guid: 7af8a0828acb22e44a41b37777d70bb4, type: 2}
+    - target: {fileID: 7926608256317659342, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: names.Array.data[0].name
+      value: FUji
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926608256317659342, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: names.Array.data[1].name
+      value: Tokyo
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6963683559661736649, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 4246839283837244567, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
 --- !u!1 &1261789451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,7 +1774,7 @@ Transform:
   m_GameObject: {fileID: 1365026304}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.81, z: 0}
+  m_LocalPosition: {x: 0, y: -0.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1870,12 +1957,99 @@ Transform:
   m_GameObject: {fileID: 1416871994}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.54, z: 0}
+  m_LocalPosition: {x: 0, y: -1.0899999, z: 0}
   m_LocalScale: {x: 0.35585353, y: 0.35585353, z: 0.35585353}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1435637394
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1872489197125276822, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_Name
+      value: Second (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3478102112539030296, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652232489858092070, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_text
+      value: India Gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652232489858092070, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_fontSize
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6119163483510671203, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: m_text
+      value: Taj Mahal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926608256317659342, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: category
+      value: 
+      objectReference: {fileID: 11400000, guid: b8d1de56817b49a40b167e219f035818, type: 2}
+    - target: {fileID: 7926608256317659342, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: names.Array.data[0].name
+      value: Taj Mahal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926608256317659342, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      propertyPath: names.Array.data[1].name
+      value: India Gate
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6963683559661736649, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 4246839283837244567, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 2a670bd2645c319478e3f8578f6ce477, type: 3}
 --- !u!1 &1484017447
 GameObject:
   m_ObjectHideFlags: 0
@@ -2746,4 +2920,6 @@ SceneRoots:
   - {fileID: 1545136422}
   - {fileID: 1714689612}
   - {fileID: 249730950}
+  - {fileID: 1043759933}
+  - {fileID: 1435637394}
   - {fileID: 1416871996}
