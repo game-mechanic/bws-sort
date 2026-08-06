@@ -16,7 +16,7 @@ MonoBehaviour:
   bounceTime: 0.5
   maxBounces: 2
   lerpSpeeed: 15
-  bubbleProfile: {fileID: 11400000, guid: e945550fac2c24b2a87e920a62e17655, type: 2}
+  bubbleProfile: {fileID: 11400000, guid: 92976d370c63e4d529aad995c22580a3, type: 2}
   mergeCount: 4
   dragSpeed: 10
   breathingSpeed: 5
@@ -28,7 +28,7 @@ MonoBehaviour:
   canAnimateSprite: 0
   canChangeColor: 0
   colorProfile: {fileID: 11400000, guid: a0304dc618e3ae945972530dfd5672b7, type: 2}
-  canUseDifferentSprites: 0
+  canUseDifferentSprites: 1
   spriteProfile: {fileID: 11400000, guid: 2802460379ecb425c98b78509e7a2f63, type: 2}
   tableReference:
     m_TableCollectionName: RedThings

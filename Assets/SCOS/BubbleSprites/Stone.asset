@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: Stone
   m_EditorClassIdentifier: Assembly-CSharp::SpriteProfile
   bubbleSprites:
-  - {fileID: 21300000, guid: 82a6a0309f7fd41909bc05947c00b6ca, type: 3}
-  - {fileID: 21300000, guid: 208100a18298341aaae92e55ac54a413, type: 3}
-  - {fileID: 21300000, guid: d6e83493f799e47e58e6f008ff6e9e1f, type: 3}
-  - {fileID: 21300000, guid: e335e741c69ba4d63800fa5bb2b8a123, type: 3}
+  - {fileID: 21300000, guid: 4870d0ec0c0eaea4992ca982715f2a10, type: 3}
+  - {fileID: 21300000, guid: 4dd9d128498760c439026be8c1ebaa7f, type: 3}
