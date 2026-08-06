@@ -1,6 +1,6 @@
+using System;
 using DG.Tweening;
 using DG.Tweening.Core.Easing;
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
