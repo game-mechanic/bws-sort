@@ -176,9 +176,9 @@
 			StartCoroutine (loop(pos, initSpeed, count));
 		}
 
-		public void Spawn(int count, Vector3 pos, Vector2 InitVelocity, float delay = 0f){
-			executeMicroSpawns ();
-			StartCoroutine (loop(pos, InitVelocity, count, delay));
+		public void SpawnFixed(int count, Vector3 pos, Vector2 velocity)
+		{
+			StartCoroutine(loop(pos, velocity, count, 0f));
 		}
 
 		void executeMicroSpawns()
@@ -261,11 +261,14 @@
 
 
 					// Count limiter
-					if (count > -1) {
+					if (count > -1)
+					{
 						auxCount++;
-						if (auxCount >= count && !Dynamic) {
+
+						if (auxCount >= count)
+						{
 							yield break;
-						} 
+						}
 					}
 
 					if(waitBetweenDropSpawn)

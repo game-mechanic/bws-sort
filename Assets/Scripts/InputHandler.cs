@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
-
+using Water2D;
 public class InputHandler : Singleton<InputHandler>
 {
     Bubble draggable;
@@ -209,44 +209,18 @@ public class InputHandler : Singleton<InputHandler>
         }
         return true;
     }
-    public GameObject Water;
 
-    [SerializeField] private int waterPerUnit = 40;   // More = more water
-    [SerializeField] private float spawnRadiusOffset = 0.45f;
-    [SerializeField] private float waterDensity = 250f; // Increase for more water
-    
-    [SerializeField] private float spawnRadius = 0.15f;
-    [SerializeField] private float fallSpeed = 4f;
-    [SerializeField] private float horizontalSpread = 1f;
 
     void SpawnWaterOnBubble(Bubble bubble)
     {
+        // Hide the bubble immediately
         bubble.gameObject.SetActive(false);
 
-        float radius = bubble.transform.localScale.x * 0.5f;
-        int waterCount = Mathf.CeilToInt(Mathf.PI * radius * radius * waterDensity);
-
-        for (int i = 0; i < waterCount; i++)
-        {
-            // Spawn in a small cluster
-            Vector2 offset = UnityEngine.Random.insideUnitCircle * spawnRadius;
-
-            GameObject drop = Instantiate(
-                Water,
-                bubble.transform.position + (Vector3)offset,
-                Quaternion.identity
-            );
-
-            Rigidbody2D rb = drop.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                // Mostly downward with a little sideways movement
-                rb.linearVelocity = new Vector2(
-                    UnityEngine.Random.Range(-horizontalSpread, horizontalSpread),
-                    -fallSpeed + UnityEngine.Random.Range(-0.5f, 0.5f)
-                );
-            }
-        }
+        Water2D_Spawner.instance.SpawnFixed(
+            100,
+            bubble.transform.position,
+            new Vector2(0f, -2f)
+        );
     }
 
     void Highlight(Bubble newBubble)

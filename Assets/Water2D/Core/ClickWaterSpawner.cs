@@ -9,16 +9,16 @@ public class ClickWaterSpawner : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 worldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            worldPos.z = 0f;
-
-            Water2D_Spawner.instance.Spawn(
-                particlesPerClick,
-                worldPos,
-                initialVelocity
-            );
-        }
+        // if (Input.GetMouseButtonDown(0))
+        // {
+        //     Vector3 worldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        //     worldPos.z = 0f;
+        //
+        //     Water2D_Spawner.instance.Spawn(
+        //         particlesPerClick,
+        //         worldPos,
+        //         initialVelocity
+        //     );
+        // }
     }
 }

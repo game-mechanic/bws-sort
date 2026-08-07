@@ -252,14 +252,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Drop
       objectReference: {fileID: 0}
-    - target: {fileID: 199430, guid: 1c5fea894b39b534ca9499ead78fb437, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 486282, guid: 1c5fea894b39b534ca9499ead78fb437, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 486282, guid: 1c5fea894b39b534ca9499ead78fb437, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.37
@@ -300,22 +292,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 21251924, guid: 1c5fea894b39b534ca9499ead78fb437, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 50136950052901686, guid: 1c5fea894b39b534ca9499ead78fb437, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 68ddb697a76638c4986f6ad960e37352, type: 2}
-    - target: {fileID: 50136950052901686, guid: 1c5fea894b39b534ca9499ead78fb437, type: 3}
-      propertyPath: m_Simulated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 58207158184040794, guid: 1c5fea894b39b534ca9499ead78fb437, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 68ddb697a76638c4986f6ad960e37352, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -915,6 +891,506 @@ MonoBehaviour:
   - {fileID: 1556885351}
   - {fileID: 1556885351}
   - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
+  - {fileID: 1556885351}
   size: 0.3
   LifeTime: 100
   DelayBetweenParticles: 0.02
@@ -922,7 +1398,7 @@ MonoBehaviour:
   FillColor: {r: 0, g: 0.4392157, b: 1, a: 1}
   StrokeColor: {r: 0.015686275, g: 0.6117647, b: 1, a: 1}
   initSpeed: {x: 0, y: -4}
-  DynamicChanges: 1
+  DynamicChanges: 0
   btn: 0
 --- !u!4 &60512905
 Transform:
@@ -950,7 +1426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 84020371}
   - component: {fileID: 84020370}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1006,7 +1482,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -100
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 343185e3dffbc03439342230e480772c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea4b388fec220da4c9e5cf210dee4d73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1149,7 +1625,7 @@ Transform:
   m_GameObject: {fileID: 125262863}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -4.61, z: -9.98}
+  m_LocalPosition: {x: -0.02, y: -3.6, z: -9.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1207,7 +1683,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.91
+  orthographic size: 8.93
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -1257,13 +1733,6 @@ MonoBehaviour:
   OnSuccessfullMerge:
     m_PersistentCalls:
       m_Calls: []
-  Water: {fileID: 5355507716205755723, guid: 0969438b1371d6241be45f21003911e0, type: 3}
-  waterPerUnit: 20
-  spawnRadiusOffset: 0.2
-  waterDensity: 80
-  spawnRadius: 0.15
-  fallSpeed: 4
-  horizontalSpread: 1
 --- !u!4 &157686651
 Transform:
   m_ObjectHideFlags: 0
@@ -1291,7 +1760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf384fb6eec2be54b8bcacde80477751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOnStart: 0
+  spawnOnStart: 1
   levelData: {fileID: 11400000, guid: 4aef9634d1f8d4137a3ab2c391a5377f, type: 2}
   horizontalAlignment: {fileID: 1345279678}
 --- !u!1 &401160520
@@ -1617,43 +2086,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 15}
   m_EdgeRadius: 0
---- !u!84 &637134238
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 6
-  m_Width: 3840
-  m_Height: 2160
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 90
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_UseDynamicScaleExplicit: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,7 +2795,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9.58
+  orthographic size: 8.93
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -2388,7 +2820,7 @@ Transform:
   m_GameObject: {fileID: 1132149335}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -4.61, z: -9.98}
+  m_LocalPosition: {x: -0.02, y: -3.6, z: -9.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2420,7 +2852,7 @@ Transform:
   m_GameObject: {fileID: 1345279676}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.44, y: 2.64, z: 0}
+  m_LocalPosition: {x: 0.16, y: 12.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2513,38 +2945,61 @@ EdgeCollider2D:
   - {x: -11.268963, y: 14.178308}
   - {x: -3.680691, y: 3.2791977}
   - {x: -3.1261983, y: 2.020177}
-  - {x: -2.7313187, y: 1.8111259}
-  - {x: -2.6704392, y: 1.4557446}
-  - {x: -2.3380232, y: 0.74016047}
-  - {x: -1.7907404, y: -0.32329667}
-  - {x: -0.9918915, y: -1.3865535}
-  - {x: 0.058729265, y: -2.9028475}
-  - {x: 0.10908796, y: -3.0978513}
-  - {x: 0.14704111, y: -3.4081933}
-  - {x: -0.060442597, y: -3.8689916}
-  - {x: -0.4064255, y: -4.3110385}
-  - {x: -0.73444027, y: -4.7282896}
-  - {x: -1.0641011, y: -5.245791}
-  - {x: -1.4884467, y: -5.8942738}
-  - {x: -1.7880641, y: -6.702472}
-  - {x: -1.9812595, y: -7.49541}
-  - {x: -2.0050511, y: -8.05441}
-  - {x: -2.0182009, y: -8.618912}
-  - {x: 1.6630383, y: -8.593799}
-  - {x: 2.2074924, y: -8.289971}
-  - {x: 2.288491, y: -7.8055296}
-  - {x: 2.0043447, y: -6.282054}
-  - {x: 1.7427274, y: -5.750192}
-  - {x: 0.5292315, y: -3.7182572}
-  - {x: 0.3713946, y: -3.4506388}
-  - {x: 0.40982488, y: -3.0079477}
-  - {x: 0.6227388, y: -2.6779206}
-  - {x: 0.96671134, y: -2.1849706}
-  - {x: 1.8808596, y: -1.1548575}
-  - {x: 2.559107, y: -0.10962582}
-  - {x: 2.8925853, y: 1.0651503}
-  - {x: 2.8248634, y: 1.7902325}
-  - {x: 3.4131205, y: 1.6658814}
+  - {x: -3.0464609, y: 1.9172499}
+  - {x: -3.094303, y: 1.4606256}
+  - {x: -2.8507802, y: 0.6739984}
+  - {x: -2.4021544, y: -0.5607854}
+  - {x: -1.3876452, y: -1.8048697}
+  - {x: -0.09253834, y: -2.919729}
+  - {x: 0.01921317, y: -3.1365516}
+  - {x: 0.082110785, y: -3.3280208}
+  - {x: 0.0064798594, y: -3.5969272}
+  - {x: -0.5647867, y: -3.824173}
+  - {x: -0.8292445, y: -4.1163464}
+  - {x: -1.3941299, y: -4.6267686}
+  - {x: -1.8380859, y: -5.135409}
+  - {x: -2.0520785, y: -5.45399}
+  - {x: -2.2404828, y: -5.797349}
+  - {x: -2.4838915, y: -6.4907827}
+  - {x: -2.5516381, y: -6.847054}
+  - {x: -2.5754542, y: -7.1958413}
+  - {x: -2.5627058, y: -7.6647115}
+  - {x: -2.4965653, y: -7.9599895}
+  - {x: -2.4038184, y: -8.422541}
+  - {x: -2.2721283, y: -8.711152}
+  - {x: -2.0596588, y: -8.878722}
+  - {x: -1.7107714, y: -9.003471}
+  - {x: -1.1619993, y: -9.085297}
+  - {x: -0.6926094, y: -9.129539}
+  - {x: -0.03501439, y: -9.164099}
+  - {x: 0.52806216, y: -9.154637}
+  - {x: 1.0434613, y: -9.120034}
+  - {x: 1.5510275, y: -9.07828}
+  - {x: 2.1300488, y: -8.964183}
+  - {x: 2.4409738, y: -8.865349}
+  - {x: 2.61737, y: -8.785459}
+  - {x: 2.7502878, y: -8.493269}
+  - {x: 2.9267623, y: -7.971811}
+  - {x: 3.0238996, y: -7.510183}
+  - {x: 3.0115862, y: -7.1416836}
+  - {x: 2.9974282, y: -6.824512}
+  - {x: 2.835678, y: -6.2043242}
+  - {x: 2.6512434, y: -5.8215346}
+  - {x: 2.4964201, y: -5.510134}
+  - {x: 2.3332365, y: -5.2385316}
+  - {x: 2.0863867, y: -4.916144}
+  - {x: 1.8291204, y: -4.632755}
+  - {x: 1.4971304, y: -4.3146567}
+  - {x: 1.0992149, y: -3.9655366}
+  - {x: 0.35710716, y: -3.409953}
+  - {x: 0.412085, y: -3.0077655}
+  - {x: 0.74139816, y: -2.5796952}
+  - {x: 1.427283, y: -2.0313368}
+  - {x: 2.611174, y: -0.7429856}
+  - {x: 3.1245744, y: 0.15507466}
+  - {x: 3.3380866, y: 1.0914304}
+  - {x: 3.3683326, y: 1.561717}
+  - {x: 3.3656757, y: 2.3041372}
   - {x: 3.3537004, y: 2.3799667}
   - {x: 3.5662417, y: 3.3216383}
   - {x: 10.753628, y: 13.442238}
@@ -2675,7 +3130,7 @@ Transform:
   m_GameObject: {fileID: 1485956692}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -4.61, z: -9.98}
+  m_LocalPosition: {x: -0.02, y: -3.6, z: -9.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2716,13 +3171,13 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.91
+  orthographic size: 8.93
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 512
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 637134238}
+  m_TargetTexture: {fileID: 1737069522}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -2896,6 +3351,43 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &1737069522
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 6
+  m_Width: 3840
+  m_Height: 2160
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 90
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_UseDynamicScaleExplicit: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1 &1793024767
 GameObject:
   m_ObjectHideFlags: 0
