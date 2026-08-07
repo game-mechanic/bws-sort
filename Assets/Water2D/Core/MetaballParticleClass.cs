@@ -7,6 +7,7 @@ public class MetaballParticleClass : MonoBehaviour {
 
 	public GameObject MObject;
 	public float LifeTime;
+	public Rigidbody2D RB_;
 	public bool Active{
 		get{ return _active;}
 		set{ _active = value;
@@ -32,6 +33,33 @@ public class MetaballParticleClass : MonoBehaviour {
 		//MObject = gameObject;
 		rb = GetComponent<Rigidbody2D> ();
 		tr = GetComponent<TrailRenderer> ();
+	}
+
+	private bool isChanging;
+
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.CompareTag("Collid") && !isChanging)
+		{
+			print("Sui");
+			isChanging = true;
+			StartCoroutine(ChangeToDiscrete());
+		}
+	}
+
+	private IEnumerator ChangeToDiscrete()
+	{
+		yield return new WaitForSeconds(3f);
+
+		RB_.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
+		isChanging = false;
+	}
+
+	private IEnumerator ChangeCollisionDetection()
+	{
+		yield return new WaitForSeconds(3f);
+
+		RB_.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
 	}
 
 	void Update () {

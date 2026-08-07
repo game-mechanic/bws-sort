@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MObject: {fileID: 199430}
   LifeTime: 0.5
+  RB_: {fileID: 50136950052901686}
   witinTarget: 0
 --- !u!96 &96420874952216904
 TrailRenderer:

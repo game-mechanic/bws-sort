@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Missile
   - Metaball_liquid
+  - Collid
   layers:
   - Default
   - TransparentFX

@@ -236,7 +236,7 @@ public class Bubble : MonoBehaviour
     {
         IsKinematic = RigidbodyType2D.Dynamic;
         SetCollider(true);
-        sortingGroup.sortingOrder = 2;
+        sortingGroup.sortingOrder = -200;
     }
     private void TextBreathing()
     {
