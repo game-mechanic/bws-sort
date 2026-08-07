@@ -14,7 +14,6 @@ public class InputHandler : Singleton<InputHandler>
     Vector3 offset;
     [SerializeField] Transform endPoint;
     public UnityEvent OnSuccessfullMerge;
-
     private void Start()
     {
         mainCamera = Camera.main;
@@ -196,6 +195,7 @@ public class InputHandler : Singleton<InputHandler>
         {
             newBubble.SetBubbleSprite(GameSettings.Instance.BubbleSprites[CategoryManager.Instance.CurrentIndex % GameSettings.Instance.BubbleSprites.Length]);
         }
+        
         newBubble.Bounce();
         a.transform.DOKill();
         b.transform.DOKill();
@@ -204,9 +204,49 @@ public class InputHandler : Singleton<InputHandler>
 
         if (nextIndex == GameSettings.Instance.MergeCount - 1)
         {
-            newBubble.Blast(() => OnSuccessfullMerge?.Invoke());
+            SpawnWaterOnBubble(newBubble);
+            OnSuccessfullMerge?.Invoke();
         }
         return true;
+    }
+    public GameObject Water;
+
+    [SerializeField] private int waterPerUnit = 40;   // More = more water
+    [SerializeField] private float spawnRadiusOffset = 0.45f;
+    [SerializeField] private float waterDensity = 250f; // Increase for more water
+    
+    [SerializeField] private float spawnRadius = 0.15f;
+    [SerializeField] private float fallSpeed = 4f;
+    [SerializeField] private float horizontalSpread = 1f;
+
+    void SpawnWaterOnBubble(Bubble bubble)
+    {
+        bubble.gameObject.SetActive(false);
+
+        float radius = bubble.transform.localScale.x * 0.5f;
+        int waterCount = Mathf.CeilToInt(Mathf.PI * radius * radius * waterDensity);
+
+        for (int i = 0; i < waterCount; i++)
+        {
+            // Spawn in a small cluster
+            Vector2 offset = UnityEngine.Random.insideUnitCircle * spawnRadius;
+
+            GameObject drop = Instantiate(
+                Water,
+                bubble.transform.position + (Vector3)offset,
+                Quaternion.identity
+            );
+
+            Rigidbody2D rb = drop.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                // Mostly downward with a little sideways movement
+                rb.linearVelocity = new Vector2(
+                    UnityEngine.Random.Range(-horizontalSpread, horizontalSpread),
+                    -fallSpeed + UnityEngine.Random.Range(-0.5f, 0.5f)
+                );
+            }
+        }
     }
 
     void Highlight(Bubble newBubble)
