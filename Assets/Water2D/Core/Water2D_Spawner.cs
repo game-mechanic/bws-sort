@@ -47,7 +47,7 @@
 		/// <summary>
 		/// The life time of each particle.
 		/// </summary>
-		[Range (0f,100f)] public float LifeTime = 5f;
+		[Range (0f,1000f)] public float LifeTime = 5f;
 
 		/// <summary>
 		/// The delay between particles emission.
