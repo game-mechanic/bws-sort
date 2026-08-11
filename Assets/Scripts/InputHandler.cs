@@ -217,7 +217,7 @@ public class InputHandler : Singleton<InputHandler>
         bubble.gameObject.SetActive(false);
 
         Water2D_Spawner.instance.SpawnFixed(
-            60,
+            50,
             bubble.transform.position,
             new Vector2(0f, -2f)
         );
