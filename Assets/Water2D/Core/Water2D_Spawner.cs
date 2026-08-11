@@ -178,9 +178,46 @@
 
 		public void SpawnFixed(int count, Vector3 pos, Vector2 velocity)
 		{
-			StartCoroutine(loop(pos, velocity, count, 0f));
+			SpawnBurst(count, pos, velocity);
 		}
+		public void SpawnBurst(int count, Vector3 pos, Vector2 baseVelocity)
+		{
+			int spawned = 0;
 
+			for (int i = 0; i < WaterDropsObjects.Length && spawned < count; i++)
+			{
+				MetaballParticleClass metaBall =
+					WaterDropsObjects[i].GetComponent<MetaballParticleClass>();
+
+				// Skip particles that are already being used
+				if (metaBall.Active)
+					continue;
+
+				// Position
+				WaterDropsObjects[i].transform.position = pos;
+
+				// Activate
+				metaBall.Active = true;
+				metaBall.witinTarget = false;
+				metaBall.LifeTime = LifeTime;
+
+				// Keep size/color
+				metaBall.transform.localScale = new Vector3(size, size, 1f);
+				SetWaterColor(FillColor, StrokeColor);
+
+				// Random burst direction
+				Vector2 randomVelocity = baseVelocity;
+
+				randomVelocity.x += Random.Range(-3f, 3f);
+				randomVelocity.y += Random.Range(-1f, 3f);
+
+				WaterDropsObjects[i]
+					.GetComponent<Rigidbody2D>()
+					.linearVelocity = randomVelocity;
+
+				spawned++;
+			}
+		}
 		void executeMicroSpawns()
 		{
 			if (microSpawns == null)
