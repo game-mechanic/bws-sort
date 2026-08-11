@@ -83,7 +83,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -427458357
   m_SortingLayer: 1
-  m_SortingOrder: 10
+  m_SortingOrder: -102
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 31b560e3e0ea049268ac80144ed9a215, type: 3}
   m_Color: {r: 0, g: 0.7103448, b: 1, a: 1}
@@ -174,7 +174,7 @@ MonoBehaviour:
   LifeTime: 0.5
   RB_: {fileID: 50136950052901686}
   witinTarget: 0
-  waterAmount: 0.05
+  waterAmount: 0.025
   mergeDuration: 0.05
   mergeEase: 4
 --- !u!96 &96420874952216904
