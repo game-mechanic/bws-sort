@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6741be59f46a54fb6b2681cd4b81b4, type: 3}
   m_Name: Japan
   m_EditorClassIdentifier: 
-  material: {fileID: 0}
+  color: {r: 0.03404236, g: 0.24372979, b: 0.4811321, a: 0}

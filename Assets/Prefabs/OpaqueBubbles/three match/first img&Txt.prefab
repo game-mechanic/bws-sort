@@ -99,6 +99,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 127723778875672338, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 438737754043321296, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -109,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: f28612b85f178d94881f8710989fd358, type: 3}
     - target: {fileID: 601428100427314057, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_Color.a
-      value: 0.84705883
+      value: 0.83137256
       objectReference: {fileID: 0}
     - target: {fileID: 601428100427314057, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_Color.b
@@ -337,7 +341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: names.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: textUIs.Array.size
