@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnStart: 1
-  levelData: {fileID: 11400000, guid: 56b51017ea6924d46ac2cb58e1d9c556, type: 2}
+  levelData: {fileID: 11400000, guid: 686c8b9980ece4bc7bf2ae76d0c45fb3, type: 2}
   horizontalAlignment: {fileID: 1345279678}
 --- !u!1 &418541823
 GameObject:
@@ -603,8 +603,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0}
-  idle: {fileID: 21300000, guid: 677314a67d5b24322b3683f9c9683b9f, type: 3}
-  click: {fileID: 21300000, guid: 61c044ac39b8e4786afa51b48d98567b, type: 3}
+  idle: {fileID: 21300000, guid: 78c3c927f424a4247bc1154beb1f6499, type: 3}
+  click: {fileID: 21300000, guid: aa033989967597048916a5c98b110113, type: 3}
   lineStartPosition: {fileID: 0}
   lineRenderer: {fileID: 0}
   pointsCount: 0
@@ -1190,8 +1190,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 10.179}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -99.53772, y: -1149.4}
-  m_SizeDelta: {x: 274.1554, y: 449.4409}
+  m_AnchoredPosition: {x: -85.47864, y: -1175.6211}
+  m_SizeDelta: {x: 244, y: 289}
   m_Pivot: {x: 0.24151921, y: 0.9846866}
 --- !u!114 &799683888
 MonoBehaviour:
@@ -1213,7 +1213,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 677314a67d5b24322b3683f9c9683b9f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 78c3c927f424a4247bc1154beb1f6499, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2503,7 +2503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1976688782
 Transform:
   m_ObjectHideFlags: 0
