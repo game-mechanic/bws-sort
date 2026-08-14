@@ -304,26 +304,29 @@ public class Bubble : MonoBehaviour
 
             float delay = index * delayStep;
 
+            const float scaleDuaration = 0.2f;
+            const float scaleUpDuaration = 0.35f;
+
             Sequence textSeq = DOTween.Sequence();
 
             textSeq.AppendInterval(delay);
 
             // Optional tiny anticipation (feels nicer than instant shrink)
             textSeq.Append(
-                bg.DOScale(bgStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
+                bg.DOScale(bgStartScale * 1.05f, scaleDuaration).SetEase(Ease.OutSine)
             );
 
             textSeq.Join(
-                txt.DOScale(txtStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
+                txt.DOScale(txtStartScale * 1.05f, scaleDuaration).SetEase(Ease.OutSine)
             );
 
             // Main disappear (shrink)
             textSeq.Append(
-                bg.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InBack)
+                bg.DOScale(Vector3.zero, scaleUpDuaration).SetEase(Ease.InBack)
             );
 
             textSeq.Join(
-                txt.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack)
+                txt.DOScale(Vector3.zero, scaleUpDuaration).SetEase(Ease.InBack)
             );
 
             blastSequence.Join(textSeq);
