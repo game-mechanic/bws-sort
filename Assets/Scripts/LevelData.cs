@@ -10,6 +10,7 @@ public class LevelData : ScriptableObject
     public class Data
     {
         public BubbleType name;
+        public bool shouldBlastAtStart;
         public bool overrideColor = false;
         [ColorUsage(false)] public Color bubbleColor = Color.white;
         public List<Bubble.Data> newDatas = new();

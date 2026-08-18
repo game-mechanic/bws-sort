@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Planets Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Planets
+  m_TableCollectionNameGuidString: 3d94996a5b3cb4f56b00a6d8db1bd6a9
+  m_Entries:
+  - m_Id: 11143208960
+    m_Key: America
+    m_Metadata:
+      m_Items: []
+  - m_Id: 122648780800
+    m_Key: Alaska
+    m_Metadata:
+      m_Items: []
+  - m_Id: 144689848320
+    m_Key: Florida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 201099042816
+    m_Key: California
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238231216128
+    m_Key: Texas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 296649482240
+    m_Key: Months
+    m_Metadata:
+      m_Items: []
+  - m_Id: 323585302528
+    m_Key: April
+    m_Metadata:
+      m_Items: []
+  - m_Id: 339322331136
+    m_Key: March
+    m_Metadata:
+      m_Items: []
+  - m_Id: 372352475136
+    m_Key: June
+    m_Metadata:
+      m_Items: []
+  - m_Id: 396700409856
+    m_Key: September
+    m_Metadata:
+      m_Items: []
+  - m_Id: 476476071936
+    m_Key: Seasons
+    m_Metadata:
+      m_Items: []
+  - m_Id: 503856488448
+    m_Key: Summer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 530532261888
+    m_Key: Autumn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 582751346688
+    m_Key: Spring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 600900100096
+    m_Key: Winter
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5528672513654522295
+  references:
+    version: 2
+    RefIds:
+    - rid: 5528672513654522295
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1787030241890

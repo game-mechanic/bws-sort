@@ -7,6 +7,8 @@ using UnityEngine.Localization.Settings;
 public class CategoryManager : Singleton<CategoryManager>
 {
     [SerializeField] bool spawnOnStart = true;
+    [SerializeField] bool shouldBlastAtStart = false;
+
     [SerializeField] LevelData levelData;
     [SerializeField] HorizontalAlignment horizontalAlignment;
     List<LevelData.Data> datas = new();
@@ -51,6 +53,7 @@ public class CategoryManager : Singleton<CategoryManager>
             {
                 data.AddRange(datas[j].newDatas);
             }
+            bool shouldBlastAtStart = datas[j].shouldBlastAtStart;
 
             Color bubbleColor = datas[j].overrideColor ?
                 datas[j].bubbleColor :
@@ -84,7 +87,7 @@ public class CategoryManager : Singleton<CategoryManager>
 
                 bubble.SetName(data);
 
-                if (bubble.Index == GameSettings.Instance.MergeCount - 1)
+                if (shouldBlastAtStart)
                 {
                     blastableBubble.Add(bubble);
                 }
@@ -99,12 +102,14 @@ public class CategoryManager : Singleton<CategoryManager>
         yield return new WaitForSeconds(2);
         for (int i = 0; i < blastableBubble.Count; i++)
         {
-            if (blastableBubble[i].Index == GameSettings.Instance.MergeCount - 1)
-            {
-                blastableBubble[i].Blast(() => InputHandler.Instance.OnSuccessfullMerge?.Invoke());
-            }
-            yield return new WaitForSeconds(.2f);
+            // blastableBubble[i].Blast(() => InputHandler.Instance.OnSuccessfullMerge?.Invoke());
+            blastableBubble[i].gameObject.SetActive(false);
+            yield return new WaitForSeconds(.15f);
         }
+
+        SpawnNewCategories();
+
+
     }
 
     private void Shuffle()

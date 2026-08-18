@@ -431,9 +431,11 @@ public class Bubble : MonoBehaviour
 
             blastSequence.Append(seq);
         }
+        int ind = index;
         blastSequence.AppendCallback(() =>
         {
             ParticlePool.PlayRevealFx(transform.position);
+
             CategoryManager.Instance.SpawnNewCategories();
 
             BubbleEffect bubbleEffect = Object.FindObjectOfType<BubbleEffect>();

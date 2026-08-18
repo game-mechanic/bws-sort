@@ -15,6 +15,13 @@ MonoBehaviour:
   m_GroupName: Localization-String-Tables-German (de)
   m_GUID: 34c2222a93ff1c64c92bd7ab3bb410e5
   m_SerializeEntries:
+  - m_GUID: 14c7c33c1ca65499b84d0cace8740a23
+    m_Address: Planets_de
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-de
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1719fd7302edaec4196bda98b19c7dbd
     m_Address: RedThings_de
     m_ReadOnly: 1

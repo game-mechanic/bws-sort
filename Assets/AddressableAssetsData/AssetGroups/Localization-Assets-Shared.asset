@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-Shared
   m_GUID: cfa98a68b7dc45b49a762cdc5be9193d
   m_SerializeEntries:
+  - m_GUID: 3d94996a5b3cb4f56b00a6d8db1bd6a9
+    m_Address: Assets/Localization/Planets/Planets Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b27c41fadcfb01c49a4481fef917db1b
     m_Address: Assets/Localization/RedThings/RedThings Shared Data.asset
     m_ReadOnly: 1

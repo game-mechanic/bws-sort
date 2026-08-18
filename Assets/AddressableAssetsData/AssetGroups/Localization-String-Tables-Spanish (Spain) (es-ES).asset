@@ -22,6 +22,13 @@ MonoBehaviour:
     - Locale-es-ES
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 936f2ca7beba14ce7bf82f4f33ce561f
+    m_Address: Planets_es-ES
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-es-ES
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: a4d2e5faaa94ecd4f9f89bc9ccb524d9, type: 2}
   m_SchemaSet:

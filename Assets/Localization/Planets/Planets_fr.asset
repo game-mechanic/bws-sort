@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Planets_fr
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: 3d94996a5b3cb4f56b00a6d8db1bd6a9, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 11143208960
+    m_Localized: "Am\xE9rique"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 122648780800
+    m_Localized: Alaska
+    m_Metadata:
+      m_Items: []
+  - m_Id: 144689848320
+    m_Localized: Floride
+    m_Metadata:
+      m_Items: []
+  - m_Id: 201099042816
+    m_Localized: Californie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238231216128
+    m_Localized: Texas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 296649482240
+    m_Localized: Mois
+    m_Metadata:
+      m_Items: []
+  - m_Id: 323585302528
+    m_Localized: Avril
+    m_Metadata:
+      m_Items: []
+  - m_Id: 339322331136
+    m_Localized: Mars
+    m_Metadata:
+      m_Items: []
+  - m_Id: 372352475136
+    m_Localized: Juin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 396700409856
+    m_Localized: Septembre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 476476071936
+    m_Localized: Saisons
+    m_Metadata:
+      m_Items: []
+  - m_Id: 503856488448
+    m_Localized: "\xC9t\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 530532261888
+    m_Localized: Automne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 582751346688
+    m_Localized: Printemps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 600900100096
+    m_Localized: Hiver
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
