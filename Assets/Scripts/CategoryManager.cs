@@ -106,10 +106,8 @@ public class CategoryManager : Singleton<CategoryManager>
             blastableBubble[i].gameObject.SetActive(false);
             yield return new WaitForSeconds(.15f);
         }
-
-        SpawnNewCategories();
-
-
+        if (blastableBubble.Count > 0)
+            SpawnNewCategories();
     }
 
     private void Shuffle()
