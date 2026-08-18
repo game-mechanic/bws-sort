@@ -224,7 +224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &30197032
 Transform:
   m_ObjectHideFlags: 0
@@ -393,6 +393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnStart: 1
+  shouldBlastAtStart: 0
   levelData: {fileID: 11400000, guid: 76965c6ea263248d7b57d83bf22b55af, type: 2}
   horizontalAlignment: {fileID: 1345279678}
 --- !u!1 &429325393
@@ -948,7 +949,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.02496612, g: 1, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.03137255, g: 0.7921569, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1141,6 +1142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnStart: 1
+  shouldBlastAtStart: 0
   levelData: {fileID: 11400000, guid: 8f8a8502218dc45a78c1268f444c30e6, type: 2}
   horizontalAlignment: {fileID: 1345279678}
 --- !u!4 &1484017449
@@ -1209,6 +1211,10 @@ PrefabInstance:
     - target: {fileID: 914435502106101681, guid: c72a17eb734274d689eeda82e8cc360a, type: 3}
       propertyPath: m_Name
       value: BubbleRisingUnderwater
+      objectReference: {fileID: 0}
+    - target: {fileID: 914435502106101681, guid: c72a17eb734274d689eeda82e8cc360a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6900754448820765722, guid: c72a17eb734274d689eeda82e8cc360a, type: 3}
       propertyPath: InitialModule.startColor.maxColor.a

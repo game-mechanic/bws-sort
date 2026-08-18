@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
+  m_Name: 3 match Teeth
+  m_EditorClassIdentifier: 
+  bubbles:
+  - {fileID: 7926608256317659342, guid: a2038bed21ee0bf42a51075cdd32a130, type: 3}
+  - {fileID: 7926608256317659342, guid: c8d333a9131c2494b83ae383ce0b37b2, type: 3}
+  - {fileID: 7926608256317659342, guid: ecab003c1d3ebe74da783c96e25595cc, type: 3}
+  - {fileID: 7926608256317659342, guid: 2df86143f0b602140b3e0884d3163eea, type: 3}
