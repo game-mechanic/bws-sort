@@ -40,17 +40,26 @@ public class InputHandler : Singleton<InputHandler>
             && hit.collider.TryGetComponent(out Bubble d))
         {
             draggable = d;
-            isDragging = true;
+            // isDragging = true;
             startScale = draggable.transform.localScale;
             offset = new Vector2(draggable.transform.position.x, draggable.transform.position.y) - hit.point;
-            draggable.StartDrag();
+            // draggable.StartDrag();
             draggable.Bounce(GameSettings.Instance.MaxBounceAmplitude, GameSettings.Instance.BounceTime);
+
+            if (draggable.Category != CategoryManager.Instance.CurrentBubbleType)
+            {
+                draggable.Highlight(true, GameSettings.Instance.WrongColor);
+            }
+            else
+            {
+                draggable.Highlight(true);
+            }
         }
 
-        if (Input.GetMouseButtonUp(0) && draggable != null)
-        {
-            ReleaseDrag();
-        }
+        // if (Input.GetMouseButtonUp(0) && draggable != null)
+        // {
+        //     ReleaseDrag();
+        // }
     }
 
 
@@ -60,36 +69,36 @@ public class InputHandler : Singleton<InputHandler>
         hit = Physics2D.Raycast(ray.origin, ray.direction, 100);
         return hit.collider != null;
     }
-    private void FixedUpdate()
-    {
-        if (draggable != null && isDragging)
-        {
-            Plane plane = new(Vector3.back, new Vector3(0, 0, 0));
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+    // private void FixedUpdate()
+    // {
+    //     if (draggable != null && isDragging)
+    //     {
+    //         Plane plane = new(Vector3.back, new Vector3(0, 0, 0));
+    //         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-            plane.Raycast(ray, out float enter);
+    //         plane.Raycast(ray, out float enter);
 
-            Vector3 hitPoint = ray.origin + ray.direction * enter;
-            hitPoint += offset;
+    //         Vector3 hitPoint = ray.origin + ray.direction * enter;
+    //         hitPoint += offset;
 
-            draggable.transform.position = Vector3.Lerp(draggable.transform.position, hitPoint, GameSettings.Instance.DragSpeed * Time.fixedDeltaTime);
+    //         draggable.transform.position = Vector3.Lerp(draggable.transform.position, hitPoint, GameSettings.Instance.DragSpeed * Time.fixedDeltaTime);
 
-            if (GetOverlap(hitPoint, draggable.Radius, out Collider2D hit))
-            {
-                if (hit.TryGetComponent(out Bubble d))
-                {
-                    if (d != highlightedBubble && d != draggable)
-                        Highlight(d);
-                }
-                else
-                    Highlight(null);
-            }
-            else
-            {
-                Highlight(null);
-            }
-        }
-    }
+    //         if (GetOverlap(hitPoint, draggable.Radius, out Collider2D hit))
+    //         {
+    //             if (hit.TryGetComponent(out Bubble d))
+    //             {
+    //                 if (d != highlightedBubble && d != draggable)
+    //                     Highlight(d);
+    //             }
+    //             else
+    //                 Highlight(null);
+    //         }
+    //         else
+    //         {
+    //             Highlight(null);
+    //         }
+    //     }
+    // }
     Collider2D[] results = new Collider2D[10];
 
     private bool GetOverlap(Vector3 center, float radius, out Collider2D hit)

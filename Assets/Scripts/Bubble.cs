@@ -513,4 +513,10 @@ public class Bubble : MonoBehaviour
             EndDrag();
         }
     }
+
+    public void Highlight(bool v, Color wrongColor)
+    {
+        highlightImage.GetComponent<SpriteRenderer>().color = wrongColor;
+        Highlight(v);
+    }
 }

@@ -13,6 +13,7 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] HorizontalAlignment horizontalAlignment;
     List<LevelData.Data> datas = new();
     int initialSpawns = 15;
+    [SerializeField] BubbleType currentBubbleType;
 
     bool EnableRandomSize => GameSettings.Instance.EnableRandomBubbleSize;
     float minMultiplier = 1f;
@@ -23,6 +24,7 @@ public class CategoryManager : Singleton<CategoryManager>
     public LevelData LevelDataAsset => levelData;
 
     public int CurrentIndex { get => currentIndex; }
+    public BubbleType CurrentBubbleType { get => currentBubbleType; }
 
     IEnumerator Start()
     {

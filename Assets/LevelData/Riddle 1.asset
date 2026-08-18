@@ -10,82 +10,82 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8ba278c177864e64b79aa31831b5b38, type: 3}
-  m_Name: Planets Localization
+  m_Name: Riddle 1
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   datas:
-  - name: {fileID: 11400000, guid: f8360ab1f253049d794eca16a92f558c, type: 2}
+  - name: {fileID: 11400000, guid: 639abeac18de04055938b3e6935b5896, type: 2}
     shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     newDatas:
-    - name: Alaska
+    - name: River
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: f8360ab1f253049d794eca16a92f558c, type: 2}
+  - name: {fileID: 11400000, guid: 639abeac18de04055938b3e6935b5896, type: 2}
     shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     newDatas:
-    - name: Florida
+    - name: Clock
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: f8360ab1f253049d794eca16a92f558c, type: 2}
+  - name: {fileID: 11400000, guid: 639abeac18de04055938b3e6935b5896, type: 2}
     shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     newDatas:
-    - name: California
+    - name: Nose
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: f8360ab1f253049d794eca16a92f558c, type: 2}
+  - name: {fileID: 11400000, guid: c9e2678e52e9431419d597966b96df3d, type: 2}
     shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     newDatas:
-    - name: Texas
+    - name: Horse
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 5f8c800500aadbd4094987dd184eff51, type: 2}
+  - name: {fileID: 11400000, guid: c9e2678e52e9431419d597966b96df3d, type: 2}
     shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     newDatas:
-    - name: Saturn
-      icon: {fileID: 21300000, guid: dbb07e678ee63ea4684ac5a6712fa19e, type: 3}
+    - name: Baby
+      icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 5f8c800500aadbd4094987dd184eff51, type: 2}
+  - name: {fileID: 11400000, guid: c9e2678e52e9431419d597966b96df3d, type: 2}
     shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     newDatas:
-    - name: Earth
-      icon: {fileID: 21300000, guid: 42dffcc083d05224d88823cbb536d07d, type: 3}
+    - name: Robot
+      icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 5f8c800500aadbd4094987dd184eff51, type: 2}
+  - name: {fileID: 11400000, guid: c9e2678e52e9431419d597966b96df3d, type: 2}
     shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     newDatas:
-    - name: Jupiter
-      icon: {fileID: 21300000, guid: 2aa3ab2d9c2d72e4d9f98919e6adef8c, type: 3}
+    - name: Shoe
+      icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  - name: {fileID: 11400000, guid: 5f8c800500aadbd4094987dd184eff51, type: 2}
+  - name: {fileID: 11400000, guid: c9e2678e52e9431419d597966b96df3d, type: 2}
     shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     newDatas:
-    - name: Jupiter
-      icon: {fileID: 21300000, guid: 2aa3ab2d9c2d72e4d9f98919e6adef8c, type: 3}
+    - name: Bird
+      icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  initialSpawns: 5
+  initialSpawns: 8
   minMultiplier: 1
-  maxMultiplier: 1.2
+  maxMultiplier: 2
   levelDataToAppend: {fileID: 0}
