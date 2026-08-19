@@ -56,5 +56,8 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "bws-sort-shivlauda.sln"
+    "dotnet.defaultSolution": "bws-sort-shivlauda.sln",
+    "dotrush.roslyn.projectOrSolutionFiles": [
+        "/Users/shivanagouda/UnityProjects/bws-sort/bws-sort.sln"
+    ]
 }

@@ -240,6 +240,11 @@ public class Bubble : MonoBehaviour
     {
         highlightImage.SetActive(v);
     }
+    public void Highlight(bool v,Color c)
+    {
+    highlightImage.GetComponent<SpriteRenderer>().color=c;
+    Highlight(v);
+    }
     private void OnDrawGizmosSelected()
     {
         if (col == null)
@@ -380,10 +385,13 @@ public class Bubble : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
+        if(category!=null){
         Color color = category.Color;
         color.a = 1f;
         Gizmos.color = color;
         Gizmos.DrawSphere(transform.position, radius: Radius);
+
+        }
         //        if (Names.Count == 1)
         //        {
         //            string name = LocalizationSettings.StringDatabase.GetLocalizedString(
