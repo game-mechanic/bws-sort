@@ -73,8 +73,8 @@ public class GlassWater : MonoBehaviour
         float actualAdded =
             Mathf.Min(
                 amount,
-                activeAmount
-            );
+                activeAmount 
+            ); 
 
         activeAmount -= actualAdded;
 

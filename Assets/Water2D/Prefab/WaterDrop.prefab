@@ -174,7 +174,7 @@ MonoBehaviour:
   LifeTime: 0.5
   RB_: {fileID: 50136950052901686}
   witinTarget: 0
-  waterAmount: 0.025
+  waterAmount: 0.05
   mergeDuration: 0.05
   mergeEase: 4
 --- !u!96 &96420874952216904

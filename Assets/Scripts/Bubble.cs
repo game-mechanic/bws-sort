@@ -435,7 +435,8 @@ public class Bubble : MonoBehaviour
         {
             ParticlePool.PlayRevealFx(transform.position);
             CategoryManager.Instance.SpawnNewCategories();
-
+            InputHandler.Instance.SpawnWaterOnBubble(this);
+           InputHandler.Instance.OnSuccessfullMerge?.Invoke();
             BubbleEffect bubbleEffect = Object.FindObjectOfType<BubbleEffect>();
             if (bubbleEffect != null)
                 bubbleEffect.OnBubblePop();

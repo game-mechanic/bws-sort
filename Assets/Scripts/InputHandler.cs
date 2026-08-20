@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using Water2D;
 public class InputHandler : Singleton<InputHandler>
 {
+    public static InputHandler instance;    
     Bubble draggable;
     Bubble highlightedBubble;
     Camera mainCamera;
@@ -14,6 +15,11 @@ public class InputHandler : Singleton<InputHandler>
     Vector3 offset;
     [SerializeField] Transform endPoint;
     public UnityEvent OnSuccessfullMerge;
+
+    public void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         mainCamera = Camera.main;
@@ -204,14 +210,15 @@ public class InputHandler : Singleton<InputHandler>
 
         if (nextIndex == GameSettings.Instance.MergeCount - 1)
         {
-            SpawnWaterOnBubble(newBubble);
-            OnSuccessfullMerge?.Invoke();
+            newBubble.Blast(() => OnSuccessfullMerge?.Invoke());
+            // SpawnWaterOnBubble(newBubble);
+            // OnSuccessfullMerge?.Invoke();
         }
         return true;
     }
 
 
-    void SpawnWaterOnBubble(Bubble bubble)
+  public void SpawnWaterOnBubble(Bubble bubble)
     {
         // Hide the bubble immediately
         bubble.gameObject.SetActive(false);
