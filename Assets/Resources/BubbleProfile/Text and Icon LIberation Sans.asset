@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
+  m_Name: Text and Icon LIberation Sans
+  m_EditorClassIdentifier: 
+  bubbles:
+  - {fileID: 7926608256317659342, guid: 1489144d595a94c4699b216bfaef0f75, type: 3}
+  - {fileID: 7926608256317659342, guid: febb09bb123224d54ae32ffb45b3404a, type: 3}
+  - {fileID: 7926608256317659342, guid: aea50641f366342d9831ac69a16e6af3, type: 3}
+  - {fileID: 7926608256317659342, guid: 697c99336e1764bdbbc9ae2b61672831, type: 3}

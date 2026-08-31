@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Tables;
 
 public class CategoryManager : Singleton<CategoryManager>
 {
@@ -31,13 +32,13 @@ public class CategoryManager : Singleton<CategoryManager>
         minMultiplier = levelData.minMultiplier;
         maxMultiplier = levelData.maxMultiplier;
 
-        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[(int)GameSettings.Instance.SelectedLanguage];
 
         if (!spawnOnStart)
         {
             yield break;
         }
 
+        yield return LoadLocalization(GameSettings.Instance.TableReference.TableCollectionName);
         Shuffle();
 
         List<Bubble> blastableBubble = new();
@@ -108,6 +109,30 @@ public class CategoryManager : Singleton<CategoryManager>
         }
         if (blastableBubble.Count > 0)
             SpawnNewCategories();
+    }
+
+    private IEnumerator LoadLocalization(string tableName)
+    {
+        // 1. Wait until the localization system is entirely initialized
+        yield return LocalizationSettings.InitializationOperation;
+
+        // 2. Load your specific String Table asynchronously
+        var tableOperation = LocalizationSettings.StringDatabase.GetTableAsync(tableName);
+        yield return tableOperation;
+
+        if (tableOperation.Status == UnityEngine.ResourceManagement.AsyncOperations.AsyncOperationStatus.Succeeded)
+        {
+            StringTable stringTable = tableOperation.Result;
+
+            // 3. Extract a value using your entry key
+            string localizedValue = stringTable.GetEntry("YOUR_KEY_HERE")?.LocalizedValue;
+            Debug.Log($"Loaded String: {localizedValue}");
+        }
+        else
+        {
+            Debug.LogError($"Failed to load localization table: {tableName}");
+        }
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[(int)GameSettings.Instance.SelectedLanguage];
     }
 
     private void Shuffle()

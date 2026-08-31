@@ -78,6 +78,46 @@ MonoBehaviour:
     m_Localized: Invierno
     m_Metadata:
       m_Items: []
+  - m_Id: 736487741054976
+    m_Localized: Marte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 736509098450944
+    m_Localized: "J\xFApiter"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 736531487645696
+    m_Localized: Tierra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 736560638058496
+    m_Localized: Saturno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 736581852848128
+    m_Localized: Leo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 736611372359680
+    m_Localized: Virgo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 736625138065408
+    m_Localized: Tauro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 736653248290816
+    m_Localized: Piscis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 744264504958976
+    m_Localized: Planetas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 744283287052288
+    m_Localized: Signos del zodiaco
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
