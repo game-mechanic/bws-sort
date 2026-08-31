@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "bws-sort-shivlauda.sln"
+    "dotnet.defaultSolution": "bws-sort-shivlauda.sln",
+    "dotrush.roslyn.projectOrSolutionFiles": []
 }

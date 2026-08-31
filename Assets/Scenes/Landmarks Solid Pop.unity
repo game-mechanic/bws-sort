@@ -435,6 +435,18 @@ MonoBehaviour:
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
+      icon: {fileID: 21300000, guid: 8dc6bfd8d77137842b47be61f9450949, type: 3}
+  - name: {fileID: 11400000, guid: 48cb53ce0d307064bb49a0d42ef9fa79, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 66e1e757e4fe7de43ba515d47e34e0e3, type: 3}
+  - name: {fileID: 11400000, guid: 48cb53ce0d307064bb49a0d42ef9fa79, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
       icon: {fileID: 21300000, guid: da895da05f1304942951e072d11d4a54, type: 3}
   - name: {fileID: 11400000, guid: 48cb53ce0d307064bb49a0d42ef9fa79, type: 2}
     overrideColor: 0
@@ -442,19 +454,102 @@ MonoBehaviour:
     data:
       name: 
       icon: {fileID: 21300000, guid: 4eaf102177348eb44a4fc87ee3b9583d, type: 3}
-  - name: {fileID: 11400000, guid: 48cb53ce0d307064bb49a0d42ef9fa79, type: 2}
+  - name: {fileID: 11400000, guid: f1f070b3e6112a844a9f1b3e17183db0, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
-      icon: {fileID: 21300000, guid: 8dc6bfd8d77137842b47be61f9450949, type: 3}
-  - name: {fileID: 11400000, guid: 48cb53ce0d307064bb49a0d42ef9fa79, type: 2}
+      icon: {fileID: 21300000, guid: 57434725382f4ae4abd598b7ea59dd90, type: 3}
+  - name: {fileID: 11400000, guid: f1f070b3e6112a844a9f1b3e17183db0, type: 2}
     overrideColor: 0
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     data:
       name: 
-      icon: {fileID: 21300000, guid: d7f6c2c8d0355784fb69216ec0c9d8b4, type: 3}
-  categories: []
+      icon: {fileID: 21300000, guid: e5f20e64d7885b14fa5597468059b70d, type: 3}
+  - name: {fileID: 11400000, guid: f1f070b3e6112a844a9f1b3e17183db0, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: f6b8cb2f445f7de4189058196e08245d, type: 3}
+  - name: {fileID: 11400000, guid: f1f070b3e6112a844a9f1b3e17183db0, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 896bdc5cfc704ae4495169901a4b985f, type: 3}
+  - name: {fileID: 11400000, guid: f1f070b3e6112a844a9f1b3e17183db0, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 5b94f0879e63ccd48a0b9362c259b5cf, type: 3}
+  - name: {fileID: 11400000, guid: fdb6c3ec8fb3c144b9da36badde5da48, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 7571de78d73ea6a4fa5eeee8df1462aa, type: 3}
+  - name: {fileID: 11400000, guid: fdb6c3ec8fb3c144b9da36badde5da48, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 80a9ca17095af5c41abff7f2eef46283, type: 3}
+  - name: {fileID: 11400000, guid: fdb6c3ec8fb3c144b9da36badde5da48, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: ccc5125c6ed63d24da55b1e81ab3eda0, type: 3}
+  - name: {fileID: 11400000, guid: fdb6c3ec8fb3c144b9da36badde5da48, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 450a3e71b71420547a8d9164d5d71778, type: 3}
+  - name: {fileID: 11400000, guid: fdb6c3ec8fb3c144b9da36badde5da48, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: cd29fbad9661aa4468f39b1c6a7579a5, type: 3}
+  - name: {fileID: 11400000, guid: ab0b41acf721e5c46a70d6be23e91010, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 25c97b62a56dd40429dcbdab87ccbd5a, type: 3}
+  - name: {fileID: 11400000, guid: ab0b41acf721e5c46a70d6be23e91010, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 9124026d1735bb04ebec22930a5d5ecb, type: 3}
+  - name: {fileID: 11400000, guid: ab0b41acf721e5c46a70d6be23e91010, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 37c9efc2faa3bbb4f8ebc081e6ca8a82, type: 3}
+  - name: {fileID: 11400000, guid: ab0b41acf721e5c46a70d6be23e91010, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: e1c16d986c6417b4494a20ea1687aa87, type: 3}
+  - name: {fileID: 11400000, guid: ab0b41acf721e5c46a70d6be23e91010, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    data:
+      name: 
+      icon: {fileID: 21300000, guid: 43f1db21c9f90a041bd07effb8608b56, type: 3}
+  categories:
+  - {fileID: 11400000, guid: c37b2f6f77f66c4428755ebfeaf5baf0, type: 2}
+  - {fileID: 11400000, guid: 48cb53ce0d307064bb49a0d42ef9fa79, type: 2}
+  - {fileID: 11400000, guid: f1f070b3e6112a844a9f1b3e17183db0, type: 2}
+  - {fileID: 11400000, guid: fdb6c3ec8fb3c144b9da36badde5da48, type: 2}
+  - {fileID: 11400000, guid: ab0b41acf721e5c46a70d6be23e91010, type: 2}
   initialSpawns: 15
 --- !u!1 &429325393
 GameObject:
