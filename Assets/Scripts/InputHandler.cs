@@ -93,6 +93,8 @@ public class InputHandler : Singleton<InputHandler>
                 d.transform.DOKill();
                 Vector3 pos = d.transform.position;
                 PerformClickEffect(d.transform, Vector3.one);
+                if(GameSettings.Instance.ShowWrongMove)
+                d.Highlight(true,GameSettings.Instance.WrongColor);
             }
         }
     }

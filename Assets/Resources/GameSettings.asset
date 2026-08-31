@@ -36,6 +36,8 @@ MonoBehaviour:
   englishLocale: {fileID: 11400000, guid: 8453d8e5bb2028f40a88d83511917e13, type: 2}
   canCreateGhost: 0
   canMerge: 1
+  canShowWrongMove: 1
+  wrongColor: {r: 1, g: 0, b: 0, a: 1}
   order:
   - {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
   - {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}

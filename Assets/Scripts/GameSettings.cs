@@ -51,6 +51,8 @@ public class GameSettings : ScriptableObject
     [SerializeField] private UnityEngine.Localization.Locale englishLocale;
     [SerializeField] bool canCreateGhost;
     [SerializeField] private bool canMerge;
+    [SerializeField] private bool canShowWrongMove;
+    [SerializeField] private Color wrongColor=Color.red;
     [SerializeField] private BubbleType[] order;
     [SerializeField] private bool canTextBreathe;
 
@@ -73,7 +75,10 @@ public class GameSettings : ScriptableObject
     public bool CanMerge { get => canMerge; internal set => canMerge = value; }
     public BubbleType[] Order { get => order; set => order = value; }
     public bool CanTextBreathe { get => canTextBreathe; internal set => canTextBreathe = value; }
-
+    
+    public bool ShowWrongMove=>canShowWrongMove;
+    public Color WrongColor=>wrongColor;
+    
     internal static IEnumerator Init()
     {
         var asyncOp = Resources.LoadAsync<GameSettings>("GameSettings");
