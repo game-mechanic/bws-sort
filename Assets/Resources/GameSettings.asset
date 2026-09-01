@@ -16,7 +16,7 @@ MonoBehaviour:
   bounceTime: 0.5
   maxBounces: 2
   lerpSpeeed: 15
-  bubbleProfile: {fileID: 11400000, guid: 16e8684d28398481a99e289dfab50f65, type: 2}
+  bubbleProfile: {fileID: 11400000, guid: 03e5e2b9fe86b034b944fa5c1b189778, type: 2}
   mergeCount: 4
   dragSpeed: 10
   breathingSpeed: 5
@@ -32,7 +32,7 @@ MonoBehaviour:
   spriteProfile: {fileID: 11400000, guid: 2802460379ecb425c98b78509e7a2f63, type: 2}
   tableReference:
     m_TableCollectionName: Planets
-  selectedLanguage: 5
+  selectedLanguage: 0
   englishLocale: {fileID: 11400000, guid: 8453d8e5bb2028f40a88d83511917e13, type: 2}
   canCreateGhost: 0
   canMerge: 1

@@ -106,6 +106,10 @@ public class Bubble : MonoBehaviour
             if (GameSettings.Instance.SelectedLanguage.ToString() == "en")
             {
                 textUIs[i].textUIs.text = Names[i].name;
+                if(textUIs[i].textUIs.transform.childCount > 0)
+                {
+                    textUIs[i].textUIs.transform.GetChild(0).GetComponent<TextMeshPro>().text = Names[i].name;
+                }
             }
             else
             {
@@ -114,6 +118,15 @@ public class Bubble : MonoBehaviour
                        GameSettings.Instance.TableReference,
                         Names[i].name
                     );
+
+                if(textUIs[i].textUIs.transform.childCount > 0)
+                {
+                    textUIs[i].textUIs.transform.GetChild(0).GetComponent<TextMeshPro>().text = 
+                    LocalizationSettings.StringDatabase.GetLocalizedString(
+                       GameSettings.Instance.TableReference,
+                        Names[i].name
+                    );
+                }
             }
 
             // 2. Handle the visibility logic based on the new boolean and icon existence
@@ -121,6 +134,10 @@ public class Bubble : MonoBehaviour
             {
                 // Show both
                 textUIs[i].bg.sprite = Names[i].icon;
+                if(textUIs[i].bg.transform.childCount > 0)
+                {
+                    textUIs[i].bg.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Names[i].icon;
+                }
                 if (GameSettings.Instance.CanAnimateSprite)
                 {
                     Animator animator = textUIs[i].bg.GetComponent<Animator>();
@@ -146,6 +163,10 @@ public class Bubble : MonoBehaviour
             {
                 // Show image only
                 textUIs[i].bg.sprite = Names[i].icon;
+                if(textUIs[i].bg.transform.childCount > 0)
+                {
+                    textUIs[i].bg.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Names[i].icon;
+                }
                 if (GameSettings.Instance.CanAnimateSprite)
                 {
                     Animator animator = textUIs[i].bg.GetComponent<Animator>();
@@ -278,9 +299,17 @@ public class Bubble : MonoBehaviour
         if (categoryText != null)
         {
             categoryText.text = Category.name;
+            if(categoryText.transform.childCount > 0)
+            {
+                categoryText.transform.GetChild(0).GetComponent<TextMeshPro>().text = Category.name;
+            }
             if (GameSettings.Instance.SelectedLanguage.ToString() == "en")
             {
                 categoryText.text = Category.name;
+                if(categoryText.transform.childCount > 0)
+                {
+                    categoryText.transform.GetChild(0).GetComponent<TextMeshPro>().text = Category.name;
+                }
             }
             else
             {
@@ -289,6 +318,15 @@ public class Bubble : MonoBehaviour
                        GameSettings.Instance.TableReference,
                         Category.name
                     );
+
+                    if(categoryText.transform.childCount > 0)
+                    {
+                         categoryText.transform.GetChild(0).GetComponent<TextMeshPro>().text = 
+                         LocalizationSettings.StringDatabase.GetLocalizedString(
+                            GameSettings.Instance.TableReference,
+                            Category.name
+                         );
+                    }
             }
         }
 

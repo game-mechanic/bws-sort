@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
+  m_Name: Text and Icon LIberation Sans Wood
+  m_EditorClassIdentifier: 
+  bubbles:
+  - {fileID: 7926608256317659342, guid: e5ab700908eff874897d27dbd8037054, type: 3}
+  - {fileID: 7926608256317659342, guid: 5d65dba2250b40c40b6a0553a1a924c6, type: 3}
+  - {fileID: 7926608256317659342, guid: ece75d7597a7832428f996c0dd393bdb, type: 3}
+  - {fileID: 7926608256317659342, guid: 31eaef9e11381954285c0f08f14a9b41, type: 3}
