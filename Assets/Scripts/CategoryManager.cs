@@ -32,6 +32,7 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] public float destBubbleFloatyOuterRadii = 1.0f;
     [SerializeField] public float destBubbleFloatySpeed = 2f;
     [SerializeField] public float distBtwBubble = 0.5f;
+    [SerializeField] public float arcBendness = 0f;
 
     [Header("Burst Sequence Settings")]
     [SerializeField] public float delayBurst = 0.1f;

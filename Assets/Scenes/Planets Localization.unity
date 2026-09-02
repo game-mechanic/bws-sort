@@ -406,6 +406,7 @@ MonoBehaviour:
   destBubbleFloatyOuterRadii: 0.75
   destBubbleFloatySpeed: 0.7
   distBtwBubble: 0.7
+  arcBendness: 0.5
   delayBurst: 0.2
   initialDelayAfterComplete: 0.7
 --- !u!1 &418541823
@@ -1830,6 +1831,7 @@ MonoBehaviour:
   destBubbleFloatyOuterRadii: 1
   destBubbleFloatySpeed: 2
   distBtwBubble: 0.5
+  arcBendness: 0
   delayBurst: 0.1
   initialDelayAfterComplete: 0.5
 --- !u!4 &1484017449

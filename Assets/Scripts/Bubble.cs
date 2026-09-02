@@ -567,7 +567,24 @@ public class Bubble : MonoBehaviour
         Sequence seq = DOTween.Sequence();
         seq.Append(transform.DOScale(originalScale * 1.2f, 0.1f).SetEase(Ease.Linear));
         seq.Append(transform.DOScale(originalScale * .8f, 0.1f).SetEase(Ease.Linear));
-        seq.Append(transform.DOMove(destPos, 0.4f).SetEase(Ease.Linear));
+
+        float bendness = CategoryManager.Instance != null ? CategoryManager.Instance.arcBendness : 0f;
+        if (bendness > 0f)
+        {
+            Vector3 startPos = transform.position;
+            Vector3 midPoint = (startPos + destPos) / 2f;
+            float screenCenterX = Camera.main != null ? Camera.main.transform.position.x : 0f;
+            float sideMultiplier = (startPos.x >= screenCenterX) ? 1f : -1f;
+            
+            // Offset the midpoint horizontally to create the arc
+            midPoint.x += bendness * sideMultiplier;
+            
+            seq.Append(transform.DOPath(new Vector3[] { midPoint, destPos }, 0.4f, PathType.CatmullRom).SetEase(Ease.Linear));
+        }
+        else
+        {
+            seq.Append(transform.DOMove(destPos, 0.4f).SetEase(Ease.Linear));
+        }
         seq.OnComplete(() =>
         {
             /* foreach (var item in disableTableWhenReachDest)
