@@ -404,8 +404,8 @@ MonoBehaviour:
   wrongShakeStrength: 0.03
   destBubbleFloatyInnerRadii: 0.3
   destBubbleFloatyOuterRadii: 0.75
-  destBubbleLocalFloatyRadii: 0.2
-  destBubbleFloatySpeed: 0.25
+  destBubbleFloatySpeed: 0.7
+  distBtwBubble: 0.7
   delayBurst: 0.2
   initialDelayAfterComplete: 0.7
 --- !u!1 &418541823
@@ -1828,8 +1828,8 @@ MonoBehaviour:
   wrongShakeStrength: 0.3
   destBubbleFloatyInnerRadii: 0.5
   destBubbleFloatyOuterRadii: 1
-  destBubbleLocalFloatyRadii: 0.2
   destBubbleFloatySpeed: 2
+  distBtwBubble: 0.5
   delayBurst: 0.1
   initialDelayAfterComplete: 0.5
 --- !u!4 &1484017449

@@ -31,6 +31,7 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] public float destBubbleFloatyInnerRadii = 0.5f;
     [SerializeField] public float destBubbleFloatyOuterRadii = 1.0f;
     [SerializeField] public float destBubbleFloatySpeed = 2f;
+    [SerializeField] public float distBtwBubble = 0.5f;
 
     [Header("Burst Sequence Settings")]
     [SerializeField] public float delayBurst = 0.1f;
@@ -40,6 +41,9 @@ public class CategoryManager : Singleton<CategoryManager>
     int currentOrderIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
     List<Bubble> gatheredBubbles = new List<Bubble>();
+
+    Dictionary<Bubble, Vector2> bubbleVelocities = new Dictionary<Bubble, Vector2>();
+    Dictionary<Bubble, Vector2> bubbleFloatTargets = new Dictionary<Bubble, Vector2>();
 
     public LevelData LevelDataAsset => levelData;
 
@@ -203,6 +207,74 @@ public class CategoryManager : Singleton<CategoryManager>
         {
             ChangeCategory();
         }
+
+        if (gatheredBubbles.Count > 0)
+        {
+            foreach (var b in gatheredBubbles)
+            {
+                if (b == null || !b.isFloatingInBucket) continue;
+
+                if (!bubbleFloatTargets.ContainsKey(b)) AssignNewFloatTarget(b);
+                if (!bubbleVelocities.ContainsKey(b)) bubbleVelocities[b] = Vector2.zero;
+
+                Vector2 target = bubbleFloatTargets[b];
+                Vector2 pos = b.transform.position;
+
+                Vector2 dir = target - pos;
+                if (dir.magnitude < 0.1f)
+                {
+                    AssignNewFloatTarget(b);
+                }
+
+                // Acceleration towards target
+                bubbleVelocities[b] += dir.normalized * destBubbleFloatySpeed * Time.deltaTime;
+                
+                // Repulsion
+                Vector2 repulsion = Vector2.zero;
+                foreach (var other in gatheredBubbles)
+                {
+                    if (other == b || other == null) continue;
+                    float dist = Vector2.Distance(pos, other.transform.position);
+                    if (dist < distBtwBubble && dist > 0.001f)
+                    {
+                        Vector2 repDir = (pos - (Vector2)other.transform.position).normalized;
+                        repulsion += repDir * (distBtwBubble - dist) * 15f; 
+                    }
+                }
+
+                if (repulsion != Vector2.zero)
+                {
+                    bubbleVelocities[b] += repulsion * Time.deltaTime;
+                }
+
+                // Damping
+                bubbleVelocities[b] *= 0.95f; 
+
+                pos += bubbleVelocities[b] * Time.deltaTime;
+
+                if (destinationBubble != null)
+                {
+                    Vector2 center = destinationBubble.transform.position;
+                    Vector2 offset = pos - center;
+                    if (offset.magnitude > destBubbleFloatyOuterRadii)
+                    {
+                        pos = center + offset.normalized * destBubbleFloatyOuterRadii;
+                        bubbleVelocities[b] *= -0.5f; // Soft bounce
+                    }
+                }
+
+                b.transform.position = pos;
+            }
+        }
+    }
+
+    void AssignNewFloatTarget(Bubble bubble)
+    {
+        if (destinationBubble == null) return;
+        float angle = Random.Range(0f, Mathf.PI * 2);
+        float radius = Random.Range(0f, destBubbleFloatyOuterRadii); 
+        Vector2 target = (Vector2)destinationBubble.transform.position + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
+        bubbleFloatTargets[bubble] = target;
     }
     public void RegisterCategory(BubbleType category)
     {
@@ -364,7 +436,7 @@ public class CategoryManager : Singleton<CategoryManager>
     {
         gatheredBubbles.Add(bubble);
         bubble.isFloatingInBucket = true;
-        bubble.FloatAround(destinationBubble.transform.position, destBubbleFloatyOuterRadii, destBubbleFloatySpeed);
+        // FloatAround is now handled dynamically with repulsion in Update()
         
         int remaining = DecrementCount(bubble.Category);
         if (remaining <= 0)
@@ -398,6 +470,8 @@ public class CategoryManager : Singleton<CategoryManager>
             yield return new WaitForSeconds(delayBurst);
         }
         gatheredBubbles.Clear();
+        bubbleVelocities.Clear();
+        bubbleFloatTargets.Clear();
 
         if (destinationBubble != null)
         {
