@@ -3,91 +3,49 @@ using UnityEngine.UI;
 
 public class FallingSandController : MonoBehaviour
 {
-    [Header("Sand Settings")]
-    [Min(1f)]
-    public float range = 5f;
-
-    [Tooltip("Fixed color for all sand")]
+    [Header("Sand")]
     public Color sandColor = new Color(
-        0.851f,
-        0.651f,
-        0.29f,
+        0.76f,
+        0.55f,
+        0.30f,
         1f
     );
 
+    [Header("Sand Stream")]
+    [Range(1f, 20f)]
+    public float spawnWidth = 2f;
 
-    [Header("References")]
-    public ComputeShader fallingSandShader;
-    public RenderTexture fallingSandRT;
+    [Range(1f, 30f)]
+    public float spawnHeight = 4f;
 
-
-    [Header("Sand Colliders")]
-    [Tooltip("Drag Collider2D objects that sand should collide with")]
-    public Collider2D[] sandColliders;
-
-    [Range(1, 50)]
-    public int maxColliders = 20;
-
-
-    [Header("Natural Sand Movement")]
-    [Range(1, 10)]
-    public int lateralSpread = 1;
-
-
-    [Header("Simulation Speed")]
-    [Range(60, 600)]
+    [Header("Simulation")]
+    
     public float simulationStepsPerSecond = 300f;
 
     [Range(1, 20)]
     public int maxStepsPerFrame = 8;
 
+    [Header("References")]
+    public ComputeShader fallingSandShader;
 
-    [Header("Spawn Settings")]
-    [Range(1f, 50f)]
-    public float minRange = 1f;
-
-    [Range(1f, 100f)]
-    public float maxRange = 50f;
+    public RenderTexture fallingSandRT;
 
 
     // =====================================================
-    // SHADER KERNELS
+    // PRIVATE VARIABLES
     // =====================================================
-
-    private const string fallingSandKernel = "SandFall";
-    private const string initializeKernel = "Initialize";
-
-
-    // =====================================================
-    // SHADER PROPERTIES
-    // =====================================================
-
-    private const string sandRTProperty = "sandRT";
-    private const string posXProperty = "posX";
-    private const string posYProperty = "posY";
-    private const string rangeProperty = "range";
-    private const string rightFirstProperty = "rightFirst";
-    private const string colorProperty = "color";
-    private const string spawnSandProperty = "spawnSand";
-
-
-    // =====================================================
-    // VARIABLES
-    // =====================================================
-
-    public Vector2Int position;
-
-    private bool rightFirst;
-    private bool spawnSand;
 
     private Image image;
 
     private Camera mainCamera;
 
-    private float simulationAccumulator;
-    private float simulationStepTime;
+    private float accumulator;
 
-    private Vector4[] colliderBounds;
+    private bool rightFirst;
+
+    private Vector2Int spawnPosition;
+
+    private bool spawnSand;
 
 
     // =====================================================
@@ -96,56 +54,30 @@ public class FallingSandController : MonoBehaviour
 
     private void Awake()
     {
-        // Check Compute Shader
+        mainCamera = Camera.main;
+
+        if (mainCamera == null)
+        {
+            Debug.LogError(
+                "FallingSandController: Main Camera not found."
+            );
+        }
+
         if (fallingSandShader == null)
         {
             Debug.LogError(
-                "FallingSandController: " +
-                "Falling Sand Shader is NOT assigned!"
+                "FallingSandController: Compute Shader is not assigned."
             );
 
             enabled = false;
             return;
         }
 
-
-        // Main Camera
-        mainCamera = Camera.main;
-
-        if (mainCamera == null)
-        {
-            Debug.LogError(
-                "FallingSandController: " +
-                "Main Camera not found. " +
-                "Make sure your camera has the MainCamera tag."
-            );
-        }
-
-
-        // Simulation
-        simulationStepTime =
-            1f /
-            Mathf.Max(
-                1f,
-                simulationStepsPerSecond
-            );
-
-
-        // Collider array
-        colliderBounds =
-            new Vector4[maxColliders];
-
-
-        // Create RT
         CreateRenderTexture();
 
+        SetupImage();
 
-        // Connect RT to UI Image
-        SetMaterialTexture();
-
-
-        // Clear simulation
-        Dispatch(initializeKernel);
+        Dispatch("Initialize");
     }
 
 
@@ -155,274 +87,74 @@ public class FallingSandController : MonoBehaviour
 
     private void Update()
     {
-        UpdateMousePosition();
-
-        UpdateInput();
-
         UpdateSimulation();
     }
 
 
     // =====================================================
-    // MOUSE POSITION
-    // OLD UNITY INPUT SYSTEM
+    // START SAND
+    // Called from Bubble.cs
     // =====================================================
 
-    private void UpdateMousePosition()
+    public void StartSand(Vector2 screenPosition)
     {
-        Vector3 mousePosition =
-            Input.mousePosition;
+        spawnPosition = new Vector2Int(
+            Mathf.RoundToInt(screenPosition.x),
+            Mathf.RoundToInt(screenPosition.y)
+        );
 
+        spawnSand = true;
 
-        position =
-            new Vector2Int(
-                Mathf.RoundToInt(
-                    mousePosition.x
-                ),
-
-                Mathf.RoundToInt(
-                    mousePosition.y
-                )
-            );
+        CancelInvoke(nameof(StopSand));
+        Invoke(nameof(StopSand), 1.5f);
     }
 
 
     // =====================================================
-    // INPUT
+    // STOP SAND
     // =====================================================
 
-    private void UpdateInput()
+    public void StopSand()
     {
-        // Left mouse button
-        spawnSand =
-            Input.GetMouseButton(0);
-
-
-        // Mouse wheel
-        float scroll =
-            Input.GetAxis(
-                "Mouse ScrollWheel"
-            );
-
-
-        if (scroll > 0f)
-        {
-            range += 1f;
-        }
-        else if (scroll < 0f)
-        {
-            range -= 1f;
-        }
-
-
-        range =
-            Mathf.Clamp(
-                range,
-                minRange,
-                maxRange
-            );
+        spawnSand = false;
     }
 
 
     // =====================================================
-    // SAND SIMULATION
+    // SIMULATION
     // =====================================================
 
     private void UpdateSimulation()
     {
-        simulationStepTime =
+        accumulator += Time.deltaTime;
+
+        float stepTime =
             1f /
             Mathf.Max(
                 1f,
                 simulationStepsPerSecond
             );
 
-
-        simulationAccumulator +=
-            Time.deltaTime;
-
-
         int steps = 0;
 
-
         while (
-            simulationAccumulator >=
-            simulationStepTime &&
-
-            steps <
-            maxStepsPerFrame
+            accumulator >= stepTime &&
+            steps < maxStepsPerFrame
         )
         {
-            Dispatch(
-                fallingSandKernel
-            );
+            Dispatch("SandFall");
 
+            rightFirst = !rightFirst;
 
-            // Alternate left/right
-            rightFirst =
-                !rightFirst;
-
-
-            simulationAccumulator -=
-                simulationStepTime;
-
+            accumulator -= stepTime;
 
             steps++;
         }
 
-
-        // Prevent huge simulation backlog
-        if (
-            steps >=
-            maxStepsPerFrame
-        )
+        if (steps >= maxStepsPerFrame)
         {
-            simulationAccumulator = 0f;
+            accumulator = 0f;
         }
-    }
-
-
-    // =====================================================
-    // SEND COLLIDERS
-    // =====================================================
-
-    private void SendCollidersToShader()
-    {
-        if (mainCamera == null)
-            return;
-
-
-        if (
-            colliderBounds == null ||
-
-            colliderBounds.Length !=
-            maxColliders
-        )
-        {
-            colliderBounds =
-                new Vector4[maxColliders];
-        }
-
-
-        // Clear old collider data
-        for (
-            int i = 0;
-            i < colliderBounds.Length;
-            i++
-        )
-        {
-            colliderBounds[i] =
-                Vector4.zero;
-        }
-
-
-        int colliderCount = 0;
-
-
-        if (sandColliders != null)
-        {
-            foreach (
-                Collider2D collider
-                in sandColliders
-            )
-            {
-                if (collider == null)
-                    continue;
-
-
-                if (!collider.enabled)
-                    continue;
-
-
-                if (
-                    !collider.gameObject
-                    .activeInHierarchy
-                )
-                    continue;
-
-
-                if (
-                    colliderCount >=
-                    maxColliders
-                )
-                {
-                    break;
-                }
-
-
-                Bounds bounds =
-                    collider.bounds;
-
-
-                // World → Screen
-                Vector3 minScreen =
-                    mainCamera.WorldToScreenPoint(
-                        bounds.min
-                    );
-
-
-                Vector3 maxScreen =
-                    mainCamera.WorldToScreenPoint(
-                        bounds.max
-                    );
-
-
-                float minX =
-                    Mathf.Min(
-                        minScreen.x,
-                        maxScreen.x
-                    );
-
-
-                float maxX =
-                    Mathf.Max(
-                        minScreen.x,
-                        maxScreen.x
-                    );
-
-
-                float minY =
-                    Mathf.Min(
-                        minScreen.y,
-                        maxScreen.y
-                    );
-
-
-                float maxY =
-                    Mathf.Max(
-                        minScreen.y,
-                        maxScreen.y
-                    );
-
-
-                colliderBounds[
-                    colliderCount
-                ] =
-                    new Vector4(
-                        minX,
-                        minY,
-                        maxX,
-                        maxY
-                    );
-
-
-                colliderCount++;
-            }
-        }
-
-
-        // Send collider count
-        fallingSandShader.SetInt(
-            "colliderCount",
-            colliderCount
-        );
-
-
-        // Send collider bounds
-        fallingSandShader.SetVectorArray(
-            "colliderBounds",
-            colliderBounds
-        );
     }
 
 
@@ -437,62 +169,50 @@ public class FallingSandController : MonoBehaviour
             fallingSandRT.Release();
         }
 
+        fallingSandRT = new RenderTexture(
+            Screen.width,
+            Screen.height,
+            0,
+            RenderTextureFormat.ARGB32
+        );
 
-        fallingSandRT =
-            new RenderTexture(
-                Screen.width,
-                Screen.height,
-                0,
-                RenderTextureFormat.ARGB32
-            );
-
-
-        fallingSandRT.enableRandomWrite =
-            true;
-
+        fallingSandRT.enableRandomWrite = true;
 
         fallingSandRT.filterMode =
             FilterMode.Point;
 
-
         fallingSandRT.wrapMode =
             TextureWrapMode.Clamp;
-
 
         fallingSandRT.Create();
     }
 
 
     // =====================================================
-    // SET MATERIAL
+    // SET UI IMAGE
     // =====================================================
 
-    private void SetMaterialTexture()
+    private void SetupImage()
     {
-        image =
-            GetComponent<Image>();
-
+        image = GetComponent<Image>();
 
         if (image == null)
         {
             Debug.LogError(
-                "FallingSandController must " +
-                "be attached to a UI Image."
+                "FallingSandController must be attached to a UI Image."
             );
 
             return;
         }
-
 
         if (image.material == null)
         {
             Debug.LogError(
-                "Falling Sand Image has no Material."
+                "Falling Sand UI Image has no material."
             );
 
             return;
         }
-
 
         image.material.SetTexture(
             "_MainTex",
@@ -502,90 +222,89 @@ public class FallingSandController : MonoBehaviour
 
 
     // =====================================================
-    // COMPUTE SHADER DISPATCH
+    // DISPATCH COMPUTE SHADER
     // =====================================================
 
-    private void Dispatch(
-        string kernel
-    )
+    private void Dispatch(string kernelName)
     {
         if (fallingSandShader == null)
+        {
             return;
-
-
-        int kernelHandle;
-
-
-        // Find kernel
-        try
-        {
-            kernelHandle =
-                fallingSandShader.FindKernel(
-                    kernel
-                );
         }
-        catch
-        {
-            Debug.LogError(
-                "FallingSandController: " +
-                "Compute Shader does not contain kernel: "
-                + kernel
+
+        int kernel =
+            fallingSandShader.FindKernel(
+                kernelName
             );
 
-            enabled = false;
-            return;
-        }
 
+        // -------------------------------------------------
+        // Render Texture
+        // -------------------------------------------------
 
-        // RenderTexture
         fallingSandShader.SetTexture(
-            kernelHandle,
-            sandRTProperty,
+            kernel,
+            "sandRT",
             fallingSandRT
         );
 
 
-        // Collider data
-        SendCollidersToShader();
+        // -------------------------------------------------
+        // Spawn Position
+        // -------------------------------------------------
 
-
-        // Mouse position
         fallingSandShader.SetFloat(
-            posXProperty,
-            position.x
+            "posX",
+            spawnPosition.x
+        );
+
+        fallingSandShader.SetFloat(
+            "posY",
+            spawnPosition.y
         );
 
 
+        // -------------------------------------------------
+        // Sand Stream Size
+        // -------------------------------------------------
+
         fallingSandShader.SetFloat(
-            posYProperty,
-            position.y
+            "spawnWidth",
+            spawnWidth
+        );
+
+        fallingSandShader.SetFloat(
+            "spawnHeight",
+            spawnHeight
         );
 
 
-        // Brush range
-        fallingSandShader.SetFloat(
-            rangeProperty,
-            range
-        );
-
-
+        // -------------------------------------------------
         // Direction
+        // -------------------------------------------------
+
         fallingSandShader.SetBool(
-            rightFirstProperty,
+            "rightFirst",
             rightFirst
         );
 
 
+        // -------------------------------------------------
         // Spawn
+        // -------------------------------------------------
+
         fallingSandShader.SetBool(
-            spawnSandProperty,
+            "spawnSand",
             spawnSand
         );
 
 
-        // Sand color
+        // -------------------------------------------------
+        // Sand Color
+        // -------------------------------------------------
+
         fallingSandShader.SetVector(
-            colorProperty,
+            "color",
             new Vector4(
                 sandColor.r,
                 sandColor.g,
@@ -595,32 +314,25 @@ public class FallingSandController : MonoBehaviour
         );
 
 
-        // Lateral movement
-        fallingSandShader.SetInt(
-            "lateralSpread",
-            lateralSpread
-        );
+        // -------------------------------------------------
+        // Thread Groups
+        // -------------------------------------------------
 
-
-        // Thread groups
-        int threadGroupsX =
+        int groupsX =
             Mathf.CeilToInt(
-                fallingSandRT.width /
-                8f
+                fallingSandRT.width / 8f
             );
 
-
-        int threadGroupsY =
+        int groupsY =
             Mathf.CeilToInt(
-                fallingSandRT.height /
-                8f
+                fallingSandRT.height / 8f
             );
 
 
         fallingSandShader.Dispatch(
-            kernelHandle,
-            threadGroupsX,
-            threadGroupsY,
+            kernel,
+            groupsX,
+            groupsY,
             1
         );
     }

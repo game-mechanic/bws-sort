@@ -7,12 +7,14 @@ RWTexture2D<float4> sandRT;
 
 
 // ========================================================
-// SAND SPAWN SETTINGS
+// SPAWN
 // ========================================================
 
 float posX;
 float posY;
-float range;
+
+float spawnWidth;
+float spawnHeight;
 
 bool rightFirst;
 bool spawnSand;
@@ -21,7 +23,7 @@ float4 color;
 
 
 // ========================================================
-// COLLIDER DATA FROM UNITY
+// COLLIDERS
 // ========================================================
 
 int colliderCount;
@@ -29,8 +31,7 @@ float4 colliderBounds[MAX_COLLIDERS];
 
 
 // ========================================================
-// CHECK COLLIDER
-// Returns true when this pixel is inside a Unity Collider2D
+// COLLIDER CHECK
 // ========================================================
 
 bool IsCollider(int2 pos)
@@ -39,16 +40,11 @@ bool IsCollider(int2 pos)
     {
         float4 bounds = colliderBounds[i];
 
-        float minX = bounds.x;
-        float minY = bounds.y;
-        float maxX = bounds.z;
-        float maxY = bounds.w;
-
         if (
-            pos.x >= minX &&
-            pos.x <= maxX &&
-            pos.y >= minY &&
-            pos.y <= maxY
+            pos.x >= bounds.x &&
+            pos.x <= bounds.z &&
+            pos.y >= bounds.y &&
+            pos.y <= bounds.w
         )
         {
             return true;
@@ -60,13 +56,16 @@ bool IsCollider(int2 pos)
 
 
 // ========================================================
-// CHECK EMPTY
-// Collider and screen boundaries are SOLID
+// EMPTY CELL
 // ========================================================
 
-bool IsEmpty(int2 pos, uint width, uint height)
+bool IsEmpty(
+    int2 pos,
+    uint width,
+    uint height
+)
 {
-    // Screen boundary = solid
+    // Screen boundary
     if (
         pos.x < 0 ||
         pos.x >= (int)width ||
@@ -77,15 +76,12 @@ bool IsEmpty(int2 pos, uint width, uint height)
         return false;
     }
 
-
-    // Unity Collider2D = solid object
+    // Collider
     if (IsCollider(pos))
     {
         return false;
     }
 
-
-    // Check sand texture
     float4 pixel = sandRT[pos];
 
     return pixel.a <= 0.01;
@@ -112,13 +108,13 @@ void Initialize(uint3 id : SV_DispatchThreadID)
         return;
     }
 
-    // Clear texture
-    sandRT[id.xy] = float4(0, 0, 0, 0);
+    sandRT[id.xy] =
+        float4(0, 0, 0, 0);
 }
 
 
 // ========================================================
-// MAIN SAND SIMULATION
+// SAND FALL
 // ========================================================
 
 [numthreads(8, 8, 1)]
@@ -137,24 +133,36 @@ void SandFall(uint3 id : SV_DispatchThreadID)
         return;
     }
 
-
-    int2 currentPos = int2(id.xy);
+    int2 currentPos =
+        int2(id.xy);
 
 
     // ====================================================
-    // SPAWN SAND
+    // SPAWN
     // ====================================================
 
     if (spawnSand)
     {
-        float distanceToSpawn = distance(
-            float2(currentPos),
-            float2(posX, posY)
-        );
+        float left =
+            posX - spawnWidth * 0.5;
 
-        // Spawn only outside collider
+        float right =
+            posX + spawnWidth * 0.5;
+
+        float bottom =
+            posY - spawnHeight * 0.5;
+
+        float top =
+            posY + spawnHeight * 0.5;
+
+        bool insideSpawn =
+            currentPos.x >= left &&
+            currentPos.x <= right &&
+            currentPos.y >= bottom &&
+            currentPos.y <= top;
+
         if (
-            distanceToSpawn <= range &&
+            insideSpawn &&
             !IsCollider(currentPos)
         )
         {
@@ -164,73 +172,123 @@ void SandFall(uint3 id : SV_DispatchThreadID)
 
 
     // ====================================================
-    // CHECK CURRENT CELL
+    // CURRENT SAND
     // ====================================================
 
-    float4 currentSand = sandRT[currentPos];
+    float4 currentSand =
+        sandRT[currentPos];
 
     if (currentSand.a <= 0.01)
-        return;
-
-
-    // ====================================================
-    // 1. FALL STRAIGHT DOWN
-    // ====================================================
-
-    int2 down = currentPos + int2(0, -1);
-
-    if (IsEmpty(down, width, height))
     {
-        sandRT[currentPos] = float4(0, 0, 0, 0);
-        sandRT[down] = currentSand;
+        return;
+    }
+
+
+    // ====================================================
+    // STRAIGHT DOWN
+    // ====================================================
+
+    int2 down =
+        currentPos + int2(0, -1);
+
+    if (IsEmpty(
+        down,
+        width,
+        height
+    ))
+    {
+        sandRT[currentPos] =
+            float4(0, 0, 0, 0);
+
+        sandRT[down] =
+            currentSand;
 
         return;
     }
 
 
     // ====================================================
-    // 2. FALL DIAGONALLY
-    // Creates pyramid / mound shape
+    // COLLISION
+    //
+    // Down is blocked.
+    // Now try diagonal movement.
     // ====================================================
 
-    int2 downLeft = currentPos + int2(-1, -1);
-    int2 downRight = currentPos + int2(1, -1);
+    int2 downLeft =
+        currentPos + int2(-1, -1);
+
+    int2 downRight =
+        currentPos + int2(1, -1);
 
 
-    // Alternate direction every simulation step
-    // This prevents all sand from favouring one side
+    // ====================================================
+    // RANDOMIZED LEFT / RIGHT
+    // ====================================================
+
     if (rightFirst)
     {
-        if (IsEmpty(downRight, width, height))
+        // Right
+        if (IsEmpty(
+            downRight,
+            width,
+            height
+        ))
         {
-            sandRT[currentPos] = float4(0, 0, 0, 0);
-            sandRT[downRight] = currentSand;
+            sandRT[currentPos] =
+                float4(0, 0, 0, 0);
+
+            sandRT[downRight] =
+                currentSand;
 
             return;
         }
 
-        if (IsEmpty(downLeft, width, height))
+        // Left
+        if (IsEmpty(
+            downLeft,
+            width,
+            height
+        ))
         {
-            sandRT[currentPos] = float4(0, 0, 0, 0);
-            sandRT[downLeft] = currentSand;
+            sandRT[currentPos] =
+                float4(0, 0, 0, 0);
+
+            sandRT[downLeft] =
+                currentSand;
 
             return;
         }
     }
     else
     {
-        if (IsEmpty(downLeft, width, height))
+        // Left
+        if (IsEmpty(
+            downLeft,
+            width,
+            height
+        ))
         {
-            sandRT[currentPos] = float4(0, 0, 0, 0);
-            sandRT[downLeft] = currentSand;
+            sandRT[currentPos] =
+                float4(0, 0, 0, 0);
+
+            sandRT[downLeft] =
+                currentSand;
 
             return;
         }
 
-        if (IsEmpty(downRight, width, height))
+        // Right
+        if (IsEmpty(
+            downRight,
+            width,
+            height
+        ))
         {
-            sandRT[currentPos] = float4(0, 0, 0, 0);
-            sandRT[downRight] = currentSand;
+            sandRT[currentPos] =
+                float4(0, 0, 0, 0);
+
+            sandRT[downRight] =
+                currentSand;
 
             return;
         }
@@ -238,7 +296,9 @@ void SandFall(uint3 id : SV_DispatchThreadID)
 
 
     // ====================================================
-    // 3. BLOCKED
-    // Sand stays here and builds the pile
+    // SAND IS COMPLETELY BLOCKED
     // ====================================================
+
+    // Do nothing.
+    // Grain stays in place.
 }

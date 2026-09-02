@@ -56,11 +56,19 @@ Material:
     m_Ints: []
     m_Floats:
     - _Blur: 0
+    - _Detail: 0.35
+    - _EdgeSoftness: 0.15
     - _Glossiness: 0.5
+    - _GrainContrast: 0.436
+    - _GrainDetail: 0.35
+    - _GrainEdge: 1
+    - _GrainSize: 0.85
+    - _GrainSoftness: 0.15
+    - _GrainVariation: 1
     - _Metallic: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.8235294, g: 0.6313726, b: 0.35686275, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
