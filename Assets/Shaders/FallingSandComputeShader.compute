@@ -1,0 +1,244 @@
+#pragma kernel SandFall
+#pragma kernel Initialize
+
+#define MAX_COLLIDERS 50
+
+RWTexture2D<float4> sandRT;
+
+
+// ========================================================
+// SAND SPAWN SETTINGS
+// ========================================================
+
+float posX;
+float posY;
+float range;
+
+bool rightFirst;
+bool spawnSand;
+
+float4 color;
+
+
+// ========================================================
+// COLLIDER DATA FROM UNITY
+// ========================================================
+
+int colliderCount;
+float4 colliderBounds[MAX_COLLIDERS];
+
+
+// ========================================================
+// CHECK COLLIDER
+// Returns true when this pixel is inside a Unity Collider2D
+// ========================================================
+
+bool IsCollider(int2 pos)
+{
+    for (int i = 0; i < colliderCount; i++)
+    {
+        float4 bounds = colliderBounds[i];
+
+        float minX = bounds.x;
+        float minY = bounds.y;
+        float maxX = bounds.z;
+        float maxY = bounds.w;
+
+        if (
+            pos.x >= minX &&
+            pos.x <= maxX &&
+            pos.y >= minY &&
+            pos.y <= maxY
+        )
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+// ========================================================
+// CHECK EMPTY
+// Collider and screen boundaries are SOLID
+// ========================================================
+
+bool IsEmpty(int2 pos, uint width, uint height)
+{
+    // Screen boundary = solid
+    if (
+        pos.x < 0 ||
+        pos.x >= (int)width ||
+        pos.y < 0 ||
+        pos.y >= (int)height
+    )
+    {
+        return false;
+    }
+
+
+    // Unity Collider2D = solid object
+    if (IsCollider(pos))
+    {
+        return false;
+    }
+
+
+    // Check sand texture
+    float4 pixel = sandRT[pos];
+
+    return pixel.a <= 0.01;
+}
+
+
+// ========================================================
+// INITIALIZE
+// ========================================================
+
+[numthreads(8, 8, 1)]
+void Initialize(uint3 id : SV_DispatchThreadID)
+{
+    uint width;
+    uint height;
+
+    sandRT.GetDimensions(width, height);
+
+    if (
+        id.x >= width ||
+        id.y >= height
+    )
+    {
+        return;
+    }
+
+    // Clear texture
+    sandRT[id.xy] = float4(0, 0, 0, 0);
+}
+
+
+// ========================================================
+// MAIN SAND SIMULATION
+// ========================================================
+
+[numthreads(8, 8, 1)]
+void SandFall(uint3 id : SV_DispatchThreadID)
+{
+    uint width;
+    uint height;
+
+    sandRT.GetDimensions(width, height);
+
+    if (
+        id.x >= width ||
+        id.y >= height
+    )
+    {
+        return;
+    }
+
+
+    int2 currentPos = int2(id.xy);
+
+
+    // ====================================================
+    // SPAWN SAND
+    // ====================================================
+
+    if (spawnSand)
+    {
+        float distanceToSpawn = distance(
+            float2(currentPos),
+            float2(posX, posY)
+        );
+
+        // Spawn only outside collider
+        if (
+            distanceToSpawn <= range &&
+            !IsCollider(currentPos)
+        )
+        {
+            sandRT[currentPos] = color;
+        }
+    }
+
+
+    // ====================================================
+    // CHECK CURRENT CELL
+    // ====================================================
+
+    float4 currentSand = sandRT[currentPos];
+
+    if (currentSand.a <= 0.01)
+        return;
+
+
+    // ====================================================
+    // 1. FALL STRAIGHT DOWN
+    // ====================================================
+
+    int2 down = currentPos + int2(0, -1);
+
+    if (IsEmpty(down, width, height))
+    {
+        sandRT[currentPos] = float4(0, 0, 0, 0);
+        sandRT[down] = currentSand;
+
+        return;
+    }
+
+
+    // ====================================================
+    // 2. FALL DIAGONALLY
+    // Creates pyramid / mound shape
+    // ====================================================
+
+    int2 downLeft = currentPos + int2(-1, -1);
+    int2 downRight = currentPos + int2(1, -1);
+
+
+    // Alternate direction every simulation step
+    // This prevents all sand from favouring one side
+    if (rightFirst)
+    {
+        if (IsEmpty(downRight, width, height))
+        {
+            sandRT[currentPos] = float4(0, 0, 0, 0);
+            sandRT[downRight] = currentSand;
+
+            return;
+        }
+
+        if (IsEmpty(downLeft, width, height))
+        {
+            sandRT[currentPos] = float4(0, 0, 0, 0);
+            sandRT[downLeft] = currentSand;
+
+            return;
+        }
+    }
+    else
+    {
+        if (IsEmpty(downLeft, width, height))
+        {
+            sandRT[currentPos] = float4(0, 0, 0, 0);
+            sandRT[downLeft] = currentSand;
+
+            return;
+        }
+
+        if (IsEmpty(downRight, width, height))
+        {
+            sandRT[currentPos] = float4(0, 0, 0, 0);
+            sandRT[downRight] = currentSand;
+
+            return;
+        }
+    }
+
+
+    // ====================================================
+    // 3. BLOCKED
+    // Sand stays here and builds the pile
+    // ====================================================
+}
