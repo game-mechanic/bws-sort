@@ -32,17 +32,15 @@ MonoBehaviour:
   spriteProfile: {fileID: 11400000, guid: 2802460379ecb425c98b78509e7a2f63, type: 2}
   tableReference:
     m_TableCollectionName: Planets
-  selectedLanguage: 5
+  selectedLanguage: 0
   englishLocale: {fileID: 11400000, guid: 8453d8e5bb2028f40a88d83511917e13, type: 2}
   canCreateGhost: 0
   canMerge: 1
   order:
-  - {fileID: 11400000, guid: 421c06c4ff94d8847829d4b98abaa5db, type: 2}
-  - {fileID: 11400000, guid: 3f94bd056e1e53843b844e2e32042c05, type: 2}
-  - {fileID: 11400000, guid: 2486d2eb0f134114d943f8b43b5ccd15, type: 2}
-  - {fileID: 11400000, guid: 245a8cb907daa6d4d9167954c7dbe191, type: 2}
-  - {fileID: 11400000, guid: 38bb36d15195522409ec5379b5374020, type: 2}
-  - {fileID: 11400000, guid: ec1fa4016a8007c489dbb546ed8a23e8, type: 2}
-  - {fileID: 11400000, guid: b8d1de56817b49a40b167e219f035818, type: 2}
+  - {fileID: 11400000, guid: 5f8c800500aadbd4094987dd184eff51, type: 2}
+  - {fileID: 11400000, guid: f8360ab1f253049d794eca16a92f558c, type: 2}
+  - {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
+  - {fileID: 11400000, guid: d8516214714824f5fba1fa699580aead, type: 2}
+  - {fileID: 11400000, guid: 02f6dfa6f3c70471bb91b206a080a5fb, type: 2}
   canTextBreathe: 0
-  enableRandomBubbleSize: 0
+  enableRandomBubbleSize: 1

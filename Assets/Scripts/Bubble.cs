@@ -27,6 +27,7 @@ public class Bubble : MonoBehaviour
     [SerializeField] byte index;
     [SerializeField] Transform viusal;
     [SerializeField] SpriteRenderer bg;
+    [SerializeField] List<Transform> disableTableWhenReachDest;
     [SerializeField] Color bgColor = Color.white;
     [SerializeField] GameObject highlightImage;
     [SerializeField] List<visuals> textUIs;
@@ -45,7 +46,10 @@ public class Bubble : MonoBehaviour
     float randomTextPhaseDiff;
     float time = 0f;
     Vector3 startScale;
+    Vector3 categoryTextStartScale;
     [SerializeField] private BubbleType category;
+    public bool isDestination = false;
+    public bool isFloatingInBucket = false;
 
     public RigidbodyType2D IsKinematic { get => rb.bodyType; set => rb.bodyType = value; }
     public float Radius => radius;
@@ -58,13 +62,18 @@ public class Bubble : MonoBehaviour
     Vector3[] textPositions;
     private GameObject ghostInstance;
 
-    private IEnumerator Start()
+    private void Awake()
     {
-        CategoryManager.Instance.RegisterCategory(Category);
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         sortingGroup = GetComponent<SortingGroup>();
-        startScale = viusal.localScale;
+        if (viusal != null) startScale = viusal.localScale;
+        if (categoryText != null) categoryTextStartScale = categoryText.transform.localScale;
+    }
+
+    private IEnumerator Start()
+    {
+        CategoryManager.Instance.RegisterCategory(Category);
         randomPhaseDiff = Random.Range(0, 90) * Mathf.Deg2Rad;
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
         RestorePositions();
@@ -166,6 +175,8 @@ public class Bubble : MonoBehaviour
 
     private void Update()
     {
+        if (isDestination) return;
+
         if (!isBouncing)
         {
             float x = (Mathf.Sin((Time.time + randomPhaseDiff) * GameSettings.Instance.BreathingSpeed) + 0.5f) * GameSettings.Instance.BreathingAplitude;
@@ -511,6 +522,119 @@ public class Bubble : MonoBehaviour
         else
         {
             EndDrag();
+        }
+    }
+
+    public void SetAsDestination()
+    {
+        isDestination = true;
+        isBouncing = false;
+        if (viusal != null)
+        {
+            viusal.DOKill();
+            viusal.localScale = Vector3.zero;
+        }
+        if (rb == null) rb = GetComponent<Rigidbody2D>();
+        if (col == null) col = GetComponent<Collider2D>();
+        if (rb != null) IsKinematic = RigidbodyType2D.Kinematic;
+        if (col != null) col.isTrigger = true;
+    }
+
+    public void SetupDestinationCategory(string newCategoryName)
+    {
+        if (categoryText == null) return;
+        categoryText.gameObject.SetActive(true);
+        categoryText.text = newCategoryName;
+        categoryText.transform.DOKill();
+        categoryText.transform.localScale = Vector3.zero;
+        categoryText.transform.DOScale(categoryTextStartScale, 0.5f).SetEase(Ease.OutBack);
+        
+        viusal.DOKill();
+        viusal.localScale = Vector3.zero;
+        viusal.DOScale(startScale, 0.5f).SetEase(Ease.OutBack);
+    }
+
+    public void MoveToDestination(Transform dest, System.Action onArrive)
+    {
+        if (col != null) col.enabled = false;
+        Vector3 originalScale = transform.localScale;
+
+        SortingGroup sg = GetComponent<SortingGroup>();
+        if(sg != null) sg.sortingOrder = 10;
+
+        Sequence seq = DOTween.Sequence();
+        seq.Append(transform.DOScale(originalScale * 1.2f, 0.1f).SetEase(Ease.Linear));
+        seq.Append(transform.DOScale(originalScale * .8f, 0.1f).SetEase(Ease.Linear));
+        seq.Append(transform.DOMove(dest.position, 0.4f).SetEase(Ease.Linear));
+        seq.OnComplete(() =>
+        {
+            /* foreach (var item in disableTableWhenReachDest)
+            {
+                item.gameObject.SetActive(false);
+            } */
+            onArrive?.Invoke();
+        });
+    }
+
+    public void FloatAround(Vector3 center, float radius, float speed)
+    {
+        if (!isFloatingInBucket) return;
+        FloatX(center.x, radius, speed);
+        FloatY(center.y, radius, speed);
+    }
+
+    private void FloatX(float centerX, float radius, float speed)
+    {
+        if (!isFloatingInBucket) return;
+        float targetX = centerX + Random.Range(-radius, radius);
+        float time = Random.Range(1.2f, 2.5f) / speed;
+        transform.DOMoveX(targetX, time).SetEase(Ease.InOutSine).OnComplete(() => 
+        {
+            if (this != null && gameObject != null && gameObject.activeInHierarchy && isFloatingInBucket) 
+            {
+                FloatX(centerX, radius, speed);
+            }
+        });
+    }
+
+    private void FloatY(float centerY, float radius, float speed)
+    {
+        if (!isFloatingInBucket) return;
+        float targetY = centerY + Random.Range(-radius, radius);
+        float time = Random.Range(1.2f, 2.5f) / speed;
+        transform.DOMoveY(targetY, time).SetEase(Ease.InOutSine).OnComplete(() => 
+        {
+            if (this != null && gameObject != null && gameObject.activeInHierarchy && isFloatingInBucket) 
+            {
+                FloatY(centerY, radius, speed);
+            }
+        });
+    }
+
+    public void PlayCorrectFeedback(Color correctColor)
+    {
+        if (bg != null)
+        {
+            bg.DOKill();
+            bg.color = correctColor;
+        }
+    }
+
+    public void PlayWrongFeedback(Color wrongColor, float shakeDuration, float shakeStrength)
+    {
+        if (bg != null && viusal != null)
+        {
+            bg.DOKill();
+            bg.color = wrongColor;
+            
+            viusal.DOKill(false);
+            viusal.localPosition = Vector3.zero;
+            viusal.DOShakePosition(shakeDuration, new Vector3(shakeStrength, shakeStrength, 0), 15, 90, false, false)
+                  .OnComplete(() =>
+                  {
+                      bg.DOColor(bgColor, 0.2f);
+                      viusal.localPosition = Vector3.zero;
+                  });
         }
     }
 }

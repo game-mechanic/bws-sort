@@ -34,6 +34,29 @@ public class InputHandler : Singleton<InputHandler>
             Time.timeScale = 1f;
         }
 
+        if (CategoryManager.Instance != null && CategoryManager.Instance.destinationBubble != null)
+        {
+            if (Input.GetMouseButtonDown(0) && TryRaycast2D(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit2D hitDest))
+            {
+                if (hitDest.collider.TryGetComponent(out Bubble tappedBubble) && !tappedBubble.isDestination)
+                {
+                    if (tappedBubble.Category == CategoryManager.Instance.destinationBubble.Category)
+                    {
+                        tappedBubble.PlayCorrectFeedback(CategoryManager.Instance.correctTapColor);
+                        tappedBubble.MoveToDestination(CategoryManager.Instance.destinationBubble.transform, () =>
+                        {
+                            CategoryManager.Instance.OnBubbleReachedDestination(tappedBubble);
+                        });
+                    }
+                    else
+                    {
+                        tappedBubble.PlayWrongFeedback(CategoryManager.Instance.wrongTapColor, CategoryManager.Instance.wrongShakeDuration, CategoryManager.Instance.wrongShakeStrength);
+                    }
+                }
+            }
+            return;
+        }
+
         if (!isDragging
             && Input.GetMouseButtonDown(0)
             && TryRaycast2D(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit2D hit)

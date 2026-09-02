@@ -18,8 +18,23 @@ public class CategoryManager : Singleton<CategoryManager>
     bool EnableRandomSize => GameSettings.Instance.EnableRandomBubbleSize;
     float minMultiplier = 1f;
     float maxMultiplier = 2f;
+    [SerializeField] public Bubble destinationBubble;
+    [SerializeField] float delayBeforeDestinationSetup = 1f;
+    
+    [Header("Tap Feedback Settings")]
+    [SerializeField] public Color correctTapColor = Color.green;
+    [SerializeField] public Color wrongTapColor = Color.red;
+    [SerializeField] public float wrongShakeDuration = 0.4f;
+    [SerializeField] public float wrongShakeStrength = 0.3f;
+    
+    [Header("Destination Floaty Settings")]
+    [SerializeField] public float destBubbleFloatyRadii = 0.5f;
+    [SerializeField] public float destBubbleFloatySpeed = 2f;
+
     int currentIndex = 0;
+    int currentOrderIndex = 0;
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
+    List<Bubble> gatheredBubbles = new List<Bubble>();
 
     public LevelData LevelDataAsset => levelData;
 
@@ -36,6 +51,12 @@ public class CategoryManager : Singleton<CategoryManager>
         if (!spawnOnStart)
         {
             yield break;
+        }
+
+        if (destinationBubble != null)
+        {
+            destinationBubble.SetAsDestination();
+            StartCoroutine(DestinationSetupCoroutine());
         }
 
         yield return LoadLocalization(GameSettings.Instance.TableReference.TableCollectionName);
@@ -133,6 +154,31 @@ public class CategoryManager : Singleton<CategoryManager>
             Debug.LogError($"Failed to load localization table: {tableName}");
         }
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[(int)GameSettings.Instance.SelectedLanguage];
+    }
+
+    IEnumerator DestinationSetupCoroutine()
+    {
+        yield return new WaitForSeconds(delayBeforeDestinationSetup);
+        SetupNextDestinationCategory();
+    }
+
+    public void SetupNextDestinationCategory()
+    {
+        if (currentOrderIndex < GameSettings.Instance.Order.Length)
+        {
+            BubbleType nextType = GameSettings.Instance.Order[currentOrderIndex];
+            destinationBubble.Category = nextType;
+            
+            string localizedValue = nextType.name;
+            if (GameSettings.Instance.SelectedLanguage.ToString() != "en")
+            {
+                localizedValue = LocalizationSettings.StringDatabase.GetLocalizedString(
+                       GameSettings.Instance.TableReference,
+                        nextType.name
+                    );
+            }
+            destinationBubble.SetupDestinationCategory(localizedValue);
+        }
     }
 
     private void Shuffle()
@@ -255,5 +301,72 @@ public class CategoryManager : Singleton<CategoryManager>
     {
         if (!categoryCounts.ContainsKey(category)) return -1;
         return categoryCounts[category];
+    }
+
+    public int DecrementCount(BubbleType category)
+    {
+        if (!categoryCounts.ContainsKey(category)) return 0;
+        categoryCounts[category] -= 1;
+
+        if (categoryCounts[category] <= 0)
+        {
+            categoryCounts.Remove(category);
+            return 0;
+        }
+        return categoryCounts[category];
+    }
+
+    public void OnBubbleReachedDestination(Bubble bubble)
+    {
+        gatheredBubbles.Add(bubble);
+        bubble.isFloatingInBucket = true;
+        bubble.FloatAround(destinationBubble.transform.position, destBubbleFloatyRadii, destBubbleFloatySpeed);
+        
+        int remaining = DecrementCount(bubble.Category);
+        if (remaining <= 0)
+        {
+            if (GameSettings.Instance.BubbleFXPrefab != null)
+            {
+                ParticleSystem fx = Instantiate(GameSettings.Instance.BubbleFXPrefab);
+                fx.transform.SetPositionAndRotation(destinationBubble.transform.position, Quaternion.Euler(-90,0, 0));
+                fx.transform.localScale = destinationBubble.transform.localScale / 2;
+                fx.Play();
+            }
+
+            SpawnNewCategories();
+            
+            foreach (var b in gatheredBubbles)
+            {
+                if (b != null)
+                {
+                    b.isFloatingInBucket = false;
+                    b.transform.DOKill();
+                    b.gameObject.SetActive(false);
+                    Destroy(b.gameObject);
+                }
+            }
+            gatheredBubbles.Clear();
+            
+            destinationBubble.gameObject.SetActive(false);
+
+            currentOrderIndex++;
+            DOVirtual.DelayedCall(0.5f, () => 
+            {
+                if (currentOrderIndex < GameSettings.Instance.Order.Length)
+                {
+                    destinationBubble.gameObject.SetActive(true);
+                    SetupNextDestinationCategory();
+                }
+            });
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (destinationBubble != null)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(destinationBubble.transform.position, destBubbleFloatyRadii);
+        }
     }
 }
