@@ -193,6 +193,42 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 3f94bd056e1e53843b844e2e32042c05, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    newDatas:
+    - name: Apple
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 3f94bd056e1e53843b844e2e32042c05, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    newDatas:
+    - name: Orange
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 3f94bd056e1e53843b844e2e32042c05, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    newDatas:
+    - name: Banana
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 3f94bd056e1e53843b844e2e32042c05, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    newDatas:
+    - name: Grapes
+      icon: {fileID: 0}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
   initialSpawns: 16
   minMultiplier: 0.8
   maxMultiplier: 0.82

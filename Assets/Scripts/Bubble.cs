@@ -554,7 +554,7 @@ public class Bubble : MonoBehaviour
         viusal.DOScale(startScale, 0.5f).SetEase(Ease.OutBack);
     }
 
-    public void MoveToDestination(Transform dest, System.Action onArrive)
+    public void MoveToDestination(Vector3 destPos, System.Action onArrive)
     {
         if (col != null) col.enabled = false;
         Vector3 originalScale = transform.localScale;
@@ -562,10 +562,12 @@ public class Bubble : MonoBehaviour
         SortingGroup sg = GetComponent<SortingGroup>();
         if(sg != null) sg.sortingOrder = 10;
 
+        if(rb != null) rb.bodyType = RigidbodyType2D.Kinematic;
+
         Sequence seq = DOTween.Sequence();
         seq.Append(transform.DOScale(originalScale * 1.2f, 0.1f).SetEase(Ease.Linear));
         seq.Append(transform.DOScale(originalScale * .8f, 0.1f).SetEase(Ease.Linear));
-        seq.Append(transform.DOMove(dest.position, 0.4f).SetEase(Ease.Linear));
+        seq.Append(transform.DOMove(destPos, 0.4f).SetEase(Ease.Linear));
         seq.OnComplete(() =>
         {
             /* foreach (var item in disableTableWhenReachDest)
@@ -635,6 +637,15 @@ public class Bubble : MonoBehaviour
                       bg.DOColor(bgColor, 0.2f);
                       viusal.localPosition = Vector3.zero;
                   });
+        }
+    }
+
+    public void ScaleOutCategoryText(float duration)
+    {
+        if (categoryText != null)
+        {
+            categoryText.transform.DOKill();
+            categoryText.transform.DOScale(Vector3.zero, duration).SetEase(Ease.InBack);
         }
     }
 }

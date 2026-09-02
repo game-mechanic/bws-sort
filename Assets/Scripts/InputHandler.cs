@@ -43,7 +43,7 @@ public class InputHandler : Singleton<InputHandler>
                     if (tappedBubble.Category == CategoryManager.Instance.destinationBubble.Category)
                     {
                         tappedBubble.PlayCorrectFeedback(CategoryManager.Instance.correctTapColor);
-                        tappedBubble.MoveToDestination(CategoryManager.Instance.destinationBubble.transform, () =>
+                        tappedBubble.MoveToDestination(CategoryManager.Instance.GetRandomAnnulusPosition(), () =>
                         {
                             CategoryManager.Instance.OnBubbleReachedDestination(tappedBubble);
                         });

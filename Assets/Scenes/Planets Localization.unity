@@ -402,8 +402,12 @@ MonoBehaviour:
   wrongTapColor: {r: 1, g: 0, b: 0, a: 0.49019608}
   wrongShakeDuration: 0.3
   wrongShakeStrength: 0.03
-  destBubbleFloatyRadii: 0.74
-  destBubbleFloatySpeed: 0.2
+  destBubbleFloatyInnerRadii: 0.3
+  destBubbleFloatyOuterRadii: 0.75
+  destBubbleLocalFloatyRadii: 0.2
+  destBubbleFloatySpeed: 0.25
+  delayBurst: 0.2
+  initialDelayAfterComplete: 0.7
 --- !u!1 &418541823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,6 +1449,24 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!1 &1220178496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7822901397140927155, guid: 896906e380ce552479913031cb6e131f, type: 3}
+  m_PrefabInstance: {fileID: 1914383991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &1220178500
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220178496}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 100
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &1261789451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,8 +1826,12 @@ MonoBehaviour:
   wrongTapColor: {r: 1, g: 0, b: 0, a: 1}
   wrongShakeDuration: 0.4
   wrongShakeStrength: 0.3
-  destBubbleFloatyRadii: 0.5
+  destBubbleFloatyInnerRadii: 0.5
+  destBubbleFloatyOuterRadii: 1
+  destBubbleLocalFloatyRadii: 0.2
   destBubbleFloatySpeed: 2
+  delayBurst: 0.1
+  initialDelayAfterComplete: 0.5
 --- !u!4 &1484017449
 Transform:
   m_ObjectHideFlags: 0
@@ -2666,10 +2692,14 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3668639307299784845, guid: 896906e380ce552479913031cb6e131f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7822901397140927155, guid: 896906e380ce552479913031cb6e131f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1220178500}
     - targetCorrespondingSourceObject: {fileID: 7822901397140927155, guid: 896906e380ce552479913031cb6e131f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}

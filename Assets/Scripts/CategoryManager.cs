@@ -28,8 +28,13 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] public float wrongShakeStrength = 0.3f;
     
     [Header("Destination Floaty Settings")]
-    [SerializeField] public float destBubbleFloatyRadii = 0.5f;
+    [SerializeField] public float destBubbleFloatyInnerRadii = 0.5f;
+    [SerializeField] public float destBubbleFloatyOuterRadii = 1.0f;
     [SerializeField] public float destBubbleFloatySpeed = 2f;
+
+    [Header("Burst Sequence Settings")]
+    [SerializeField] public float delayBurst = 0.1f;
+    [SerializeField] public float initialDelayAfterComplete = 0.5f;
 
     int currentIndex = 0;
     int currentOrderIndex = 0;
@@ -316,49 +321,111 @@ public class CategoryManager : Singleton<CategoryManager>
         return categoryCounts[category];
     }
 
+    public Vector3 GetRandomAnnulusPosition()
+    {
+        if (destinationBubble == null) return Vector3.zero;
+
+        Vector3 center = destinationBubble.transform.position;
+        Vector3 bestPos = center;
+        float maxMinDist = -1f;
+
+        for (int i = 0; i < 15; i++)
+        {
+            float angle = Random.Range(0f, Mathf.PI * 2);
+            float radius = Random.Range(destBubbleFloatyInnerRadii, destBubbleFloatyOuterRadii);
+            Vector3 candidatePos = center + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
+
+            if (gatheredBubbles.Count == 0)
+            {
+                return candidatePos;
+            }
+
+            float minDist = float.MaxValue;
+            foreach (var b in gatheredBubbles)
+            {
+                if (b == null) continue;
+                float dist = Vector3.Distance(candidatePos, b.transform.position);
+                if (dist < minDist)
+                {
+                    minDist = dist;
+                }
+            }
+
+            if (minDist > maxMinDist)
+            {
+                maxMinDist = minDist;
+                bestPos = candidatePos;
+            }
+        }
+        return bestPos;
+    }
+
     public void OnBubbleReachedDestination(Bubble bubble)
     {
         gatheredBubbles.Add(bubble);
         bubble.isFloatingInBucket = true;
-        bubble.FloatAround(destinationBubble.transform.position, destBubbleFloatyRadii, destBubbleFloatySpeed);
+        bubble.FloatAround(destinationBubble.transform.position, destBubbleFloatyOuterRadii, destBubbleFloatySpeed);
         
         int remaining = DecrementCount(bubble.Category);
         if (remaining <= 0)
         {
+            StartCoroutine(HandleDestinationComplete());
+        }
+    }
+
+    private IEnumerator HandleDestinationComplete()
+    {
+        yield return new WaitForSeconds(initialDelayAfterComplete);
+
+        foreach (var b in gatheredBubbles)
+        {
+            if (b != null)
+            {
+                b.isFloatingInBucket = false;
+                b.transform.DOKill();
+                
+                if (GameSettings.Instance.BubbleFXPrefab != null)
+                {
+                    ParticleSystem fx = Instantiate(GameSettings.Instance.BubbleFXPrefab);
+                    fx.transform.SetPositionAndRotation(b.transform.position, Quaternion.Euler(-90, 0, 0));
+                    fx.transform.localScale = b.transform.localScale / 2;
+                    fx.Play();
+                }
+
+                b.gameObject.SetActive(false);
+                Destroy(b.gameObject);
+            }
+            yield return new WaitForSeconds(delayBurst);
+        }
+        gatheredBubbles.Clear();
+
+        if (destinationBubble != null)
+        {
+            destinationBubble.ScaleOutCategoryText(0.2f);
+            yield return new WaitForSeconds(0.2f);
+
             if (GameSettings.Instance.BubbleFXPrefab != null)
             {
                 ParticleSystem fx = Instantiate(GameSettings.Instance.BubbleFXPrefab);
-                fx.transform.SetPositionAndRotation(destinationBubble.transform.position, Quaternion.Euler(-90,0, 0));
+                fx.transform.SetPositionAndRotation(destinationBubble.transform.position, Quaternion.Euler(-90, 0, 0));
                 fx.transform.localScale = destinationBubble.transform.localScale / 2;
                 fx.Play();
             }
 
-            SpawnNewCategories();
-            
-            foreach (var b in gatheredBubbles)
-            {
-                if (b != null)
-                {
-                    b.isFloatingInBucket = false;
-                    b.transform.DOKill();
-                    b.gameObject.SetActive(false);
-                    Destroy(b.gameObject);
-                }
-            }
-            gatheredBubbles.Clear();
-            
             destinationBubble.gameObject.SetActive(false);
-
-            currentOrderIndex++;
-            DOVirtual.DelayedCall(0.5f, () => 
-            {
-                if (currentOrderIndex < GameSettings.Instance.Order.Length)
-                {
-                    destinationBubble.gameObject.SetActive(true);
-                    SetupNextDestinationCategory();
-                }
-            });
         }
+
+        SpawnNewCategories();
+
+        currentOrderIndex++;
+        DOVirtual.DelayedCall(0.5f, () => 
+        {
+            if (currentOrderIndex < GameSettings.Instance.Order.Length)
+            {
+                destinationBubble.gameObject.SetActive(true);
+                SetupNextDestinationCategory();
+            }
+        });
     }
 
     private void OnDrawGizmos()
@@ -366,7 +433,9 @@ public class CategoryManager : Singleton<CategoryManager>
         if (destinationBubble != null)
         {
             Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(destinationBubble.transform.position, destBubbleFloatyRadii);
+            Gizmos.DrawWireSphere(destinationBubble.transform.position, destBubbleFloatyOuterRadii);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(destinationBubble.transform.position, destBubbleFloatyInnerRadii);
         }
     }
 }
