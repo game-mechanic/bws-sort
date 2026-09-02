@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.01, y: -0.26}
-  m_SizeDelta: {x: 8.3675, y: 5}
+  m_AnchoredPosition: {x: -0.00000041723, y: -0.15}
+  m_SizeDelta: {x: 6.106, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &7951089864926569421
 MeshRenderer:
@@ -306,8 +306,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.01, y: 0.45}
-  m_SizeDelta: {x: 8.3675, y: 5}
+  m_AnchoredPosition: {x: 0.000000029802, y: -0.18}
+  m_SizeDelta: {x: 9.0142, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &4320717734048282689
 MeshRenderer:
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'sadf asf '
+  m_text: 'sfzcv zG '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a665c7f9a659b3849934eb590b126b30, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: a665c7f9a659b3849934eb590b126b30, type: 2}
@@ -488,8 +488,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 5.908, y: 5}
+  m_AnchoredPosition: {x: 0.0051, y: 0}
+  m_SizeDelta: {x: 9.0142, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &2497985066780739266
 MeshRenderer:
@@ -942,8 +942,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.01, y: -0.26}
-  m_SizeDelta: {x: 8.3675, y: 5}
+  m_AnchoredPosition: {x: 0.000010073, y: -0.18}
+  m_SizeDelta: {x: 6.2539, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &5359766731013587988
 MeshRenderer:
@@ -1014,7 +1014,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'sadf asf '
+  m_text: ' asg dSG '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a665c7f9a659b3849934eb590b126b30, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: a665c7f9a659b3849934eb590b126b30, type: 2}
