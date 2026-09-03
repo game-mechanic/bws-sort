@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Rendering;
+using UnityEngine.U2D;
 
 public class Bubble : MonoBehaviour
 {
@@ -47,11 +48,27 @@ public class Bubble : MonoBehaviour
     Vector3 startScale;
     [SerializeField] private BubbleType category;
 
+    [Space]
+    [Header("Water Shape")]
+    [SerializeField] private Example10.WaterShapeController waterShapeController;
+    [SerializeField] private SpriteShapeRenderer spriteShapeRenderer;
+
+    public Example10.WaterShapeController WaterShapeController => waterShapeController;
+    public SpriteShapeRenderer SpriteShapeRenderer => spriteShapeRenderer;
+
     public RigidbodyType2D IsKinematic { get => rb.bodyType; set => rb.bodyType = value; }
     public float Radius => radius;
 
     public byte Index { get => index; }
-    public BubbleType Category { get => category; set => category = value; }
+    public BubbleType Category 
+    { 
+        get => category; 
+        set 
+        { 
+            category = value; 
+            ApplyWaterColor();
+        } 
+    }
     public List<Data> Names { get => names; }
     public bool CanChangeColor { get => canChangeColor; }
 
@@ -69,6 +86,7 @@ public class Bubble : MonoBehaviour
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
         RestorePositions();
         Redraw();
+        ApplyWaterColor();
         yield return null;
         foreach (var name in textUIs)
         {
@@ -96,6 +114,7 @@ public class Bubble : MonoBehaviour
         if (bg != null)
             bg.color = bgColor;
         Redraw();
+        ApplyWaterColor();
     }
 
     private void Redraw()
@@ -549,6 +568,29 @@ public class Bubble : MonoBehaviour
         else
         {
             EndDrag();
+        }
+    }
+
+    public void ApplyWaterColor()
+    {
+        if (Category == null || GameSettings.Instance == null) return;
+
+        if (GameSettings.Instance.TryGetWaterColor(Category, out Color color))
+        {
+            SetWaterColor(color);
+        }
+    }
+
+    public void SetWaterColor(Color color)
+    {
+        if (spriteShapeRenderer == null)
+        {
+            spriteShapeRenderer = GetComponentInChildren<SpriteShapeRenderer>(true);
+        }
+
+        if (spriteShapeRenderer != null)
+        {
+            spriteShapeRenderer.color = color;
         }
     }
 }

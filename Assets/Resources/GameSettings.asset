@@ -46,3 +46,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b8d1de56817b49a40b167e219f035818, type: 2}
   canTextBreathe: 0
   enableRandomBubbleSize: 0
+  bubbleTypeWaterColors:
+  - bubbleType: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
+    color: {r: 0.390566, g: 1, b: 0.93621755, a: 0}
+  - bubbleType: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
+    color: {r: 0.4490268, g: 1, b: 0.39215684, a: 0}
+  - bubbleType: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
+    color: {r: 1, g: 0.34322622, b: 0.3226415, a: 0}
+  - bubbleType: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
+    color: {r: 0.9664473, g: 1, b: 0.1566037, a: 0}
+  - bubbleType: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
+    color: {r: 0.64453113, g: 0.216981, b: 1, a: 0}
+  - bubbleType: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
+    color: {r: 0.41320753, g: 0.4626019, b: 1, a: 0}
+  - bubbleType: {fileID: 11400000, guid: 11dedc502bec01849a27cc069a3c94da, type: 2}
+    color: {r: 0.058490515, g: 1, b: 0.6453347, a: 0}
+  - bubbleType: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
+    color: {r: 1, g: 0.690069, b: 0.2245282, a: 0}
+  - bubbleType: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
+    color: {r: 1, g: 0.043396115, b: 0.8462799, a: 0}

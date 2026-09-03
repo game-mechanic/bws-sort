@@ -1,6 +1,15 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization.Tables;
+
+[System.Serializable]
+public struct BubbleTypeWaterColor
+{
+    public BubbleType bubbleType;
+    public Color color;
+}
+
 [CreateAssetMenu(fileName = "GameSettings")]
 public class GameSettings : ScriptableObject
 {
@@ -61,6 +70,27 @@ public class GameSettings : ScriptableObject
     [SerializeField] private BubbleType[] order;
     [SerializeField] private bool canTextBreathe;
     [SerializeField] private bool enableRandomBubbleSize;
+
+    [Header("Bubble Type Water Colors")]
+    [SerializeField] private List<BubbleTypeWaterColor> bubbleTypeWaterColors = new List<BubbleTypeWaterColor>();
+
+    public List<BubbleTypeWaterColor> BubbleTypeWaterColors => bubbleTypeWaterColors;
+
+    public bool TryGetWaterColor(BubbleType type, out Color color)
+    {
+        color = Color.white;
+        if (type == null || bubbleTypeWaterColors == null) return false;
+
+        for (int i = 0; i < bubbleTypeWaterColors.Count; i++)
+        {
+            if (bubbleTypeWaterColors[i].bubbleType == type)
+            {
+                color = bubbleTypeWaterColors[i].color;
+                return true;
+            }
+        }
+        return false;
+    }
 
     public float MaxBounceAmplitude { get => maxBounceAmplitude; }
     public float BounceTime { get => bounceTime; }
