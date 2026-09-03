@@ -51,6 +51,11 @@ public class Bubble : MonoBehaviour
     [Header("Liquid Layers")]
     [SerializeField] private List<LiquidLayer> liquidFillSequenceTable;
     [SerializeField] private Transform liquidLayerContainer;
+    [SerializeField] private float maxLiquidTilt = 26f;
+    [SerializeField] private float minLiquidTilt = -26f;
+    [SerializeField] private float liquidTiltLerpSpeed = 8f;
+
+    private float currentTiltZ = 0f;
 
     public RigidbodyType2D IsKinematic { get => rb.bodyType; set => rb.bodyType = value; }
     public float Radius => radius;
@@ -303,6 +308,32 @@ public class Bubble : MonoBehaviour
     public void Highlight(bool v)
     {
         highlightImage.SetActive(v);
+    }
+
+    /// <summary>
+    /// Called every FixedUpdate while being dragged.
+    /// velocityX: the signed horizontal speed of the drag this frame.
+    /// </summary>
+    public void UpdateLiquidTilt(float velocityX)
+    {
+        if (liquidLayerContainer == null) return;
+
+        // Map velocity to tilt: moving right (positive x) → negative z rotation (tilts right)
+        float targetTilt = Mathf.Clamp(-velocityX, minLiquidTilt, maxLiquidTilt);
+        currentTiltZ = Mathf.Lerp(currentTiltZ, targetTilt, liquidTiltLerpSpeed * Time.fixedDeltaTime);
+
+        Vector3 euler = liquidLayerContainer.localEulerAngles;
+        euler.z = currentTiltZ;
+        liquidLayerContainer.localEulerAngles = euler;
+    }
+
+    public void SettleLiquidTilt()
+    {
+        if (liquidLayerContainer == null) return;
+        currentTiltZ = Mathf.Lerp(currentTiltZ, 0f, liquidTiltLerpSpeed * Time.deltaTime);
+        Vector3 euler = liquidLayerContainer.localEulerAngles;
+        euler.z = currentTiltZ;
+        liquidLayerContainer.localEulerAngles = euler;
     }
     private void OnDrawGizmosSelected()
     {

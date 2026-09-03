@@ -11,6 +11,7 @@ public class InputHandler : Singleton<InputHandler>
     bool isDragging;
     Vector3 startScale;
     Vector3 offset;
+    Vector3 previousDragWorldPos;
     [SerializeField] Transform endPoint;
     public UnityEvent OnSuccessfullMerge;
 
@@ -43,6 +44,7 @@ public class InputHandler : Singleton<InputHandler>
             isDragging = true;
             startScale = draggable.transform.localScale;
             offset = new Vector2(draggable.transform.position.x, draggable.transform.position.y) - hit.point;
+            previousDragWorldPos = draggable.transform.position;
             draggable.StartDrag();
             draggable.Bounce(GameSettings.Instance.MaxBounceAmplitude, GameSettings.Instance.BounceTime);
         }
@@ -74,6 +76,11 @@ public class InputHandler : Singleton<InputHandler>
 
             draggable.transform.position = Vector3.Lerp(draggable.transform.position, hitPoint, GameSettings.Instance.DragSpeed * Time.fixedDeltaTime);
 
+            // Calculate horizontal velocity and apply liquid tilt
+            float velocityX = (draggable.transform.position.x - previousDragWorldPos.x) / Time.fixedDeltaTime;
+            draggable.UpdateLiquidTilt(velocityX);
+            previousDragWorldPos = draggable.transform.position;
+
             if (GetOverlap(hitPoint, draggable.Radius, out Collider2D hit))
             {
                 if (hit.TryGetComponent(out Bubble d))
@@ -88,6 +95,11 @@ public class InputHandler : Singleton<InputHandler>
             {
                 Highlight(null);
             }
+        }
+        else if (draggable != null && !isDragging)
+        {
+            // Bubble released — settle tilt back to 0
+            draggable.SettleLiquidTilt();
         }
     }
     Collider2D[] results = new Collider2D[10];

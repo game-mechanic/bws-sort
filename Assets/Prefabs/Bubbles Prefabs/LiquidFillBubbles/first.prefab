@@ -1572,12 +1572,24 @@ PrefabInstance:
       value: 0.14509805
       objectReference: {fileID: 0}
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: maxLiquidTilt
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: minLiquidTilt
+      value: -55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: names.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: textUIs.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: liquidTiltLerpSpeed
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: liquidLayerContainer
