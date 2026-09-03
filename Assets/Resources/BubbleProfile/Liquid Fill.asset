@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
+  m_Name: Liquid Fill
+  m_EditorClassIdentifier: 
+  bubbles:
+  - {fileID: 7926608256317659342, guid: 9edd38dd8f35a954cbe8bcb5e24b3e60, type: 3}
+  - {fileID: 7926608256317659342, guid: e7c59f6465b348d49851b7a0ae33ab45, type: 3}
+  - {fileID: 7926608256317659342, guid: d4673c2e84e8ea74daf9d904a821b614, type: 3}
+  - {fileID: 7926608256317659342, guid: d97a60f8a2b5f6743ac3904d080618ac, type: 3}
