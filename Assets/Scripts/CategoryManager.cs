@@ -7,10 +7,14 @@ using UnityEngine.Localization.Tables;
 
 public class CategoryManager : Singleton<CategoryManager>
 {
+    public enum GameplayType { MERGE, FILL }
+
     [SerializeField] bool spawnOnStart = true;
     [SerializeField] bool shouldBlastAtStart = false;
 
+    public GameplayType gameplayType;
     [SerializeField] LevelData levelData;
+    [SerializeField] LiquidLevelData liquidLevelData;
     [SerializeField] HorizontalAlignment horizontalAlignment;
     List<LevelData.Data> datas = new();
     int initialSpawns = 15;
@@ -22,23 +26,33 @@ public class CategoryManager : Singleton<CategoryManager>
     Dictionary<BubbleType, int> categoryCounts = new Dictionary<BubbleType, int>();
 
     public LevelData LevelDataAsset => levelData;
+    public LiquidLevelData LiquidLevelDataAsset => liquidLevelData;
 
     public int CurrentIndex { get => currentIndex; }
 
     IEnumerator Start()
+    {
+        if (!spawnOnStart) yield break;
+
+        yield return LoadLocalization(GameSettings.Instance.TableReference.TableCollectionName);
+
+        if (gameplayType == GameplayType.MERGE)
+        {
+            yield return StartCoroutine(SpawnMerge());
+        }
+        else if (gameplayType == GameplayType.FILL)
+        {
+            yield return StartCoroutine(SpawnFill());
+        }
+    }
+
+    private IEnumerator SpawnMerge()
     {
         datas = new(levelData.datas);
         initialSpawns = levelData.initialSpawns;
         minMultiplier = levelData.minMultiplier;
         maxMultiplier = levelData.maxMultiplier;
 
-
-        if (!spawnOnStart)
-        {
-            yield break;
-        }
-
-        yield return LoadLocalization(GameSettings.Instance.TableReference.TableCollectionName);
         Shuffle();
 
         List<Bubble> blastableBubble = new();
@@ -103,12 +117,45 @@ public class CategoryManager : Singleton<CategoryManager>
         yield return new WaitForSeconds(2);
         for (int i = 0; i < blastableBubble.Count; i++)
         {
-            // blastableBubble[i].Blast(() => InputHandler.Instance.OnSuccessfullMerge?.Invoke());
             blastableBubble[i].gameObject.SetActive(false);
             yield return new WaitForSeconds(.15f);
         }
         if (blastableBubble.Count > 0)
             SpawnNewCategories();
+    }
+
+    private IEnumerator SpawnFill()
+    {
+        if (liquidLevelData == null)
+        {
+            Debug.LogError("CategoryManager: FILL mode selected but no LiquidLevelData assigned!");
+            yield break;
+        }
+
+        Bubble bubblePrefab = GameSettings.Instance.Bubbles[0];
+        WaitForSeconds wait = new(0.1f);
+        int count = liquidLevelData.bubbleDatas.Count;
+
+        for (int j = 0; j < count; j++)
+        {
+            Vector3 pos = horizontalAlignment.GetSlotPosition(j % 4);
+            int capturedJ = j;
+            var liqData = liquidLevelData.bubbleDatas[j];
+
+            DOVirtual.DelayedCall(Random.Range(0.1f, 0.2f), () =>
+            {
+                var bubble = Instantiate(bubblePrefab, pos, Quaternion.Euler(new Vector3(0, 0, Random.Range(-GameSettings.Instance.RotationOffset, GameSettings.Instance.RotationOffset))));
+
+                bubble.transform.DOScale(bubble.transform.localScale, 0.2f).From(0);
+
+                bubble.ApplyLiquidData(liqData.colors);
+            });
+
+            if (j % 4 == 0)
+                yield return wait;
+        }
+
+        currentIndex = count;
     }
 
     private IEnumerator LoadLocalization(string tableName)
@@ -220,6 +267,15 @@ public class CategoryManager : Singleton<CategoryManager>
                     bubble.SetBubbleSprite(sprite);
 
                 bubble.SetName(data);
+
+                if (gameplayType == GameplayType.FILL && liquidLevelData != null)
+                {
+                    if (j < liquidLevelData.bubbleDatas.Count)
+                    {
+                        var liqData = liquidLevelData.bubbleDatas[j];
+                        bubble.ApplyLiquidData(liqData.colors);
+                    }
+                }
             });
         }
         currentIndex += 4;

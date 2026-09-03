@@ -46,3 +46,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b8d1de56817b49a40b167e219f035818, type: 2}
   canTextBreathe: 0
   enableRandomBubbleSize: 0
+  liquidColors:
+  - colorType: 0
+    color: {r: 0, g: 0.92549026, b: 1, a: 1}
+  - colorType: 1
+    color: {r: 1, g: 0.4431373, b: 0.4431373, a: 1}
+  - colorType: 2
+    color: {r: 0.49803925, g: 1, b: 0.45882356, a: 1}
+  - colorType: 3
+    color: {r: 1, g: 0.8313726, b: 0, a: 1}

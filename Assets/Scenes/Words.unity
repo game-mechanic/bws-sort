@@ -342,7 +342,6 @@ GameObject:
   - component: {fileID: 157686651}
   - component: {fileID: 157686650}
   - component: {fileID: 157686653}
-  - component: {fileID: 157686654}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -395,26 +394,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnOnStart: 1
   shouldBlastAtStart: 0
+  gameplayType: 1
   levelData: {fileID: 11400000, guid: b81adb5e547b94821a1f3c01c329bb72, type: 2}
+  liquidLevelData: {fileID: 11400000, guid: 3702f058a83c27a4fb7b56fdcc88677c, type: 2}
   horizontalAlignment: {fileID: 1345279678}
---- !u!114 &157686654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157686649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cddb20568eef94d97a53879df7c4a3ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PenInputHandler
-  penColor: {r: 1, g: 1, b: 0, a: 1}
-  lineMaterial: {fileID: 2100000, guid: b3cdde6a2536e4e6884c714fc4d74fde, type: 2}
-  orderInLayer: 5
-  lineWidth: 0.1
-  minPointDistance: 0.05
-  fadeDuration: 0.5
 --- !u!1 &429325393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,7 +1377,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnOnStart: 1
   shouldBlastAtStart: 0
+  gameplayType: 0
   levelData: {fileID: 11400000, guid: 7d27ef9ad48e5446c9b84544681b3c5c, type: 2}
+  liquidLevelData: {fileID: 0}
   horizontalAlignment: {fileID: 1345279678}
 --- !u!4 &1484017449
 Transform:

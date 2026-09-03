@@ -1,6 +1,15 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization.Tables;
+
+[System.Serializable]
+public struct LiquidColorMapping
+{
+    public GameSettings.LiquidColorType colorType;
+    public Color color;
+}
+
 [CreateAssetMenu(fileName = "GameSettings")]
 public class GameSettings : ScriptableObject
 {
@@ -13,6 +22,14 @@ public class GameSettings : ScriptableObject
         pt = 3,
         ru = 4,
         es = 5,
+    }
+
+    public enum LiquidColorType
+    {
+        Blue,
+        Red,
+        Green,
+        Yellow
     }
 
     public static GameSettings Instance
@@ -62,6 +79,10 @@ public class GameSettings : ScriptableObject
     [SerializeField] private bool canTextBreathe;
     [SerializeField] private bool enableRandomBubbleSize;
 
+    [Header("Liquid Colors")]
+    [SerializeField] private List<LiquidColorMapping> liquidColors = new List<LiquidColorMapping>();
+
+    public List<LiquidColorMapping> LiquidColors { get => liquidColors; }
     public float MaxBounceAmplitude { get => maxBounceAmplitude; }
     public float BounceTime { get => bounceTime; }
     public int MaxBounces { get => maxBounces; }

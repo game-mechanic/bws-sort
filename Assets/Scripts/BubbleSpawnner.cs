@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -30,6 +30,15 @@ public class BubbleSpawnner : MonoBehaviour
                 if (GameSettings.Instance.CanUseDifferentSprites)
                     bubble.SetBubbleSprite(GameSettings.Instance.BubbleSprites[j % GameSettings.Instance.BubbleSprites.Length]);
                 bubble.SetName(data);
+
+                if (CategoryManager.Instance != null && CategoryManager.Instance.gameplayType == CategoryManager.GameplayType.FILL && CategoryManager.Instance.LiquidLevelDataAsset != null)
+                {
+                    if (j < CategoryManager.Instance.LiquidLevelDataAsset.bubbleDatas.Count)
+                    {
+                        var liqData = CategoryManager.Instance.LiquidLevelDataAsset.bubbleDatas[j];
+                        bubble.ApplyLiquidData(liqData.colors);
+                    }
+                }
             });
             if (j % 4 == 0)
                 yield return _waitForSeconds0_1;

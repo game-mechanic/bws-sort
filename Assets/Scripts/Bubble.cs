@@ -47,6 +47,11 @@ public class Bubble : MonoBehaviour
     Vector3 startScale;
     [SerializeField] private BubbleType category;
 
+    [Space]
+    [Header("Liquid Layers")]
+    [SerializeField] private List<LiquidLayer> liquidFillSequenceTable;
+    [SerializeField] private Transform liquidLayerContainer;
+
     public RigidbodyType2D IsKinematic { get => rb.bodyType; set => rb.bodyType = value; }
     public float Radius => radius;
 
@@ -60,21 +65,33 @@ public class Bubble : MonoBehaviour
 
     private IEnumerator Start()
     {
-        CategoryManager.Instance.RegisterCategory(Category);
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         sortingGroup = GetComponent<SortingGroup>();
         startScale = viusal.localScale;
         randomPhaseDiff = Random.Range(0, 90) * Mathf.Deg2Rad;
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
-        RestorePositions();
-        Redraw();
-        yield return null;
-        foreach (var name in textUIs)
+
+        bool isMerge = CategoryManager.Instance != null &&
+                       CategoryManager.Instance.gameplayType == CategoryManager.GameplayType.MERGE;
+
+        if (isMerge)
         {
+            CategoryManager.Instance.RegisterCategory(Category);
+            RestorePositions();
+            Redraw();
+        }
+
+        yield return null;
+
+        if (isMerge)
+        {
+            foreach (var name in textUIs)
+            {
 #if UNITY_EDITOR
-            SceneVisibilityManager.instance.Hide(name.textUIs.gameObject, true);
+                SceneVisibilityManager.instance.Hide(name.textUIs.gameObject, true);
 #endif
+            }
         }
     }
     private void OnDisable()
@@ -483,6 +500,36 @@ public class Bubble : MonoBehaviour
             Destroy(gameObject);
             OnBlastComplete?.Invoke();
         });
+    }
+
+    public void ApplyLiquidData(List<GameSettings.LiquidColorType> colors)
+    {
+        if (liquidFillSequenceTable == null) return;
+
+        for (int i = 0; i < liquidFillSequenceTable.Count; i++)
+        {
+            if (i < colors.Count)
+            {
+                Color mappedColor = Color.white;
+                if (GameSettings.Instance.LiquidColors != null)
+                {
+                    foreach (var mapping in GameSettings.Instance.LiquidColors)
+                    {
+                        if (mapping.colorType == colors[i])
+                        {
+                            mappedColor = mapping.color;
+                            break;
+                        }
+                    }
+                }
+
+                liquidFillSequenceTable[i].SetLiquidInstantly(LiquidState.FILLED, mappedColor, colors[i]);
+            }
+            else
+            {
+                liquidFillSequenceTable[i].SetLiquidInstantly(LiquidState.EMPTY);
+            }
+        }
     }
 
     internal void SetBubbleSprite(Sprite sprite)
