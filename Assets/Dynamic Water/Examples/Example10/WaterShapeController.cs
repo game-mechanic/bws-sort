@@ -32,6 +32,14 @@ namespace Example10 {
         [SerializeField]
         private List<WaterSpring> springs = new();
 
+        [Header("Wave Response")]
+        [Tooltip("How strongly horizontal bubble movement drives a slosh wave")]
+        [SerializeField] private float horizontalWaveSensitivity = 0.02f;
+        [Tooltip("How strongly vertical bubble movement (falling/rising) drives all springs")]
+        [SerializeField] private float verticalWaveSensitivity = 0.01f;
+        [Tooltip("Clamp max impulse per frame to avoid huge spikes")]
+        [SerializeField] private float maxImpulsePerFrame = 0.3f;
+
         private void Awake()
         {
             DisableAllColliders();
@@ -47,6 +55,39 @@ namespace Example10 {
             foreach (Rigidbody2D rb in GetComponentsInChildren<Rigidbody2D>(includeInactive: true))
             {
                 rb.simulated = false;
+            }
+        }
+
+        /// <summary>
+        /// Call this every FixedUpdate from Bubble.cs with the bubble's current world velocity.
+        /// Converts velocity into spring impulses simulating liquid sloshing:
+        ///   - Moving right  → left springs push up, right springs push down (slosh left)
+        ///   - Moving left   → right springs push up, left springs push down (slosh right)
+        ///   - Moving down   → all springs push up (liquid "stays behind")
+        ///   - Moving up     → all springs push down
+        /// </summary>
+        public void ApplyBubbleVelocity(Vector2 worldVelocity)
+        {
+            if (springs == null || springs.Count == 0) return;
+
+            int count = springs.Count;
+            float hv = Mathf.Clamp(-worldVelocity.x * horizontalWaveSensitivity, -maxImpulsePerFrame, maxImpulsePerFrame);
+            float vv = Mathf.Clamp(-worldVelocity.y * verticalWaveSensitivity, -maxImpulsePerFrame, maxImpulsePerFrame);
+
+            for (int i = 0; i < count; i++)
+            {
+                if (springs[i] == null) continue;
+
+                // Gradient: t = 0 at left spring, 1 at right spring
+                float t = count > 1 ? (float)i / (count - 1) : 0.5f;
+
+                // Horizontal slosh: left springs get +hv, right get -hv (inverted gradient)
+                float horizontalImpulse = hv * (0.5f - t) * 2f;
+
+                // Vertical: all springs equally affected
+                float verticalImpulse = vv;
+
+                springs[i].velocity += horizontalImpulse + verticalImpulse;
             }
         }
 

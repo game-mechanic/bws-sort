@@ -74,6 +74,7 @@ public class Bubble : MonoBehaviour
 
     Vector3[] textPositions;
     private GameObject ghostInstance;
+    private Vector3 prevPosition;
 
     private IEnumerator Start()
     {
@@ -98,6 +99,17 @@ public class Bubble : MonoBehaviour
     private void OnDisable()
     {
         viusal.DOKill();
+    }
+
+    private void FixedUpdate()
+    {
+        if (waterShapeController != null)
+        {
+            // Compute world-space velocity from position delta (captures both rb and kinematic motion)
+            Vector2 velocity = ((Vector2)(transform.position - prevPosition)) / Time.fixedDeltaTime;
+            waterShapeController.ApplyBubbleVelocity(velocity);
+        }
+        prevPosition = transform.position;
     }
     public void RestorePositions()
     {
