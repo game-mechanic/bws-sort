@@ -218,16 +218,27 @@ public class InputHandler : Singleton<InputHandler>
     }
 
 
-  public void SpawnWaterOnBubble(Bubble bubble)
-    {
-        // Hide the bubble immediately
-        bubble.gameObject.SetActive(false);
+    [SerializeField] public ProceduralSandBall sandSimulation;
 
-        Water2D_Spawner.instance.SpawnFixed(
-            50,
-            bubble.transform.position,
-            new Vector2(0f, -2f)
-        );
+    [SerializeField] private float sandSpawnYOffset = 0.5f;
+
+    public void SpawnSandOnBubble(Bubble bubble)
+    {
+        if (sandSimulation == null)
+        {
+            Debug.LogError("ProceduralSandBall is not assigned in InputHandler!");
+            return;
+        }
+
+        // Exact bubble center
+        Vector3 spawnPosition = bubble.transform.position;
+
+        // Move spawn point slightly upward
+        spawnPosition.y += sandSpawnYOffset;
+
+        spawnPosition.z = 0f;
+
+        sandSimulation.SpawnSandAtWorldPosition(spawnPosition);
     }
 
     void Highlight(Bubble newBubble)
