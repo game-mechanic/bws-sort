@@ -591,6 +591,17 @@ public class Bubble : MonoBehaviour
             {
                 item.gameObject.SetActive(false);
             } */
+
+            // Lerp scale from original → original * bubbleSizeMultOnReachDest
+            float sizeMult = CategoryManager.Instance != null
+                ? CategoryManager.Instance.bubbleSizeMultOnReachDest
+                : 1f;
+            if (!Mathf.Approximately(sizeMult, 1f))
+            {
+                transform.DOKill(false);
+                transform.DOScale(originalScale * sizeMult, 0.3f).SetEase(Ease.OutBack);
+            }
+
             onArrive?.Invoke();
         });
     }

@@ -1,12 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Tables;
 
 public class CategoryManager : Singleton<CategoryManager>
 {
+    // ──────────────────────────────────────────────────────────────────────────
+    //  Serializable helpers
+    // ──────────────────────────────────────────────────────────────────────────
+
+    /// <summary>
+    /// One entry in the dynamic forbidden-zone list.
+    /// The zone matching the current word count is the first entry whose
+    /// maxWordCount >= the counted words (list is checked in order).
+    /// </summary>
+    [System.Serializable]
+    public class ForbiddenZoneEntry
+    {
+        [Tooltip("Apply this entry when word count is <= this value.")]
+        public int maxWordCount;
+        public float width;
+        public float height;
+        public Vector2 posOffset;
+    }
+
     [SerializeField] bool spawnOnStart = true;
     [SerializeField] bool shouldBlastAtStart = false;
 
@@ -33,6 +54,30 @@ public class CategoryManager : Singleton<CategoryManager>
     [SerializeField] public float destBubbleFloatySpeed = 2f;
     [SerializeField] public float distBtwBubble = 0.5f;
     [SerializeField] public float arcBendness = 0f;
+    [Tooltip("When a bubble arrives at the destination bubble it lerps its scale from original to original * this value.")]
+    [SerializeField] public float bubbleSizeMultOnReachDest = 1f;
+
+    // ──────────────────────────────────────────────────────────────────────────
+    //  Forbidden Zone Settings
+    // ──────────────────────────────────────────────────────────────────────────
+    [Header("Forbidden Zone Settings")]
+    [Tooltip("Draw the forbidden zone gizmo and enforce zone avoidance for floaty/gathered bubbles.")]
+    [SerializeField] bool markForbiddenZone = false;
+    [SerializeField] float forbiddenZoneWidth = 2f;
+    [SerializeField] float forbiddenZoneHeight = 1f;
+    [Tooltip("World-space centre offset of the forbidden zone rectangle.")]
+    [SerializeField] Vector2 forbiddenZoneOffset = Vector2.zero;
+
+    [Space]
+    [Tooltip("If true, dynamically pick zone width/height/pos from the list below based on word count in the TMP field.")]
+    [SerializeField] bool dynamicForbiddenZoneByWordCount = false;
+    [Tooltip("The TextMeshPro component whose text string is split into words and counted.")]
+    [SerializeField] TextMeshPro forbiddenZoneWordField;
+    [Tooltip("List of zone entries. The first entry whose maxWordCount >= current word count is applied.")]
+    [SerializeField] List<ForbiddenZoneEntry> forbiddenZoneWordEntries = new();
+
+    // Runtime forbidden rect (updated on zone change / category change)
+    Rect currentForbiddenRect;
 
     [Header("Burst Sequence Settings")]
     [SerializeField] public float delayBurst = 0.1f;
@@ -188,7 +233,96 @@ public class CategoryManager : Singleton<CategoryManager>
                     );
             }
             destinationBubble.SetupDestinationCategory(localizedValue);
+
+            // Update forbidden zone whenever a new destination category is shown
+            UpdateForbiddenZone();
         }
+    }
+
+    // ──────────────────────────────────────────────────────────────────────────
+    //  Forbidden Zone Helpers
+    // ──────────────────────────────────────────────────────────────────────────
+
+    /// <summary>
+    /// Rebuilds <see cref="currentForbiddenRect"/> based on the current
+    /// static settings or the dynamic word-count list.
+    /// </summary>
+    public void UpdateForbiddenZone()
+    {
+        if (!markForbiddenZone) return;
+
+        float w = forbiddenZoneWidth;
+        float h = forbiddenZoneHeight;
+        Vector2 offset = forbiddenZoneOffset;
+
+        if (dynamicForbiddenZoneByWordCount && forbiddenZoneWordField != null && forbiddenZoneWordEntries.Count > 0)
+        {
+            // Count non-empty words in the TMP field
+            string[] words = forbiddenZoneWordField.text
+                .Split(new char[] { ' ', '\t', '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
+            int wordCount = words.Length;
+
+            // Find the first entry whose maxWordCount >= wordCount (entries sorted ascending)
+            ForbiddenZoneEntry matched = null;
+            foreach (var entry in forbiddenZoneWordEntries.OrderBy(e => e.maxWordCount))
+            {
+                if (wordCount <= entry.maxWordCount)
+                {
+                    matched = entry;
+                    break;
+                }
+            }
+
+            // Fall back to the last (largest) entry if word count exceeds all
+            if (matched == null)
+                matched = forbiddenZoneWordEntries[forbiddenZoneWordEntries.Count - 1];
+
+            w = matched.width;
+            h = matched.height;
+            offset = matched.posOffset;
+        }
+
+        // Build the rect centred on the offset
+        currentForbiddenRect = new Rect(offset.x - w * 0.5f, offset.y - h * 0.5f, w, h);
+    }
+
+    /// <summary>Returns true when <paramref name="pos"/> is inside the forbidden zone.</summary>
+    bool IsInsideForbiddenZone(Vector2 pos)
+    {
+        if (!markForbiddenZone) return false;
+        return currentForbiddenRect.Contains(pos);
+    }
+
+    /// <summary>
+    /// If <paramref name="pos"/> is inside the forbidden zone, pushes it to
+    /// the nearest edge of the rect and returns the corrected position.
+    /// </summary>
+    Vector2 PushOutOfForbiddenZone(Vector2 pos)
+    {
+        if (!markForbiddenZone) return pos;
+        if (!currentForbiddenRect.Contains(pos)) return pos;
+
+        float cx = currentForbiddenRect.center.x;
+        float cy = currentForbiddenRect.center.y;
+
+        float hw = currentForbiddenRect.width  * 0.5f;
+        float hh = currentForbiddenRect.height * 0.5f;
+
+        // Penetration depths for each face
+        float dLeft   = (pos.x - (cx - hw));  // distance from left edge (positive = inside)
+        float dRight  = ((cx + hw) - pos.x);  // distance from right edge
+        float dBottom = (pos.y - (cy - hh));
+        float dTop    = ((cy + hh) - pos.y);
+
+        // Push along the axis of least penetration
+        float minPen = Mathf.Min(dLeft, dRight, dBottom, dTop);
+
+        if (minPen == dLeft)        pos.x = cx - hw - 0.01f;
+        else if (minPen == dRight)  pos.x = cx + hw + 0.01f;
+        else if (minPen == dBottom) pos.y = cy - hh - 0.01f;
+        else                        pos.y = cy + hh + 0.01f;
+
+        return pos;
     }
 
     private void Shuffle()
@@ -264,6 +398,14 @@ public class CategoryManager : Singleton<CategoryManager>
                     }
                 }
 
+                // Push out of forbidden zone if bubble drifted in
+                if (markForbiddenZone && IsInsideForbiddenZone(pos))
+                {
+                    pos = PushOutOfForbiddenZone(pos);
+                    bubbleVelocities[b] *= -0.3f; // Dampen velocity so it bounces gently away
+                    AssignNewFloatTarget(b);       // Pick a new target outside the zone
+                }
+
                 b.transform.position = pos;
             }
         }
@@ -272,10 +414,78 @@ public class CategoryManager : Singleton<CategoryManager>
     void AssignNewFloatTarget(Bubble bubble)
     {
         if (destinationBubble == null) return;
-        float angle = Random.Range(0f, Mathf.PI * 2);
-        float radius = Random.Range(0f, destBubbleFloatyOuterRadii); 
-        Vector2 target = (Vector2)destinationBubble.transform.position + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
-        bubbleFloatTargets[bubble] = target;
+        Vector2 best = BestAnnulusPosition(excludeBubble: bubble);
+        bubbleFloatTargets[bubble] = best;
+    }
+
+    /// <summary>
+    /// Samples <paramref name="sampleCount"/> candidate positions in the annulus
+    /// (inner..outer radii) around the destination bubble, hard-rejects any
+    /// candidate inside the forbidden zone, then scores the survivors by their
+    /// minimum distance to every other gathered bubble (maximised).
+    /// Returns the best candidate found, or a pushed-out fallback if none pass.
+    /// </summary>
+    Vector2 BestAnnulusPosition(int sampleCount = 30, Bubble excludeBubble = null)
+    {
+        if (destinationBubble == null) return Vector2.zero;
+
+        Vector2 center = destinationBubble.transform.position;
+
+        Vector2 bestCandidate = center;
+        float   bestScore     = float.NegativeInfinity;
+        bool    foundValid    = false;
+
+        // Also keep the best candidate ignoring the forbidden zone as a fallback
+        Vector2 fallbackCandidate = center;
+        float   fallbackScore     = float.NegativeInfinity;
+
+        for (int i = 0; i < sampleCount; i++)
+        {
+            float angle  = Random.Range(0f, Mathf.PI * 2f);
+            // Strictly sample from the annulus (inner → outer)
+            float radius = Random.Range(
+                Mathf.Max(destBubbleFloatyInnerRadii, 0f),
+                destBubbleFloatyOuterRadii);
+
+            Vector2 candidate = center + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
+
+            // Score = minimum distance to every other gathered bubble (spread them apart)
+            float score = float.MaxValue;
+            bool hasPeers = false;
+            foreach (var b in gatheredBubbles)
+            {
+                if (b == null || b == excludeBubble) continue;
+                hasPeers = true;
+                float d = Vector2.Distance(candidate, b.transform.position);
+                if (d < score) score = d;
+            }
+            if (!hasPeers) score = 0f; // No peers → every candidate is equally good
+
+            // Update fallback (zone-blind best)
+            if (score > fallbackScore)
+            {
+                fallbackScore     = score;
+                fallbackCandidate = candidate;
+            }
+
+            // Hard-reject if inside the forbidden zone
+            if (markForbiddenZone && IsInsideForbiddenZone(candidate)) continue;
+
+            // Valid candidate — keep if it scores better
+            if (!foundValid || score > bestScore)
+            {
+                bestScore     = score;
+                bestCandidate = candidate;
+                foundValid    = true;
+            }
+        }
+
+        if (foundValid) return bestCandidate;
+
+        // Every sample hit the forbidden zone — push the zone-blind best out
+        return markForbiddenZone
+            ? PushOutOfForbiddenZone(fallbackCandidate)
+            : fallbackCandidate;
     }
     public void RegisterCategory(BubbleType category)
     {
@@ -397,40 +607,9 @@ public class CategoryManager : Singleton<CategoryManager>
     public Vector3 GetRandomAnnulusPosition()
     {
         if (destinationBubble == null) return Vector3.zero;
-
-        Vector3 center = destinationBubble.transform.position;
-        Vector3 bestPos = center;
-        float maxMinDist = -1f;
-
-        for (int i = 0; i < 15; i++)
-        {
-            float angle = Random.Range(0f, Mathf.PI * 2);
-            float radius = Random.Range(destBubbleFloatyInnerRadii, destBubbleFloatyOuterRadii);
-            Vector3 candidatePos = center + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0) * radius;
-
-            if (gatheredBubbles.Count == 0)
-            {
-                return candidatePos;
-            }
-
-            float minDist = float.MaxValue;
-            foreach (var b in gatheredBubbles)
-            {
-                if (b == null) continue;
-                float dist = Vector3.Distance(candidatePos, b.transform.position);
-                if (dist < minDist)
-                {
-                    minDist = dist;
-                }
-            }
-
-            if (minDist > maxMinDist)
-            {
-                maxMinDist = minDist;
-                bestPos = candidatePos;
-            }
-        }
-        return bestPos;
+        // Re-use the scored sampler so landing positions also respect the
+        // forbidden zone and spread away from already-gathered bubbles.
+        return BestAnnulusPosition(sampleCount: 30, excludeBubble: null);
     }
 
     public void OnBubbleReachedDestination(Bubble bubble)
@@ -511,6 +690,49 @@ public class CategoryManager : Singleton<CategoryManager>
             Gizmos.DrawWireSphere(destinationBubble.transform.position, destBubbleFloatyOuterRadii);
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(destinationBubble.transform.position, destBubbleFloatyInnerRadii);
+        }
+
+        // Forbidden zone rectangle gizmo
+        if (markForbiddenZone)
+        {
+            // Determine display rect (use live values so it updates in editor without play mode)
+            float w = forbiddenZoneWidth;
+            float h = forbiddenZoneHeight;
+            Vector2 offset = forbiddenZoneOffset;
+
+            if (dynamicForbiddenZoneByWordCount && forbiddenZoneWordField != null && forbiddenZoneWordEntries != null && forbiddenZoneWordEntries.Count > 0)
+            {
+                string[] words = forbiddenZoneWordField.text
+                    .Split(new char[] { ' ', '\t', '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
+                int wordCount = words.Length;
+
+                ForbiddenZoneEntry matched = null;
+                foreach (var entry in forbiddenZoneWordEntries.OrderBy(e => e.maxWordCount))
+                {
+                    if (wordCount <= entry.maxWordCount) { matched = entry; break; }
+                }
+                if (matched == null) matched = forbiddenZoneWordEntries[forbiddenZoneWordEntries.Count - 1];
+
+                w = matched.width;
+                h = matched.height;
+                offset = matched.posOffset;
+            }
+
+            Vector3 center = new Vector3(offset.x, offset.y, 0f);
+            Vector3 halfSize = new Vector3(w * 0.5f, h * 0.5f, 0.01f);
+
+            Gizmos.color = new Color(1f, 0f, 1f, 0.35f); // Magenta fill
+            Gizmos.DrawCube(center, halfSize * 2f);
+
+            Gizmos.color = Color.magenta; // Magenta outline
+            Vector3 tl = center + new Vector3(-halfSize.x,  halfSize.y, 0);
+            Vector3 tr = center + new Vector3( halfSize.x,  halfSize.y, 0);
+            Vector3 bl = center + new Vector3(-halfSize.x, -halfSize.y, 0);
+            Vector3 br = center + new Vector3( halfSize.x, -halfSize.y, 0);
+            Gizmos.DrawLine(tl, tr);
+            Gizmos.DrawLine(tr, br);
+            Gizmos.DrawLine(br, bl);
+            Gizmos.DrawLine(bl, tl);
         }
     }
 }

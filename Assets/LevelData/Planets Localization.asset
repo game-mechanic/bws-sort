@@ -229,7 +229,7 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  initialSpawns: 16
+  initialSpawns: 20
   minMultiplier: 0.8
   maxMultiplier: 0.82
   levelDataToAppend: {fileID: 0}

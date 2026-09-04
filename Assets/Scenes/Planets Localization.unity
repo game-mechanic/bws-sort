@@ -403,10 +403,26 @@ MonoBehaviour:
   wrongShakeDuration: 0.3
   wrongShakeStrength: 0.03
   destBubbleFloatyInnerRadii: 0.3
-  destBubbleFloatyOuterRadii: 0.75
+  destBubbleFloatyOuterRadii: 0.96
   destBubbleFloatySpeed: 0.7
   distBtwBubble: 0.7
   arcBendness: 0.5
+  bubbleSizeMultOnReachDest: 0.7
+  markForbiddenZone: 1
+  forbiddenZoneWidth: 2
+  forbiddenZoneHeight: 0.77
+  forbiddenZoneOffset: {x: -0.11, y: -1.22}
+  dynamicForbiddenZoneByWordCount: 0
+  forbiddenZoneWordField: {fileID: 0}
+  forbiddenZoneWordEntries:
+  - maxWordCount: 7
+    width: 2
+    height: 0.87
+    posOffset: {x: -0.11, y: -1.22}
+  - maxWordCount: 12
+    width: 2
+    height: 0.87
+    posOffset: {x: -0.11, y: -1.22}
   delayBurst: 0.2
   initialDelayAfterComplete: 0.7
 --- !u!1 &418541823
@@ -1832,6 +1848,14 @@ MonoBehaviour:
   destBubbleFloatySpeed: 2
   distBtwBubble: 0.5
   arcBendness: 0
+  bubbleSizeMultOnReachDest: 1
+  markForbiddenZone: 0
+  forbiddenZoneWidth: 2
+  forbiddenZoneHeight: 1
+  forbiddenZoneOffset: {x: 0, y: 0}
+  dynamicForbiddenZoneByWordCount: 0
+  forbiddenZoneWordField: {fileID: 0}
+  forbiddenZoneWordEntries: []
   delayBurst: 0.1
   initialDelayAfterComplete: 0.5
 --- !u!4 &1484017449
@@ -2568,11 +2592,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1707597261761279650, guid: 896906e380ce552479913031cb6e131f, type: 3}
       propertyPath: m_text
-      value: PLANETS
+      value: planets
       objectReference: {fileID: 0}
     - target: {fileID: 1707597261761279650, guid: 896906e380ce552479913031cb6e131f, type: 3}
       propertyPath: m_fontSize
-      value: 20
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707597261761279650, guid: 896906e380ce552479913031cb6e131f, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707597261761279650, guid: 896906e380ce552479913031cb6e131f, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707597261761279650, guid: 896906e380ce552479913031cb6e131f, type: 3}
+      propertyPath: m_lineSpacing
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707597261761279650, guid: 896906e380ce552479913031cb6e131f, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1872489197125276822, guid: 896906e380ce552479913031cb6e131f, type: 3}
       propertyPath: m_Name
