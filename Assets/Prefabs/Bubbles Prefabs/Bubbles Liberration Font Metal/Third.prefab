@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4924920851375370616
 RectTransform:
   m_ObjectHideFlags: 0
@@ -289,7 +289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6130128221165824402
 RectTransform:
   m_ObjectHideFlags: 0
@@ -593,7 +593,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 5
   m_fontSizeMax: 12
-  m_fontStyle: 16
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -761,8 +761,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.24096386}
-  m_SizeDelta: {x: 6.2539, y: 5}
+  m_AnchoredPosition: {x: -0.0154, y: 0.24096386}
+  m_SizeDelta: {x: 7.3307, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &30697009376503288
 MeshRenderer:
@@ -866,7 +866,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 5
   m_fontSizeMax: 12
-  m_fontStyle: 16
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -925,7 +925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9083243596594968636
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1099,11 +1099,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1293499255094854183, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 6.1057
+      value: 7.3748
       objectReference: {fileID: 0}
     - target: {fileID: 1293499255094854183, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 0.0173
       objectReference: {fileID: 0}
     - target: {fileID: 1293499255094854183, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1289,6 +1289,10 @@ PrefabInstance:
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 6820046140131779249, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: m_fontStyle
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 6820046140131779249, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_fontSizeMax
       value: 12
