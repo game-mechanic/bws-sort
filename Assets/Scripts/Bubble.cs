@@ -54,22 +54,31 @@ public class Bubble : MonoBehaviour
     public BubbleType Category { get => category; set => category = value; }
     public List<Data> Names { get => names; }
     public bool CanChangeColor { get => canChangeColor; }
-
+    public Color CurrentColor => bgColor;
     Vector3[] textPositions;
     private GameObject ghostInstance;
 
     private IEnumerator Start()
     {
         CategoryManager.Instance.RegisterCategory(Category);
+
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         sortingGroup = GetComponent<SortingGroup>();
+
         startScale = viusal.localScale;
+
         randomPhaseDiff = Random.Range(0, 90) * Mathf.Deg2Rad;
         randomTextPhaseDiff = Random.Range(0, 360) * Mathf.Deg2Rad;
+
         RestorePositions();
         Redraw();
+
+        // DON'T change color here.
+        // Bubble starts with its original bgColor.
+
         yield return null;
+
         foreach (var name in textUIs)
         {
 #if UNITY_EDITOR
@@ -93,11 +102,22 @@ public class Bubble : MonoBehaviour
     [EditorButton]
     public void Refresh()
     {
+        if (canChangeColor)
+        {
+            // Generate a NEW random color
+            bgColor = Random.ColorHSV(
+                0f, 1f,        // Hue
+                0.65f, 1f,     // Saturation
+                0.75f, 1f      // Brightness
+            );
+        }
+
+        // Apply the NEW bgColor
         if (bg != null)
             bg.color = bgColor;
+
         Redraw();
     }
-
     private void Redraw()
     {
         for (int i = 0; i < Names.Count; i++)
@@ -490,7 +510,37 @@ public class Bubble : MonoBehaviour
         //#endif
         //        }
     }
+    public void ChangeColorOnSort()
+    {
+        if (!canChangeColor)
+            return;
 
+        bgColor = Random.ColorHSV(
+            0f, 1f,        // Hue
+            0.7f, 1f,      // Saturation
+            0.8f, 1f       // Brightness
+        );
+
+        if (bg != null)
+            bg.color = bgColor;
+    }
+    
+    public void SetRandomMergeColor()
+    {
+        if (!canChangeColor || bg == null)
+            return;
+
+        // Generate a strong random color
+        bgColor = Random.ColorHSV(
+            0f, 1f,        // Hue
+            0.75f, 1f,     // Saturation
+            0.85f, 1f      // Brightness
+        );
+
+        // Apply directly to SpriteRenderer
+        bg.color = bgColor;
+    }
+    
     internal void BlastGhost()
     {
         Destroy(ghostInstance);

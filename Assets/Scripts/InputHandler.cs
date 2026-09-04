@@ -197,10 +197,18 @@ public class InputHandler : Singleton<InputHandler>
         names.AddRange(b.Names);
         newBubble.Category = a.Category;
         newBubble.SetName(names);
+
         if (GameSettings.Instance.CanUseDifferentSprites)
         {
-            newBubble.SetBubbleSprite(GameSettings.Instance.BubbleSprites[CategoryManager.Instance.CurrentIndex % GameSettings.Instance.BubbleSprites.Length]);
+            newBubble.SetBubbleSprite(
+                GameSettings.Instance.BubbleSprites[
+                    CategoryManager.Instance.CurrentIndex %
+                    GameSettings.Instance.BubbleSprites.Length
+                ]);
         }
+
+// Apply random color AFTER all visual changes
+        newBubble.SetRandomMergeColor();
         
         newBubble.Bounce();
         a.transform.DOKill();
@@ -226,19 +234,30 @@ public class InputHandler : Singleton<InputHandler>
     {
         if (sandSimulation == null)
         {
-            Debug.LogError("ProceduralSandBall is not assigned in InputHandler!");
+            Debug.LogError(
+                "ProceduralSandBall is not assigned in InputHandler!"
+            );
             return;
         }
 
-        // Exact bubble center
-        Vector3 spawnPosition = bubble.transform.position;
+        // Get the color of the bubble that is popping.
+        Color bubbleColor = bubble.CurrentColor;
 
-        // Move spawn point slightly upward
+        // This only sets the color for FUTURE sand.
+        sandSimulation.SetSandColor(bubbleColor);
+
+        Vector3 spawnPosition =
+            bubble.transform.position;
+
         spawnPosition.y += sandSpawnYOffset;
-
         spawnPosition.z = 0f;
 
-        sandSimulation.SpawnSandAtWorldPosition(spawnPosition);
+        // IMPORTANT:
+        // Pass the bubble color directly to this new sand.
+        sandSimulation.SpawnSandAtWorldPosition(
+            spawnPosition,
+            bubbleColor
+        );
     }
 
     void Highlight(Bubble newBubble)
