@@ -265,7 +265,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84020369}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -466,7 +466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 0.8
+  m_ScaleFactor: 0.2
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
@@ -532,8 +532,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0}
-  idle: {fileID: 21300000, guid: 35d52cdf02db28a4e9d34760022104c2, type: 3}
-  click: {fileID: 21300000, guid: 96b6d47e32d4165409bc121b4f856d80, type: 3}
+  idle: {fileID: 21300000, guid: 2cdbb15eb8b10d848b55f07b608020de, type: 3}
+  click: {fileID: 21300000, guid: b1c305d3f8aaab6488193b26a9d31b43, type: 3}
   lineStartPosition: {fileID: 0}
   lineRenderer: {fileID: 0}
   pointsCount: 0
@@ -894,18 +894,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799683886}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.17364816, w: 0.9848078}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 429325397}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.699707, y: -1372}
-  m_SizeDelta: {x: 300.7346, y: 375.9183}
-  m_Pivot: {x: 0.18919098, y: 0.95671815}
+  m_AnchoredPosition: {x: 153.79318, y: -6213.43}
+  m_SizeDelta: {x: 941, y: 1672}
+  m_Pivot: {x: 0.3526269, y: 0.97794455}
 --- !u!114 &799683888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 35d52cdf02db28a4e9d34760022104c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2cdbb15eb8b10d848b55f07b608020de, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1015,7 +1015,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.9711055, g: 0.495283, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.47058824, g: 0.25490198, b: 0.050980393, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
