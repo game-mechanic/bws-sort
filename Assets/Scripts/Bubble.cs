@@ -57,7 +57,17 @@ public class Bubble : MonoBehaviour
     public Color CurrentColor => bgColor;
     Vector3[] textPositions;
     private GameObject ghostInstance;
-
+    private static readonly Color[] MergeColors =
+    {
+        HexToColor("#1B9E77"), // Green
+        HexToColor("#D95F02"), // Orange
+        HexToColor("#7570B3"), // Purple
+        HexToColor("#E7298A"), // Pink
+        HexToColor("#66A61E"), // Lime Green
+        HexToColor("#E6AB02")  // Yellow
+    };
+    
+    private static int lastMergeColorIndex = -1;
     private IEnumerator Start()
     {
         CategoryManager.Instance.RegisterCategory(Category);
@@ -512,17 +522,26 @@ public class Bubble : MonoBehaviour
     }
     public void ChangeColorOnSort()
     {
-        if (!canChangeColor)
+        if (!canChangeColor || bg == null)
             return;
 
-        bgColor = Random.ColorHSV(
-            0f, 1f,        // Hue
-            0.7f, 1f,      // Saturation
-            0.8f, 1f       // Brightness
-        );
+        int newColorIndex;
 
-        if (bg != null)
-            bg.color = bgColor;
+        // Make sure the new color is different from
+        // the previous merge color.
+        do
+        {
+            newColorIndex = Random.Range(0, MergeColors.Length);
+        }
+        while (MergeColors.Length > 1 &&
+               newColorIndex == lastMergeColorIndex);
+
+        lastMergeColorIndex = newColorIndex;
+
+        bgColor = MergeColors[newColorIndex];
+
+        // Apply immediately to this bubble only.
+        bg.color = bgColor;
     }
     
     public void SetRandomMergeColor()
@@ -530,15 +549,32 @@ public class Bubble : MonoBehaviour
         if (!canChangeColor || bg == null)
             return;
 
-        // Generate a strong random color
-        bgColor = Random.ColorHSV(
-            0f, 1f,        // Hue
-            0.75f, 1f,     // Saturation
-            0.85f, 1f      // Brightness
-        );
+        int newColorIndex;
 
-        // Apply directly to SpriteRenderer
+        // Pick a color only from the 6 fixed colors.
+        do
+        {
+            newColorIndex = Random.Range(0, MergeColors.Length);
+        }
+        while (MergeColors.Length > 1 &&
+               newColorIndex == lastMergeColorIndex);
+
+        lastMergeColorIndex = newColorIndex;
+
+        bgColor = MergeColors[newColorIndex];
+
+        // Apply the color ONLY to this bubble.
         bg.color = bgColor;
+    }
+    private static Color HexToColor(string hex)
+    {
+        Color color;
+
+        if (ColorUtility.TryParseHtmlString(hex, out color))
+            return color;
+
+        Debug.LogError("Invalid color HEX: " + hex);
+        return Color.white;
     }
     
     internal void BlastGhost()
