@@ -219,7 +219,7 @@ PrefabInstance:
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: category
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 8c4413394cff25d478a02c2d2926c735, type: 2}
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: bgColor.b
       value: 1
