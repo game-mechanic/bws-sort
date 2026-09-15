@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   datas:
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -22,6 +23,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -30,6 +32,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -38,6 +41,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -46,6 +50,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -54,6 +59,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -62,6 +68,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -70,6 +77,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -78,6 +86,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -86,6 +95,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -94,6 +104,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -102,6 +113,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: ad4b0662f0791434d98aa937ab47e737, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -110,6 +122,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -118,6 +131,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 2578237c5a8d42f41859e009e92a26c9, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -126,6 +140,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: f7dafedf8ffcff64c85c7b0937e36039, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -134,6 +149,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -142,6 +158,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -150,6 +167,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 478264d08e7248047b270b878ae1413e, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -158,6 +176,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -166,6 +185,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 3449dc9636a162a44acaec75df048bfa, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -174,6 +194,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -182,6 +203,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -190,6 +212,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -198,6 +221,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -206,6 +230,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 2578237c5a8d42f41859e009e92a26c9, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -214,6 +239,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -222,6 +248,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: b51602552a88ed54eb5425a5115ea050, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -230,6 +257,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -238,6 +266,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: c2e6c44487b2c2941b79cb8da4c06488, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -246,6 +275,7 @@ MonoBehaviour:
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: 28f8def2388cf1744853ee3b6cc7e99e, type: 2}
+    shouldBlastAtStart: 0
     overrideColor: 0
     bubbleColor: {r: 1, g: 1, b: 1, a: 1}
     newDatas:
@@ -253,7 +283,7 @@ MonoBehaviour:
       icon: {fileID: 0}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  initialSpawns: 30
+  initialSpawns: 20
   minMultiplier: 1
   maxMultiplier: 2
   levelDataToAppend: {fileID: 0}

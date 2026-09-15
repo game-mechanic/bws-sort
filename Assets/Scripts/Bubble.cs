@@ -106,7 +106,7 @@ public class Bubble : MonoBehaviour
             if (GameSettings.Instance.SelectedLanguage.ToString() == "en")
             {
                 textUIs[i].textUIs.text = Names[i].name;
-                if(textUIs[i].textUIs.transform.childCount > 0)
+                if (textUIs[i].textUIs.transform.childCount > 0)
                 {
                     textUIs[i].textUIs.transform.GetChild(0).GetComponent<TextMeshPro>().text = Names[i].name;
                 }
@@ -119,9 +119,9 @@ public class Bubble : MonoBehaviour
                         Names[i].name
                     );
 
-                if(textUIs[i].textUIs.transform.childCount > 0)
+                if (textUIs[i].textUIs.transform.childCount > 0)
                 {
-                    textUIs[i].textUIs.transform.GetChild(0).GetComponent<TextMeshPro>().text = 
+                    textUIs[i].textUIs.transform.GetChild(0).GetComponent<TextMeshPro>().text =
                     LocalizationSettings.StringDatabase.GetLocalizedString(
                        GameSettings.Instance.TableReference,
                         Names[i].name
@@ -134,7 +134,7 @@ public class Bubble : MonoBehaviour
             {
                 // Show both
                 textUIs[i].bg.sprite = Names[i].icon;
-                if(textUIs[i].bg.transform.childCount > 0)
+                if (textUIs[i].bg.transform.childCount > 0)
                 {
                     textUIs[i].bg.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Names[i].icon;
                 }
@@ -163,7 +163,7 @@ public class Bubble : MonoBehaviour
             {
                 // Show image only
                 textUIs[i].bg.sprite = Names[i].icon;
-                if(textUIs[i].bg.transform.childCount > 0)
+                if (textUIs[i].bg.transform.childCount > 0)
                 {
                     textUIs[i].bg.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = Names[i].icon;
                 }
@@ -299,14 +299,14 @@ public class Bubble : MonoBehaviour
         if (categoryText != null)
         {
             categoryText.text = Category.name;
-            if(categoryText.transform.childCount > 0)
+            if (categoryText.transform.childCount > 0)
             {
                 categoryText.transform.GetChild(0).GetComponent<TextMeshPro>().text = Category.name;
             }
             if (GameSettings.Instance.SelectedLanguage.ToString() == "en")
             {
                 categoryText.text = Category.name;
-                if(categoryText.transform.childCount > 0)
+                if (categoryText.transform.childCount > 0)
                 {
                     categoryText.transform.GetChild(0).GetComponent<TextMeshPro>().text = Category.name;
                 }
@@ -319,14 +319,14 @@ public class Bubble : MonoBehaviour
                         Category.name
                     );
 
-                    if(categoryText.transform.childCount > 0)
-                    {
-                         categoryText.transform.GetChild(0).GetComponent<TextMeshPro>().text = 
-                         LocalizationSettings.StringDatabase.GetLocalizedString(
-                            GameSettings.Instance.TableReference,
-                            Category.name
-                         );
-                    }
+                if (categoryText.transform.childCount > 0)
+                {
+                    categoryText.transform.GetChild(0).GetComponent<TextMeshPro>().text =
+                    LocalizationSettings.StringDatabase.GetLocalizedString(
+                       GameSettings.Instance.TableReference,
+                       Category.name
+                    );
+                }
             }
         }
 
@@ -498,10 +498,10 @@ public class Bubble : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        // Color color = category.Color;
-        // color.a = 1f;
-        // Gizmos.color = color;
-        // Gizmos.DrawSphere(transform.position, radius: Radius);
+        Color color = category.Color;
+        color.a = 1f;
+        Gizmos.color = color;
+        Gizmos.DrawSphere(transform.position, radius: Radius);
         if (Names.Count == 1)
         {
             string name = LocalizationSettings.StringDatabase.GetLocalizedString(
