@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: f9521ebb674424a72937a53b1dc1beb9
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: ba63e3d88bbf34d318018ab36efb9dd6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  multiSpriteImportData: []
+  layeredSpriteImportData:
+  - name: Big Bend_ W
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 3526
+      y: 2499
+      width: 450
+      height: 317
+    spriteID: 4b7202f61fca14e9eb29669e771bd0a1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3526, y: 2499}
+    spritePosition: {x: 1419, y: 740}
+  - name: Gulf Coast-W
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 3054
+      y: 2839
+      width: 352
+      height: 435
+    spriteID: 8fb227bc6bcc14dde8c3ce53f955fa08
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3054, y: 2839}
+    spritePosition: {x: 2063, y: 442}
+  - name: South Texas_W
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 312
+      y: 3298
+      width: 285
+      height: 365
+    spriteID: f2dccb9aab6f944dd823e5e7a949a743
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 312, y: 3298}
+    spritePosition: {x: 1853, y: 459}
+  - name: Hill Country_W
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 2758
+      y: 2172
+      width: 383
+      height: 313
+    spriteID: 1a4af361a09cf4a5a8c4b799614d699b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2758, y: 2172}
+    spritePosition: {x: 1745, y: 743}
+  - name: Piney _W
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 3852
+      y: 4
+      width: 219
+      height: 358
+    spriteID: c0a565d15336e4b40b7dd60a68283396
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3852, y: 4}
+    spritePosition: {x: 2213, y: 835}
+  - name: Prairies _W
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 2729
+      y: 2499
+      width: 317
+      height: 489
+    spriteID: dd4b4df78e56541808fe252cad9a801e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2729, y: 2499}
+    spritePosition: {x: 1997, y: 734}
+  - name: Panhandle _W
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1602
+      y: 2499
+      width: 404
+      height: 483
+    spriteID: 69886468eab9942b2a1249eea6388456
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1602, y: 2499}
+    spritePosition: {x: 1676, y: 951}
+  - name: Layer 7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1974
+      y: 2172
+      width: 776
+      height: 305
+    spriteID: f8996333fe00848399bf68e6ffa44591
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1974, y: 2172}
+    spritePosition: {x: 1577, y: 1480}
+  - name: Big Bend
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 3054
+      y: 2499
+      width: 464
+      height: 332
+    spriteID: f59c70de19eeb4d458e662f4c539c462
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3054, y: 2499}
+    spritePosition: {x: 1412, y: 728}
+  - name: Gulf Coast
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 2354
+      y: 2499
+      width: 367
+      height: 450
+    spriteID: d0f89495bbd06412196a826419f35edf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2354, y: 2499}
+    spritePosition: {x: 2055, y: 430}
+  - name: South Texas
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 3298
+      width: 300
+      height: 380
+    spriteID: 7e69ecfd3a72342b6af6a9777659e43f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 3298}
+    spritePosition: {x: 1846, y: 447}
+  - name: Hill Country
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 3414
+      y: 2839
+      width: 398
+      height: 328
+    spriteID: 01a6d181f90074795a395a6d9e59112e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3414, y: 2839}
+    spritePosition: {x: 1738, y: 731}
+  - name: 'Piney    '
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 3820
+      y: 2839
+      width: 233
+      height: 372
+    spriteID: 0f62bd1eb8a364de1a2e6d1c90d8fd14
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3820, y: 2839}
+    spritePosition: {x: 2206, y: 823}
+  - name: Prairies
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 2014
+      y: 2499
+      width: 332
+      height: 505
+    spriteID: cf152124e5e084b13b84d1888d0d4d4a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2014, y: 2499}
+    spritePosition: {x: 1989, y: 721}
+  - name: Panhandle
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1176
+      y: 2499
+      width: 418
+      height: 498
+    spriteID: 03b2f2a8e800c46bfb0e605de197d122
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1176, y: 2499}
+    spritePosition: {x: 1669, y: 938}
+  - name: Layer 7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1176
+      y: 2172
+      width: 790
+      height: 319
+    spriteID: e0a5a304c3006461895ee660d6d0f3b4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1176, y: 2172}
+    spritePosition: {x: 1570, y: 1468}
+  - name: Map
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2172
+      width: 1164
+      height: 1118
+    spriteID: a13749c8252af43e58826d56cc9d19cc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 2172}
+    spritePosition: {x: 1338, y: 373}
+  - name: Generative Fill 2 copy
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 3840
+      height: 2160
+    spriteID: 86c814300ff2444fb860fe9207db469a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 0, y: 0}
+  spriteImportData: []
+  rigSpriteImportData: []
+  sharedRigSpriteImportData: []
+  mosaicSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: iPhone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 1
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  generateTileAssets: 0
+  tilePaletteCellLayout: 0
+  tilePaletteHexagonLayout: 0
+  tilePaletteCellSize: {x: 1, y: 1, z: 0}
+  tilePaletteCellSizing: 0
+  transparencySortMode: 0
+  transparencySortAxis: {x: 0, y: 0, z: 1}
+  tileTemplate: {instanceID: 0}
+  padding: 4
+  spriteSizeExpand: 0
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  pSDLayerImportSetting: []
+  psdLayers:
+  - name: Big Bend_ W
+    spriteName: Big Bend_ W
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 4b7202f61fca14e9eb29669e771bd0a1
+    layerID: 82
+    mosaicPosition: {x: 3526, y: 2499}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Gulf Coast-W
+    spriteName: Gulf Coast-W
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8fb227bc6bcc14dde8c3ce53f955fa08
+    layerID: 81
+    mosaicPosition: {x: 3054, y: 2839}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: South Texas_W
+    spriteName: South Texas_W
+    isGroup: 0
+    parentIndex: -1
+    spriteID: f2dccb9aab6f944dd823e5e7a949a743
+    layerID: 80
+    mosaicPosition: {x: 312, y: 3298}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Hill Country_W
+    spriteName: Hill Country_W
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 1a4af361a09cf4a5a8c4b799614d699b
+    layerID: 79
+    mosaicPosition: {x: 2758, y: 2172}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Piney _W
+    spriteName: Piney _W
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c0a565d15336e4b40b7dd60a68283396
+    layerID: 78
+    mosaicPosition: {x: 3852, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Prairies _W
+    spriteName: Prairies _W
+    isGroup: 0
+    parentIndex: -1
+    spriteID: dd4b4df78e56541808fe252cad9a801e
+    layerID: 77
+    mosaicPosition: {x: 2729, y: 2499}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Panhandle _W
+    spriteName: Panhandle _W
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 69886468eab9942b2a1249eea6388456
+    layerID: 76
+    mosaicPosition: {x: 1602, y: 2499}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Layer 7
+    spriteName: Layer 7
+    isGroup: 0
+    parentIndex: -1
+    spriteID: f8996333fe00848399bf68e6ffa44591
+    layerID: 75
+    mosaicPosition: {x: 1974, y: 2172}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Big Bend
+    spriteName: Big Bend
+    isGroup: 0
+    parentIndex: -1
+    spriteID: f59c70de19eeb4d458e662f4c539c462
+    layerID: 37
+    mosaicPosition: {x: 3054, y: 2499}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Gulf Coast
+    spriteName: Gulf Coast
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d0f89495bbd06412196a826419f35edf
+    layerID: 42
+    mosaicPosition: {x: 2354, y: 2499}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: South Texas
+    spriteName: South Texas
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7e69ecfd3a72342b6af6a9777659e43f
+    layerID: 46
+    mosaicPosition: {x: 4, y: 3298}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Hill Country
+    spriteName: Hill Country
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 01a6d181f90074795a395a6d9e59112e
+    layerID: 44
+    mosaicPosition: {x: 3414, y: 2839}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: 'Piney    '
+    spriteName: 'Piney    '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 0f62bd1eb8a364de1a2e6d1c90d8fd14
+    layerID: 40
+    mosaicPosition: {x: 3820, y: 2839}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Prairies
+    spriteName: Prairies
+    isGroup: 0
+    parentIndex: -1
+    spriteID: cf152124e5e084b13b84d1888d0d4d4a
+    layerID: 38
+    mosaicPosition: {x: 2014, y: 2499}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Panhandle
+    spriteName: Panhandle
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 03b2f2a8e800c46bfb0e605de197d122
+    layerID: 33
+    mosaicPosition: {x: 1176, y: 2499}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Layer 7
+    spriteName: Layer 7
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e0a5a304c3006461895ee660d6d0f3b4
+    layerID: 69
+    mosaicPosition: {x: 1176, y: 2172}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Map
+    spriteName: Map
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a13749c8252af43e58826d56cc9d19cc
+    layerID: 47
+    mosaicPosition: {x: 4, y: 2172}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Generative Fill 2 copy
+    spriteName: Generative Fill 2 copy
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 86c814300ff2444fb860fe9207db469a
+    layerID: 71
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  mosaicPSDLayers: []
+  rigPSDLayers: []
+  sharedRigPSDLayers: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []

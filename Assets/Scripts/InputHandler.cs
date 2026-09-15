@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class InputHandler : Singleton<InputHandler>
 {
-    Bubble draggable;
-    Bubble highlightedBubble;
+    MapChunk draggable;
+    MapChunk highlightedBubble;
     Camera mainCamera;
     bool isDragging;
     Vector3 startScale;
@@ -37,14 +37,13 @@ public class InputHandler : Singleton<InputHandler>
         if (!isDragging
             && Input.GetMouseButtonDown(0)
             && TryRaycast2D(mainCamera.ScreenPointToRay(Input.mousePosition), out RaycastHit2D hit)
-            && hit.collider.TryGetComponent(out Bubble d))
+            && hit.collider.TryGetComponent(out MapChunk d))
         {
             draggable = d;
             isDragging = true;
             startScale = draggable.transform.localScale;
             offset = new Vector2(draggable.transform.position.x, draggable.transform.position.y) - hit.point;
-            draggable.StartDrag();
-            draggable.Bounce(GameSettings.Instance.MaxBounceAmplitude, GameSettings.Instance.BounceTime);
+            d.StartDrag();
         }
 
         if (Input.GetMouseButtonUp(0) && draggable != null)
@@ -74,9 +73,9 @@ public class InputHandler : Singleton<InputHandler>
 
             draggable.transform.position = Vector3.Lerp(draggable.transform.position, hitPoint, GameSettings.Instance.DragSpeed * Time.fixedDeltaTime);
 
-            if (GetOverlap(hitPoint, draggable.Radius, out Collider2D hit))
+            if (GetOverlap(hitPoint, .5f, out Collider2D hit))
             {
-                if (hit.TryGetComponent(out Bubble d))
+                if (hit.TryGetComponent(out MapChunk d))
                 {
                     if (d != highlightedBubble && d != draggable)
                         Highlight(d);
@@ -99,7 +98,7 @@ public class InputHandler : Singleton<InputHandler>
         float closest = float.MaxValue;
         for (int i = 0; i < count; i++)
         {
-            if (results[i].TryGetComponent(out Bubble b))
+            if (results[i].TryGetComponent(out MapChunk b))
             {
                 if (overlappingBubble == null)
                 {
@@ -133,7 +132,6 @@ public class InputHandler : Singleton<InputHandler>
         if (!GameSettings.Instance.CanMerge)
         {
             Highlight(null);
-            draggable.EndDrag();
             draggable = null;
             isDragging = false;
             return;
@@ -154,10 +152,7 @@ public class InputHandler : Singleton<InputHandler>
         else
         {
             draggable.EndDrag();
-            if (GameSettings.Instance.CanCreateGhost)
-                draggable.BlastGhost();
         }
-
         //if (!TryMerge(draggable, highlightedBubble))
         //{
         //    if (highlightedBubble == null)
@@ -178,37 +173,17 @@ public class InputHandler : Singleton<InputHandler>
         //Highlight(null);
     }
 
-    public bool TryMerge(Bubble a, Bubble b)
+    public bool TryMerge(MapChunk a, MapChunk b)
     {
-        if (a.Category != b.Category) return false;
+        if (a.BubbleType != b.BubbleType) return false;
 
-        byte maxIndex = Math.Max(a.Index, b.Index);
-        int nextIndex = a.Index + b.Index + 1;
-        var bigBubble = a.Index == maxIndex ? a : b;
-        var newBubble = Instantiate(GameSettings.Instance.Bubbles[nextIndex]);
-        newBubble.transform.SetPositionAndRotation(bigBubble.transform.position, bigBubble.transform.rotation);
-        var names = a.Names;
-        names.AddRange(b.Names);
-        newBubble.Category = a.Category;
-        newBubble.SetName(names);
-        if (GameSettings.Instance.CanUseDifferentSprites)
-        {
-            newBubble.SetBubbleSprite(GameSettings.Instance.BubbleSprites[CategoryManager.Instance.CurrentIndex % GameSettings.Instance.BubbleSprites.Length]);
-        }
-        newBubble.Bounce();
-        a.transform.DOKill();
-        b.transform.DOKill();
-        Destroy(a.gameObject);
-        Destroy(b.gameObject);
-
-        if (nextIndex == GameSettings.Instance.MergeCount - 1)
-        {
-            newBubble.Blast(() => OnSuccessfullMerge?.Invoke());
-        }
+        a.transform.DOMove(b.transform.position, 0.2f);
+        b.gameObject.SetActive(false);
+        MapStatesQueue.Instance.Remove(a);
         return true;
     }
 
-    void Highlight(Bubble newBubble)
+    void Highlight(MapChunk newBubble)
     {
         if (highlightedBubble != null)
         {
@@ -218,7 +193,6 @@ public class InputHandler : Singleton<InputHandler>
         if (highlightedBubble != null)
         {
             highlightedBubble.Highlight(true);
-            highlightedBubble.Bounce(0.2f, 0.5f);
         }
     }
     private void OnDrawGizmos()
