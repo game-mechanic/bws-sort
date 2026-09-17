@@ -6,7 +6,7 @@ public class MapStatesQueue : Singleton<MapStatesQueue>
 {
     [SerializeField] private List<MapChunk> mapChunks;
     [SerializeField] int maxActiveChunkCount;
-    [SerializeField] int spacing;
+    [SerializeField] float spacing;
     [SerializeField] Vector3 offset;
     MapChunk[] activeChunks;
     Vector3 slotsHalfLength;
@@ -22,10 +22,15 @@ public class MapStatesQueue : Singleton<MapStatesQueue>
             activeChunks[i].RecordPosition();
         }
         currentChunk = activeChunks.Length;
+        for (int i = currentChunk; i < mapChunks.Count; i++)
+        {
+            mapChunks[i].RecordPosition();
+        }
     }
 
     public void Remove(MapChunk bubble)
     {
+        return;
         if (bubble == null) return;
         for (int i = 0; i < activeChunks.Length; i++)
         {

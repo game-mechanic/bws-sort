@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization.Tables;
@@ -61,6 +62,8 @@ public class GameSettings : ScriptableObject
     [SerializeField] private BubbleType[] order;
     [SerializeField] private bool canTextBreathe;
     [SerializeField] private bool enableRandomBubbleSize;
+    [SerializeField] Color highlightColor = Color.yellow;
+    [SerializeField] Color wrongColor = Color.red;
 
     public float MaxBounceAmplitude { get => maxBounceAmplitude; }
     public float BounceTime { get => bounceTime; }
@@ -88,6 +91,8 @@ public class GameSettings : ScriptableObject
     public bool CanAnimateSprite { get => canAnimateSprite; }
     public RuntimeAnimatorController AnimatorController { get => animatorController; }
     public float RotationOffset { get => rotationOffset; }
+    public Color HighlightColor { get => highlightColor; }
+    public Color WrongColor { get => wrongColor; }
 
     internal static IEnumerator Init()
     {

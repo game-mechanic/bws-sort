@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,6 +9,8 @@ public class InputHandler : Singleton<InputHandler>
     MapChunk highlightedBubble;
     Camera mainCamera;
     bool isDragging;
+    [SerializeField] float dragOffset = .5f;
+    [SerializeField] GameObject dragPointer;
     Vector3 startScale;
     Vector3 offset;
     [SerializeField] Transform endPoint;
@@ -44,11 +46,13 @@ public class InputHandler : Singleton<InputHandler>
             startScale = draggable.transform.localScale;
             offset = new Vector2(draggable.transform.position.x, draggable.transform.position.y) - hit.point;
             d.StartDrag();
+            dragPointer.SetActive(true);
         }
 
         if (Input.GetMouseButtonUp(0) && draggable != null)
         {
             ReleaseDrag();
+            dragPointer.SetActive(false);
         }
     }
 
@@ -70,10 +74,12 @@ public class InputHandler : Singleton<InputHandler>
 
             Vector3 hitPoint = ray.origin + ray.direction * enter;
             hitPoint += offset;
+            Vector3 targetPosition = Vector3.Lerp(draggable.transform.position, hitPoint, GameSettings.Instance.DragSpeed * Time.fixedDeltaTime);
+            draggable.transform.position = targetPosition;
+            targetPosition += Vector3.up * dragOffset;
+            dragPointer.transform.position = targetPosition;
 
-            draggable.transform.position = Vector3.Lerp(draggable.transform.position, hitPoint, GameSettings.Instance.DragSpeed * Time.fixedDeltaTime);
-
-            if (GetOverlap(hitPoint, .5f, out Collider2D hit))
+            if (GetOverlap(targetPosition, .1f, out Collider2D hit))
             {
                 if (hit.TryGetComponent(out MapChunk d))
                 {
@@ -147,11 +153,16 @@ public class InputHandler : Singleton<InputHandler>
         else if (!TryMerge(draggable, highlightedBubble))
         {
             draggable.ReturnBack();
-            Highlight(null);
+            highlightedBubble.Highlight(true, GameSettings.Instance.WrongColor);
+            DOVirtual.DelayedCall(0.2f, () =>
+            {
+                Highlight(null);
+            });
         }
         else
         {
             draggable.EndDrag();
+            draggable = null;
         }
         //if (!TryMerge(draggable, highlightedBubble))
         //{
@@ -192,7 +203,7 @@ public class InputHandler : Singleton<InputHandler>
         highlightedBubble = newBubble;
         if (highlightedBubble != null)
         {
-            highlightedBubble.Highlight(true);
+            highlightedBubble.Highlight(true, GameSettings.Instance.HighlightColor);
         }
     }
     private void OnDrawGizmos()
