@@ -4,7 +4,7 @@ public class MapChunk : MonoBehaviour
 {
     [SerializeField] BubbleType bubbleType;
     private SpriteRenderer highlightedBubble;
-    [SerializeField, Range(0.5f, 1)] float scaleDownAmount = .75f;
+    [SerializeField, Range(0.5f, 2)] float scaleDownAmount = .75f;
     Vector3 initialPosition;
     Vector3 initialScale;
     public BubbleType BubbleType { get => bubbleType; }
