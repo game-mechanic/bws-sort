@@ -296,7 +296,9 @@ public class Bubble : MonoBehaviour
 
     public void Blast(System.Action OnBlastComplete = null)
     {
-        if (categoryText != null)
+        bool showCategoryText = !GameSettings.Instance.BurstWithoutShowingCatgryText;
+
+        if (showCategoryText && categoryText != null)
         {
             categoryText.text = Category.name;
             if (categoryText.transform.childCount > 0)
@@ -417,57 +419,60 @@ public class Bubble : MonoBehaviour
 
             index++;
         }
-        blastSequence.AppendCallback(() =>
+        if (showCategoryText)
         {
+            blastSequence.AppendCallback(() =>
+            {
+                if (categoryText != null)
+                {
+                    categoryText.gameObject.SetActive(true);
+                    categoryText.transform.localScale = Vector3.zero;
+                }
+            });
             if (categoryText != null)
             {
-                categoryText.gameObject.SetActive(true);
-                categoryText.transform.localScale = Vector3.zero;
+                Transform t = categoryText.transform;
+
+                t.DOKill();
+
+                // Store original scale
+                Vector3 startScale = t.localScale;
+
+                Sequence seq = DOTween.Sequence();
+
+                // Start slightly smaller for pop-in
+                t.localScale = startScale * 0.7f;
+
+                seq.AppendInterval(0.15f);
+
+                // Pop in with overshoot
+                seq.Append(
+                    t.DOScale(startScale * 1.1f, 0.35f)
+                    .SetEase(Ease.OutBack)
+                );
+
+                // Settle to normal
+                seq.Append(
+                    t.DOScale(startScale, 0.15f)
+                    .SetEase(Ease.OutSine)
+                );
+
+                // Short, snappy pause (not too long)
+                seq.AppendInterval(0.4f);
+
+                // Exit with slight anticipation
+                seq.Append(
+                    t.DOScale(startScale * 1.05f, 0.1f)
+                    .SetEase(Ease.OutSine)
+                );
+
+                seq.Append(
+                    t.DOScale(Vector3.zero, 0.25f)
+                    .SetEase(Ease.InBack)
+                );
+
+                blastSequence.Append(seq);
             }
-        });
-        if (categoryText != null)
-        {
-            Transform t = categoryText.transform;
-
-            t.DOKill();
-
-            // Store original scale
-            Vector3 startScale = t.localScale;
-
-            Sequence seq = DOTween.Sequence();
-
-            // Start slightly smaller for pop-in
-            t.localScale = startScale * 0.7f;
-
-            seq.AppendInterval(0.15f);
-
-            // Pop in with overshoot
-            seq.Append(
-                t.DOScale(startScale * 1.1f, 0.35f)
-                .SetEase(Ease.OutBack)
-            );
-
-            // Settle to normal
-            seq.Append(
-                t.DOScale(startScale, 0.15f)
-                .SetEase(Ease.OutSine)
-            );
-
-            // Short, snappy pause (not too long)
-            seq.AppendInterval(0.4f);
-
-            // Exit with slight anticipation
-            seq.Append(
-                t.DOScale(startScale * 1.05f, 0.1f)
-                .SetEase(Ease.OutSine)
-            );
-
-            seq.Append(
-                t.DOScale(Vector3.zero, 0.25f)
-                .SetEase(Ease.InBack)
-            );
-
-            blastSequence.Append(seq);
         }
         int ind = index;
         blastSequence.AppendCallback(() =>

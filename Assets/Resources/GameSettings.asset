@@ -16,13 +16,13 @@ MonoBehaviour:
   bounceTime: 0.5
   maxBounces: 2
   lerpSpeeed: 15
-  bubbleProfile: {fileID: 11400000, guid: 37269eb8771504eb0af4f357798f82a6, type: 2}
-  mergeCount: 4
+  bubbleProfile: {fileID: 11400000, guid: 8eabaa6bdb980824498f87abd62aba53, type: 2}
+  mergeCount: 5
   dragSpeed: 10
   breathingSpeed: 5
   breathingAplitude: 0.01
   textBreathingSpeed: 1
-  bubbleFXPrefab: {fileID: 5856000662369290909, guid: 380ddc864458b754baf84decba9007ae, type: 3}
+  bubbleFXPrefab: {fileID: 5856000662369290909, guid: 63c0ec1246ae2f64a93bdc22bdd22cc1, type: 3}
   rotationOffset: 10
   animatorController: {fileID: 9100000, guid: 2a9b6302fcdbd415db510c9d0e3fd78a, type: 2}
   canAnimateSprite: 0
@@ -46,3 +46,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b8d1de56817b49a40b167e219f035818, type: 2}
   canTextBreathe: 0
   enableRandomBubbleSize: 0
+  burstWithoutShowingCatgryText: 0

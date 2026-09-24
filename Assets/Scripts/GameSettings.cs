@@ -61,6 +61,7 @@ public class GameSettings : ScriptableObject
     [SerializeField] private BubbleType[] order;
     [SerializeField] private bool canTextBreathe;
     [SerializeField] private bool enableRandomBubbleSize;
+    [SerializeField] private bool burstWithoutShowingCatgryText;
 
     public float MaxBounceAmplitude { get => maxBounceAmplitude; }
     public float BounceTime { get => bounceTime; }
@@ -82,6 +83,8 @@ public class GameSettings : ScriptableObject
     public BubbleType[] Order { get => order; set => order = value; }
     public bool CanTextBreathe { get => canTextBreathe; internal set => canTextBreathe = value; }
     public bool EnableRandomBubbleSize { get => enableRandomBubbleSize; }
+    public bool BurstWithoutShowingCatgryText { get => burstWithoutShowingCatgryText; set => burstWithoutShowingCatgryText = value; }
+    public bool BurstWithoutShowingCategoryText { get => burstWithoutShowingCatgryText; set => burstWithoutShowingCatgryText = value; }
     public bool CanUseDifferentSprites { get => canUseDifferentSprites; }
     public Sprite[] BubbleSprites { get => spriteProfile.BubbleSprites; }
     public int MergeCount { get => mergeCount; }

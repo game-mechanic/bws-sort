@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnStart: 1
+  shouldBlastAtStart: 0
   levelData: {fileID: 11400000, guid: b81adb5e547b94821a1f3c01c329bb72, type: 2}
   horizontalAlignment: {fileID: 1345279678}
 --- !u!114 &157686654
@@ -1392,6 +1393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnStart: 1
+  shouldBlastAtStart: 0
   levelData: {fileID: 11400000, guid: 7d27ef9ad48e5446c9b84544681b3c5c, type: 2}
   horizontalAlignment: {fileID: 1345279678}
 --- !u!4 &1484017449

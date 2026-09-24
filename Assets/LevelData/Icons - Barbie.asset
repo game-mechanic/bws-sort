@@ -1,0 +1,307 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ba278c177864e64b79aa31831b5b38, type: 3}
+  m_Name: Icons - Barbie
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  datas:
+  - name: {fileID: 11400000, guid: 9235e396e0129a244a324e7128129516, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: d73d6e69aef00e040b7e83de2dc06b96, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 9235e396e0129a244a324e7128129516, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: ae92913e95c0040488dd41ca22417428, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 9235e396e0129a244a324e7128129516, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: f04fd32a6337d7f4f822765cef403cfb, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 9235e396e0129a244a324e7128129516, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 094e9bcf14305bd418805e687d99358f, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 77011ab17110e594ab841af326df4b35, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: aecbf6139b14d894dbb857acc525a69b, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 77011ab17110e594ab841af326df4b35, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 49f4e44f606f195459e8c0e9385f7df8, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 77011ab17110e594ab841af326df4b35, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: c9837986d79867344a50a969aeed1b02, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 77011ab17110e594ab841af326df4b35, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 2e40a3c0422cc534ebe61284cadb1894, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 4f736362393ef6e4fb3135162ae2eb3a, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: e611019928eff444095b6c3b7c7de167, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 4f736362393ef6e4fb3135162ae2eb3a, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 34ee5f62794f09d4eb8bd3db78e8bfee, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 4f736362393ef6e4fb3135162ae2eb3a, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 3967fdc4e27ffc44fb68ba998f70d83a, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 4f736362393ef6e4fb3135162ae2eb3a, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 95576132cafa9ea4ea05d4a3e96d1f97, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: b88db67bd083b5048990a80640b7ff83, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: d4375720d028e564e842c4bf28ba5a9f, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: b88db67bd083b5048990a80640b7ff83, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 31be7622bb963fe45ac6eaf9aa9a4dd0, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: b88db67bd083b5048990a80640b7ff83, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: fe0622fd7d49fd0489aea218b3aa2187, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: b88db67bd083b5048990a80640b7ff83, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: c385ed60b4515a04691ee9bb21084d5b, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 837d962c03d6f6649b641a6c357b0f9b, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 2ca18e235c435c04da1a58b024746b54, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 837d962c03d6f6649b641a6c357b0f9b, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 29eaba0ae1a3830478c52591cfcc5beb, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 837d962c03d6f6649b641a6c357b0f9b, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 4f2b03b2d0ec40a42869ffb8192a717d, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 837d962c03d6f6649b641a6c357b0f9b, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 663cb61a586c2184aad3f506bfc33f75, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 26dea9b88ec8f4a4399fa6c5d57b507f, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 166ba3caeeea78841aff2e4cae705d93, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 26dea9b88ec8f4a4399fa6c5d57b507f, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: efb4c45688d69d74d966999a1072442c, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 26dea9b88ec8f4a4399fa6c5d57b507f, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: e4da5a1cc30fa104dbc2b082f1aa579e, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 26dea9b88ec8f4a4399fa6c5d57b507f, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 9120bc86885c21446bc8725f8f776626, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 89395aa24ed0445949b38aec08415875, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 033d33999d3da0044856f5659dbfb29c, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 89395aa24ed0445949b38aec08415875, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 598ece1c54d9057488d0d7e07aa11c54, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 89395aa24ed0445949b38aec08415875, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 124c013f42adea84091056f575af1a79, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 89395aa24ed0445949b38aec08415875, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 1f4cbf9123739c04e8187f0563612816, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: edff042dfb46a4f499a69d8c8b2eb0b9, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: c6a05b8e9185d64429284fc0c5bad5aa, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: edff042dfb46a4f499a69d8c8b2eb0b9, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 0ed32aab33909e7499b8c67ab3c4eb69, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: edff042dfb46a4f499a69d8c8b2eb0b9, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 24682ca1345acd94ab8912e7f35544d7, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: edff042dfb46a4f499a69d8c8b2eb0b9, type: 2}
+    shouldBlastAtStart: 0
+    overrideColor: 0
+    bubbleColor: {r: 1, g: 1, b: 1, a: 1}
+    newDatas:
+    - name: HELIUM
+      icon: {fileID: 21300000, guid: 915aafb01b435314c92d95e2743b4093, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  initialSpawns: 20
+  minMultiplier: 1
+  maxMultiplier: 1.5
+  levelDataToAppend: {fileID: 0}
