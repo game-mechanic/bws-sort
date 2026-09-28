@@ -36,7 +36,7 @@ public class CategoryManager : Singleton<CategoryManager>
             yield break;
         }
 
-        Shuffle();
+       // Shuffle();
 
         List<Bubble> blastableBubble = new();
 

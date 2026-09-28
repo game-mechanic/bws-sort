@@ -1593,7 +1593,7 @@ Transform:
   m_GameObject: {fileID: 84020369}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.21, y: -2.86, z: 0}
+  m_LocalPosition: {x: 0.21, y: -5.13, z: 0}
   m_LocalScale: {x: 1.2121938, y: 1.2121938, z: 1.2121938}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1739,7 +1739,7 @@ Transform:
   m_GameObject: {fileID: 125262863}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -2.83, z: -9.98}
+  m_LocalPosition: {x: 0.18, y: -3.24, z: -9.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1797,7 +1797,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.65
+  orthographic size: 7.85
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -1969,6 +1969,43 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &302571524
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 6
+  m_Width: 1080
+  m_Height: 1920
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 90
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_UseDynamicScaleExplicit: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1 &401160520
 GameObject:
   m_ObjectHideFlags: 0
@@ -3092,7 +3129,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.65
+  orthographic size: 7.85
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -3117,7 +3154,7 @@ Transform:
   m_GameObject: {fileID: 1132149335}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -2.83, z: -9.98}
+  m_LocalPosition: {x: 0.18, y: -3.24, z: -9.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3261,7 +3298,7 @@ Transform:
   m_GameObject: {fileID: 1345279676}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.95, y: -2.18, z: 0}
+  m_LocalPosition: {x: -1.09, y: -4.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3544,7 +3581,7 @@ Transform:
   m_GameObject: {fileID: 1485956692}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -2.83, z: -9.98}
+  m_LocalPosition: {x: 0.18, y: -3.24, z: -9.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3585,13 +3622,13 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.65
+  orthographic size: 7.85
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 512
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 2016567396}
+  m_TargetTexture: {fileID: 302571524}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -3851,7 +3888,7 @@ Transform:
   m_GameObject: {fileID: 1647673215}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.12, y: -4.26, z: 0}
+  m_LocalPosition: {x: 0.12, y: -6.5300007, z: 0}
   m_LocalScale: {x: 6.8706, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3892,34 +3929,20 @@ EdgeCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.47
+  m_EdgeRadius: 0.05
   m_Points:
-  - {x: -0.46458167, y: 6.976655}
-  - {x: -0.39788547, y: 4.7203717}
-  - {x: -0.32449067, y: 3.9849494}
-  - {x: -0.12686841, y: 2.8033795}
-  - {x: -0.25514513, y: 2.3725326}
-  - {x: -0.32172334, y: 1.8874054}
-  - {x: -0.31347838, y: 1.5036476}
-  - {x: -0.48575962, y: -0.189435}
-  - {x: -0.62313724, y: -2.2961726}
-  - {x: -0.62266165, y: -2.311493}
-  - {x: -0.40963352, y: -3.1933455}
-  - {x: -0.318912, y: -3.3897495}
-  - {x: -0.261909, y: -3.5729637}
-  - {x: -0.22406645, y: -3.5668664}
-  - {x: -0.2045712, y: -3.5485463}
-  - {x: -0.18947499, y: -3.5516205}
-  - {x: 0.2854194, y: -3.3587818}
-  - {x: 0.5172109, y: -2.9009771}
-  - {x: 0.66867656, y: -2.108461}
-  - {x: 0.5515934, y: -0.20601606}
-  - {x: 0.44766578, y: 1.0848005}
-  - {x: 0.28894997, y: 2.2973628}
-  - {x: 0.16309841, y: 2.9531014}
-  - {x: 0.36651915, y: 4.641633}
-  - {x: 0.50523376, y: 6.28188}
-  - {x: 0.5320795, y: 6.7259183}
+  - {x: -0.14095117, y: 3.3331242}
+  - {x: -0.3871339, y: 0.23315}
+  - {x: -0.52504987, y: -1.6227798}
+  - {x: -0.404524, y: -2.0913706}
+  - {x: -0.30861786, y: -2.304327}
+  - {x: 0.057036642, y: -2.516295}
+  - {x: 0.22031325, y: -2.424564}
+  - {x: 0.38403884, y: -2.1686034}
+  - {x: 0.58979374, y: -1.5546818}
+  - {x: 0.51628196, y: -1.0191321}
+  - {x: 0.47532666, y: -0.36027002}
+  - {x: 0.20483279, y: 3.4643853}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -4160,43 +4183,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 15}
   m_EdgeRadius: 0
---- !u!84 &2016567396
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 6
-  m_Width: 3840
-  m_Height: 2160
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 90
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_UseDynamicScaleExplicit: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1 &2104092394
 GameObject:
   m_ObjectHideFlags: 0
