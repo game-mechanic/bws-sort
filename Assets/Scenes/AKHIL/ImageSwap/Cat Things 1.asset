@@ -66,7 +66,7 @@ MonoBehaviour:
     bubbleColor: {r: 0, g: 0, b: 0, a: 0}
     newDatas:
     - name: 
-      icon: {fileID: 21300000, guid: e72746d879b685846baf9601ee625e25, type: 3}
+      icon: {fileID: 21300000, guid: c95324a5832448446b1fd2a739b8aea2, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
   - name: {fileID: 11400000, guid: bf05d3a473e30b548be4bc5ca4681716, type: 2}
