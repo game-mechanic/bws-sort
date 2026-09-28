@@ -57,8 +57,17 @@ public class InputHandler : Singleton<InputHandler>
 
     public bool TryRaycast2D(Ray ray, out RaycastHit2D hit)
     {
-        hit = Physics2D.Raycast(ray.origin, ray.direction, 100);
-        return hit.collider != null;
+        Plane plane = new(Vector3.back, new Vector3(0, 0, 0));
+        if (plane.Raycast(ray, out float enter))
+        {
+            Vector3 hitPoint = ray.GetPoint(enter);
+            Vector3 origin = hitPoint + Vector3.back;
+            hit = Physics2D.Raycast(origin, Vector2.zero);
+            return hit.collider != null;
+        }
+
+        hit = default;
+        return false;
     }
     private void FixedUpdate()
     {
@@ -69,7 +78,8 @@ public class InputHandler : Singleton<InputHandler>
 
             plane.Raycast(ray, out float enter);
 
-            Vector3 hitPoint = ray.origin + ray.direction * enter;
+            Vector3 hitPoint = ray.GetPoint(enter);
+            hitPoint += Vector3.back * 1.5f;
             hitPoint += offset;
 
             draggable.transform.position = Vector3.Lerp(draggable.transform.position, hitPoint, GameSettings.Instance.DragSpeed * Time.fixedDeltaTime);
@@ -129,34 +139,37 @@ public class InputHandler : Singleton<InputHandler>
             return;
         }
         isDragging = false;
+        draggable.transform.DOMove(draggable.transform.position + Vector3.forward * 1.5f, 0.2f)
+        .OnComplete(() =>
+        {
+            if (!GameSettings.Instance.CanMerge)
+            {
+                Highlight(null);
+                draggable.EndDrag();
+                draggable = null;
+                isDragging = false;
+                return;
+            }
 
-        if (!GameSettings.Instance.CanMerge)
-        {
-            Highlight(null);
-            draggable.EndDrag();
-            draggable = null;
-            isDragging = false;
-            return;
-        }
 
-
-        //draggable.EndDrag();
-        if (highlightedBubble == null)
-        {
-            Highlight(null);
-            draggable.ReturnBack();
-        }
-        else if (!TryMerge(draggable, highlightedBubble))
-        {
-            draggable.ReturnBack();
-            Highlight(null);
-        }
-        else
-        {
-            draggable.EndDrag();
-            if (GameSettings.Instance.CanCreateGhost)
-                draggable.BlastGhost();
-        }
+            //draggable.EndDrag();
+            if (highlightedBubble == null)
+            {
+                Highlight(null);
+                draggable.ReturnBack();
+            }
+            else if (!TryMerge(draggable, highlightedBubble))
+            {
+                draggable.ReturnBack();
+                Highlight(null);
+            }
+            else
+            {
+                draggable.EndDrag();
+                if (GameSettings.Instance.CanCreateGhost)
+                    draggable.BlastGhost();
+            }
+        });
 
         //if (!TryMerge(draggable, highlightedBubble))
         //{
