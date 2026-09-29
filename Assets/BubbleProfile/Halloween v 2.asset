@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
+  m_Name: Halloween v 2
+  m_EditorClassIdentifier: 
+  bubbles:
+  - {fileID: 7926608256317659342, guid: 12dc482d5bb5149f2a82e81392d61f62, type: 3}
+  - {fileID: 7926608256317659342, guid: 31b1f21e8a8db450c9d1c7b9e5098256, type: 3}
+  - {fileID: 7926608256317659342, guid: 6a444f4c4811b4588bc820cfc188a12e, type: 3}
+  - {fileID: 7926608256317659342, guid: d0c80ce18914a4503ac456c5e2837907, type: 3}

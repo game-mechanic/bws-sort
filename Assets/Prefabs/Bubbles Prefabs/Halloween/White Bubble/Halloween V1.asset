@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Halloween V1
   m_EditorClassIdentifier: Assembly-CSharp::SpriteProfile
   bubbleSprites:
-  - {fileID: 21300000, guid: 0104468f62b9349bcab0daef84507f7b, type: 3}
+  - {fileID: 21300000, guid: 063c2f3257c654653b08fd5e4dc6fc08, type: 3}
   - {fileID: 21300000, guid: 8c254337eaee84bf49aaac2e930eff7b, type: 3}
   - {fileID: 21300000, guid: 911babfd043364e81bfacc52f034e414, type: 3}
-  - {fileID: 21300000, guid: 974f098d04e594a1684028730c52ee71, type: 3}

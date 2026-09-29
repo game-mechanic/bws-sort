@@ -16,8 +16,8 @@ MonoBehaviour:
   bounceTime: 0.5
   maxBounces: 2
   lerpSpeeed: 15
-  bubbleProfile: {fileID: 11400000, guid: 8eabaa6bdb980824498f87abd62aba53, type: 2}
-  mergeCount: 5
+  bubbleProfile: {fileID: 11400000, guid: 510590e7765244f6ebf0f077f27b6a88, type: 2}
+  mergeCount: 4
   dragSpeed: 10
   breathingSpeed: 5
   breathingAplitude: 0.01
@@ -28,8 +28,8 @@ MonoBehaviour:
   canAnimateSprite: 0
   canChangeColor: 0
   colorProfile: {fileID: 11400000, guid: a0304dc618e3ae945972530dfd5672b7, type: 2}
-  canUseDifferentSprites: 0
-  spriteProfile: {fileID: 11400000, guid: 2802460379ecb425c98b78509e7a2f63, type: 2}
+  canUseDifferentSprites: 1
+  spriteProfile: {fileID: 11400000, guid: 1b831a38dd04349beb2632ab08d622ff, type: 2}
   tableReference:
     m_TableCollectionName: Planets
   selectedLanguage: 0

@@ -847,7 +847,7 @@ PrefabInstance:
     - target: {fileID: 1482394657220913978, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 1842984924790628185, guid: 279f98ae71ed94b1ba18ed8ee5859f6b, type: 2}
+      objectReference: {fileID: 2100000, guid: 05718a8797701d24c85fa501f6721449, type: 2}
     - target: {fileID: 2160764346120262512, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_text
       value: '
@@ -865,7 +865,7 @@ PrefabInstance:
     - target: {fileID: 2160764346120262512, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 1842984924790628185, guid: 279f98ae71ed94b1ba18ed8ee5859f6b, type: 2}
+      objectReference: {fileID: 2100000, guid: 05718a8797701d24c85fa501f6721449, type: 2}
     - target: {fileID: 2715934538311735066, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_fontSize
       value: 14.9
@@ -1033,7 +1033,7 @@ PrefabInstance:
     - target: {fileID: 6904026035258751567, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ec721e481ac7743d0927a708e3d9f1ad, type: 3}
+      objectReference: {fileID: 21300000, guid: bbab76af5f74b4a0794df806d7a3b21f, type: 3}
     - target: {fileID: 6904026035258751567, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -1161,6 +1161,18 @@ PrefabInstance:
     - target: {fileID: 7705078822252295963, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898042057294648331, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898042057294648331, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898042057294648331, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: m_Color.r
+      value: 0.20784314
       objectReference: {fileID: 0}
     - target: {fileID: 8638449955711332242, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: m_Spacing

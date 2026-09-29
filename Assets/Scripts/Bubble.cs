@@ -503,7 +503,9 @@ public class Bubble : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        Color color = category.Color;
+        Color color = Color.white;
+        if (category != null)
+            color = category.Color;
         color.a = 1f;
         Gizmos.color = color;
         Gizmos.DrawSphere(transform.position, radius: Radius);
