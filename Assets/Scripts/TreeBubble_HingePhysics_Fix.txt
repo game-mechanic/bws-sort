@@ -1,0 +1,139 @@
+TREE BUBBLE - LEAF SWAY PHYSICS (Horizontal Left-Right Motion)
+===============================================================
+
+WHAT WAS FIXED:
+--------------
+1. HORIZONTAL SWAY (Like Tree Leaves)
+   - REPLACED: HingeJoint2D (caused rotation)
+   - WITH: DistanceJoint2D (maintains chain length, allows sway)
+   - Rotation is FROZEN - bubbles stay upright
+   - Movement is HORIZONTAL ONLY - gentle left-right sway
+   - NO spinning or rotation
+   
+2. COLLISION REPELLING ELIMINATED
+   - Set collision detection to Discrete mode
+   - Physics2D.IgnoreCollision() for all bubble pairs
+   - Bubbles can still be clicked (OnMouseDown uses raycasts)
+   - No physical interaction between bubbles
+
+KEY CHANGES IN TreeBubble.cs:
+-----------------------------
+
+VARIABLES CHANGED:
+- HingeJoint2D hinge → Joint2D joint (generic reference)
+- Uses DistanceJoint2D internally
+
+InitializePhysics() METHOD:
+- Anchor is Static (fixed point)
+- DistanceJoint2D maintains exact chain length
+- Rigidbody2D constraints = FreezeRotation (NO SPINNING!)
+- Gravity = 0f (no downward pull, horizontal only)
+- Linear damping = 2f (smooth slow movement)
+- Angular damping = 5f (prevent any rotation)
+- Applied HORIZONTAL FORCE ONLY (left-right)
+- No torque, no vertical forces
+
+DisablePhysics() METHOD:
+- Destroys joint and anchorObj
+- Ensures rotation stays identity (upright)
+
+Update() METHOD:
+- Checks 'joint' instead of 'hinge' for chain update
+
+KEY PHYSICS SETTINGS:
+--------------------
+
+CONSTRAINTS:
+✅ FreezeRotation - Bubble CANNOT rotate/spin
+✅ No gravity - Prevents downward swing
+✅ DistanceJoint2D - Maintains exact distance from anchor
+✅ Horizontal force only - Side-to-side motion
+
+DAMPING:
+- Linear damping = 2f (slows horizontal movement smoothly)
+- Angular damping = 5f (prevents any rotation buildup)
+
+MASS & FORCE:
+- Mass = 0.5f (lighter for gentle sway)
+- Force = Random horizontal (-swing to +swing)
+- No vertical force, no torque
+
+PHYSICS COMPARISON:
+------------------
+
+OLD (HingeJoint2D):
+- Bubbles ROTATE around anchor
+- Pendulum motion
+- Bubbles can spin/tilt
+- ❌ NOT what we wanted
+
+NEW (DistanceJoint2D + FreezeRotation):
+- Bubbles stay UPRIGHT (no rotation)
+- Move LEFT-RIGHT horizontally
+- Gentle leaf-like sway
+- ✅ Exactly what we wanted!
+
+HOW LEAF SWAY WORKS:
+--------------------
+1. Anchor is fixed static point above bubble
+2. DistanceJoint2D keeps bubble at exact chain length
+3. FreezeRotation prevents spinning
+4. Horizontal force pushes bubble left or right
+5. Damping naturally slows movement
+6. Result: gentle side-to-side sway like a leaf
+
+ADJUSTING SWAY:
+--------------
+- Swing Strength (Inspector): Controls horizontal force
+- Linear Damping: Higher = slower sway
+- Mass: Lower = more responsive to forces
+- Chain Length: Distance from anchor (set in manager)
+- Angular Damping: Keeps rotation locked
+
+TESTING THE FIX:
+---------------
+1. Clear existing bubbles ([Clear Bubbles] button)
+2. Spawn new bubbles ([Spawn Bubbles In Editor] button)
+3. Enter Play mode
+4. Watch bubbles SWAY LEFT-RIGHT (stay upright, no rotation)
+5. Verify NO repelling between bubbles
+6. Click bubbles - should move to slots and stop swaying
+
+EXPECTED BEHAVIOR:
+-----------------
+✅ Bubbles sway horizontally (left-right)
+✅ Bubbles stay upright (no rotation/spinning)
+✅ Gentle, slow, leaf-like motion
+✅ NO collision/repelling between bubbles
+✅ Bubbles remain clickable
+✅ Sway strength adjustable via slider
+✅ Bubbles stop swaying when slotted
+✅ Works in both Circle and Square spawn modes
+✅ Minimum distance enforced
+
+TROUBLESHOOTING:
+---------------
+Q: Bubbles not swaying at all?
+A: Increase "Swing Strength" slider in manager
+
+Q: Bubbles rotating/spinning?
+A: Check Rigidbody2D constraints = FreezeRotation
+
+Q: Sway too fast?
+A: Increase linear damping or decrease swing strength
+
+Q: Sway too slow?
+A: Decrease linear damping or increase swing strength
+
+Q: Bubbles still repelling?
+A: Clear and re-spawn bubbles (collision ignore needs fresh setup)
+
+TECHNICAL NOTES:
+---------------
+- DistanceJoint2D distance = chain length (exact)
+- maxDistanceOnly = false (maintains exact distance, not just max)
+- Rotation frozen via RigidbodyConstraints2D.FreezeRotation
+- Force applied only on X-axis (horizontal)
+- No gravity, no torque, no vertical forces
+- Rotation always reset to identity when entering slots
+

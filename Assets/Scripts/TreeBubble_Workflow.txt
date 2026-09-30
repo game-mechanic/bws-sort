@@ -1,0 +1,319 @@
+═══════════════════════════════════════════════════════════════════
+           TREE BUBBLE SYSTEM - COMPLETE WORKFLOW
+═══════════════════════════════════════════════════════════════════
+
+DESIGN FLOW:
+------------
+Editor Mode: Spawn & preview layout
+↓
+Play Mode: Bubbles persist with physics enabled
+↓
+Gameplay: Click bubbles → Move to slots → Match 4 → Pop!
+
+═══════════════════════════════════════════════════════════════════
+
+STEP-BY-STEP WORKFLOW:
+-----------------------
+
+1. SETUP (One-time)
+-------------------
+□ Create TreeBubble prefab with visuals
+□ Create TreeBubbleManager GameObject
+□ Create 5 Slot GameObjects
+□ Create BubbleType ScriptableObjects
+□ Configure CategoryBubbles list
+
+2. VALIDATE
+-----------
+□ Select TreeBubbleManager
+□ Click [Validate Setup] button
+□ Fix any ✗ errors in Console
+
+3. SPAWN IN EDITOR
+------------------
+□ Click [Spawn Bubbles In Editor]
+□ Check Console: "✓ Spawned X/X bubbles"
+□ Verify bubbles visible in Scene view
+□ Adjust settings if needed
+□ Click [Clear Bubbles] to respawn
+
+4. TEST LAYOUT
+--------------
+□ Move Scene camera to see all bubbles
+□ Check green circle gizmo (spawn boundary)
+□ Select individual bubbles to see collider (green sphere)
+□ Verify no complete overlaps
+□ Chains should connect bubbles to anchors
+
+5. ENTER PLAY MODE
+-------------------
+□ Click Play button
+□ Bubbles start swinging (physics active)
+□ NO new spawning occurs
+□ Editor-spawned bubbles are now interactive
+
+6. GAMEPLAY TEST
+----------------
+□ Hover over bubble → Highlight appears
+□ Click bubble → Console: "TreeBubble clicked..."
+□ Bubble moves to first empty slot
+□ Click 3 more of SAME category
+□ Console: "✨ MATCH! 4 adjacent bubbles..."
+□ Particles play and bubbles destroy
+□ Remaining bubbles shift left
+
+═══════════════════════════════════════════════════════════════════
+
+KEY FEATURES:
+-------------
+
+NO AUTO-SPAWN IN PLAY MODE:
+  • Bubbles only spawn via [Spawn Bubbles In Editor]
+  • Editor bubbles persist into Play mode
+  • Physics activates when Play mode starts
+  • Click events auto-connect on spawn
+
+MATCHING LOGIC:
+  • Checks LAST 4 bubbles in slots
+  • All 4 must be same category
+  • Pops with particle effects
+  • Remaining bubbles shift to fill gaps
+  • Console shows match/no-match feedback
+
+COLLISION PREVENTION:
+  • Collider radius: 0.45 (adjustable)
+  • Slightly smaller than visual (0.5)
+  • Prevents complete overlap
+  • minDistanceBetweenBubbles: 0.8
+  • Visual gizmo shows click area
+
+═══════════════════════════════════════════════════════════════════
+
+RECOMMENDED SETTINGS:
+---------------------
+
+For Clean Layout (No Overlaps):
+  • Radius: 3.5
+  • Bubble Count: 20
+  • Min Distance: 0.9
+  • Collider Radius: 0.45
+
+For Dense Layout (Slight Contact):
+  • Radius: 3.0
+  • Bubble Count: 25
+  • Min Distance: 0.7
+  • Collider Radius: 0.45
+
+For Sparse Layout (Wide Spacing):
+  • Radius: 4.5
+  • Bubble Count: 20
+  • Min Distance: 1.2
+  • Collider Radius: 0.45
+
+═══════════════════════════════════════════════════════════════════
+
+TESTING CHECKLIST:
+------------------
+
+Editor Mode:
+□ [Validate Setup] shows all ✓
+□ [Spawn Bubbles In Editor] works
+□ Console: "✓ Spawned X/X bubbles"
+□ All bubbles visible in Hierarchy
+□ Chains connect to anchor points
+□ No error messages
+
+Play Mode Start:
+□ Bubbles start swinging
+□ No new spawns occur
+□ Physics looks natural
+□ Chains animate smoothly
+
+Clicking:
+□ Hover shows highlight
+□ Click logs to Console
+□ Bubble moves to slot
+□ Can click multiple bubbles
+□ Fills slots 0→1→2→3→4
+
+Matching:
+□ Click 4 same category in sequence
+□ Console: "✨ MATCH!"
+□ Particles play at bubble positions
+□ Bubbles destroy
+□ Remaining bubbles shift left
+□ Slot counter resets correctly
+
+Edge Cases:
+□ 5 bubbles different categories → No match
+□ Match exactly on 4th bubble → Pops immediately
+□ Match on 5th bubble → Pops, slot 0 is empty
+□ All slots full → Console: "No more slots"
+
+═══════════════════════════════════════════════════════════════════
+
+CONSOLE MESSAGES GUIDE:
+------------------------
+
+Setup & Validation:
+✓ "✓ Spawned 20/20 bubbles (Ready for Play mode)"
+✓ "✓ TreeBubble has CircleCollider2D (radius: 0.45)"
+⚠ "High density! Bubbles may overlap."
+✗ "TreeBubble prefab NOT assigned!"
+
+Gameplay:
+✓ "TreeBubble clicked: TreeBubble_5_Colors, Category: Colors"
+✓ "Moving bubble 'TreeBubble_5_Colors' to slot 0"
+✓ "No match. Last 4 categories: Red, Blue, Red, Green"
+✓ "✨ MATCH! 4 adjacent bubbles of category 'Colors' - Popping!"
+✓ "Popping bubbles from index 0 to 3"
+✓ "Popped 4 bubbles. 0 remaining in slots."
+⚠ "No more slots available (5/5)"
+
+Errors:
+✗ "CheckForMatches: First category is null!"
+✗ "Could not find valid category for bubble"
+⚠ "ParticlePool not available - skipping particle effect"
+
+═══════════════════════════════════════════════════════════════════
+
+OVERLAP PREVENTION:
+-------------------
+
+Visual Size vs Collider:
+  • Bubble visual: ~0.5 radius
+  • Collider: 0.45 radius (10% smaller)
+  • Gap between colliders: 0.1 minimum
+  • Prevents physics overlap
+
+Min Distance:
+  • Set in TreeBubbleManager
+  • Controls spawn spacing
+  • Default: 0.8 (center to center)
+  • Collider radius: 0.45 each
+  • Total: 0.9 diameter
+  • Result: 0.1 gap minimum
+
+Density Check:
+  • Validation calculates density
+  • Warns if > 1.5 bubbles/unit²
+  • Suggests increasing radius
+  • Prevents overcrowding
+
+Visual Gizmo:
+  • Select bubble in Scene view
+  • Green wireframe = collider
+  • Shows exact click area
+  • Verify no overlap visually
+
+═══════════════════════════════════════════════════════════════════
+
+ADJUSTING COLLIDER SIZE:
+-------------------------
+
+If bubbles are hard to click:
+  1. Select TreeBubble prefab
+  2. Find "Collision" section
+  3. Increase "Collider Radius" to 0.5
+  4. Respawn bubbles
+
+If bubbles overlap too much:
+  1. Decrease "Collider Radius" to 0.4
+  2. Increase "Min Distance Between Bubbles" to 0.9
+  3. Respawn bubbles
+
+Perfect balance (recommended):
+  • Collider Radius: 0.45
+  • Min Distance: 0.8
+  • Visual Size: 0.5
+  • Gap: 0.1
+
+═══════════════════════════════════════════════════════════════════
+
+MATCHING EXAMPLES:
+------------------
+
+Scenario 1: MATCH
+Slots: [Red] [Red] [Red] [Red] [Empty]
+       Click 4 Red bubbles in sequence
+Result: ✨ POP! All 4 destroy, particles play
+
+Scenario 2: NO MATCH
+Slots: [Red] [Blue] [Red] [Green] [Empty]
+       4 different categories
+Result: No match, console shows all 4 categories
+
+Scenario 3: PARTIAL MATCH
+Slots: [Red] [Red] [Red] [Blue] [Empty]
+       First 3 match, 4th different
+Result: No match (needs all 4 to match)
+
+Scenario 4: MATCH ON 5TH BUBBLE
+Slots: [Blue] [Red] [Red] [Red] [Red]
+       Click 5th Red bubble
+Result: ✨ POP! Last 4 pop (4 Reds)
+Slots: [Blue] [Empty] [Empty] [Empty] [Empty]
+
+Scenario 5: MULTIPLE MATCHES
+Slots: [Red] [Red] [Red] [Red] [Empty]
+       ✨ POP! → Reset
+Slots: [Empty] [Empty] [Empty] [Empty] [Empty]
+       Click 4 Blue bubbles
+Slots: [Blue] [Blue] [Blue] [Blue] [Empty]
+       ✨ POP! → Reset
+
+═══════════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING:
+----------------
+
+Issue: Bubbles spawn on Play
+Solution: They shouldn't! Only spawn in Editor now.
+
+Issue: Match not detected
+Check: Console shows last 4 categories
+Verify: All 4 are SAME BubbleType instance
+Fix: Ensure using same ScriptableObject, not copies
+
+Issue: Bubbles overlap visually
+Solution: 
+  • Increase "Min Distance Between Bubbles"
+  • Decrease "Bubble Count"
+  • Increase "Radius"
+
+Issue: Bubbles don't pop
+Check: Console for match message
+Verify: ParticlePool exists in scene
+Fix: Add particle system or remove ParticlePool calls
+
+Issue: Clicks not working
+Check: Console for "TreeBubble clicked..." message
+Verify: CircleCollider2D exists and enabled
+Fix: [Validate Setup] will show collider status
+
+═══════════════════════════════════════════════════════════════════
+
+ITERATION WORKFLOW:
+-------------------
+
+Quick Iteration:
+1. [Clear Bubbles]
+2. Adjust settings
+3. [Spawn Bubbles In Editor]
+4. Repeat until satisfied
+
+Layout Testing:
+1. Spawn in Editor
+2. Enter Play, test clicking
+3. Exit Play (changes revert)
+4. Adjust in Editor
+5. Repeat
+
+Category Balance:
+1. [Validate Setup] → See category list
+2. Adjust CategoryBubbles entries
+3. [Clear] & [Spawn]
+4. Check bubble names in Hierarchy
+5. Names show categories: "TreeBubble_5_Colors"
+
+═══════════════════════════════════════════════════════════════════

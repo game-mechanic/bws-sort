@@ -1,0 +1,269 @@
+═══════════════════════════════════════════════════════════════════
+                    TREE BUBBLE SYSTEM - SETUP GUIDE
+═══════════════════════════════════════════════════════════════════
+
+OVERVIEW:
+---------
+This system creates category bubbles that hang from a tree with swinging 
+physics. When clicked, bubbles move to slots sequentially. When 4 adjacent 
+bubbles match the same category, they pop.
+
+═══════════════════════════════════════════════════════════════════
+
+SCRIPTS CREATED:
+----------------
+1. TreeBubbleManager.cs   - Main manager for spawning and slot logic
+2. TreeBubble.cs          - Individual bubble with swinging physics
+3. TreeBubbleInputHandler.cs - Input handling (optional, bubbles use OnMouseDown)
+
+═══════════════════════════════════════════════════════════════════
+
+SETUP INSTRUCTIONS:
+-------------------
+
+STEP 1: CREATE TREE BUBBLE PREFAB
+----------------------------------
+1. Create Empty GameObject → Name it "TreeBubble"
+
+2. Add Components to TreeBubble:
+   - Rigidbody2D (will be auto-configured by script)
+   - CircleCollider2D (radius ~0.5)
+   - TreeBubble script
+
+3. Create Visual Hierarchy:
+   TreeBubble (root)
+   ├── Background (SpriteRenderer - circle sprite)
+   ├── Icon (SpriteRenderer - for icon display)
+   ├── Text (TextMeshPro - for text display)
+   ├── Highlight (GameObject with highlight sprite/effect)
+   └── Chain (LineRenderer - for the hanging chain visual)
+
+4. Configure TreeBubble Component:
+   - Assign Background → bgRenderer
+   - Assign Icon → iconRenderer
+   - Assign Text → textLabel
+   - Assign Highlight → highlightEffect
+   - Assign Chain → chainLine
+
+5. Configure LineRenderer (Chain):
+   - Width: 0.05
+   - Positions: 2
+   - Material: Default sprite material
+   - Color: Brown/gray for chain effect
+
+6. Save as Prefab in Assets/Prefabs/
+
+STEP 2: CREATE SLOT OBJECTS
+----------------------------
+1. In your scene, create 5 empty GameObjects
+2. Name them: Slot_0, Slot_1, Slot_2, Slot_3, Slot_4
+3. Position them horizontally or in your desired layout
+4. Example positions:
+   Slot_0: (0, -3, 0)
+   Slot_1: (1, -3, 0)
+   Slot_2: (2, -3, 0)
+   Slot_3: (3, -3, 0)
+   Slot_4: (4, -3, 0)
+
+STEP 3: CREATE TREE BUBBLE MANAGER
+-----------------------------------
+1. Create Empty GameObject → Name it "TreeBubbleManager"
+2. Add TreeBubbleManager script
+3. Configure in Inspector:
+
+   SPAWN AREA:
+   - Radius: Size of circular spawn area (default 3)
+   - Min Distance Between Bubbles: 0.8 (prevents overlap)
+   - Max Spawn Attempts: 30 (tries to find valid positions)
+
+   TREE BUBBLES:
+   - Tree Bubble Prefab: Drag your TreeBubble prefab here
+   - Bubble Count: How many bubbles to spawn (e.g., 20)
+   - Category Bubbles: Add entries for each category
+     * Category: Select BubbleType ScriptableObject
+     * Icon: Optional sprite icon
+     * Text: Text to display (if no icon)
+
+   SLOTS:
+   - Drag your 5 slot GameObjects into the array
+   - Slot Bubble Scale: 0.8 (scale of bubbles in slots)
+
+   CHAIN SETTINGS:
+   - Chain Length: 1.5 (how far bubbles hang)
+   - Swing Force: 2.0 (initial swing intensity)
+
+4. USE EDITOR BUTTONS:
+   - Click "Spawn Bubbles In Editor" to preview layout in Scene view
+   - Click "Clear Bubbles" to remove spawned bubbles
+   - Adjust settings and respawn to test different layouts
+   - Bubbles won't swing in edit mode (physics disabled)
+
+STEP 4: CREATE BUBBLE TYPES (if not existing)
+----------------------------------------------
+1. Right-click in Project → Create → BubbleType
+2. Name it (e.g., "Colors", "Animals", "Foods")
+3. Repeat for each category you want
+4. Assign to CategoryBubbles list in TreeBubbleManager
+
+STEP 5: CONFIGURE SCENE
+------------------------
+1. Ensure you have Main Camera with Camera component
+2. Position TreeBubbleManager at desired spawn center
+3. The spawn area gizmo (green) shows where bubbles will appear
+4. Yellow gizmos show slot positions
+
+STEP 6: OPTIONAL - PARTICLE EFFECTS
+------------------------------------
+The system uses ParticlePool.PlayRevealFx() for popping effects.
+- Ensure ParticlePool is initialized
+- Assign particle prefab in GameSettings if needed
+- Or disable particle calls in TreeBubbleManager.PopBubbles()
+
+═══════════════════════════════════════════════════════════════════
+
+VISUAL CUSTOMIZATION:
+---------------------
+
+SPAWN AREA GIZMOS:
+- Green Circle: Shows circular spawn area in Scene view
+- Yellow Spheres: Show slot positions
+- Visible only in Scene view, not in Game view
+
+BUBBLE APPEARANCE:
+- Edit TreeBubble prefab Background sprite for bubble look
+- Change colors on SpriteRenderer components
+- Adjust Highlight effect appearance
+
+CHAIN VISUAL:
+- LineRenderer width for thicker/thinner chains
+- Change material/color for different chain styles
+- Can replace with sprite chain segments if desired
+
+═══════════════════════════════════════════════════════════════════
+
+GAMEPLAY SETTINGS:
+------------------
+
+SPAWN VARIATIONS:
+- Circular: Uniform random distribution (Poisson disk sampling)
+  * Uses sqrt for proper circular distribution
+  * Maintains minimum distance between bubbles
+  * Organic leaf pattern hanging from tree
+
+EDITOR WORKFLOW:
+- Use "Spawn Bubbles In Editor" button to preview layout
+- Adjust spawn settings (radius, count, min distance)
+- Click "Clear Bubbles" and respawn to test variations
+- Chains visible in edit mode for visual feedback
+- Physics only active in play mode
+
+PHYSICS TUNING (in TreeBubble.Initialize()):
+- rb.gravityScale: Higher = bubbles hang more vertically
+- rb.linearDamping: Higher = less swinging
+- spring.frequency: Higher = stiffer chain
+- spring.dampingRatio: Higher = less bouncy
+- swingForce: Initial push strength
+
+MATCHING RULES:
+- Currently checks last 4 adjacent bubbles in slots
+- All 4 must match same category to pop
+- After popping, remaining bubbles shift left
+
+═══════════════════════════════════════════════════════════════════
+
+VERSATILITY & EXTENSION OPTIONS:
+---------------------------------
+
+Based on existing codebase analysis, here are versatile settings:
+
+FROM GAME SETTINGS:
+- Bounce animations (MaxBounceAmplitude, BounceTime)
+- Breathing effects (BreathingSpeed, BreathingAmplitude)
+- Text animations (TextBreathingSpeed)
+- Drag speed settings
+- Lerp smoothing speeds
+
+EASY MODIFICATIONS:
+1. Change slot count (currently 5, modify slots array size)
+2. Change match requirement (currently 4 adjacent)
+3. Add power-ups (rainbow bubble matches any category)
+4. Add scoring system (points per match)
+5. Multiple spawn zones (create multiple TreeBubbleManagers)
+6. Timed spawning (spawn new bubbles periodically)
+7. Difficulty progression (increase bubble types over time)
+
+INTEGRATION WITH EXISTING SYSTEMS:
+- Uses existing BubbleType for categories
+- Uses existing ParticlePool for effects
+- Can reuse existing Bubble.Data for icons/text
+- Can integrate with existing GameSettings
+
+ADVANCED FEATURES TO ADD:
+- Chain breaking on rapid swinging
+- Wind effects (apply force to all bubbles)
+- Combo multipliers for consecutive matches
+- Visual feedback on near-matches
+- Undo last bubble placement
+- Shuffle remaining tree bubbles
+- Level progression system
+
+═══════════════════════════════════════════════════════════════════
+
+TESTING:
+--------
+1. Press Play
+2. Bubbles should spawn and swing in the spawn area
+3. Click any bubble - it should move to first available slot
+4. Click 4 bubbles of the same category in sequence
+5. They should pop with particle effects
+6. Remaining bubbles shift to fill gaps
+
+═══════════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING:
+----------------
+
+BUBBLES NOT SWINGING:
+- Check Rigidbody2D is not set to Kinematic initially
+- Ensure SpringJoint2D is created (check in Play mode)
+- Increase swingForce value
+
+BUBBLES NOT CLICKING:
+- Ensure CircleCollider2D is on TreeBubble
+- Check bubble layer is raycastable
+- Verify TreeBubble script is attached
+
+BUBBLES OVERLAPPING:
+- Increase minDistanceBetweenBubbles value
+- Reduce bubbleCount
+- Increase spawn area (radius or squareSize)
+- Increase maxSpawnAttempts for better placement
+
+UNEVEN DISTRIBUTION:
+- Circle shape uses Poisson disk sampling for uniformity
+- Square shape uses grid-based layout
+- Adjust minDistanceBetweenBubbles for spacing control
+- Check LineRenderer is enabled
+- Set material on LineRenderer
+- Ensure positions are being updated in Update()
+
+MATCH NOT DETECTING:
+- Ensure BubbleType assets are assigned correctly
+- Check that same BubbleType instance is used (not copies)
+- Debug.Log in CheckForMatches() to verify logic
+
+NO PARTICLE EFFECTS:
+- Check ParticlePool is initialized
+- Assign particle prefab in GameSettings
+- Or comment out ParticlePool.PlayRevealFx() calls
+
+═══════════════════════════════════════════════════════════════════
+
+PERFORMANCE NOTES:
+------------------
+- SpringJoint2D is physics-based (CPU intensive for many bubbles)
+- Consider reducing bubbleCount for mobile platforms
+- Chain LineRenderer updates every frame (optimize if needed)
+- Particle pooling already implemented via ParticlePool
+
+═══════════════════════════════════════════════════════════════════

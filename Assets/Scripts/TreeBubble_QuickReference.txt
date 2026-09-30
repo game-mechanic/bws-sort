@@ -1,0 +1,104 @@
+═══════════════════════════════════════════════════════════════════
+              TREE BUBBLE SYSTEM - QUICK REFERENCE
+═══════════════════════════════════════════════════════════════════
+
+EDITOR BUTTONS (TreeBubbleManager Inspector):
+----------------------------------------------
+[Spawn Bubbles In Editor] - Preview bubble layout in Scene view
+[Clear Bubbles]           - Remove all spawned bubbles
+
+═══════════════════════════════════════════════════════════════════
+
+KEY SETTINGS:
+-------------
+
+SPAWN DISTRIBUTION:
+-------------------
+Circular Shape (Only):
+  • Uses Poisson disk sampling (uniform random)
+  • Radius: How far bubbles spread from center
+  • Min Distance: Minimum gap between bubbles (default 0.8)
+  • Creates organic, leaf-like pattern
+
+Min Distance Between Bubbles: 0.8
+  ↑ Increase = More spacing (fewer overlaps)
+  ↓ Decrease = Tighter clustering (may overlap)
+
+Max Spawn Attempts: 30
+  ↑ Increase = Better distribution (slower)
+  ↓ Decrease = Faster spawn (may cluster)
+
+═══════════════════════════════════════════════════════════════════
+
+TYPICAL WORKFLOW:
+-----------------
+1. Setup TreeBubbleManager GameObject
+2. Assign TreeBubble prefab
+3. Create 5 slot GameObjects, assign to array
+4. Add CategoryBubbleData entries
+5. Click "Spawn Bubbles In Editor" button
+6. Adjust settings (shape, radius, count, spacing)
+7. Click "Clear Bubbles" → Respawn to test
+8. Repeat until satisfied
+9. Enter Play mode to test physics & gameplay
+
+═══════════════════════════════════════════════════════════════════
+
+RECOMMENDED VALUES:
+-------------------
+For 20 bubbles:
+  Radius: 3.0, minDistance: 0.8
+
+For 30 bubbles:
+  Radius: 4.0, minDistance: 0.7
+
+For 40 bubbles:
+  Radius: 5.0, minDistance: 0.6
+
+For 50 bubbles:
+  Radius: 6.0, minDistance: 0.5
+
+═══════════════════════════════════════════════════════════════════
+
+VISUAL INDICATORS (Scene View):
+--------------------------------
+Green Circle: Spawn area boundary
+Yellow Spheres: Slot positions (where clicked bubbles go)
+White Lines: Chains (visible in edit mode too)
+
+═══════════════════════════════════════════════════════════════════
+
+SPAWN DISTRIBUTION:
+-------------------
+
+CIRCULAR (Uniform Random):
+  ✓ Natural, organic look
+  ✓ No visible pattern
+  ✓ Even distribution throughout
+  ✓ Perfect for "leaves on tree" aesthetic
+  ✓ Professional game feel
+
+═══════════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING DISTRIBUTION:
+------------------------------
+
+Problem: Bubbles too clustered
+Solution: 
+  • Increase minDistanceBetweenBubbles
+  • Increase radius
+  • Decrease bubbleCount
+
+Problem: Bubbles too sparse
+Solution:
+  • Decrease minDistanceBetweenBubbles
+  • Decrease radius
+  • Increase bubbleCount
+
+Problem: Empty spots in spawn area
+Solution:
+  • Increase maxSpawnAttempts
+  • Decrease minDistanceBetweenBubbles
+  • Increase bubbleCount
+
+═══════════════════════════════════════════════════════════════════

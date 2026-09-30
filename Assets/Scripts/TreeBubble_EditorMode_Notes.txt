@@ -1,0 +1,184 @@
+═══════════════════════════════════════════════════════════════════
+         TREE BUBBLE EDITOR MODE - TROUBLESHOOTING NOTES
+═══════════════════════════════════════════════════════════════════
+
+SPAWNING IN EDITOR MODE:
+-------------------------
+
+The spawn algorithm now uses a 3-tier fallback system to ensure ALL
+bubbles spawn successfully:
+
+Tier 1: Strict Distance
+  → Try to place with full minDistanceBetweenBubbles
+  → Attempts: maxSpawnAttempts (default 30)
+
+Tier 2: Relaxed Distance (70%)
+  → If Tier 1 fails, reduce distance requirement by 30%
+  → Attempts: maxSpawnAttempts × 2 (default 60)
+
+Tier 3: Force Placement
+  → Last resort: place bubble anywhere in spawn area
+  → Guarantees all bubbles spawn
+
+═══════════════════════════════════════════════════════════════════
+
+CHECK CONSOLE LOG:
+------------------
+After clicking "Spawn Bubbles In Editor", check Console for:
+
+✓ Success Message (Green):
+  "✓ Spawned 20/20 bubbles in editor mode"
+  → All bubbles spawned successfully!
+
+✗ Error Messages (Red):
+  "TreeBubble prefab is not assigned!"
+  → Drag TreeBubble prefab to TreeBubbleManager
+
+  "No category bubbles defined!"
+  → Add at least 1 entry to Category Bubbles list
+
+═══════════════════════════════════════════════════════════════════
+
+COMMON ISSUES & SOLUTIONS:
+--------------------------
+
+Issue: Only Some Bubbles Visible
+---------------------------------
+Possible Causes:
+1. Bubbles spawned outside camera view
+   → Move Scene view camera to see spawn area
+   → Green gizmo shows spawn boundary
+
+2. Bubbles behind other objects
+   → Check Z position (should be 0)
+   → Adjust sorting layers
+
+3. Bubbles too small
+   → Check TreeBubble prefab scale
+   → Increase bubble sprite size
+
+Solution: Select TreeBubbleManager in Hierarchy
+  → All child bubbles should be visible
+  → Count children = should match bubbleCount
+
+
+Issue: Console Shows "X/20 bubbles"
+------------------------------------
+If X < 20 (not all spawned):
+  → This SHOULD NOT happen with new fallback system
+  → Check Console for errors
+  → Possible prefab instantiation issue
+
+Solution:
+1. Check TreeBubble prefab is valid
+2. Ensure no missing scripts on prefab
+3. Try reducing bubbleCount temporarily
+
+
+Issue: Bubbles Overlap Too Much
+--------------------------------
+Solution:
+1. Increase minDistanceBetweenBubbles (try 1.0 or 1.2)
+2. Increase spawn area (radius or squareSize)
+3. Reduce bubbleCount
+4. Clear and respawn
+
+
+Issue: Bubbles Too Spread Out / Empty Spots
+--------------------------------------------
+Solution:
+1. Decrease minDistanceBetweenBubbles (try 0.5 or 0.6)
+2. Decrease spawn area (radius or squareSize)
+3. Increase bubbleCount
+
+
+Issue: No Chain Lines Visible
+------------------------------
+Possible Causes:
+1. LineRenderer not assigned on prefab
+2. LineRenderer material missing
+3. LineRenderer width too small
+
+Solution:
+1. Open TreeBubble prefab
+2. Check "chainLine" field assigned to LineRenderer component
+3. On LineRenderer component:
+   - Width: 0.05 (start and end)
+   - Material: Sprites-Default or similar
+   - Positions: 2
+4. Save prefab and respawn
+
+═══════════════════════════════════════════════════════════════════
+
+VERIFICATION CHECKLIST:
+-----------------------
+Before using "Spawn Bubbles In Editor" button:
+
+□ TreeBubbleManager has TreeBubble prefab assigned
+□ At least 1 CategoryBubbleData entry added
+□ CategoryBubbleData has BubbleType assigned
+□ CategoryBubbleData has Icon OR Text filled in
+□ 5 Slot GameObjects created and assigned
+□ Spawn area settings configured
+□ bubbleCount > 0
+
+═══════════════════════════════════════════════════════════════════
+
+DEBUGGING TIPS:
+---------------
+
+1. Check Hierarchy:
+   - TreeBubbleManager should have children after spawn
+   - Count children (exclude slots) = bubbleCount
+
+2. Select Individual Bubble:
+   - Check position is within spawn area
+   - Check if visual components are assigned
+
+3. Console Messages:
+   - Green = Success, all bubbles spawned
+   - Yellow = Warnings (missing components on prefab)
+   - Red = Errors (must fix before bubbles spawn)
+
+4. Gizmos:
+   - Enable Gizmos in Scene view (top right)
+   - Green shape = spawn area
+   - Yellow spheres = slots
+   - If you don't see gizmos, select TreeBubbleManager
+
+═══════════════════════════════════════════════════════════════════
+
+RECOMMENDED WORKFLOW:
+---------------------
+
+1. Start Small:
+   - Set bubbleCount to 5
+   - Click "Spawn Bubbles In Editor"
+   - Verify all 5 appear
+
+2. Gradually Increase:
+   - Increase to 10, respawn
+   - Increase to 20, respawn
+   - Adjust spacing if needed
+
+3. Fine-Tune:
+   - Adjust minDistanceBetweenBubbles
+   - Change spawn shape
+   - Test different radius/squareSize
+
+4. Final Test:
+   - Set desired bubbleCount
+   - Spawn and verify distribution
+   - Enter Play mode to test physics
+
+═══════════════════════════════════════════════════════════════════
+
+PERFORMANCE NOTE:
+-----------------
+Editor mode spawning is instant (no physics/animations).
+This is normal! Physics only activate in Play mode.
+
+In Editor: Static placement with chains visible
+In Play: Swinging physics with spring joints
+
+═══════════════════════════════════════════════════════════════════

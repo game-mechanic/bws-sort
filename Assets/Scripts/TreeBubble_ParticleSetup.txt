@@ -1,0 +1,219 @@
+═══════════════════════════════════════════════════════════════════
+              TREE BUBBLE - PARTICLE EFFECTS SETUP
+═══════════════════════════════════════════════════════════════════
+
+PARTICLE SYSTEM INTEGRATION:
+-----------------------------
+
+The TreeBubbleManager uses the existing ParticlePool system for
+pop effects when 4 matching bubbles are destroyed.
+
+═══════════════════════════════════════════════════════════════════
+
+AUTOMATIC INITIALIZATION:
+--------------------------
+
+The ParticlePool.Init() is called in TreeBubbleManager.Awake()
+This happens automatically when the scene starts.
+
+No manual setup required!
+
+═══════════════════════════════════════════════════════════════════
+
+HOW IT WORKS:
+-------------
+
+When 4 bubbles match:
+1. CheckForMatches() detects matching categories
+2. PopBubbles() is called
+3. For each bubble position:
+   → ParticlePool.PlayRevealFx(position) spawns particles
+4. Bubbles are destroyed
+5. Remaining bubbles shift left
+
+═══════════════════════════════════════════════════════════════════
+
+PARTICLE PREFAB REQUIREMENT:
+-----------------------------
+
+ParticlePool requires a particle system prefab assigned in:
+GameSettings → BubbleFXPrefab
+
+Path: Assets/Resources/GameSettings.asset
+Field: Bubble FX Prefab
+
+If not assigned:
+  • Warning in Console: "Could not play particle effect"
+  • Bubbles still pop (just no visual effect)
+  • Game continues normally
+
+═══════════════════════════════════════════════════════════════════
+
+ERROR HANDLING:
+---------------
+
+The PopBubbles() method uses try-catch:
+
+try
+{
+    ParticlePool.PlayRevealFx(position);
+}
+catch (Exception e)
+{
+    Debug.LogWarning($"Could not play particle effect: {e.Message}");
+}
+
+This means:
+  ✓ If particles work → Beautiful pop effect!
+  ✓ If particles fail → Warning logged, game continues
+  ✓ Never crashes due to particle issues
+
+═══════════════════════════════════════════════════════════════════
+
+TESTING PARTICLES:
+------------------
+
+With Particle System:
+1. Assign particle prefab to GameSettings
+2. Enter Play mode
+3. Click 4 matching bubbles
+4. Console: "✨ MATCH! ..."
+5. Console: "Popping bubbles..."
+6. Particles play at each bubble position
+7. Bubbles destroy smoothly
+
+Without Particle System:
+1. GameSettings → BubbleFXPrefab = None
+2. Enter Play mode
+3. Click 4 matching bubbles
+4. Console: "✨ MATCH! ..."
+5. Console: "Could not play particle effect"
+6. Bubbles still destroy (just no particles)
+
+═══════════════════════════════════════════════════════════════════
+
+CUSTOMIZING PARTICLES:
+----------------------
+
+To change particle effects:
+1. Create/modify particle system prefab
+2. Assign to GameSettings → BubbleFXPrefab
+3. Adjust:
+   - Duration
+   - Start speed
+   - Size over lifetime
+   - Color
+   - Emission rate
+
+Recommended Settings:
+  • Duration: 0.5 - 1.0 seconds
+  • Start speed: 2-5
+  • Size: 0.2-0.5
+  • Emission: Burst of 10-20 particles
+  • Auto-destroy: Handled by pool
+
+═══════════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING:
+----------------
+
+Issue: "Could not play particle effect"
+---------------------------------------
+Causes:
+1. BubbleFXPrefab not assigned in GameSettings
+2. GameSettings asset not found in Resources
+3. Particle prefab is null/missing
+
+Solutions:
+1. Open Assets/Resources/GameSettings.asset
+2. Assign a ParticleSystem prefab to BubbleFXPrefab
+3. Or create a simple particle system:
+   - Create → Effects → Particle System
+   - Save as prefab
+   - Assign to GameSettings
+
+Issue: Particles don't appear
+------------------------------
+Check:
+□ GameSettings assigned in Resources folder
+□ BubbleFXPrefab field has a prefab
+□ Prefab has ParticleSystem component
+□ Particle system "Play On Awake" = OFF
+□ Particle Main module → Duration > 0
+
+Issue: Too many particles
+-------------------------
+Solution:
+□ Reduce emission rate in particle system
+□ Reduce burst count
+□ Shorten duration
+
+Issue: Particles in wrong location
+-----------------------------------
+Check:
+□ ParticleSystem prefab position = (0,0,0)
+□ Local space vs World space in Simulation Space
+□ Particles spawn at bubble.transform.position
+
+═══════════════════════════════════════════════════════════════════
+
+PERFORMANCE NOTES:
+------------------
+
+ParticlePool uses Unity's ObjectPool:
+  • Reuses particle systems
+  • No instantiate/destroy overhead
+  • Default capacity: 8
+  • Max size: 64
+  • Automatically returns to pool when done
+
+For 4 bubbles popping:
+  • 4 particle systems spawned
+  • Play simultaneously
+  • Auto-released when animation completes
+  • Very efficient!
+
+═══════════════════════════════════════════════════════════════════
+
+OPTIONAL: DISABLE PARTICLES:
+-----------------------------
+
+If you don't want particles at all:
+
+Option 1: Leave BubbleFXPrefab empty
+  → Warnings in console, but works
+
+Option 2: Comment out particle code
+  In TreeBubbleManager.cs → PopBubbles():
+  
+  // try
+  // {
+  //     ParticlePool.PlayRevealFx(bubble.transform.position);
+  // }
+  // catch (System.Exception e)
+  // {
+  //     Debug.LogWarning($"Could not play particle effect: {e.Message}");
+  // }
+
+Option 3: Use different effect
+  Replace ParticlePool.PlayRevealFx() with:
+  - Scale animation
+  - Color flash
+  - Sound effect
+  - Custom pop animation
+
+═══════════════════════════════════════════════════════════════════
+
+SUMMARY:
+--------
+
+✓ ParticlePool initialized automatically in Awake()
+✓ Plays particles when bubbles pop
+✓ Gracefully handles missing particle prefab
+✓ Uses efficient object pooling
+✓ Customizable via GameSettings
+✓ Never crashes if particles fail
+
+Everything just works! 🎉
+
+═══════════════════════════════════════════════════════════════════

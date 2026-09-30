@@ -1,0 +1,145 @@
+TREE BUBBLE - MANUAL POSITIONING GUIDE
+======================================
+
+FEATURE:
+-------
+You can manually adjust some bubbles' positions in the Scene, and they will KEEP those positions when you enter Play mode (instead of being moved to the automatic spawn positions).
+
+HOW TO USE:
+----------
+
+STEP 1: SPAWN BUBBLES NORMALLY
+1. Select TreeBubbleManager in Scene
+2. Click [Spawn Bubbles In Editor] button
+3. Bubbles spawn in formation
+
+STEP 2: MANUALLY ADJUST SPECIFIC BUBBLES
+1. In Hierarchy, find the bubbles you want to reposition
+   (They're under TreeBubbleManager, named like "TreeBubble_0_CategoryName")
+2. Select a bubble
+3. Use Move tool (W key) to drag it to desired position
+4. Repeat for any other bubbles you want to manually place
+
+STEP 3: LOCK MANUAL POSITIONS
+1. Select the bubble you manually positioned
+2. In Inspector, find "Manual Override" section at the top
+3. CHECK the "Manually Positioned" checkbox
+4. Repeat for each manually adjusted bubble
+
+STEP 4: TEST IN PLAY MODE
+1. Enter Play mode
+2. Manually positioned bubbles stay where you put them
+3. Other bubbles use their automatic spawn positions
+4. All bubbles still swing normally
+
+WHAT HAPPENS:
+------------
+
+BUBBLES WITH "Manually Positioned" CHECKED:
+✅ Keep their current position in Scene
+✅ Position is NOT overridden by automatic spawning
+✅ Still swing/animate around their manual position
+✅ Still clickable and functional
+✅ Category is still assigned correctly
+
+BUBBLES WITHOUT "Manually Positioned" CHECKED:
+✅ Use automatic spawn position (circle/square formation)
+✅ Normal behavior
+
+IMPORTANT NOTES:
+---------------
+
+1. CHECK THE BOX AFTER POSITIONING:
+   - Move bubble first
+   - Then check "Manually Positioned"
+   - Not the other way around
+
+2. SAVE THE SCENE:
+   - After checking boxes, save the scene (Ctrl+S)
+   - This preserves your manual positions
+
+3. RE-SPAWNING:
+   - If you click [Clear Bubbles] and re-spawn, manual bubbles are deleted
+   - You'll need to manually position and check boxes again
+   - Consider this carefully before clearing
+
+4. CATEGORIES:
+   - Manually positioned bubbles still get assigned categories
+   - They're included in the spawn count
+   - They work exactly like automatic bubbles, just at custom positions
+
+WORKFLOW EXAMPLE:
+----------------
+
+Let's say you have 20 bubbles and want to manually position 3:
+
+1. Click [Spawn Bubbles In Editor] → spawns 20 bubbles in formation
+2. Select bubble #5 in Hierarchy
+3. Move it to a special position (e.g., center of screen)
+4. Check "Manually Positioned" on bubble #5
+5. Select bubble #12, move it, check "Manually Positioned"
+6. Select bubble #18, move it, check "Manually Positioned"
+7. Save Scene (Ctrl+S)
+8. Enter Play Mode
+9. Result: 3 bubbles at your custom positions, 17 at automatic positions
+
+TIPS:
+----
+
+MIXING AUTOMATIC AND MANUAL:
+- Great for highlighting specific bubbles
+- Place important categories in prominent positions
+- Create asymmetric designs
+
+SAVING POSITIONS:
+- Always save scene after setting up manual positions
+- Consider duplicating scene before major changes
+
+DEBUGGING:
+- Console shows "Manually positioned - skipping automatic initialization"
+- Check this message to verify which bubbles are manual
+
+UNDOING MANUAL POSITIONING:
+- Uncheck "Manually Positioned"
+- Click [Clear Bubbles] then [Spawn Bubbles In Editor]
+- Bubble returns to automatic position
+
+USE CASES:
+---------
+
+1. TUTORIAL/HINTS:
+   - Manually place first few bubbles in prominent spots
+   - Guide player attention
+
+2. AESTHETIC DESIGN:
+   - Break perfect formations for visual interest
+   - Create custom patterns
+
+3. LEVEL DESIGN:
+   - Place specific categories strategically
+   - Control difficulty/pacing
+
+4. TESTING:
+   - Position specific combinations for testing
+   - Quick iteration on gameplay
+
+TROUBLESHOOTING:
+---------------
+
+Q: Bubble moved when I entered Play mode?
+A: Did you check the "Manually Positioned" box? Check it and try again.
+
+Q: Can't find the checkbox?
+A: Select the bubble, look at Inspector top section "Manual Override"
+
+Q: Want to move a manual bubble to new position?
+A: Just move it in Scene view, position is already locked
+
+Q: How to unlock/return to automatic?
+A: Uncheck "Manually Positioned" and re-spawn bubbles
+
+Q: Does it affect matching/gameplay?
+A: No, manual bubbles work exactly like automatic ones
+
+Q: Can I manually position ALL bubbles?
+A: Yes, but it's tedious. Check the box on each one.

@@ -1,0 +1,239 @@
+═══════════════════════════════════════════════════════════════════
+              TREE BUBBLE SYSTEM - CIRCULAR DESIGN
+═══════════════════════════════════════════════════════════════════
+
+DESIGN PHILOSOPHY:
+------------------
+Circular spawn area only - creates natural, organic "leaves on tree"
+aesthetic. Simplified, focused design for better usability.
+
+═══════════════════════════════════════════════════════════════════
+
+INSPECTOR SETTINGS:
+-------------------
+
+Spawn Area
+└─ Radius: 3.0
+   How far bubbles spread from center in all directions
+   
+└─ Min Distance Between Bubbles: 0.8
+   Minimum space between any two bubbles
+   
+└─ Max Spawn Attempts: 30
+   How hard to try finding perfect positions
+
+Tree Bubbles
+└─ Tree Bubble Prefab: [Assign prefab]
+   The bubble prefab with visuals and chain
+   
+└─ Bubble Count: 20
+   Total number of bubbles to spawn
+   
+└─ Category Bubbles: [List]
+   Define categories with icons or text
+
+Slots
+└─ Slots (5): [Assign 5 GameObjects]
+   Where clicked bubbles move to
+   
+└─ Slot Bubble Scale: 0.8
+   Size multiplier for bubbles in slots
+
+Chain Settings
+└─ Chain Length: 1.5
+   How far bubbles hang below anchor
+   
+└─ Swing Force: 2.0
+   Initial push strength for swinging
+
+═══════════════════════════════════════════════════════════════════
+
+SPAWN ALGORITHM:
+----------------
+
+The circular spawn uses a 3-tier quality system:
+
+[Tier 1] IDEAL PLACEMENT
+→ Full minDistance spacing
+→ 30 attempts
+→ Best distribution quality
+
+[Tier 2] RELAXED PLACEMENT  
+→ 70% of minDistance (0.56 if minDistance is 0.8)
+→ 60 attempts
+→ Still good quality, slightly tighter
+
+[Tier 3] GUARANTEED PLACEMENT
+→ No distance requirement
+→ Places anywhere in circle
+→ Ensures all bubbles spawn
+
+Result: Always spawns ALL requested bubbles with best
+        possible distribution given the constraints.
+
+═══════════════════════════════════════════════════════════════════
+
+CIRCULAR DISTRIBUTION MATH:
+---------------------------
+
+Uses Poisson disk sampling with proper radial distribution:
+
+angle = Random(0, 360°)
+distance = sqrt(Random(0, 1)) × radius
+
+The sqrt() is crucial - it ensures uniform density throughout
+the circle. Without it, bubbles would cluster toward center.
+
+Visual Result:
+  • Even density everywhere
+  • Natural, organic look
+  • No visible patterns or clustering
+  • Professional game feel
+
+═══════════════════════════════════════════════════════════════════
+
+SIZING GUIDE:
+-------------
+
+Bubble Density = Count / (π × Radius²)
+
+Light Density (0.7 bubbles per unit²):
+  20 bubbles → Radius 3.0
+  30 bubbles → Radius 3.7
+  40 bubbles → Radius 4.3
+
+Medium Density (1.0 bubbles per unit²):
+  20 bubbles → Radius 2.5
+  30 bubbles → Radius 3.1
+  40 bubbles → Radius 3.6
+
+High Density (1.3 bubbles per unit²):
+  20 bubbles → Radius 2.2
+  30 bubbles → Radius 2.7
+  40 bubbles → Radius 3.1
+
+Recommended: Light to Medium density for best look
+
+═══════════════════════════════════════════════════════════════════
+
+VISUAL BALANCE:
+---------------
+
+For balanced, natural look:
+
+Radius vs Bubble Count Ratio:
+  Radius = sqrt(Count / π / Density)
+  
+  Recommended Density: 0.7 - 1.0
+  
+Examples:
+  20 bubbles: Radius 2.5 - 3.0 ✓
+  30 bubbles: Radius 3.1 - 3.7 ✓
+  40 bubbles: Radius 3.6 - 4.3 ✓
+  50 bubbles: Radius 4.0 - 4.8 ✓
+
+Min Distance:
+  For Radius 3.0: minDistance 0.6 - 0.9
+  For Radius 4.0: minDistance 0.7 - 1.0
+  For Radius 5.0: minDistance 0.8 - 1.1
+
+═══════════════════════════════════════════════════════════════════
+
+EDITOR WORKFLOW:
+----------------
+
+1. Select TreeBubbleManager
+2. Set Radius (start with 3.0)
+3. Set Bubble Count (start with 20)
+4. Click [Spawn Bubbles In Editor]
+5. Observe distribution in Scene view
+6. Adjust Radius or Min Distance
+7. Click [Clear Bubbles]
+8. Respawn and repeat until satisfied
+9. Enter Play mode to test physics
+
+Pro Tip: Green circle gizmo shows exact spawn boundary
+
+═══════════════════════════════════════════════════════════════════
+
+COMMON PATTERNS:
+----------------
+
+Small Tree (Mobile-friendly):
+  • 15-20 bubbles
+  • Radius 2.5-3.0
+  • Min Distance 0.7-0.8
+  • Fast performance
+
+Medium Tree (Recommended):
+  • 25-35 bubbles
+  • Radius 3.5-4.5
+  • Min Distance 0.7-0.9
+  • Balanced gameplay
+
+Large Tree (Desktop):
+  • 40-50 bubbles
+  • Radius 5.0-6.0
+  • Min Distance 0.8-1.0
+  • Rich experience
+
+═══════════════════════════════════════════════════════════════════
+
+WHY CIRCULAR ONLY?
+------------------
+
+✓ Simpler for designers (one shape, less confusion)
+✓ Always looks good (natural tree aesthetic)
+✓ Easier to balance (one variable: radius)
+✓ Faster workflow (no shape switching)
+✓ Cleaner inspector (fewer options)
+✓ Better for iteration (quick adjustments)
+✓ Matches mental model (tree canopy = circle)
+
+Square/grid patterns don't fit the organic "leaves on tree"
+theme and add unnecessary complexity.
+
+═══════════════════════════════════════════════════════════════════
+
+GIZMO VISUALIZATION:
+--------------------
+
+In Scene View (with TreeBubbleManager selected):
+
+🟢 Green Circle
+   → Spawn area boundary
+   → All bubbles appear inside this circle
+   → Adjust "Radius" to change size
+
+🟡 Yellow Spheres (5)
+   → Slot positions
+   → Where clicked bubbles move to
+   → Position these horizontally
+
+⚪ White Lines
+   → Chains connecting bubbles to anchor points
+   → Visible in edit mode too
+   → Shows hanging structure
+
+═══════════════════════════════════════════════════════════════════
+
+FINAL CHECKLIST:
+----------------
+
+Before spawning:
+☐ TreeBubble prefab assigned
+☐ At least 1 CategoryBubbleData entry
+☐ Each entry has BubbleType assigned
+☐ Each entry has Icon OR Text
+☐ 5 Slot GameObjects created and assigned
+☐ Radius > 0
+☐ Bubble Count > 0
+
+After spawning:
+☐ Console shows green success message
+☐ Hierarchy shows correct child count
+☐ Bubbles visible in Scene view
+☐ Green gizmo shows spawn boundary
+☐ Chains visible connecting to anchors
+
+═══════════════════════════════════════════════════════════════════

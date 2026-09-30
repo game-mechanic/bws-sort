@@ -1,0 +1,371 @@
+═══════════════════════════════════════════════════════════════════
+         TREE BUBBLE - UPDATED MATCHING & SWING LOGIC
+═══════════════════════════════════════════════════════════════════
+
+CHANGES MADE:
+-------------
+
+1. ✅ Adjustable Swing Strength
+   New inspector slider to control swing intensity
+
+2. ✅ Bubbles Stop Swinging in Slots
+   Physics completely disabled when bubble enters slot
+
+3. ✅ New Matching Logic
+   Match ANY 4 same-category bubbles in slots
+   (Not just adjacent ones)
+
+═══════════════════════════════════════════════════════════════════
+
+1. ADJUSTABLE SWING STRENGTH:
+------------------------------
+
+New Inspector Setting:
+  Swing Strength: [Slider 0-5] (default 2.0)
+
+Location:
+  TreeBubbleManager → Chain Settings → Swing Strength
+
+Effect:
+  • 0.0 = No swing (static hanging)
+  • 1.0 = Gentle sway
+  • 2.0 = Medium swing (default, natural)
+  • 3.0 = Strong swing
+  • 5.0 = Wild swing (very active)
+
+Real-time Adjustment:
+  • Change value in Inspector
+  • [Clear Bubbles]
+  • [Spawn Bubbles In Editor]
+  • Enter Play mode to see effect
+
+Recommended Values:
+  • Mobile: 1.5-2.0 (gentle, battery-friendly)
+  • Desktop: 2.0-3.0 (more dramatic)
+  • Calm aesthetic: 1.0-1.5
+  • Energetic feel: 2.5-4.0
+
+═══════════════════════════════════════════════════════════════════
+
+2. NO SWINGING IN SLOTS:
+-------------------------
+
+Old Behavior:
+  • Bubble moves to slot
+  • Physics still active
+  • Bubble continues swinging in slot
+  • Looks glitchy and unnatural
+
+New Behavior:
+  • Bubble moves to slot
+  • DisablePhysics() called
+  • Rigidbody2D set to Kinematic
+  • Velocity zeroed out
+  • SpringJoint2D destroyed
+  • Chain line hidden
+  • Bubble completely static in slot
+
+Implementation:
+  In MoveToSlot():
+    bubble.DisablePhysics();
+  
+  In TreeBubble.DisablePhysics():
+    • rb.bodyType = Kinematic
+    • rb.linearVelocity = Vector2.zero
+    • rb.angularVelocity = 0f
+    • Destroy spring joint
+    • Hide chain line
+
+Result:
+  ✓ Clean, professional look
+  ✓ Bubbles "lock in" to slots
+  ✓ No distracting movement
+  ✓ Clear visual state change
+
+═══════════════════════════════════════════════════════════════════
+
+3. NEW MATCHING LOGIC:
+----------------------
+
+OLD LOGIC (Adjacent):
+  • Check last 4 bubbles in slots
+  • All 4 must be adjacent
+  • All 4 must match
+
+  Example:
+  Slots: [R] [R] [R] [R] [B]
+         └─────Match!─────┘
+  
+  Slots: [R] [B] [R] [R] [R]
+         └─No Match (not last 4)
+
+NEW LOGIC (Any 4):
+  • Count all bubbles by category
+  • If ANY category has 4+ bubbles
+  • Pop first 4 of that category
+
+  Example:
+  Slots: [R] [B] [R] [G] [R] [R]
+         ↓      ↓      ↓   ↓
+         └──────Match! (4 Reds)────┘
+  
+  Slots: [R] [R] [B] [R] [R]
+         ↓   ↓      ↓   ↓
+         └────Match! (4 Reds)──┘
+
+Benefits:
+  ✓ More forgiving gameplay
+  ✓ Easier to make matches
+  ✓ Less frustrating
+  ✓ Strategic depth (can skip colors)
+  ✓ More combinations possible
+
+═══════════════════════════════════════════════════════════════════
+
+MATCHING EXAMPLES:
+------------------
+
+Scenario 1: Exact 4 of Same
+----------------------------
+Slots: [R] [R] [R] [R] [_]
+
+Action: Click 4 red bubbles
+Result: ✨ MATCH! All 4 reds pop
+Slots: [_] [_] [_] [_] [_]
+
+
+Scenario 2: 4 Scattered
+-----------------------
+Slots: [R] [B] [R] [G] [R] [R]
+
+Categories:
+  Red: 4 bubbles (indices 0, 2, 4, 5)
+  Blue: 1 bubble
+  Green: 1 bubble
+
+Result: ✨ MATCH! Pop 4 reds
+Remaining: [B] [G] [_] [_] [_]
+
+
+Scenario 3: Multiple Categories with 4+
+----------------------------------------
+Slots: [R] [R] [R] [R] [B] [B] [B] [B]
+
+Categories:
+  Red: 4 bubbles
+  Blue: 4 bubbles
+
+Result: ✨ MATCH! Pop first category found (Red)
+After Pop: [B] [B] [B] [B] [_] [_] [_] [_]
+
+Next Click: If 5th bubble is Blue
+→ Another match! Pop 4 blues
+
+
+Scenario 4: Not Enough of Any
+------------------------------
+Slots: [R] [R] [B] [B] [G]
+
+Categories:
+  Red: 2 bubbles
+  Blue: 2 bubbles
+  Green: 1 bubble
+
+Result: No match
+Console: "No match. Current slots: R, R, B, B, G"
+
+
+Scenario 5: Build Up to Match
+------------------------------
+Slots: [R] [B] [R] [_] [_]
+Click: Red
+Slots: [R] [B] [R] [R] [_]
+Click: Red
+Slots: [R] [B] [R] [R] [R]
+→ ✨ MATCH! (4 Reds)
+
+
+═══════════════════════════════════════════════════════════════════
+
+CONSOLE OUTPUT:
+---------------
+
+No Match:
+"No match. Current slots: Red, Blue, Red, Green, Blue"
+
+Match Found:
+"✨ MATCH! Found 4 bubbles of category 'Red' - Popping 4!"
+"Popping 4 bubbles at indices: 5, 4, 2, 0"
+"Popped 4 bubbles. 1 remaining in slots."
+
+Multiple Matches Possible:
+Only pops ONE match at a time (first found)
+After popping, checks again on next bubble click
+
+═══════════════════════════════════════════════════════════════════
+
+ALGORITHM DETAILS:
+------------------
+
+CheckForMatches() now:
+
+1. Dictionary to count categories
+   Dictionary<BubbleType, List<int>>
+
+2. Loop through all slotted bubbles
+   For each bubble:
+     - Get its category
+     - Add index to category's list
+
+3. Check each category
+   For each category:
+     - If count >= 4
+     - Pop first 4 indices
+     - Return (one match at a time)
+
+4. No match found
+   Log current slot summary
+
+Code:
+```csharp
+Dictionary<BubbleType, List<int>> categoryIndices = ...;
+
+foreach (var kvp in categoryIndices)
+{
+    if (kvp.Value.Count >= 4)
+    {
+        List<int> indicesToPop = kvp.Value.GetRange(0, 4);
+        PopBubbles(indicesToPop);
+        return;
+    }
+}
+```
+
+═══════════════════════════════════════════════════════════════════
+
+POPPING LOGIC:
+--------------
+
+PopBubbles(List<int> indices):
+
+1. Sort indices (for consistent popping order)
+2. Reverse (pop from end to avoid index shift)
+3. Remove from slottedBubbles list
+4. Animate each with scale-up
+5. Stagger by 0.1s for cascade
+6. Particles at peak
+7. Destroy GameObjects
+8. Shift remaining bubbles to fill gaps
+
+Example:
+Indices: [0, 2, 4, 5]
+Sorted: [0, 2, 4, 5]
+Reversed: [5, 4, 2, 0]
+
+Remove 5 → [R][B][R][G][R][_]
+Remove 4 → [R][B][R][G][_][_]
+Remove 2 → [R][B][_][G][_][_]
+Remove 0 → [_][B][_][G][_][_]
+
+After shift:
+[B][G][_][_][_][_]
+
+═══════════════════════════════════════════════════════════════════
+
+GAMEPLAY IMPACT:
+----------------
+
+More Strategic:
+  • Can build towards multiple colors
+  • Don't need exact sequence
+  • More forgiving for casual players
+  • Still requires planning
+
+Easier Matches:
+  • Before: Only 1 way to match (last 4 adjacent)
+  • After: Many combinations work
+  • Less likely to get "stuck"
+
+Better Flow:
+  • Matches happen more naturally
+  • Less frustration
+  • Encourages experimentation
+  • Rewarding for all skill levels
+
+═══════════════════════════════════════════════════════════════════
+
+TUNING GUIDE:
+-------------
+
+Swing Strength Values:
+
+Very Gentle (0.5-1.0):
+  • Minimal movement
+  • Calm, zen-like
+  • Good for: Relaxing games
+
+Gentle (1.0-1.5):
+  • Subtle sway
+  • Natural breeze feel
+  • Good for: Mobile, battery life
+
+Medium (1.5-2.5): ← Default Range
+  • Noticeable swing
+  • Leaf-like behavior
+  • Good for: Most games
+
+Strong (2.5-3.5):
+  • Active swinging
+  • Energetic feel
+  • Good for: Desktop, action games
+
+Wild (3.5-5.0):
+  • Dramatic movement
+  • Attention-grabbing
+  • Good for: Special effects, power-ups
+
+═══════════════════════════════════════════════════════════════════
+
+TESTING CHECKLIST:
+------------------
+
+Swing Strength:
+□ Adjust slider in Inspector
+□ Respawn bubbles
+□ Enter Play mode
+□ Observe swing intensity
+□ Try values: 0.5, 1.0, 2.0, 3.0, 5.0
+□ Choose preferred value
+
+No Swinging in Slots:
+□ Click a bubble
+□ Bubble moves to slot
+□ Bubble stops all movement ✓
+□ No swinging/bouncing
+□ Chain line disappears ✓
+□ Bubble completely static ✓
+
+Matching Logic:
+□ Click 4 different positions
+□ All same category
+□ Should match and pop ✓
+□ Try: [R][B][R][R][R] → Pops ✓
+□ Try: [R][R][B][B][G] → No match ✓
+□ Try: [R][R][R][R][_] → Match ✓
+
+═══════════════════════════════════════════════════════════════════
+
+SUMMARY:
+--------
+
+✅ Swing Strength: Adjustable 0-5 slider
+✅ No Slot Swinging: Physics disabled when slotted
+✅ New Matching: ANY 4 same category (not just adjacent)
+
+Result:
+• More control over visual feel
+• Cleaner slot presentation
+• More forgiving gameplay
+• Better player experience
+
+═══════════════════════════════════════════════════════════════════

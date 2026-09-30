@@ -1,0 +1,142 @@
+TREE BUBBLE - SIMPLE SWING SETUP
+=================================
+
+HOW IT WORKS (IMPROVED):
+------------------------
+✅ Natural leaf/pendulum motion with organic variation
+✅ Perlin noise for non-uniform, realistic movement
+✅ Secondary swing frequency (wind gusts effect)
+✅ Each bubble has unique speed and pattern
+✅ Rotation synchronized with position
+✅ Pendulum arc (drops at swing extremes)
+
+INSPECTOR SETTINGS:
+------------------
+
+ON EACH TREEBUBBLE PREFAB:
+(Select the prefab in Project, edit in Inspector)
+
+1. Max Rotation Angle: 15
+   - How much the bubble tilts (in degrees)
+   - Range: 0-30
+   - Recommended: 10-20 for gentle, 20-30 for dramatic
+
+2. Max Position Offset X: 0.3
+   - How far the bubble moves horizontally
+   - Range: 0-1
+   - Recommended: 0.25-0.4 for gentle, 0.5-0.7 for wide
+
+3. Max Position Offset Y: 0.15
+   - How much vertical drop/bob
+   - Range: 0-1
+   - Recommended: 0.1-0.2 for subtle, 0.3-0.5 for noticeable
+
+4. Swing Speed: 1
+   - How fast the swing animation plays
+   - Range: 0.5-3
+   - Recommended: 0.8-1.2 for calm, 1.5-2 for breezy
+
+5. Natural Variation: 0.3
+   - How much randomness/organic motion (NEW!)
+   - Range: 0-1
+   - 0 = uniform sine wave (mechanical)
+   - 0.3 = natural leaf motion (recommended)
+   - 0.6+ = very irregular, chaotic wind
+
+RECOMMENDED PRESETS:
+-------------------
+
+CALM BREEZE (Realistic Leaves):
+- Max Rotation Angle: 12
+- Max Position Offset X: 0.28
+- Max Position Offset Y: 0.12
+- Swing Speed: 0.9
+- Natural Variation: 0.35
+
+GENTLE SWAY:
+- Max Rotation Angle: 15
+- Max Position Offset X: 0.35
+- Max Position Offset Y: 0.15
+- Swing Speed: 1.0
+- Natural Variation: 0.3
+
+WINDY DAY:
+- Max Rotation Angle: 22
+- Max Position Offset X: 0.5
+- Max Position Offset Y: 0.25
+- Swing Speed: 1.6
+- Natural Variation: 0.5
+
+STRONG WIND:
+- Max Rotation Angle: 28
+- Max Position Offset X: 0.65
+- Max Position Offset Y: 0.35
+- Swing Speed: 2.2
+- Natural Variation: 0.6
+
+BARELY MOVING:
+- Max Rotation Angle: 8
+- Max Position Offset X: 0.15
+- Max Position Offset Y: 0.08
+- Swing Speed: 0.7
+- Natural Variation: 0.2
+
+WHAT MAKES IT BETTER:
+---------------------
+
+1. PERLIN NOISE:
+   - Adds organic, non-repetitive variation
+   - Each bubble moves slightly differently
+   - More realistic than pure sine waves
+
+2. SECONDARY SWING:
+   - Subtle high-frequency oscillation
+   - Simulates wind gusts and micro-movements
+   - Makes motion less predictable
+
+3. INDIVIDUAL SPEED VARIATION:
+   - Each bubble has 0.8-1.2x speed multiplier
+   - Prevents synchronization
+   - More natural forest/tree feel
+
+4. BLENDED MOTION:
+   - Primary swing (smooth sine)
+   - + Natural variation (Perlin noise)
+   - + Secondary swing (gusts)
+   - = Complex, organic result
+
+HOW TO APPLY:
+------------
+1. In Project window, find your TreeBubble prefab
+2. Click on it to select
+3. In Inspector, find "Swing Settings - Adjust in Inspector"
+4. Set the FIVE values as recommended above
+5. Save the prefab
+6. Clear and re-spawn bubbles in Scene
+
+TROUBLESHOOTING:
+---------------
+Q: Motion looks mechanical/uniform?
+A: Increase "Natural Variation" to 0.4-0.5
+
+Q: Too chaotic/erratic?
+A: Decrease "Natural Variation" to 0.2 or lower
+
+Q: Want smooth pendulum only?
+A: Set "Natural Variation" to 0
+
+Q: Bubbles moving too much?
+A: Decrease all Position Offset values
+
+Q: Want more dramatic swing?
+A: Increase Rotation Angle and Position Offsets together
+
+TECHNICAL IMPROVEMENTS:
+----------------------
+✅ Perlin noise on X and Y axes
+✅ Secondary sine wave at 2.3x frequency
+✅ Individual speed randomization (0.8-1.2x)
+✅ Blended motion (Lerp between smooth and noisy)
+✅ Arc drop calculation for realistic pendulum path
+✅ Less Y variation than X (more natural)
+

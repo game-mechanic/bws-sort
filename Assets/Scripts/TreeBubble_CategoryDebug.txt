@@ -1,0 +1,287 @@
+═══════════════════════════════════════════════════════════════════
+         TREE BUBBLE - CATEGORY NULL DEBUG GUIDE
+═══════════════════════════════════════════════════════════════════
+
+ISSUE: "Category: null" when clicking bubbles
+----------------------------------------------
+
+This means the BubbleType is not being assigned or preserved properly.
+
+═══════════════════════════════════════════════════════════════════
+
+DIAGNOSTIC STEPS:
+-----------------
+
+Step 1: Check Console During Spawn
+-----------------------------------
+After clicking [Spawn Bubbles In Editor], check Console for:
+
+✓ "Spawning bubble X: Category='Colors', Icon=True, Text=''"
+  → Category is being assigned correctly
+
+✗ "Spawning bubble X: Category='', Icon=False, Text=''"
+  → Category assignment is failing
+
+✗ "Skipping bubble X - no valid category found!"
+  → No valid categories in CategoryBubbles list
+
+
+Step 2: Check Bubble Inspector
+-------------------------------
+1. Select TreeBubbleManager in Hierarchy
+2. Expand to see child bubbles
+3. Select a bubble (e.g., TreeBubble_0_Colors)
+4. Check Inspector → TreeBubble component:
+
+Look for:
+  Runtime Data
+  └─ Assigned Category: [Should show BubbleType name]
+
+If "Assigned Category" is None/Empty:
+  → Category not being set during Initialize()
+
+
+Step 3: Check CategoryBubbles List
+-----------------------------------
+1. Select TreeBubbleManager
+2. Inspector → Category Bubbles section
+3. Expand each entry
+
+For each entry, verify:
+□ Category field has a BubbleType assigned (not None)
+□ Icon OR Text has a value
+□ BubbleType is a valid ScriptableObject
+
+If Category shows "None":
+  → Create BubbleType: Right-click → Create → BubbleType
+  → Assign it to the Category field
+
+
+Step 4: Validate BubbleType Assets
+-----------------------------------
+1. Find your BubbleType assets in Project
+2. Select one (e.g., "Colors")
+3. Inspector should show:
+   - Script: BubbleType
+   - Name: Colors (or whatever you named it)
+   - Material: (optional)
+
+If asset is missing or broken:
+  → Right-click in Project → Create → BubbleType
+  → Name it appropriately
+  → Assign to CategoryBubbles list
+
+═══════════════════════════════════════════════════════════════════
+
+COMMON CAUSES:
+--------------
+
+Cause 1: CategoryBubbles List Empty
+------------------------------------
+Symptom: "No category bubbles defined!"
+
+Fix:
+1. Select TreeBubbleManager
+2. Inspector → Category Bubbles
+3. Set Size = at least 1
+4. Expand Element 0
+5. Assign Category, Icon, and/or Text
+
+
+Cause 2: Category Field Not Assigned
+-------------------------------------
+Symptom: "CategoryBubbleData[0] has null category!"
+
+Fix:
+1. Create BubbleType asset if needed
+2. Drag BubbleType to Category field
+3. Click [Validate Setup] to verify
+
+
+Cause 3: BubbleType Asset Missing
+----------------------------------
+Symptom: Category field shows "Missing (BubbleType)"
+
+Fix:
+1. Create new BubbleType:
+   Project → Right-click → Create → BubbleType
+2. Name it (e.g., "Colors", "Animals", "Foods")
+3. Assign to Category field
+
+
+Cause 4: Serialization Issue (Editor → Play)
+---------------------------------------------
+Symptom: Works in Editor, null in Play mode
+
+This is fixed by the serialized field:
+  [SerializeField] BubbleType assignedCategory;
+
+The category is now preserved when entering Play mode.
+
+
+Cause 5: Multiple BubbleType Instances
+---------------------------------------
+Symptom: Names look same but don't match
+
+Fix:
+1. Ensure using SAME BubbleType instance
+2. Not creating duplicates
+3. All bubbles of "Colors" use same Colors asset
+
+═══════════════════════════════════════════════════════════════════
+
+VERIFICATION WORKFLOW:
+----------------------
+
+1. [Clear Bubbles]
+   → Console: "Cleared all bubbles and anchors"
+
+2. [Validate Setup]
+   → Console should show:
+     ✓ X category entries
+     ✓ Entry [0]: Colors (Icon)
+     ✓ Entry [1]: Animals (Text)
+     etc.
+
+3. [Spawn Bubbles In Editor]
+   → Console should show for EACH bubble:
+     "Spawning bubble 0: Category='Colors', Icon=True, Text=''"
+     "TreeBubble 'TreeBubble_0_Colors': Initialized with category 'Colors'"
+
+4. Select a bubble in Hierarchy
+   → Inspector → TreeBubble → Runtime Data
+   → Assigned Category: Colors ✓
+
+5. Enter Play Mode
+   → Click bubble
+   → Console: "TreeBubble clicked: TreeBubble_0_Colors, Category: Colors"
+   NOT "Category: null"
+
+═══════════════════════════════════════════════════════════════════
+
+EXPECTED CONSOLE OUTPUT:
+-------------------------
+
+During Spawn:
+-------------
+Cleared all bubbles and anchors
+Spawning bubble 0: Category='Colors', Icon=True, Text=''
+TreeBubble 'TreeBubble_0_Colors': Initialized with category 'Colors'
+Spawning bubble 1: Category='Animals', Icon=False, Text='Dog'
+TreeBubble 'TreeBubble_1_Animals': Initialized with category 'Animals'
+...
+✓ Spawned 20/20 bubbles (Ready for Play mode)
+
+During Play:
+------------
+[Click bubble]
+TreeBubble clicked: TreeBubble_0_Colors, Category: Colors
+Moving bubble 'TreeBubble_0_Colors' (Category: Colors) to slot 0
+
+[Click 3 more Colors]
+TreeBubble clicked: TreeBubble_5_Colors, Category: Colors
+Moving bubble 'TreeBubble_5_Colors' (Category: Colors) to slot 1
+...
+✨ MATCH! 4 adjacent bubbles of category 'Colors' - Popping!
+
+═══════════════════════════════════════════════════════════════════
+
+MANUAL FIX IF STILL NULL:
+--------------------------
+
+If category is still null after all fixes:
+
+1. Check TreeBubble.cs → Category property:
+   public BubbleType Category => category ?? assignedCategory;
+   
+   This should return assignedCategory if category is null.
+
+2. In Play mode, select a bubble
+   Debug values:
+   - category: (shows value or null)
+   - assignedCategory: (shows value or null)
+   
+   If BOTH are null → initialization failed
+
+3. Add manual assignment in TreeBubbleManager:
+   
+   After: bubble.Initialize(...);
+   Add: bubble.assignedCategory = data.category;
+   
+   But this should already happen in Initialize()
+
+═══════════════════════════════════════════════════════════════════
+
+CREATING BUBBLETYPE ASSETS:
+----------------------------
+
+Quick Setup:
+1. Project window → Assets/SCOS (or create new folder)
+2. Right-click → Create → BubbleType
+3. Name it: "Colors"
+4. Repeat for: "Animals", "Foods", "Shapes", etc.
+5. Select TreeBubbleManager
+6. Category Bubbles → Size = 4 (or however many)
+7. Drag BubbleTypes to Category fields
+8. Add Icons or Text for each
+9. [Validate Setup]
+10. [Spawn Bubbles In Editor]
+
+═══════════════════════════════════════════════════════════════════
+
+TESTING CATEGORY PERSISTENCE:
+------------------------------
+
+Test 1: Editor Spawn
+1. [Spawn Bubbles In Editor]
+2. Select a bubble in Hierarchy
+3. Inspector → Runtime Data → Assigned Category
+4. Should show BubbleType name ✓
+
+Test 2: Play Mode Persistence
+1. With bubbles spawned in Editor
+2. Enter Play mode
+3. Select same bubble
+4. Inspector → Runtime Data → Assigned Category
+5. Should STILL show BubbleType name ✓
+
+Test 3: Click Detection
+1. In Play mode
+2. Click bubble
+3. Console: "Category: [Name]" NOT "Category: null"
+4. Bubble moves to slot ✓
+
+═══════════════════════════════════════════════════════════════════
+
+SUMMARY OF FIXES APPLIED:
+--------------------------
+
+✓ Added serialized field: assignedCategory
+  → Persists category across Editor/Play transition
+
+✓ Category property fallback:
+  public BubbleType Category => category ?? assignedCategory;
+  → Returns assignedCategory if category is null
+
+✓ Awake() restoration:
+  if (assignedCategory != null && category == null)
+      category = assignedCategory;
+  → Restores category on Play mode start
+
+✓ Initialize() stores both:
+  category = cat;
+  assignedCategory = cat;
+  → Double-stores for safety
+
+✓ Validation logging:
+  → Shows category during spawn
+  → Shows category during click
+  → Easy to spot null values
+
+═══════════════════════════════════════════════════════════════════
+
+If category is STILL null after all this:
+→ Share Console output from spawn
+→ Check if BubbleType assets actually exist
+→ Verify CategoryBubbles list has valid entries
+═══════════════════════════════════════════════════════════════════

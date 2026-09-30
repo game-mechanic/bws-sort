@@ -1,0 +1,257 @@
+TREE BUBBLE - RECOMMENDED VALUES & SETTINGS
+============================================
+
+These are the recommended values to set on your TreeBubble PREFAB.
+Select the prefab in Project window, then set these in Inspector.
+
+═══════════════════════════════════════════════════════════════
+
+PRESET 1: GENTLE NATURAL LEAF MOTION (RECOMMENDED)
+═══════════════════════════════════════════════════════════════
+
+Best for: Calm, realistic tree leaf swaying
+
+Max Rotation Angle: 12
+Max Position Offset X: 0.25
+Max Position Offset Y: 0.1
+Swing Speed: 0.9
+Natural Variation: 0.3
+
+RESULT: Subtle, organic leaf motion like a calm breeze
+
+═══════════════════════════════════════════════════════════════
+
+PRESET 2: MODERATE SWING
+═══════════════════════════════════════════════════════════════
+
+Best for: Noticeable but not distracting motion
+
+Max Rotation Angle: 15
+Max Position Offset X: 0.35
+Max Position Offset Y: 0.15
+Swing Speed: 1.0
+Natural Variation: 0.35
+
+RESULT: Clear swinging motion, good for gameplay visibility
+
+═══════════════════════════════════════════════════════════════
+
+PRESET 3: WINDY DAY
+═══════════════════════════════════════════════════════════════
+
+Best for: Dramatic effect, challenging levels
+
+Max Rotation Angle: 22
+Max Position Offset X: 0.5
+Max Position Offset Y: 0.25
+Swing Speed: 1.6
+Natural Variation: 0.5
+
+RESULT: Strong wind effect, more chaotic movement
+
+═══════════════════════════════════════════════════════════════
+
+PRESET 4: BARELY MOVING (SUBTLE)
+═══════════════════════════════════════════════════════════════
+
+Best for: Minimal distraction, easy clicking
+
+Max Rotation Angle: 8
+Max Position Offset X: 0.15
+Max Position Offset Y: 0.06
+Swing Speed: 0.7
+Natural Variation: 0.2
+
+RESULT: Very subtle idle animation, almost static
+
+═══════════════════════════════════════════════════════════════
+
+PRESET 5: STRONG WIND (DRAMATIC)
+═══════════════════════════════════════════════════════════════
+
+Best for: Special effects, storm levels
+
+Max Rotation Angle: 28
+Max Position Offset X: 0.65
+Max Position Offset Y: 0.35
+Swing Speed: 2.2
+Natural Variation: 0.6
+
+RESULT: Very energetic, chaotic swinging
+
+═══════════════════════════════════════════════════════════════
+
+DETAILED PARAMETER EXPLANATIONS
+═══════════════════════════════════════════════════════════════
+
+1. MAX ROTATION ANGLE (degrees)
+   Purpose: Controls Z-axis rotation (tilt left/right)
+   
+   Range: 0 - 30
+   
+   Values:
+   - 0°: No rotation (bubble stays perfectly upright)
+   - 5-10°: Very subtle tilt
+   - 10-15°: Gentle, natural leaf tilt (RECOMMENDED)
+   - 15-20°: Noticeable swaying
+   - 20-30°: Dramatic, exaggerated tilting
+   
+   Too Low: Looks static, boring
+   Too High: Looks unnatural, makes clicking harder
+
+═══════════════════════════════════════════════════════════════
+
+2. MAX POSITION OFFSET X (units)
+   Purpose: Horizontal movement (left/right)
+   
+   Range: 0 - 1
+   
+   Values:
+   - 0: No horizontal movement
+   - 0.1-0.2: Very small drift
+   - 0.2-0.4: Natural leaf sway (RECOMMENDED)
+   - 0.4-0.6: Wide swinging
+   - 0.6-1.0: Very wide, dramatic movement
+   
+   Note: Should generally match rotation angle magnitude
+   
+   Too Low: Bubble only rotates, doesn't move
+   Too High: Bubbles move too far, may overlap
+
+═══════════════════════════════════════════════════════════════
+
+3. MAX POSITION OFFSET Y (units)
+   Purpose: Vertical bobbing/arc motion
+   
+   Range: 0 - 1
+   
+   Values:
+   - 0: No vertical movement
+   - 0.05-0.15: Subtle pendulum arc (RECOMMENDED)
+   - 0.15-0.3: Noticeable up/down
+   - 0.3-0.5: Large vertical motion
+   
+   Note: Should be LESS than X offset (typically 30-50% of X value)
+   
+   Too Low: No pendulum arc feel
+   Too High: Looks like bouncing, not swinging
+
+═══════════════════════════════════════════════════════════════
+
+4. SWING SPEED (multiplier)
+   Purpose: How fast the animation plays
+   
+   Range: 0.5 - 3.0
+   
+   Values:
+   - 0.5-0.8: Slow, calm breeze
+   - 0.8-1.2: Normal, natural speed (RECOMMENDED)
+   - 1.2-1.8: Faster, breezy wind
+   - 1.8-2.5: Fast, strong wind
+   - 2.5-3.0: Very fast, storm-like
+   
+   Too Low: Looks sluggish, unresponsive
+   Too High: Looks frantic, hard to track
+
+═══════════════════════════════════════════════════════════════
+
+5. NATURAL VARIATION (0-1 blend)
+   Purpose: How much randomness/organic motion
+   
+   Range: 0 - 1
+   
+   Values:
+   - 0: Pure sine wave (mechanical, uniform)
+   - 0.2-0.4: Natural leaf motion (RECOMMENDED)
+   - 0.4-0.6: More chaotic, varied wind
+   - 0.6-0.8: Very irregular, gusty
+   - 0.8-1.0: Extremely chaotic (not recommended)
+   
+   This is KEY for natural-looking motion!
+   
+   0 = Smooth but robotic
+   0.3 = Realistic leaves
+   0.6+ = Chaotic storm
+
+═══════════════════════════════════════════════════════════════
+
+RELATIONSHIP BETWEEN PARAMETERS
+═══════════════════════════════════════════════════════════════
+
+ROTATION ↔ POSITION X:
+- Should be proportional
+- If rotation = 15°, position X ≈ 0.3
+- They should move together (synchronized)
+
+POSITION Y:
+- Should be 30-50% of Position X
+- Too much Y makes it bounce, not swing
+- Creates arc motion (pendulum drop)
+
+SPEED ↔ VARIATION:
+- Faster speed + high variation = chaotic
+- Slower speed + low variation = calm
+- Balance them for desired feel
+
+═══════════════════════════════════════════════════════════════
+
+QUICK REFERENCE TABLE
+═══════════════════════════════════════════════════════════════
+
+Feeling         | Rotation | Pos X | Pos Y | Speed | Variation
+----------------|----------|-------|-------|-------|----------
+Barely Moving   |    8     | 0.15  | 0.06  |  0.7  |   0.2
+Gentle Breeze   |   12     | 0.25  | 0.10  |  0.9  |   0.3
+Normal Swing    |   15     | 0.35  | 0.15  |  1.0  |   0.35
+Windy           |   22     | 0.50  | 0.25  |  1.6  |   0.5
+Strong Wind     |   28     | 0.65  | 0.35  |  2.2  |   0.6
+
+═══════════════════════════════════════════════════════════════
+
+HOW TO APPLY THESE VALUES
+═══════════════════════════════════════════════════════════════
+
+1. Open Project window
+2. Find your TreeBubble prefab
+3. Click to select it
+4. In Inspector, scroll to "Swing Settings - Adjust in Inspector"
+5. Enter the values from your chosen preset above
+6. Prefab auto-saves
+7. Clear and re-spawn bubbles to see changes
+
+═══════════════════════════════════════════════════════════════
+
+TESTING & ITERATION
+═══════════════════════════════════════════════════════════════
+
+1. Start with GENTLE NATURAL LEAF MOTION preset
+2. Enter Play mode and observe
+3. Adjust one parameter at a time
+4. Test how it feels for clicking/gameplay
+5. Save when satisfied
+
+Common Adjustments:
+- Too hard to click? → Reduce all movement values
+- Too boring? → Increase Natural Variation
+- Looks mechanical? → Increase Natural Variation to 0.4+
+- Too chaotic? → Reduce Natural Variation and Speed
+- Want more tilt? → Increase Rotation Angle
+
+═══════════════════════════════════════════════════════════════
+
+MANUAL POSITIONING VALUES
+═══════════════════════════════════════════════════════════════
+
+For bubbles you manually position in Scene:
+
+1. Set swing values on PREFAB (before spawning)
+2. Spawn bubbles
+3. Move specific bubbles to custom positions
+4. CHECK "Manually Positioned" checkbox on those bubbles
+5. Manual bubbles will swing around THEIR custom position
+6. Same swing settings apply to all bubbles
+
+The swing animation is RELATIVE to bubble position, so manual
+bubbles swing naturally around wherever you placed them!
+
+═══════════════════════════════════════════════════════════════

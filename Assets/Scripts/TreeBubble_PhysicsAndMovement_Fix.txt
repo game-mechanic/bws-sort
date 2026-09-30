@@ -1,0 +1,311 @@
+═══════════════════════════════════════════════════════════════════
+      TREE BUBBLE - PHYSICS & MOVEMENT FIXES APPLIED
+═══════════════════════════════════════════════════════════════════
+
+ISSUES FIXED:
+-------------
+
+1. ✅ Bubbles Not Swinging/Waving
+   → Physics wasn't initialized for editor-spawned bubbles
+   → Now initializes in Start() when entering Play mode
+
+2. ✅ Bubbles Not Moving to Slots
+   → Click events weren't subscribed after editor spawn
+   → Now re-subscribes to all bubbles in Start()
+
+═══════════════════════════════════════════════════════════════════
+
+HOW IT WORKS NOW:
+-----------------
+
+Editor Mode (Spawn):
+1. Click [Spawn Bubbles In Editor]
+2. Bubbles positioned in circular pattern
+3. Categories assigned
+4. Chains visible (static)
+5. NO physics yet (editor mode)
+
+Play Mode (Physics Activation):
+1. Enter Play mode
+2. TreeBubble.Start() → InitializePhysics()
+   - Creates Rigidbody2D
+   - Creates SpringJoint2D
+   - Applies initial swing force
+3. TreeBubbleManager.Start() → Re-subscribes click events
+4. Bubbles start swinging immediately!
+
+Gameplay (Interaction):
+1. Hover bubble → Highlight appears
+2. Click bubble → OnClicked event fires
+3. TreeBubbleManager.HandleBubbleClicked() receives event
+4. MoveToSlot() called
+5. DOTween animates bubble to slot position
+6. Physics disabled for that bubble
+
+═══════════════════════════════════════════════════════════════════
+
+PHYSICS INITIALIZATION:
+-----------------------
+
+TreeBubble now stores these values:
+  • storedAnchorPoint: Where chain attaches
+  • storedChainLength: How far bubble hangs
+  • storedSwingForce: Initial push strength
+
+When entering Play mode:
+  TreeBubble.Start() calls InitializePhysics()
+  
+  Physics Setup:
+  1. Create/get Rigidbody2D
+  2. Set gravity scale: 0.2 (floaty)
+  3. Set damping: 1.5 linear, 2.0 angular (smooth)
+  4. Create anchor GameObject at storedAnchorPoint
+  5. Add SpringJoint2D to bubble
+  6. Connect spring to anchor
+  7. Configure spring: frequency=1.0, damping=0.5
+  8. Apply random horizontal force (swing)
+
+Result: Bubbles swing like leaves on a tree!
+
+═══════════════════════════════════════════════════════════════════
+
+EVENT SUBSCRIPTION:
+-------------------
+
+TreeBubbleManager.Start() does:
+  1. Find all TreeBubble components in children
+  2. For each bubble:
+     - Unsubscribe from OnClicked (prevent duplicates)
+     - Subscribe to OnClicked
+  3. Log: "Subscribed to X bubbles' click events"
+
+This ensures editor-spawned bubbles are interactive in Play mode.
+
+═══════════════════════════════════════════════════════════════════
+
+EXPECTED CONSOLE OUTPUT:
+-------------------------
+
+Entering Play Mode:
+-------------------
+Physics initialized for TreeBubble_0_Colors - should now swing!
+Physics initialized for TreeBubble_1_Animals - should now swing!
+...
+Subscribed to 20 bubbles' click events
+
+During Gameplay:
+----------------
+[Click bubble]
+TreeBubble clicked: TreeBubble_0_Colors, Category: Colors
+Moving bubble 'TreeBubble_0_Colors' (Category: Colors) to slot 0
+
+[Bubble moves to slot with animation]
+
+═══════════════════════════════════════════════════════════════════
+
+PHYSICS PARAMETERS:
+-------------------
+
+Rigidbody2D:
+  • Gravity Scale: 0.2
+    Lower = more floaty, higher = drops faster
+  
+  • Linear Damping: 1.5
+    Air resistance - higher = slower movement
+  
+  • Angular Damping: 2.0
+    Rotation resistance - higher = less spinning
+
+SpringJoint2D:
+  • Distance: storedChainLength (default 1.5)
+    How far bubble can move from anchor
+  
+  • Frequency: 1.0
+    Spring stiffness - higher = stiffer/faster bounce
+  
+  • Damping Ratio: 0.5
+    Spring damping - higher = less bouncy
+
+Initial Force:
+  • Random Range: -swingForce to +swingForce
+  • Direction: Horizontal (X axis)
+  • Mode: Impulse (instant push)
+
+═══════════════════════════════════════════════════════════════════
+
+TUNING PHYSICS:
+---------------
+
+Want More Swing?
+  • Increase swingForce (default 2.0 → 3.0)
+  • Decrease linearDamping (1.5 → 1.0)
+  • Decrease spring damping (0.5 → 0.3)
+
+Want Less Swing?
+  • Decrease swingForce (2.0 → 1.0)
+  • Increase linearDamping (1.5 → 2.5)
+  • Increase spring damping (0.5 → 0.7)
+
+Want Faster Swing?
+  • Increase spring frequency (1.0 → 2.0)
+  • Decrease chainLength (1.5 → 1.0)
+
+Want Slower Swing?
+  • Decrease spring frequency (1.0 → 0.5)
+  • Increase chainLength (1.5 → 2.5)
+
+═══════════════════════════════════════════════════════════════════
+
+MOVEMENT TO SLOTS:
+------------------
+
+When bubble is clicked:
+1. TreeBubble.OnMouseDown() fires
+2. Invokes OnClicked event
+3. TreeBubbleManager.HandleBubbleClicked() called
+4. Validates:
+   - Bubble not null
+   - Slots available
+   - Bubble not already in slot
+5. MoveToSlot() called:
+   - DisablePhysics() on bubble
+   - DOTween moves to slot position (0.5s, OutBack ease)
+   - DOTween scales bubble (0.3s)
+
+DOTween Animation:
+  • Position: 0.5 seconds, OutBack easing (bouncy arrival)
+  • Scale: 0.3 seconds to slotBubbleScale (default 0.8)
+  • Smooth, professional feel
+
+═══════════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING:
+----------------
+
+Issue: Bubbles Not Swinging
+----------------------------
+Check Console for:
+  ✓ "Physics initialized for TreeBubble_X"
+  
+If missing:
+  1. Bubbles must be spawned in Editor first
+  2. Then enter Play mode
+  3. Start() should initialize physics
+
+Manual Test:
+  1. Select a bubble in Play mode
+  2. Inspector → Check for:
+     - Rigidbody2D component ✓
+     - SpringJoint2D component ✓
+     - Connected Body assigned ✓
+
+Issue: Bubbles Not Moving to Slots
+-----------------------------------
+Check Console for:
+  ✓ "Subscribed to X bubbles' click events"
+  ✓ "TreeBubble clicked: ..."
+  ✓ "Moving bubble '...' to slot X"
+
+If "TreeBubble clicked" appears but NOT "Moving bubble":
+  → Event subscription failed
+  → Check TreeBubbleManager.Start() ran
+
+If nothing appears when clicking:
+  → Collider issue
+  → Bubble behind other object
+  → Not in Play mode
+
+Issue: Bubbles Move But Don't Animate
+--------------------------------------
+Check:
+  □ DOTween imported in project
+  □ No errors in Console
+  □ Slot GameObjects assigned
+  □ Slots have valid positions
+
+Try:
+  • Select slot GameObject
+  • Check position is visible in Game view
+  • Not at (0,0,0) or off-screen
+
+═══════════════════════════════════════════════════════════════════
+
+VERIFICATION CHECKLIST:
+-----------------------
+
+Physics (Swinging):
+□ [Spawn Bubbles In Editor]
+□ Enter Play mode
+□ Console: "Physics initialized for..."
+□ Console: "Subscribed to X bubbles"
+□ Bubbles visibly swinging
+□ Chains animating with bubbles
+□ Natural leaf-like movement
+
+Clicking:
+□ Hover bubble → Highlight appears
+□ Click bubble → Console: "TreeBubble clicked"
+□ Console: "Moving bubble to slot X"
+□ Bubble animates to slot smoothly
+□ Physics disabled for that bubble
+□ Bubble stays in slot (kinematic)
+
+Matching:
+□ Click 4 same category bubbles
+□ Console: "✨ MATCH!"
+□ Particles play (if configured)
+□ Bubbles destroy
+□ Remaining bubbles shift left
+
+═══════════════════════════════════════════════════════════════════
+
+COMPLETE WORKFLOW:
+------------------
+
+1. Editor Setup:
+   [Validate Setup] → Check configuration
+   [Spawn Bubbles In Editor] → Preview layout
+   Adjust radius/count/spacing as needed
+   [Clear] and respawn until satisfied
+
+2. Enter Play Mode:
+   Bubbles automatically initialize physics
+   Start swinging immediately
+   Click events auto-subscribe
+   
+3. Gameplay:
+   Click bubbles → Move to slots
+   Match 4 same category → Pop!
+   Continue until all 5 slots full
+   
+4. Exit Play Mode:
+   Returns to editor state
+   Bubbles still spawned (no physics)
+   Adjust and re-test
+
+═══════════════════════════════════════════════════════════════════
+
+SUMMARY OF CHANGES:
+-------------------
+
+TreeBubble.cs:
+✓ Added storedAnchorPoint, storedChainLength, storedSwingForce
+✓ Added physicsInitialized flag
+✓ Added Start() to call InitializePhysics()
+✓ Added InitializePhysics() method
+✓ Physics setup delayed until Play mode
+✓ Stores data in serialized fields
+
+TreeBubbleManager.cs:
+✓ Added Start() method
+✓ Re-subscribes to click events on Play mode start
+✓ Finds all existing bubbles
+✓ Ensures events work for editor-spawned bubbles
+
+Result:
+✓ Bubbles swing like leaves
+✓ Bubbles respond to clicks
+✓ Bubbles animate to slots smoothly
+✓ Everything works seamlessly!
+
+═══════════════════════════════════════════════════════════════════

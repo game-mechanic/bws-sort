@@ -1,0 +1,174 @@
+TREE BUBBLE - PENDULUM ANIMATION (Arc Motion, No Rotation)
+==========================================================
+
+WHAT WAS IMPLEMENTED:
+--------------------
+1. PENDULUM ARC MOTION (No Physics Engine)
+   - NO Rigidbody2D or Joints
+   - Simulated pendulum physics in Update()
+   - Bubble moves in circular arc around anchor
+   - Bubble STAYS UPRIGHT (no rotation)
+   - Smooth, natural swinging motion
+   
+2. REAL PENDULUM PHYSICS SIMULATION
+   - Uses simplified pendulum equation
+   - Angular acceleration based on gravity
+   - Natural damping for realistic slowdown
+   - Each bubble swings independently
+
+KEY IMPLEMENTATION IN TreeBubble.cs:
+-----------------------------------
+
+VARIABLES:
+- pendulumAngle: Current angle in degrees (90° = straight down)
+- angularVelocity: Rate of angle change (degrees per second)
+- pendulumDamping: Air resistance (0.98 = slight slowdown)
+
+InitializePendulumAnimation() METHOD:
+- Sets initial angle to 90° (hanging straight down)
+- Gives random angular velocity for initial swing
+- angularVelocity = Random(-swingForce*2, +swingForce*2)
+
+Update() METHOD - PENDULUM PHYSICS:
+```csharp
+// 1. Calculate angular acceleration (pendulum equation)
+float angularAcceleration = -(gravity / chainLength) * Sin(angle);
+
+// 2. Update angular velocity
+angularVelocity += angularAcceleration * deltaTime;
+
+// 3. Apply damping (air resistance)
+angularVelocity *= 0.98f;
+
+// 4. Update angle
+pendulumAngle += angularVelocity * deltaTime;
+
+// 5. Calculate position on arc
+x = Sin(angle) * chainLength;
+y = -Cos(angle) * chainLength;
+position = anchor + (x, y);
+
+// 6. Keep upright
+rotation = Quaternion.identity;
+```
+
+HOW PENDULUM PHYSICS WORKS:
+--------------------------
+1. Gravity creates angular acceleration
+2. Acceleration is proportional to sin(angle)
+3. Greater displacement = stronger restoring force
+4. Angular velocity increases/decreases
+5. Angle changes based on velocity
+6. Position calculated on circular arc
+7. Damping gradually reduces motion
+
+PENDULUM EQUATION:
+-----------------
+- α = -(g/L) * sin(θ)
+  - α = angular acceleration
+  - g = gravity (9.81 m/s²)
+  - L = chain length (pendulum length)
+  - θ = angle from vertical
+
+This creates natural swinging motion!
+
+ADJUSTING SWING:
+--------------
+Swing Strength (Inspector):
+- Controls initial angular velocity
+- Higher = more energetic swing
+- Formula: velocity = Random(-strength*2, +strength*2)
+
+To modify behavior:
+- pendulumDamping: Change from 0.98f (higher = less damping)
+- Gravity scale: Multiply gravity by factor in Update()
+- Chain length: Longer = slower, wider swing
+
+ADVANTAGES:
+----------
+✅ Natural pendulum arc motion
+✅ Bubble stays upright (no rotation)
+✅ No physics collisions
+✅ Realistic gravity-based swinging
+✅ Smooth, continuous motion
+✅ Each bubble swings independently
+✅ Performance efficient
+
+TESTING:
+-------
+1. Clear bubbles ([Clear Bubbles] button)
+2. Spawn new bubbles ([Spawn Bubbles In Editor] button)
+3. Enter Play mode
+4. Watch pendulum arc motion
+5. Bubbles stay upright
+6. Natural swinging that slows over time
+7. Click to move to slot - motion stops
+
+EXPECTED BEHAVIOR:
+-----------------
+✅ Bubbles swing in arc path
+✅ Motion follows gravity (faster at bottom, slower at top)
+✅ Bubbles stay upright (no visual rotation)
+✅ Natural slowdown from damping
+✅ NO collision/repelling issues
+✅ Motion stops when slotted
+✅ Works in Circle and Square modes
+✅ Adjustable via Swing Strength slider
+
+PHYSICS DETAILS:
+---------------
+- Angle: 90° = straight down (equilibrium)
+- Angle < 90°: Swinging left
+- Angle > 90°: Swinging right
+- Angular velocity: How fast angle changes
+- Damping: Reduces velocity by 2% per frame
+- Gravity constant: 9.81 (real Earth gravity)
+- Time scale: Multiplied by 10 for visible motion
+
+CUSTOMIZATION:
+-------------
+1. CHANGE DAMPING (air resistance):
+   pendulumDamping = 0.95f; // More damping (stops faster)
+   pendulumDamping = 0.99f; // Less damping (swings longer)
+
+2. CHANGE GRAVITY:
+   float gravity = 15f; // Faster swinging
+   float gravity = 5f; // Slower, gentler swinging
+
+3. ADD ANGLE LIMITS:
+   pendulumAngle = Mathf.Clamp(pendulumAngle, 60f, 120f);
+   // Restricts swing range
+
+4. RANDOM WIND GUSTS:
+   angularVelocity += Random.Range(-0.5f, 0.5f);
+
+TROUBLESHOOTING:
+---------------
+Q: No swing visible?
+A: Increase "Swing Strength" slider
+
+Q: Swing too fast?
+A: Decrease gravity or increase damping
+
+Q: Swing too slow?
+A: Increase gravity or decrease damping
+
+Q: Swing stops too quickly?
+A: Increase pendulumDamping (closer to 1.0)
+
+Q: Bubbles rotating?
+A: Check transform.rotation = Quaternion.identity in Update()
+
+Q: Erratic motion?
+A: Check storedChainLength is not zero
+
+TECHNICAL NOTES:
+---------------
+- Uses polar coordinates (angle + radius)
+- Converts to Cartesian (x, y) each frame
+- No physics engine involved
+- Pure mathematical simulation
+- Frame-rate independent (uses Time.deltaTime)
+- 90° = equilibrium (straight down)
+- Sin/Cos calculate position on circle
+

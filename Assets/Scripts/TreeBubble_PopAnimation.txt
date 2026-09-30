@@ -1,0 +1,365 @@
+═══════════════════════════════════════════════════════════════════
+            TREE BUBBLE - POP ANIMATION DETAILS
+═══════════════════════════════════════════════════════════════════
+
+NEW BEHAVIOR:
+-------------
+
+Before: Bubbles popped instantly when 4th matching bubble clicked
+After: Bubbles animate smoothly with anticipation and scale-up pop
+
+═══════════════════════════════════════════════════════════════════
+
+ANIMATION SEQUENCE:
+-------------------
+
+Step 1: Bubble Movement (0.5s)
+-------------------------------
+• 4th matching bubble is clicked
+• Bubble moves to slot with OutBack easing
+• DOTween animation: 0.5 seconds
+• User sees bubble traveling to complete the match
+
+Step 2: Match Check (0.6s delay)
+---------------------------------
+• Wait 0.6 seconds for movement to complete
+• CheckForMatches() called
+• Detects 4 matching categories
+• Triggers pop sequence
+
+Step 3: Pop Animation (Per Bubble)
+-----------------------------------
+Staggered timing: 0.1s delay between each bubble
+
+For Each Bubble:
+  a) Anticipation (0.15s)
+     • Scale up to 1.3× current size
+     • Ease: OutQuad (smooth acceleration)
+     • Prepares viewer for the pop
+  
+  b) Pop! (0.2s)
+     • Scale up to 2.0× current size
+     • Ease: InBack (pulls back slightly then explodes)
+     • Dramatic expansion
+  
+  c) Particle Burst
+     • Triggered at peak of scale
+     • ParticlePool.PlayRevealFx() called
+     • Bubble destroyed immediately after
+  
+Step 4: Cleanup
+---------------
+• All 4 bubbles destroyed
+• Remaining bubbles shift left (0.3s)
+• Slots refilled sequentially
+
+═══════════════════════════════════════════════════════════════════
+
+TIMING BREAKDOWN:
+-----------------
+
+Total Duration for 4 Bubbles:
+
+0.0s  - Click 4th bubble
+0.5s  - Bubble reaches slot
+0.6s  - Match check triggered
+0.7s  - Bubble 0 starts anticipation
+0.85s - Bubble 0 starts pop
+0.8s  - Bubble 1 starts anticipation
+0.95s - Bubble 1 starts pop
+0.9s  - Bubble 2 starts anticipation
+1.05s - Bubble 2 starts pop
+1.0s  - Bubble 3 starts anticipation
+1.15s - Bubble 3 starts pop
+1.25s - All bubbles destroyed, shift begins
+1.55s - Shift complete
+
+Total: ~1.6 seconds from click to completion
+
+═══════════════════════════════════════════════════════════════════
+
+VISUAL EFFECT:
+--------------
+
+Player Experience:
+1. Click 4th matching bubble
+2. "Oh! It's moving to complete the set!"
+3. Bubble slides into slot smoothly
+4. Brief pause (anticipation builds)
+5. First bubble pulses bigger
+6. BOOM! It explodes with particles
+7. Second bubble pulses and pops
+8. Chain reaction continues
+9. Satisfying cascade effect!
+10. Remaining bubbles elegantly shift
+
+Emotional Impact:
+✓ Anticipation during movement
+✓ Recognition when match completes
+✓ Satisfaction from cascade animation
+✓ Reward feeling from particles
+✓ Clean resolution with shift
+
+═══════════════════════════════════════════════════════════════════
+
+ANIMATION PARAMETERS:
+---------------------
+
+Movement to Slot:
+  Duration: 0.5s
+  Easing: OutBack (bouncy arrival)
+  
+Match Check Delay:
+  Delay: 0.6s (allows movement to complete)
+  
+Pop Stagger:
+  Per-bubble delay: 0.1s
+  Creates cascade effect
+  
+Anticipation Scale:
+  Target: 1.3× current size
+  Duration: 0.15s
+  Easing: OutQuad (smooth)
+  
+Pop Scale:
+  Target: 2.0× current size
+  Duration: 0.2s
+  Easing: InBack (dramatic)
+  
+Particle Timing:
+  At peak of pop animation
+  Synchronized with scale maximum
+  
+Shift Duration:
+  Duration: 0.3s
+  Easing: OutQuad (smooth)
+
+═══════════════════════════════════════════════════════════════════
+
+CUSTOMIZATION OPTIONS:
+----------------------
+
+Want Faster Pops?
+-----------------
+In PopBubbles() method:
+
+// Reduce anticipation time
+.DOScale(..., 0.1f)  // was 0.15f
+
+// Reduce pop time
+.DOScale(..., 0.15f)  // was 0.2f
+
+// Reduce stagger
+float delay = i * 0.05f;  // was 0.1f
+
+
+Want More Dramatic?
+-------------------
+// Bigger anticipation
+.DOScale(bubble.transform.localScale * 1.5f, ...)  // was 1.3f
+
+// HUGE pop
+.DOScale(bubble.transform.localScale * 3f, ...)  // was 2f
+
+
+Want Simultaneous Pops?
+-----------------------
+// Remove stagger
+float delay = 0f;  // was i * 0.1f
+
+All bubbles pop at once (less satisfying but faster)
+
+
+Want Instant Pops?
+------------------
+In HandleBubbleClicked():
+
+// No delay
+CheckForMatches();  // Remove DOVirtual.DelayedCall
+
+Back to instant behavior (not recommended)
+
+═══════════════════════════════════════════════════════════════════
+
+SEQUENCE STRUCTURE:
+-------------------
+
+DOTween.Sequence() used for coordination:
+
+Main Sequence (popSequence):
+├─ Bubble 0 Pop Sequence (delay 0.0s)
+│  ├─ Scale up to 1.3× (0.15s)
+│  ├─ Scale up to 2.0× (0.2s)
+│  └─ Callback: Particle + Destroy
+│
+├─ Bubble 1 Pop Sequence (delay 0.1s)
+│  ├─ Scale up to 1.3× (0.15s)
+│  ├─ Scale up to 2.0× (0.2s)
+│  └─ Callback: Particle + Destroy
+│
+├─ Bubble 2 Pop Sequence (delay 0.2s)
+│  └─ [same as above]
+│
+├─ Bubble 3 Pop Sequence (delay 0.3s)
+│  └─ [same as above]
+│
+└─ Final Callback: Shift remaining bubbles
+
+All sequences run in parallel (Join),
+each with its own delay for stagger effect.
+
+═══════════════════════════════════════════════════════════════════
+
+EASING FUNCTIONS EXPLAINED:
+----------------------------
+
+OutBack:
+  • Used for: Movement to slot
+  • Effect: Overshoots then settles
+  • Feeling: Bouncy, playful arrival
+
+OutQuad:
+  • Used for: Anticipation scale
+  • Effect: Starts slow, accelerates
+  • Feeling: Smooth, natural growth
+
+InBack:
+  • Used for: Pop scale
+  • Effect: Pulls back, then explodes forward
+  • Feeling: Spring-loaded, dramatic
+
+OutQuad (shift):
+  • Used for: Bubble shift after pop
+  • Effect: Fast start, smooth stop
+  • Feeling: Quick but controlled
+
+═══════════════════════════════════════════════════════════════════
+
+CONSOLE OUTPUT:
+---------------
+
+Example Full Sequence:
+
+[Click 4th bubble]
+Moving bubble 'TreeBubble_12_Colors' (Category: Colors) to slot 3
+
+[0.6s later]
+No match. Last 4 categories: Red, Blue, Colors, Green
+
+OR
+
+✨ MATCH! 4 adjacent bubbles of category 'Colors' - Popping!
+Popping bubbles from index 0 to 3
+
+[Animations play]
+
+Popped 4 bubbles. 0 remaining in slots.
+
+═══════════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING:
+----------------
+
+Issue: Bubbles Pop Before Reaching Slot
+----------------------------------------
+Cause: Delay too short
+
+Fix:
+// Increase delay in HandleBubbleClicked()
+DOVirtual.DelayedCall(0.8f, () => CheckForMatches());  // was 0.6f
+
+
+Issue: Bubbles Don't Pop At All
+--------------------------------
+Check:
+□ Console shows "✨ MATCH!" message
+□ All 4 bubbles are same category
+□ DOTween imported in project
+
+Debug:
+• Add Debug.Log in PopBubbles() start
+• Verify method is being called
+
+
+Issue: Pop Animation Too Fast/Slow
+-----------------------------------
+Adjust timing in PopBubbles():
+• Anticipation duration (0.15s)
+• Pop duration (0.2s)
+• Stagger delay (0.1s)
+
+See Customization Options above
+
+
+Issue: Particles Not Appearing
+-------------------------------
+• Check ParticlePool initialized
+• Verify GameSettings has BubbleFXPrefab
+• See TreeBubble_ParticleSetup.txt
+
+Animation still plays without particles!
+
+═══════════════════════════════════════════════════════════════════
+
+COMPARISON:
+-----------
+
+OLD BEHAVIOR:
+Click 4th → Instant pop → Particles → Shift
+Total: ~0.3s
+
+NEW BEHAVIOR:
+Click 4th → Move (0.5s) → Delay (0.1s) → 
+Anticipate (0.15s) → Pop cascade (0.4s) → Shift (0.3s)
+Total: ~1.6s
+
+Benefits:
+✓ More satisfying
+✓ Clearer feedback
+✓ Time to appreciate the match
+✓ Feels more premium
+✓ Builds anticipation
+
+═══════════════════════════════════════════════════════════════════
+
+TESTING CHECKLIST:
+------------------
+
+Basic Flow:
+□ Click 4 matching bubbles in sequence
+□ 4th bubble moves to slot smoothly
+□ Brief pause after arrival
+□ Bubbles scale up with anticipation
+□ Bubbles pop in cascade (0.1s stagger)
+□ Particles play at each pop
+□ All 4 bubbles destroyed
+□ Remaining bubbles shift left
+
+Timing:
+□ Movement completes before match check
+□ Pop animations are smooth
+□ Stagger is noticeable but not slow
+□ Shift happens after all pops complete
+
+Visual Quality:
+□ Scales are smooth (not choppy)
+□ Particles sync with pop peak
+□ No flickering or artifacts
+□ Professional game feel
+
+═══════════════════════════════════════════════════════════════════
+
+SUMMARY:
+--------
+
+✓ 4th matching bubble now moves to slot first
+✓ 0.6s delay allows movement to complete
+✓ Pop animation with anticipation (1.3× scale)
+✓ Dramatic explosion (2.0× scale with InBack)
+✓ Staggered cascade effect (0.1s per bubble)
+✓ Particles at peak of animation
+✓ Clean shift after all pops complete
+✓ Total experience: ~1.6 seconds
+✓ Feels satisfying and premium!
+
+═══════════════════════════════════════════════════════════════════

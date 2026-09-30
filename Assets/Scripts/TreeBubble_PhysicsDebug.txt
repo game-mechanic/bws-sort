@@ -1,0 +1,340 @@
+═══════════════════════════════════════════════════════════════════
+        TREE BUBBLE - PHYSICS NOT WORKING DEBUG GUIDE
+═══════════════════════════════════════════════════════════════════
+
+SYMPTOM: Bubbles not swinging/moving at all in Play mode
+---------------------------------------------------------
+
+DIAGNOSIS STEPS:
+----------------
+
+Step 1: Check Console Logs
+---------------------------
+After entering Play mode, look for:
+
+Expected Messages:
+✓ "TreeBubble.Start() called for TreeBubble_0_Colors, stored values: anchor=(X,Y,Z), length=1.5"
+✓ "Initializing physics for TreeBubble_0_Colors"
+✓ "TreeBubble_0_Colors: Rigidbody2D configured - Dynamic, gravity=0.2"
+✓ "TreeBubble_0_Colors: SpringJoint2D created - distance=1.5, frequency=1"
+✓ "TreeBubble_0_Colors: Applied force=(X,Y), should start swinging!"
+✓ "Subscribed to 20 bubbles' click events"
+
+If Messages Are MISSING:
+→ Start() method not being called
+→ Check if bubbles exist in Hierarchy
+
+
+Step 2: Check Stored Values
+----------------------------
+If you see:
+"stored values: anchor=(0,0,0), length=0"
+
+Problem: Values not stored during Initialize()
+Fix: Bubbles must be spawned via [Spawn Bubbles In Editor] button
+
+
+Step 3: Inspect Bubble Components
+----------------------------------
+In Play mode:
+1. Select a bubble in Hierarchy
+2. Inspector → Check components:
+
+Required Components:
+□ TreeBubble (script)
+□ Rigidbody2D
+  - Body Type: Dynamic (NOT Kinematic!)
+  - Gravity Scale: 0.2
+  - Linear Damping: 1.5
+  - Angular Damping: 2.0
+  - Constraints: None
+□ SpringJoint2D
+  - Connected Body: [Assigned to anchor]
+  - Distance: 1.5
+  - Frequency: 1.0
+  - Damping Ratio: 0.5
+□ CircleCollider2D
+  - Radius: 0.45
+
+
+Step 4: Check Physics Settings
+-------------------------------
+Unity → Edit → Project Settings → Physics 2D
+
+Verify:
+□ Gravity: (0, -9.81) or similar
+□ Default Material: (None is OK)
+□ Simulation: Auto Simulation = ON ✓
+
+If Auto Simulation is OFF:
+→ Physics won't run!
+
+
+Step 5: Check Scene Setup
+--------------------------
+Hierarchy should show:
+TreeBubbleManager
+├─ TreeBubble_0_Colors
+├─ TreeBubble_1_Animals
+├─ ...
+└─ TreeBubble_0_Colors_Anchor
+└─ TreeBubble_1_Animals_Anchor
+└─ ...
+
+Each bubble should have a matching "_Anchor" GameObject
+
+
+Step 6: Test Physics Manually
+------------------------------
+In Play mode:
+1. Select a bubble
+2. Inspector → Rigidbody2D
+3. Try changing Body Type to Dynamic
+4. Apply a test force in Scene view
+
+If bubble still doesn't move:
+→ Unity physics not working at all
+→ Check Project Settings
+
+
+═══════════════════════════════════════════════════════════════════
+
+COMMON CAUSES & FIXES:
+----------------------
+
+Cause 1: Rigidbody2D is Kinematic
+----------------------------------
+Symptom: Console shows initialization but no movement
+
+Check:
+• Inspector → Rigidbody2D → Body Type
+• Should be "Dynamic" not "Kinematic"
+
+Fix:
+• Change to Dynamic
+• Or check if DisablePhysics() being called incorrectly
+
+
+Cause 2: Stored Values Are Zero
+--------------------------------
+Symptom: Console shows "anchor=(0,0,0), length=0"
+
+Reason: Bubbles not initialized properly
+
+Fix:
+1. [Clear Bubbles]
+2. [Spawn Bubbles In Editor]
+3. Check Console for "Initialized with category"
+4. Enter Play mode
+
+
+Cause 3: No SpringJoint2D
+--------------------------
+Symptom: Rigidbody exists but no spring
+
+Check:
+• Inspector → SpringJoint2D component
+• Should exist and be enabled
+
+Fix:
+• Delete bubbles
+• Respawn with [Spawn Bubbles In Editor]
+
+
+Cause 4: Anchor Not Created
+----------------------------
+Symptom: SpringJoint2D has no Connected Body
+
+Check:
+• Hierarchy for "_Anchor" GameObjects
+• SpringJoint2D → Connected Body field
+
+Fix:
+• Ensure InitializePhysics() completes
+• Check for errors in Console
+
+
+Cause 5: Physics Disabled Globally
+-----------------------------------
+Symptom: Nothing moves in entire scene
+
+Check:
+• Edit → Project Settings → Physics 2D
+• Auto Simulation must be ON
+
+Fix:
+• Enable Auto Simulation
+• Restart Play mode
+
+
+Cause 6: Time Scale is Zero
+----------------------------
+Symptom: Game frozen, nothing updates
+
+Check:
+• Time.timeScale value
+
+Fix:
+• Set Time.timeScale = 1.0
+
+
+═══════════════════════════════════════════════════════════════════
+
+TESTING PROCEDURE:
+------------------
+
+Fresh Test:
+1. Exit Play mode (if in it)
+2. [Clear Bubbles]
+3. [Validate Setup] - Check all ✓
+4. [Spawn Bubbles In Editor]
+5. Check Console: "Spawning bubble X: Category='...'"
+6. Select a bubble in Hierarchy
+7. Inspector → Runtime Data → Stored Chain Length should be 1.5
+8. Enter Play mode
+9. Console should show initialization messages
+10. Watch bubbles - should start swinging within 1 second
+
+If step 10 fails:
+→ Continue to Manual Force Test
+
+
+Manual Force Test:
+1. In Play mode
+2. Select a bubble
+3. Inspector → Rigidbody2D
+4. Change Body Type to Dynamic (if not already)
+5. Scene view → Select bubble
+6. Press W (move tool)
+7. Try dragging bubble
+8. Release - should spring back
+
+If bubble springs back:
+→ Physics works, initialization issue
+
+If bubble doesn't move at all:
+→ Physics completely broken
+
+
+═══════════════════════════════════════════════════════════════════
+
+EXPECTED BEHAVIOR:
+------------------
+
+Correct Setup:
+• [Spawn Bubbles In Editor] creates bubbles
+• Bubbles are static (no movement) in Editor
+• Enter Play mode
+• Within 1 second:
+  - Bubbles start moving
+  - Gentle swaying motion
+  - Different speeds per bubble
+  - Chain lines follow bubbles
+  - Natural "leaf on tree" feel
+
+
+Correct Console Output:
+Spawning bubble 0: Category='Colors', Icon=True, Text=''
+...
+✓ Spawned 20/20 bubbles (Ready for Play mode)
+
+[Enter Play Mode]
+
+TreeBubble.Start() called for TreeBubble_0_Colors, stored values: anchor=(0,2,0), length=1.5
+Initializing physics for TreeBubble_0_Colors
+TreeBubble_0_Colors: Rigidbody2D configured - Dynamic, gravity=0.2
+TreeBubble_0_Colors: SpringJoint2D created - distance=1.5, frequency=1
+TreeBubble_0_Colors: Applied force=(1.5,0), should start swinging!
+...
+Subscribed to 20 bubbles' click events
+
+
+═══════════════════════════════════════════════════════════════════
+
+PHYSICS PARAMETERS:
+-------------------
+
+If bubbles are swinging but behavior is wrong:
+
+Too Fast:
+• Decrease spring frequency (1.0 → 0.5)
+• Increase damping (0.5 → 0.8)
+
+Too Slow:
+• Increase spring frequency (1.0 → 2.0)
+• Decrease damping (0.5 → 0.3)
+
+Too Much Movement:
+• Increase linear damping (1.5 → 2.5)
+• Decrease initial force (2.0 → 1.0)
+
+Too Little Movement:
+• Decrease linear damping (1.5 → 1.0)
+• Increase initial force (2.0 → 3.0)
+
+Not Swinging, Just Falling:
+• Increase gravity scale (0.2 → 0.5)
+• Check spring is connected
+
+Spinning Too Much:
+• Increase angular damping (2.0 → 5.0)
+• Or lock rotation: Constraints → Freeze Rotation Z
+
+
+═══════════════════════════════════════════════════════════════════
+
+LAST RESORT FIXES:
+------------------
+
+If nothing works:
+
+Option 1: Manual Physics Setup
+1. Select bubble prefab
+2. Add Rigidbody2D manually
+3. Set Body Type: Dynamic
+4. Set Gravity Scale: 0.2
+5. Save prefab
+6. Delete all spawned bubbles
+7. Respawn
+
+Option 2: Simple Test
+1. Create empty GameObject
+2. Add CircleCollider2D
+3. Add Rigidbody2D (Dynamic)
+4. Enter Play mode
+5. Does it fall?
+   - Yes: Unity physics works
+   - No: Unity installation issue
+
+Option 3: Unity Settings Reset
+1. Edit → Project Settings
+2. Physics 2D → Reset
+3. Restart Unity
+4. Try again
+
+═══════════════════════════════════════════════════════════════════
+
+CATEGORY DISTRIBUTION:
+----------------------
+
+NEW FEATURE: Balanced category distribution without adjacent repeats
+
+Algorithm:
+1. Count all valid categories
+2. Calculate how many bubbles per category
+3. Create pool with balanced amounts
+4. Shuffle pool randomly
+5. Pick from pool, avoiding same category twice in a row
+6. Result: Even distribution, no boring clusters
+
+Example with 20 bubbles, 4 categories:
+Before (random): R R R B B R G Y Y Y R B G Y...
+After (balanced): R B Y G R Y B G R B Y G R B...
+
+Benefits:
+✓ Each category appears equally
+✓ No long runs of same category
+✓ More interesting visual variety
+✓ Better gameplay balance
+
+═══════════════════════════════════════════════════════════════════
