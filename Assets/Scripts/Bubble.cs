@@ -541,7 +541,7 @@ public class Bubble : MonoBehaviour
         //ParticlePool.PlayRevealFx(ghostInstance.transform.position);
     }
 
-    internal void ReturnBack()
+    public void ReturnBack()
     {
         if (GameSettings.Instance.CanCreateGhost)
         {
