@@ -1252,6 +1252,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4879941612786899101}
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: mergeColors.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: names.Array.data[0].icon
       value: 
       objectReference: {fileID: 21300000, guid: f9ec92069547f55468301c64c63e0bae, type: 3}
@@ -1303,6 +1307,38 @@ PrefabInstance:
       propertyPath: textUIs.Array.data[3].bg
       value: 
       objectReference: {fileID: 4754383380707034707}
+    - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: mergeColors.Array.data[0].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: mergeColors.Array.data[0].b
+      value: 0.043137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: mergeColors.Array.data[0].g
+      value: 0.40392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: mergeColors.Array.data[0].r
+      value: 0.8784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: mergeColors.Array.data[1].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: mergeColors.Array.data[1].b
+      value: 0.5176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: mergeColors.Array.data[1].g
+      value: 0.07450981
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
+      propertyPath: mergeColors.Array.data[1].r
+      value: 0.9254902
+      objectReference: {fileID: 0}
     - target: {fileID: 7227979600642981148, guid: 3c45e95f98eebbd439b837f94a4657d0, type: 3}
       propertyPath: textUIs.Array.data[1].textUIs
       value: 

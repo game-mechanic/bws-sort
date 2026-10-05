@@ -15,6 +15,7 @@ public class Bubble : MonoBehaviour
         public SpriteRenderer bg;
         public TextMeshPro textUIs;
     }
+
     [System.Serializable]
     public class Data
     {
@@ -23,7 +24,9 @@ public class Bubble : MonoBehaviour
         public AnimationClip animationClip;
         public bool showBothTxtAndImg = false;
     }
+
     const float PhaseDiff = 90 * Mathf.Deg2Rad;
+
     [SerializeField] byte index;
     [SerializeField] Transform viusal;
     [SerializeField] SpriteRenderer bg;
@@ -34,40 +37,59 @@ public class Bubble : MonoBehaviour
     [SerializeField] List<Data> names;
     [SerializeField] bool canChangeColor = true;
     [SerializeField] GameObject ghost;
+
+    // ---------------------------------------------------------
+    // MERGE COLORS
+    // These colors can now be selected directly in Inspector.
+    // ---------------------------------------------------------
+    [SerializeField] private List<Color> mergeColors = new List<Color>();
+
+    private static int lastMergeColorIndex = -1;
+
     Rigidbody2D rb;
     Collider2D col;
+
     [SerializeField] float radius = 0.5f;
+
     SortingGroup sortingGroup;
+
     float bounceAmplitude;
     float bounceDuration;
     bool isBouncing = false;
+
     float randomPhaseDiff;
     float randomTextPhaseDiff;
     float time = 0f;
+
     Vector3 startScale;
+
     [SerializeField] private BubbleType category;
 
-    public RigidbodyType2D IsKinematic { get => rb.bodyType; set => rb.bodyType = value; }
+    private GameObject ghostInstance;
+    Vector3[] textPositions;
+
+    public RigidbodyType2D IsKinematic
+    {
+        get => rb.bodyType;
+        set => rb.bodyType = value;
+    }
+
     public float Radius => radius;
 
-    public byte Index { get => index; }
-    public BubbleType Category { get => category; set => category = value; }
-    public List<Data> Names { get => names; }
-    public bool CanChangeColor { get => canChangeColor; }
-    public Color CurrentColor => bgColor;
-    Vector3[] textPositions;
-    private GameObject ghostInstance;
-    private static readonly Color[] MergeColors =
+    public byte Index => index;
+
+    public BubbleType Category
     {
-        HexToColor("#1B9E77"), // Green
-        HexToColor("#D95F02"), // Orange
-        HexToColor("#7570B3"), // Purple
-        HexToColor("#E7298A"), // Pink
-        HexToColor("#66A61E"), // Lime Green
-        HexToColor("#E6AB02")  // Yellow
-    };
-    
-    private static int lastMergeColorIndex = -1;
+        get => category;
+        set => category = value;
+    }
+
+    public List<Data> Names => names;
+
+    public bool CanChangeColor => canChangeColor;
+
+    public Color CurrentColor => bgColor;
+
     private IEnumerator Start()
     {
         CategoryManager.Instance.RegisterCategory(Category);
@@ -84,7 +106,6 @@ public class Bubble : MonoBehaviour
         RestorePositions();
         Redraw();
 
-        // DON'T change color here.
         // Bubble starts with its original bgColor.
 
         yield return null;
@@ -96,16 +117,22 @@ public class Bubble : MonoBehaviour
 #endif
         }
     }
+
     private void OnDisable()
     {
         viusal.DOKill();
     }
+
     public void RestorePositions()
     {
         textPositions = new Vector3[textUIs.Count];
+
         for (int i = 0; i < textUIs.Count; i++)
         {
-            textPositions[i] = names[i].icon == null ? textUIs[i].textUIs.transform.localPosition : textUIs[i].bg.transform.localPosition;
+            textPositions[i] =
+                names[i].icon == null
+                    ? textUIs[i].textUIs.transform.localPosition
+                    : textUIs[i].bg.transform.localPosition;
         }
     }
 
@@ -116,9 +143,9 @@ public class Bubble : MonoBehaviour
         {
             // Generate a NEW random color
             bgColor = Random.ColorHSV(
-                0f, 1f,        // Hue
-                0.65f, 1f,     // Saturation
-                0.75f, 1f      // Brightness
+                0f, 1f,
+                0.65f, 1f,
+                0.75f, 1f
             );
         }
 
@@ -128,11 +155,12 @@ public class Bubble : MonoBehaviour
 
         Redraw();
     }
+
     private void Redraw()
     {
         for (int i = 0; i < Names.Count; i++)
         {
-            // 1. Always evaluate and set the text value first so it's ready if needed
+            // 1. Always evaluate and set the text value first
             if (GameSettings.Instance.SelectedLanguage.ToString() == "en")
             {
                 textUIs[i].textUIs.text = Names[i].name;
@@ -141,22 +169,28 @@ public class Bubble : MonoBehaviour
             {
                 textUIs[i].textUIs.text =
                     LocalizationSettings.StringDatabase.GetLocalizedString(
-                       GameSettings.Instance.TableReference,
+                        GameSettings.Instance.TableReference,
                         Names[i].name
                     );
             }
 
-            // 2. Handle the visibility logic based on the new boolean and icon existence
+            // 2. Handle visibility logic
             if (Names[i].showBothTxtAndImg && Names[i].icon != null)
             {
                 // Show both
                 textUIs[i].bg.sprite = Names[i].icon;
+
                 if (GameSettings.Instance.CanAnimateSprite)
                 {
-                    Animator animator = textUIs[i].bg.GetComponent<Animator>();
-                    animator.runtimeAnimatorController = GameSettings.Instance.AnimatorController;
+                    Animator animator =
+                        textUIs[i].bg.GetComponent<Animator>();
+
+                    animator.runtimeAnimatorController =
+                        GameSettings.Instance.AnimatorController;
+
                     animator.Play(Names[i].animationClip.name);
                 }
+
                 textUIs[i].bg.gameObject.SetActive(true);
                 textUIs[i].textUIs.gameObject.SetActive(true);
             }
@@ -165,10 +199,15 @@ public class Bubble : MonoBehaviour
                 // Show animation only
                 if (GameSettings.Instance.CanAnimateSprite)
                 {
-                    Animator animator = textUIs[i].bg.GetComponent<Animator>();
-                    animator.runtimeAnimatorController = GameSettings.Instance.AnimatorController;
+                    Animator animator =
+                        textUIs[i].bg.GetComponent<Animator>();
+
+                    animator.runtimeAnimatorController =
+                        GameSettings.Instance.AnimatorController;
+
                     animator.Play(Names[i].animationClip.name);
                 }
+
                 textUIs[i].textUIs.gameObject.SetActive(false);
                 textUIs[i].bg.gameObject.SetActive(true);
             }
@@ -176,12 +215,18 @@ public class Bubble : MonoBehaviour
             {
                 // Show image only
                 textUIs[i].bg.sprite = Names[i].icon;
+
                 if (GameSettings.Instance.CanAnimateSprite)
                 {
-                    Animator animator = textUIs[i].bg.GetComponent<Animator>();
-                    animator.runtimeAnimatorController = GameSettings.Instance.AnimatorController;
+                    Animator animator =
+                        textUIs[i].bg.GetComponent<Animator>();
+
+                    animator.runtimeAnimatorController =
+                        GameSettings.Instance.AnimatorController;
+
                     animator.Play(Names[i].animationClip.name);
                 }
+
                 textUIs[i].textUIs.gameObject.SetActive(false);
                 textUIs[i].bg.gameObject.SetActive(true);
             }
@@ -198,47 +243,108 @@ public class Bubble : MonoBehaviour
     {
         if (!isBouncing)
         {
-            float x = (Mathf.Sin((Time.time + randomPhaseDiff) * GameSettings.Instance.BreathingSpeed) + 0.5f) * GameSettings.Instance.BreathingAplitude;
-            float y = (Mathf.Cos((Time.time + PhaseDiff + randomPhaseDiff) * GameSettings.Instance.BreathingSpeed) + 0.5f) * GameSettings.Instance.BreathingAplitude;
-            Vector3 t = startScale + new Vector3(x, y: y, 0);
+            float x =
+                (Mathf.Sin(
+                    (Time.time + randomPhaseDiff) *
+                    GameSettings.Instance.BreathingSpeed
+                ) + 0.5f) *
+                GameSettings.Instance.BreathingAplitude;
 
-            viusal.localScale = Vector3.Lerp(viusal.localScale, t, GameSettings.Instance.LerpSpeeed * Time.deltaTime);
+            float y =
+                (Mathf.Cos(
+                    (Time.time + PhaseDiff + randomPhaseDiff) *
+                    GameSettings.Instance.BreathingSpeed
+                ) + 0.5f) *
+                GameSettings.Instance.BreathingAplitude;
+
+            Vector3 t =
+                startScale +
+                new Vector3(x, y, 0);
+
+            viusal.localScale =
+                Vector3.Lerp(
+                    viusal.localScale,
+                    t,
+                    GameSettings.Instance.LerpSpeeed *
+                    Time.deltaTime
+                );
+
             TextBreathing();
+
             return;
         }
 
         time += Time.deltaTime;
-        float tt = (time / bounceDuration) /** GameSettings.Instance.MaxBounces*/;
+
+        float tt =
+            time / bounceDuration;
+
         float bounceIntensity = 1 - tt;
-        float rad = tt * Mathf.PI * 2 * GameSettings.Instance.MaxBounces;
 
+        float rad =
+            tt *
+            Mathf.PI *
+            2 *
+            GameSettings.Instance.MaxBounces;
 
-        float sin = (Mathf.Sin(rad) + 0.5f) * bounceAmplitude;
-        float cos = (Mathf.Cos(rad + PhaseDiff) + 0.5f) * bounceAmplitude;
-        Vector3 targetScale = startScale + new Vector3(cos, y: sin, 0) * bounceIntensity;
-        viusal.transform.localScale = Vector3.Lerp(viusal.localScale, targetScale, GameSettings.Instance.LerpSpeeed * Time.deltaTime);
+        float sin =
+            (Mathf.Sin(rad) + 0.5f) *
+            bounceAmplitude;
+
+        float cos =
+            (Mathf.Cos(rad + PhaseDiff) + 0.5f) *
+            bounceAmplitude;
+
+        Vector3 targetScale =
+            startScale +
+            new Vector3(cos, sin, 0) *
+            bounceIntensity;
+
+        viusal.transform.localScale =
+            Vector3.Lerp(
+                viusal.transform.localScale,
+                targetScale,
+                GameSettings.Instance.LerpSpeeed *
+                Time.deltaTime
+            );
+
         if (tt >= 1)
         {
             isBouncing = false;
             time = 0;
+
             viusal.DOKill();
-            viusal.DOScale(startScale, 0.05f).SetTarget(viusal);
+
+            viusal.DOScale(
+                startScale,
+                0.05f
+            ).SetTarget(viusal);
         }
     }
+
     public void Bounce()
     {
         isBouncing = true;
         time = 0;
-        this.bounceAmplitude = GameSettings.Instance.MaxBounceAmplitude;
-        this.bounceDuration = GameSettings.Instance.BounceTime;
+
+        bounceAmplitude =
+            GameSettings.Instance.MaxBounceAmplitude;
+
+        bounceDuration =
+            GameSettings.Instance.BounceTime;
     }
-    public void Bounce(float bounceAmplitude, float duration)
+
+    public void Bounce(
+        float bounceAmplitude,
+        float duration)
     {
         isBouncing = true;
         time = 0;
+
         this.bounceAmplitude = bounceAmplitude;
         this.bounceDuration = duration;
     }
+
     public void SetCollider(bool active)
     {
         col.enabled = active;
@@ -247,48 +353,107 @@ public class Bubble : MonoBehaviour
     public void SetName(List<Data> name)
     {
         Names.Clear();
+
         for (int i = 0; i < name.Count; i++)
         {
             Names.Add(name[i]);
         }
+
         Redraw();
     }
+
     public void StartDrag()
     {
-        IsKinematic = RigidbodyType2D.Kinematic;
+        IsKinematic =
+            RigidbodyType2D.Kinematic;
+
         SetCollider(false);
+
         sortingGroup.sortingOrder = 100;
+
         rb.linearVelocity = Vector2.zero;
+
         if (GameSettings.Instance.CanCreateGhost)
-            this.ghostInstance = Instantiate(ghost, transform.position, Quaternion.identity);
+        {
+            ghostInstance =
+                Instantiate(
+                    ghost,
+                    transform.position,
+                    Quaternion.identity
+                );
+        }
     }
+
     public void EndDrag()
     {
-        IsKinematic = RigidbodyType2D.Dynamic;
+        IsKinematic =
+            RigidbodyType2D.Dynamic;
+
         SetCollider(true);
+
         sortingGroup.sortingOrder = 3;
     }
+
     private void TextBreathing()
     {
         if (!GameSettings.Instance.CanTextBreathe)
             return;
-        Vector3 scaleModifier = viusal.localScale;
+
+        Vector3 scaleModifier =
+            viusal.localScale;
 
         for (int i = 0; i < textUIs.Count; i++)
         {
-            if (textUIs[i] == null) continue;
+            if (textUIs[i] == null)
+                continue;
 
-            var x = (Mathf.Sin((Time.time * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff)) * 0.05f * .5f;
-            var y = (Mathf.Sin((Time.time * .5f * GameSettings.Instance.TextBreathingSpeed) + randomTextPhaseDiff)) * 0.1f * .5f;
+            var x =
+                Mathf.Sin(
+                    (Time.time *
+                     GameSettings.Instance.TextBreathingSpeed) +
+                    randomTextPhaseDiff
+                ) *
+                0.05f *
+                .5f;
 
+            var y =
+                Mathf.Sin(
+                    (Time.time *
+                     .5f *
+                     GameSettings.Instance.TextBreathingSpeed) +
+                    randomTextPhaseDiff
+                ) *
+                0.1f *
+                .5f;
 
-            Vector3 offset = new Vector3(x / scaleModifier.x, y / scaleModifier.y, 0);
+            Vector3 offset =
+                new Vector3(
+                    x / scaleModifier.x,
+                    y / scaleModifier.y,
+                    0
+                );
 
             if (textUIs[i].bg != null)
-                textUIs[i].bg.transform.localPosition = Vector3.Lerp(textUIs[i].bg.transform.localPosition, textPositions[i] + offset, GameSettings.Instance.LerpSpeeed * Time.deltaTime);
+            {
+                textUIs[i].bg.transform.localPosition =
+                    Vector3.Lerp(
+                        textUIs[i].bg.transform.localPosition,
+                        textPositions[i] + offset,
+                        GameSettings.Instance.LerpSpeeed *
+                        Time.deltaTime
+                    );
+            }
 
             if (textUIs[i].textUIs != null)
-                textUIs[i].textUIs.transform.localPosition = Vector3.Lerp(textUIs[i].textUIs.transform.localPosition, textPositions[i] + offset, GameSettings.Instance.LerpSpeeed * Time.deltaTime);
+            {
+                textUIs[i].textUIs.transform.localPosition =
+                    Vector3.Lerp(
+                        textUIs[i].textUIs.transform.localPosition,
+                        textPositions[i] + offset,
+                        GameSettings.Instance.LerpSpeeed *
+                        Time.deltaTime
+                    );
+            }
         }
     }
 
@@ -296,18 +461,25 @@ public class Bubble : MonoBehaviour
     {
         highlightImage.SetActive(v);
     }
+
     private void OnDrawGizmosSelected()
     {
         if (col == null)
             col = GetComponent<CircleCollider2D>();
-        Gizmos.DrawSphere(transform.position, radius: Radius);
+
+        Gizmos.DrawSphere(
+            transform.position,
+            radius: Radius
+        );
     }
 
-    public void Blast(System.Action OnBlastComplete = null)
+    public void Blast(
+        System.Action OnBlastComplete = null)
     {
         if (categoryText != null)
         {
             categoryText.text = Category.name;
+
             if (GameSettings.Instance.SelectedLanguage.ToString() == "en")
             {
                 categoryText.text = Category.name;
@@ -316,162 +488,181 @@ public class Bubble : MonoBehaviour
             {
                 categoryText.text =
                     LocalizationSettings.StringDatabase.GetLocalizedString(
-                       GameSettings.Instance.TableReference,
+                        GameSettings.Instance.TableReference,
                         Category.name
                     );
             }
         }
 
-        Sequence blastSequence = DOTween.Sequence();
+        Sequence blastSequence =
+            DOTween.Sequence();
+
         float delayStep = 0.08f;
+
         int index = 0;
 
-        /* foreach (var text in textUIs)
-        {
-            Transform bg = text.bg.transform;
-            Transform txt = text.textUIs.transform;
-
-            bg.DOKill();
-            txt.DOKill();
-
-            // Store initial scale
-            Vector3 bgStartScale = bg.localScale;
-            Vector3 txtStartScale = txt.localScale;
-
-            float delay = index * delayStep;
-
-            Sequence textSeq = DOTween.Sequence();
-
-            textSeq.AppendInterval(delay);
-
-            // Optional tiny anticipation (feels nicer than instant shrink)
-            textSeq.Append(
-                bg.DOScale(bgStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
-            );
-
-            textSeq.Join(
-                txt.DOScale(txtStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
-            );
-
-            // Main disappear (shrink)
-            textSeq.Append(
-                bg.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InBack)
-            );
-
-            textSeq.Join(
-                txt.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack)
-            );
-
-            blastSequence.Join(textSeq);
-
-            index++;
-        } */
         foreach (var text in textUIs)
         {
-            Transform bg = text.bg.transform;
-            Transform txt = text.textUIs.transform;
+            Transform bg =
+                text.bg.transform;
+
+            Transform txt =
+                text.textUIs.transform;
 
             bg.DOKill();
             txt.DOKill();
 
-            // Store initial scale
-            Vector3 bgStartScale = bg.localScale;
-            Vector3 txtStartScale = txt.localScale;
+            Vector3 bgStartScale =
+                bg.localScale;
 
-            float delay = index * delayStep;
+            Vector3 txtStartScale =
+                txt.localScale;
 
-            Sequence textSeq = DOTween.Sequence();
+            float delay =
+                index * delayStep;
+
+            Sequence textSeq =
+                DOTween.Sequence();
 
             textSeq.AppendInterval(delay);
 
-            // Optional tiny anticipation (feels nicer than instant shrink)
+            // Optional tiny anticipation
             textSeq.Append(
-                bg.DOScale(bgStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
+                bg.DOScale(
+                    bgStartScale * 1.05f,
+                    0.1f
+                ).SetEase(Ease.OutSine)
             );
 
             textSeq.Join(
-                txt.DOScale(txtStartScale * 1.05f, 0.1f).SetEase(Ease.OutSine)
+                txt.DOScale(
+                    txtStartScale * 1.05f,
+                    0.1f
+                ).SetEase(Ease.OutSine)
             );
 
-            // Main disappear (shrink)
+            // Main disappear
             textSeq.Append(
-                bg.DOScale(Vector3.zero, 0.25f).SetEase(Ease.InBack)
+                bg.DOScale(
+                    Vector3.zero,
+                    0.25f
+                ).SetEase(Ease.InBack)
             );
+
             const float moveSpeed = 0.2f;
-            textSeq.Join(bg.DOLocalMove(Vector3.zero, moveSpeed).SetEase(Ease.InBack));
-            textSeq.Join(txt.DOLocalMove(Vector3.zero, moveSpeed).SetEase(Ease.InBack));
 
             textSeq.Join(
-                txt.DOScale(Vector3.zero, 0.2f).SetEase(Ease.InBack)
+                bg.DOLocalMove(
+                    Vector3.zero,
+                    moveSpeed
+                ).SetEase(Ease.InBack)
+            );
+
+            textSeq.Join(
+                txt.DOLocalMove(
+                    Vector3.zero,
+                    moveSpeed
+                ).SetEase(Ease.InBack)
+            );
+
+            textSeq.Join(
+                txt.DOScale(
+                    Vector3.zero,
+                    0.2f
+                ).SetEase(Ease.InBack)
             );
 
             blastSequence.Join(textSeq);
 
             index++;
         }
+
         blastSequence.AppendCallback(() =>
         {
             if (categoryText != null)
             {
                 categoryText.gameObject.SetActive(true);
-                categoryText.transform.localScale = Vector3.zero;
+
+                categoryText.transform.localScale =
+                    Vector3.zero;
             }
         });
+
         if (categoryText != null)
         {
-            Transform t = categoryText.transform;
+            Transform t =
+                categoryText.transform;
 
             t.DOKill();
 
-            // Store original scale
-            Vector3 startScale = t.localScale;
+            Vector3 startScale =
+                t.localScale;
 
-            Sequence seq = DOTween.Sequence();
+            Sequence seq =
+                DOTween.Sequence();
 
-            // Start slightly smaller for pop-in
-            t.localScale = startScale * 0.7f;
+            t.localScale =
+                startScale * 0.7f;
 
             seq.AppendInterval(0.15f);
 
-            // Pop in with overshoot
             seq.Append(
-                t.DOScale(startScale * 1.1f, 0.35f)
-                .SetEase(Ease.OutBack)
+                t.DOScale(
+                    startScale * 1.1f,
+                    0.35f
+                ).SetEase(Ease.OutBack)
             );
 
-            // Settle to normal
             seq.Append(
-                t.DOScale(startScale, 0.15f)
-                .SetEase(Ease.OutSine)
+                t.DOScale(
+                    startScale,
+                    0.15f
+                ).SetEase(Ease.OutSine)
             );
 
-            // Short, snappy pause (not too long)
             seq.AppendInterval(0.4f);
 
-            // Exit with slight anticipation
             seq.Append(
-                t.DOScale(startScale * 1.05f, 0.1f)
-                .SetEase(Ease.OutSine)
+                t.DOScale(
+                    startScale * 1.05f,
+                    0.1f
+                ).SetEase(Ease.OutSine)
             );
 
             seq.Append(
-                t.DOScale(Vector3.zero, 0.25f)
-                .SetEase(Ease.InBack)
+                t.DOScale(
+                    Vector3.zero,
+                    0.25f
+                ).SetEase(Ease.InBack)
             );
 
             blastSequence.Append(seq);
         }
+
         blastSequence.AppendCallback(() =>
         {
-            ParticlePool.PlayRevealFx(transform.position);
-            CategoryManager.Instance.SpawnNewCategories();
-            InputHandler.Instance.SpawnSandOnBubble(this);
-           InputHandler.Instance.OnSuccessfullMerge?.Invoke();
-            BubbleEffect bubbleEffect = Object.FindObjectOfType<BubbleEffect>();
+            ParticlePool.PlayRevealFx(
+                transform.position
+            );
+
+            CategoryManager.Instance
+                .SpawnNewCategories();
+
+            InputHandler.Instance
+                .SpawnSandOnBubble(this);
+
+            InputHandler.Instance
+                .OnSuccessfullMerge?
+                .Invoke();
+
+            BubbleEffect bubbleEffect =
+                Object.FindObjectOfType<BubbleEffect>();
+
             if (bubbleEffect != null)
                 bubbleEffect.OnBubblePop();
 
             Destroy(gameObject);
+
             OnBlastComplete?.Invoke();
         });
     }
@@ -484,112 +675,124 @@ public class Bubble : MonoBehaviour
     internal void SetColor(Color bubbleColor)
     {
         bgColor = bubbleColor;
+
         if (bg != null)
             bg.color = bgColor;
     }
+
     private void OnDrawGizmos()
     {
         Color color = category.Color;
+
         color.a = 1f;
+
         Gizmos.color = color;
-        Gizmos.DrawSphere(transform.position, radius: Radius);
-        //        if (Names.Count == 1)
-        //        {
-        //            string name = LocalizationSettings.StringDatabase.GetLocalizedString(
-        //                           GameSettings.Instance.TableReference,
-        //                            Names[0].name,
-        //                            GameSettings.Instance.EnglishLocale
-        //                        );
 
-        //            GUIStyle style = null;
-        //#if UNITY_EDITOR
-        //            if (style == null)
-        //            {
-        //                style = new GUIStyle();
-        //                style.normal.textColor = Color.white;
-        //                style.fontSize = 10;
-        //                style.fontStyle = FontStyle.Bold;
-        //                style.alignment = TextAnchor.MiddleCenter;
-        //            }
-
-        //            Handles.Label(
-        //                transform.position + Vector3.back,
-        //                name,
-        //                style
-        //            );
-        //#endif
-        //        }
+        Gizmos.DrawSphere(
+            transform.position,
+            radius: Radius
+        );
     }
+
+    // =========================================================
+    // CHANGE COLOR ON SORT
+    // Uses colors configured in the Inspector.
+    // =========================================================
     public void ChangeColorOnSort()
     {
-        if (!canChangeColor || bg == null)
+        if (!canChangeColor ||
+            bg == null ||
+            mergeColors == null ||
+            mergeColors.Count == 0)
+        {
             return;
+        }
 
         int newColorIndex;
 
-        // Make sure the new color is different from
-        // the previous merge color.
+        // Make sure the new color is different
+        // from the previous merge color.
         do
         {
-            newColorIndex = Random.Range(0, MergeColors.Length);
+            newColorIndex =
+                Random.Range(
+                    0,
+                    mergeColors.Count
+                );
         }
-        while (MergeColors.Length > 1 &&
-               newColorIndex == lastMergeColorIndex);
+        while (
+            mergeColors.Count > 1 &&
+            newColorIndex == lastMergeColorIndex
+        );
 
-        lastMergeColorIndex = newColorIndex;
+        lastMergeColorIndex =
+            newColorIndex;
 
-        bgColor = MergeColors[newColorIndex];
+        bgColor =
+            mergeColors[newColorIndex];
 
         // Apply immediately to this bubble only.
-        bg.color = bgColor;
+        bg.color =
+            bgColor;
     }
-    
+
+    // =========================================================
+    // SET RANDOM MERGE COLOR
+    // Uses colors configured in the Inspector.
+    // =========================================================
     public void SetRandomMergeColor()
     {
-        if (!canChangeColor || bg == null)
+        if (!canChangeColor ||
+            bg == null ||
+            mergeColors == null ||
+            mergeColors.Count == 0)
+        {
             return;
+        }
 
         int newColorIndex;
 
-        // Pick a color only from the 6 fixed colors.
+        // Pick a color from the Inspector-defined colors.
         do
         {
-            newColorIndex = Random.Range(0, MergeColors.Length);
+            newColorIndex =
+                Random.Range(
+                    0,
+                    mergeColors.Count
+                );
         }
-        while (MergeColors.Length > 1 &&
-               newColorIndex == lastMergeColorIndex);
+        while (
+            mergeColors.Count > 1 &&
+            newColorIndex == lastMergeColorIndex
+        );
 
-        lastMergeColorIndex = newColorIndex;
+        lastMergeColorIndex =
+            newColorIndex;
 
-        bgColor = MergeColors[newColorIndex];
+        bgColor =
+            mergeColors[newColorIndex];
 
         // Apply the color ONLY to this bubble.
-        bg.color = bgColor;
+        bg.color =
+            bgColor;
     }
-    private static Color HexToColor(string hex)
-    {
-        Color color;
 
-        if (ColorUtility.TryParseHtmlString(hex, out color))
-            return color;
-
-        Debug.LogError("Invalid color HEX: " + hex);
-        return Color.white;
-    }
-    
     internal void BlastGhost()
     {
         Destroy(ghostInstance);
-        //ParticlePool.PlayRevealFx(ghostInstance.transform.position);
     }
 
     internal void ReturnBack()
     {
         if (GameSettings.Instance.CanCreateGhost)
         {
-            transform.DOMove(ghostInstance.transform.position, 0.2f).OnComplete(() =>
+            transform.DOMove(
+                ghostInstance.transform.position,
+                0.2f
+            ).OnComplete(() =>
             {
                 EndDrag();
+
                 Destroy(ghostInstance);
             });
         }

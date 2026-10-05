@@ -173,7 +173,71 @@ MonoBehaviour:
       icon: {fileID: 21300000, guid: 9b99c5d42ab780640abd84a11b1b4481, type: 3}
       animationClip: {fileID: 0}
       showBothTxtAndImg: 0
-  initialSpawns: 21
+  - name: {fileID: 11400000, guid: 708b923eb4d27d24aa65bc0a48e92bd4, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    newDatas:
+    - name: 
+      icon: {fileID: 21300000, guid: c4b5fc6c6a17b2a47b67833e0859ece7, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 708b923eb4d27d24aa65bc0a48e92bd4, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    newDatas:
+    - name: 
+      icon: {fileID: 21300000, guid: 519c2aded5f25cc4da3f110567d930e8, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 708b923eb4d27d24aa65bc0a48e92bd4, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    newDatas:
+    - name: 
+      icon: {fileID: 21300000, guid: b2a485c32e5bb7641a095f30b9f3fccb, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 708b923eb4d27d24aa65bc0a48e92bd4, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    newDatas:
+    - name: 
+      icon: {fileID: 21300000, guid: f1005af9e7d99a34cb230349130b0e36, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 4cdf288d342f74b1cbeeacf41724fdc1, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    newDatas:
+    - name: 
+      icon: {fileID: 21300000, guid: f1412dfce99584dd78dcef1ea8a5b676, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 4cdf288d342f74b1cbeeacf41724fdc1, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    newDatas:
+    - name: 
+      icon: {fileID: 21300000, guid: 923da00a22de34df6b24ccf800d860b0, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 4cdf288d342f74b1cbeeacf41724fdc1, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    newDatas:
+    - name: 
+      icon: {fileID: 21300000, guid: 4e45ed991705740179000f38a2792e43, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  - name: {fileID: 11400000, guid: 4cdf288d342f74b1cbeeacf41724fdc1, type: 2}
+    overrideColor: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+    newDatas:
+    - name: 
+      icon: {fileID: 21300000, guid: d83c2c5d2bf52474c88c134d60f531fe, type: 3}
+      animationClip: {fileID: 0}
+      showBothTxtAndImg: 0
+  initialSpawns: 29
   minMultiplier: 1
   maxMultiplier: 2
   levelDataToAppend: {fileID: 0}
