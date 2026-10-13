@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367fe5800174fad48a170768b2f7eac0, type: 3}
+  m_Name: Heart
+  m_EditorClassIdentifier: Assembly-CSharp::BubbleProfile
+  bubbles:
+  - {fileID: 7926608256317659342, guid: 7d7cf06eebd594e66a3eee128fa0d3f1, type: 3}
+  - {fileID: 7926608256317659342, guid: e7c64c8fcc90d481dbddbec2793b0ed8, type: 3}
+  - {fileID: 7926608256317659342, guid: 88c52a9122c6446a7831ead41f73a538, type: 3}
+  - {fileID: 7926608256317659342, guid: e97c0957ecbf0400d9cde0055db0a8f5, type: 3}
