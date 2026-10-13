@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnOnStart: 1
   shouldBlastAtStart: 0
-  levelData: {fileID: 11400000, guid: ee0dfdb4a8fe44d4b8077146f8188159, type: 2}
+  levelData: {fileID: 11400000, guid: 51244ad3d40ae45fb82b3ea4da9f0c72, type: 2}
   horizontalAlignment: {fileID: 1345279678}
 --- !u!1 &429325393
 GameObject:
@@ -949,7 +949,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.36320752, g: 0.9441123, b: 1, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
