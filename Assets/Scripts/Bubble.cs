@@ -477,7 +477,8 @@ public class Bubble : MonoBehaviour
         int ind = index;
         blastSequence.AppendCallback(() =>
         {
-            ParticlePool.PlayRevealFx(transform.position);
+            if (GameSettings.Instance.BubbleFXPrefab)
+                ParticlePool.PlayRevealFx(transform.position);
 
             CategoryManager.Instance.SpawnNewCategories();
 

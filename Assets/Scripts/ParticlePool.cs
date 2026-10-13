@@ -62,6 +62,7 @@ public class ParticlePool
     }
     public static void ReleasePool()
     {
-       revealFxPool.Clear();
+        if (RevealFx)
+            revealFxPool.Clear();
     }
 }
