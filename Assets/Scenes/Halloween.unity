@@ -256,7 +256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &84020370
 SpriteRenderer:
   serializedVersion: 2
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnOnStart: 1
   shouldBlastAtStart: 0
-  levelData: {fileID: 11400000, guid: 51244ad3d40ae45fb82b3ea4da9f0c72, type: 2}
+  levelData: {fileID: 11400000, guid: da4b90e47c8574bc0bf6e6177d2a88c9, type: 2}
   horizontalAlignment: {fileID: 1345279678}
 --- !u!1 &429325393
 GameObject:
@@ -513,8 +513,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0}
-  idle: {fileID: 21300000, guid: 89dfd251b8dca483686d4ff7db1b4143, type: 3}
-  click: {fileID: 21300000, guid: 830a322134b614081bcb0aae78fda8a6, type: 3}
+  idle: {fileID: 21300000, guid: 35d52cdf02db28a4e9d34760022104c2, type: 3}
+  click: {fileID: 21300000, guid: 96b6d47e32d4165409bc121b4f856d80, type: 3}
   lineStartPosition: {fileID: 0}
   lineRenderer: {fileID: 0}
   pointsCount: 0
@@ -837,9 +837,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1242, y: -219}
-  m_SizeDelta: {x: 333.3645, y: 333.3645}
-  m_Pivot: {x: 0.2602463, y: 0.88136643}
+  m_AnchoredPosition: {x: -1268.8475, y: -95.87164}
+  m_SizeDelta: {x: 230.3012, y: 286.1595}
+  m_Pivot: {x: 0.19865905, y: 0.9739425}
 --- !u!114 &799683888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,7 +860,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 89dfd251b8dca483686d4ff7db1b4143, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 35d52cdf02db28a4e9d34760022104c2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -903,7 +903,7 @@ Transform:
   m_GameObject: {fileID: 915107232}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.51, z: 0}
+  m_LocalPosition: {x: 0, y: -0.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -949,7 +949,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
