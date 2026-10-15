@@ -37,6 +37,7 @@ public class Bubble : MonoBehaviour
     Collider2D col;
     [SerializeField] float radius = 0.5f;
     SortingGroup sortingGroup;
+    private float timeSpawnned;
     float bounceAmplitude;
     float bounceDuration;
     bool isBouncing = false;
@@ -64,6 +65,7 @@ public class Bubble : MonoBehaviour
         Rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         sortingGroup = GetComponent<SortingGroup>();
+        timeSpawnned = Time.time;
     }
     private IEnumerator Start()
     {
@@ -251,13 +253,17 @@ public class Bubble : MonoBehaviour
             col = GetComponent<CircleCollider2D>();
         Gizmos.DrawSphere(transform.position, radius: Radius);
     }
-    
+
     bool isMerged = false;
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
+        const float mergeDelay = 0.25f;
+        if (Time.time - timeSpawnned < mergeDelay) return;
         if (other && other.TryGetComponent(out Bubble otherBubble))
         {
-            if (otherBubble.Category == Category && !isMerged && !otherBubble.isMerged)
+            if (Time.time - otherBubble.timeSpawnned < mergeDelay) return;
+
+            if (otherBubble.Category == Category && otherBubble.index == index && !isMerged && !otherBubble.isMerged)
             {
                 isMerged = true;
                 otherBubble.isMerged = true;

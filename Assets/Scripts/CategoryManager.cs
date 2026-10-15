@@ -12,7 +12,12 @@ public class CategoryManager : Singleton<CategoryManager>
         public BubbleType name;
         public bool overrideColor = false;
         [ColorUsage(false)] public Color bubbleColor = Color.white;
+        public int nextMergeBubbleCount = 0;
+        public bool isDummy = false;
         public Bubble.Data data;
+
+        public int NextMergeBubbleCount { get => nextMergeBubbleCount; set => nextMergeBubbleCount = value; }
+        public int nextMergeCategories { get => nextMergeBubbleCount; set => nextMergeBubbleCount = value; }
     }
     [SerializeField] bool spawnOnStart = true;
     [SerializeField] HorizontalAlignment horizontalAlignment;
@@ -187,16 +192,38 @@ public class CategoryManager : Singleton<CategoryManager>
 
     internal Bubble SpawnNewBubble(Vector3 pos)
     {
-        int j = currentIndex++;
+        if (datas == null || datas.Count == 0) return null;
+        if (currentIndex >= datas.Count)
+        {
+            currentIndex = 0;
+        }
+
+        int j = currentIndex;
 
         BubbleType category = datas[j].name;
-        Bubble.Data data = datas[j].data;
         Color bubbleColor = datas[j].overrideColor ?
                     datas[j].bubbleColor :
                     GameSettings.Instance.BubbleColors[j % GameSettings.Instance.BubbleColors.Length];
 
+        List<Bubble.Data> bubbleDataList = new() { datas[j].data };
+        if (!datas[j].isDummy)
+        {
+            int mergeCount = datas[j].nextMergeBubbleCount;
 
-        var bubble = Instantiate(GameSettings.Instance.Bubbles[0], pos, Quaternion.identity);
+            for (int i = 1; i <= mergeCount; i++)
+            {
+                if (j + i < datas.Count)
+                {
+                    bubbleDataList.Add(datas[j + i].data);
+                }
+            }
+        }
+
+        int totalMergedCount = bubbleDataList.Count;
+        int bubbleIndex = Mathf.Clamp(totalMergedCount - 1, 0, GameSettings.Instance.Bubbles.Length - 1);
+
+        Bubble original = !datas[j].isDummy ? GameSettings.Instance.Bubbles[bubbleIndex] : GameSettings.Instance.DummyFruit;
+        var bubble = Instantiate(original, pos, Quaternion.identity);
 
         if (EnableRandomSize)
         {
@@ -209,7 +236,10 @@ public class CategoryManager : Singleton<CategoryManager>
         if (GameSettings.Instance.CanChangeColor)
             bubble.SetColor(bubbleColor);
 
-        bubble.SetName(new() { data });
+        bubble.SetName(bubbleDataList);
+
+        currentIndex += totalMergedCount;
+
         return bubble;
     }
 }

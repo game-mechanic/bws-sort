@@ -54,6 +54,7 @@ public class GameSettings : ScriptableObject
     [SerializeField] private BubbleType[] order;
     [SerializeField] private bool canTextBreathe;
     [SerializeField] private bool enableRandomBubbleSize;
+    [SerializeField] private Bubble dummyFruit;
 
     public float MaxBounceAmplitude { get => maxBounceAmplitude; }
     public float BounceTime { get => bounceTime; }
@@ -75,6 +76,7 @@ public class GameSettings : ScriptableObject
     public BubbleType[] Order { get => order; set => order = value; }
     public bool CanTextBreathe { get => canTextBreathe; internal set => canTextBreathe = value; }
     public bool EnableRandomBubbleSize { get => enableRandomBubbleSize; }
+    public Bubble DummyFruit { get => dummyFruit; }
 
     internal static IEnumerator Init()
     {

@@ -16,12 +16,12 @@ MonoBehaviour:
   bounceTime: 1
   maxBounces: 3
   lerpSpeeed: 15
-  bubbleProfile: {fileID: 11400000, guid: 3c283154e7cc39b49bfe70f585ac9e5d, type: 2}
+  bubbleProfile: {fileID: 11400000, guid: 93225807edc5d4762a3b92d3b0015313, type: 2}
   dragSpeed: 10
   breathingSpeed: 5
   breathingAplitude: 0.01
-  textBreathingSpeed: 1
-  bubbleFXPrefab: {fileID: 5856000662369290909, guid: 63c0ec1246ae2f64a93bdc22bdd22cc1, type: 3}
+  textBreathingSpeed: 0
+  bubbleFXPrefab: {fileID: 5856000662369290909, guid: 646c880082f4c44d680462fba9de11d1, type: 3}
   canChangeColor: 0
   bubbleColors:
   - {r: 1, g: 0.3160377, b: 0.7601107, a: 1}
@@ -35,7 +35,7 @@ MonoBehaviour:
   selectedLanguage: 0
   englishLocale: {fileID: 11400000, guid: 8453d8e5bb2028f40a88d83511917e13, type: 2}
   canCreateGhost: 0
-  canMerge: 1
+  canMerge: 0
   order:
   - {fileID: 11400000, guid: 421c06c4ff94d8847829d4b98abaa5db, type: 2}
   - {fileID: 11400000, guid: 3f94bd056e1e53843b844e2e32042c05, type: 2}
@@ -46,3 +46,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b8d1de56817b49a40b167e219f035818, type: 2}
   canTextBreathe: 1
   enableRandomBubbleSize: 0
+  dummyFruit: {fileID: 7926608256317659342, guid: ddf642ab269a54edab35345b938551e0, type: 3}
