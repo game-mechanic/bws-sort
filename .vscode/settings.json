@@ -56,7 +56,7 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "bws-sort.slnx",
+    "dotnet.defaultSolution": "main-mechaic.slnx",
     "dotrush.roslyn.projectOrSolutionFiles": [
         "/Users/shivanagouda/UnityProjects/bws-sort/bws-sort.sln"
     ]
